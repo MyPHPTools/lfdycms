@@ -9,7 +9,15 @@ define('APP_DEBUG',true);
 define('BIND_MODULE','Install');
 
 // 定义应用目录
-define('APP_PATH','./Application/');
+define('ROOT_PATH', __DIR__);
+define('APP_PATH', ROOT_PATH.'/Application/');
+
+spl_autoload_register(function($className){
+    $_file = ROOT_PATH . "/" . str_replace('\\', '/', $className) .".php";
+    if (file_exists($_file)) {
+        require $_file;
+    }
+});
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

@@ -22,4 +22,9 @@ class Tools
     {
         return is_dir($path) or (self::createDir(dirname($path)) and mkdir($path, 0777));
     }
+
+    public static function test()
+    {
+        echo 123456;exit;
+    }
 }

@@ -8,8 +8,8 @@ if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 define('APP_DEBUG',true);
 
 // 定义应用目录
-define('APP_PATH','./Application/');
 define('ROOT_PATH', __DIR__);
+define('APP_PATH', ROOT_PATH.'/Application/');
 
 if(!is_file(APP_PATH . 'Common/Conf/config.php')){
 	header('Location: ./install.php');

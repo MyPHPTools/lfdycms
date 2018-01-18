@@ -49,6 +49,10 @@ function check_env(){
  * @return array 检测数据
  */
 function check_dirfile(){
+    \common\tools\Tools::createDir('./Uploads/User');
+    \common\tools\Tools::createDir('./Uploads/Picture');
+    \common\tools\Tools::createDir('./Uploads/Prize');
+    \common\tools\Tools::createDir('./Data');
     $items = array(
         array('dir',  '可写', 'success', './Uploads/User'),
         array('dir',  '可写', 'success', './Uploads/Picture'),
