@@ -1,0 +1,72 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>{$meta_title}</strong></div>
+      <div class="panel-body">
+        <div class="step">
+            <div class="step-bar" style="width:33.3%;"><span class="step-point">1</span><span class="step-text">下载文件</span></div>
+            <div class="step-bar" style="width:33.3%;"><span class="step-point">2</span><span class="step-text">安装文件</span></div>
+            <div class="step-bar" style="width:33.3%;"><span class="step-point">3</span><span class="step-text">升级完成</span></div>
+        </div>
+      	<table class="table table-hover">
+        	<tr>
+                <th>文件名</th>
+                <th>文件大小</th>
+                <th>状态</th>
+            </tr>
+           	<notempty name="upList">
+            <volist name="upList" id="vo">
+            <tr>
+                <td>{$vo.name}</td>
+                <td>{$vo.size}KB</td>
+                <td><span class="icon-pause text-blue upzt"></span><span class="margin-left upztt">等待下载</span></td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="3"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+      </div>
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	date("{:U('update')}",0);
+	function date(url,num){
+		if(num==0){
+		step(0);
+		$('.upzt').eq(num).addClass('icon-refresh rotate').removeClass('icon-pause').siblings('.upztt').text('开始下载');
+		}
+		var count={:count($upList)};
+		url=replaceParamVal(url,'num',num);
+		url=replaceParamVal(url,'version','{$version['version']}');
+		$.getJSON(url,function(data){
+			$('.upzt').eq(num+1).addClass('icon-refresh rotate').removeClass('icon-pause').siblings('.upztt').text('开始下载');
+			$('.upzt').eq(num).addClass('icon-check').removeClass('icon-refresh rotate').siblings('.upztt').text('下载完成');
+			if(count>data.num){
+				url=replaceParamVal(url,'num',data.num);
+				date(url,data.num);
+			}else{
+				step(1);
+				$.getJSON("{:U('install','version='.$version['version'])}",function(data){
+					step(2);
+				});
+			}
+		});
+	}
+	function step(num){
+		$('.step-bar').eq(num).addClass('active');
+		if(num>0){
+			$('.step-bar').eq(num-1).addClass('complete').removeClass('active').find('.step-point').addClass('icon-check').text('');
+		}
+		if(num==2){
+			$('.step-bar').eq(num).addClass('complete').removeClass('active').find('.step-point').addClass('icon-check').text('');
+		}
+	}
+	highlight_subnav('{:U('Update/index')}');
+})
+</script>
+</block>

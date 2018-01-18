@@ -1,0 +1,58 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+                <div class="col-lg-9">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            <b>兑换</b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="pull-left pos-rlt m-r">
+                                    <img src="{$prize['pic']|default='__IMG__/prize.jpg'}" alt="" class="r r-2x img-full prize">
+                            </div>
+                            <div>
+                                <p><strong>{$prize['title']}</strong></p>
+                                <p class="text-xs">积分：{$prize['integral']}</p>
+                                <p class="text-xs">兑换数量：{$prize['number']}</p>
+                                <p class="text-xs"><a href="{:U('Prize/exchange?id='.$prize['id'])}" class="btn btn-info"><i class="glyphicon glyphicon-shopping-cart"></i> 兑换</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            <b>介绍</b>
+                        </div>
+                        <div class="panel-body">
+                            {:htmlspecialchars_decode($prize['content'])}
+                        </div>
+                    </div>
+                    <!-- <div class="panel b-a">
+                        <div class="panel-body">
+                            {:hook('SocialComment')}
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-lg-3">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">兑换排行榜</div>
+                        <div class="panel-body">
+                          <volist name="top" id="vo">
+                          <div class="media">
+                            <a href="{:U('Prize/detail?id='.$vo['id'])}" class="pull-left thumb-lg m-t-xs img-top">
+                              <img src="{$vo['pic']|default='__IMG__/prize.jpg'}" class="r r-2x">
+                            </a>
+                            <div class="media-body">                        
+                              <a href="{:U('Prize/detail?id='.$vo['id'])}" class="font-semibold">{$vo['title']}</a>
+                              <div class="text-xs block m-t-xs">兑换数量：{$vo['number']}</div>
+                            </div>
+                          </div>
+                          </volist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,38 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    <form method="post" class="form-x">
+    	<div class="panel-head"><strong>广告管理</strong></div>
+        <div class="padding border-bottom">
+        	<div class="button-group button-group-small">
+             <a class="button" href="{:U('add')}"><span class="icon-plus text-green"></span> 新 增</a>
+             </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th>广告名称</th>
+                <th>广告调用代码</th>
+                <th>操作</th>
+            </tr>
+           	<notempty name="_list">
+            <volist name="_list" id="vo">
+            <tr>
+                <td>{$vo.title}</td>
+                <td><input name="text" type="text" value='<script src="__AD__/{$vo.url}.js"></script>' size="60"></td>
+                <td>
+                <a href="{:U('edit?id='.$vo['id'])}">修改</a>
+                <a href="{:U('del?id='.$vo['id'])}" class="confirm ajax-get">删除</a>
+                </td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="4"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+         <div class="panel-foot text-center">
+         	<div class="page">{$_page}</div>
+        </div>
+        </form>
+    </div>
+</block>

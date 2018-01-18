@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$webtitle}-{$title}</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<link rel="alternate" href="{$rssurl}" type="application/rss+xml" title="rss" />
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<div id="main">
+    <div class="location">当前位置:<a href="/">首页</a>&nbsp;&nbsp;»&nbsp;&nbsp;<a href="{$curl}">{$ctitle}</a>&nbsp;&nbsp;»&nbsp;&nbsp;{$title}</div>
+    <div class="endpage clearfix">
+        <div class="movie">
+            <div class="pic">
+                <img src="{$pic}" alt="{$title}" />
+            </div>
+            <div class="info">
+                <h1>{$title}</h1>
+                <ul class="">
+                	<li>
+                        <span>主演：</span>
+                        <volist name="actors_array" id="actors">
+                            <a href="{$actors['url']}">{$actors['actors']}</a>&nbsp;&nbsp;
+                        </volist>
+                    </li>
+                    <li>
+                        <span>上映年代：</span>{$year}
+                        <span>状态：</span>{$serialize}
+                    </li>
+                    <li>
+                        <span>类型：</span><a href="{$curl}">{$ctitle}</a>
+                    </li>
+                    <li>
+                        <span>地区：</span>{$area}
+                    </li>
+                    <li>
+                        <span>语言：</span>{$language}
+                    </li>
+                    <li>
+                        <span>评分：</span>{$rating}
+                    </li>
+                    <li>
+                        <span>更新日期：</span>{$time}
+                    </li>
+                </ul>
+            </div>
+            <div class="updatetps clearfix">
+                【影片观看小贴士】： [DVD：普通清晰版] [BD：高清无水印] [HD：高清版] [TS：抢先非清晰版] - 其中，BD和HD版本不太适合网速过慢的用户观看！
+            </div>
+        </div>
+        <div class="infoad">
+            广告位置
+        </div>
+        <div class="cr">
+        </div>
+        <playlist name="player">
+        <div class="mox">
+            <div class="title">
+                <span>{$player['title']}</span>
+            </div>
+            <div class="play-list">
+                <volist name="player['movie_url']" id="url">
+                <a href="{$url['url']}" target="_blank">{$url['title']}</a>
+                </volist>
+            </div>
+        </div>
+        </playlist>
+        <div class="mox juqing">
+            <div class="title">
+                <span>
+                    剧情介绍
+                </span>
+            </div>
+            <div class="endtext">{$content}</div>
+        </div>
+        <!--/mox-->
+        <div>
+			{:hook('SocialComment')}
+		</div>
+	</div>
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.SuperSlide.js" />
+<js href="{$tplpath}/js/common.js" />
+</body>
+</html>

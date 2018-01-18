@@ -1,0 +1,326 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="container m-t-xs wrapper">
+	<div class="panel panel-default">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#users-1" data-toggle="tab">
+                        修改资料
+                    </a>
+                </li>
+                <li>
+                    <a href="#users-2" data-toggle="tab">
+                        编辑头像
+                    </a>
+                </li>
+                <li>
+                    <a href="#users-3" data-toggle="tab">
+                        修改密码
+                    </a>
+                </li>
+                <li>
+                    <a href="#users-4" data-toggle="tab">
+                        修改私密收藏夹密码
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane fade active in" id="users-1">
+                    <form class="form-horizontal" method="post" name="profile" action="{:U()}" data-parsley-validate>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                用户名
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control input-s-lg" value="{$username}" required disabled>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                Email
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control input-s-lg" name="email" value="{$email}" required>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                生日
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control input-s-lg birthday" name="birthday" value="{$birthday|time_format=###,'Y-m-d'}" required>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                性别
+                            </label>
+                            <div class="col-sm-10">
+                                <label class="checkbox-inline"><input name="gender" type="radio" value="1" <eq name="gender" value="1">checked="checked"</eq>>男</label>
+                                <label class="checkbox-inline"><input type="radio" name="gender" value="0" <eq name="gender" value="0">checked="checked"</eq>>女</label>
+                                <label class="checkbox-inline"><input type="radio" name="gender" value="2" <eq name="gender" value="2">checked="checked"</eq>>保密</label>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                个性签名
+                            </label>
+                            <div class="col-sm-10">
+                                <textarea name="introduction" class="form-control input-s-lg">{$introduction|default=''}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button type="submit" class="btn btn-primary">修改</button>
+                            </div>
+                        </div>
+					</form>
+                </div>
+                <div class="tab-pane fade" id="users-2">
+                    <div class="col-sm-2"><img src="{$path|default='__IMG__/user.jpg'}" class="img-circle img-users"></div>
+                    <div class="col-sm-10">
+                        <input type="file" id="upload_picture">
+                        <span class="help-block m-b-none">支持JPG,PNG,GIF格式的图片，最大2M.</span>
+                        <div class="hidden" id="preview-hidden"></div>
+                        <p class="m-t">
+                    		<a class="btn btn-primary hidden" id="save_avatar_button" data-url="{:U('cropImg')}">保存头像</a>
+                        </p>
+                     </div>
+                </div>
+                <div class="tab-pane fade" id="users-3">
+                	<form class="form-horizontal" method="post" name="password" action="{:U('password')}" data-parsley-validate>
+                     <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                原密码
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control input-s-lg" name="oldpassword" data-parsley-length="[6, 30]" required>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                新密码
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control input-s-lg" name="password" id="pwd" data-parsley-length="[6, 30]" required>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                重复密码
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control input-s-lg" name="repassword" data-parsley-equalto="#pwd" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button type="submit" class="btn btn-primary">修改</button>
+                            </div>
+                        </div>
+                     </form>
+                </div>
+                <div class="tab-pane fade" id="users-4">
+                    <notempty name="favorites_password">
+                    <form class="form-horizontal" method="post" name="password" action="{:U('favorites_password')}" data-parsley-validate>
+                     <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                原收藏夹密码
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control input-s-lg" name="favorites_oldpassword" data-parsley-length="[6, 30]" required>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                新收藏夹密码
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control input-s-lg" name="favorites_password" id="fpwd" data-parsley-length="[6, 30]" required>
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                重复收藏夹新密码
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control input-s-lg" name="favorites_repassword" data-parsley-equalto="#fpwd" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button type="submit" class="btn btn-primary">修改</button>
+                            </div>
+                        </div>
+                     </form>
+                    <else />
+                        <form class="form-horizontal" method="post" action="{:U('favorites_add_password')}" data-parsley-validate>
+                            <div class="form-group">
+                                <h3 class="col-sm-12">设置收藏夹密码</h3>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    新收藏夹密码
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control input-s-lg" name="favorites_password" id="fpwd" data-parsley-length="[6, 30]" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    重复收藏夹密码
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control input-s-lg" name="favorites_repassword" data-parsley-equalto="#fpwd" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-primary">设置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</block>
+<block name="script">
+<css href="__STATIC__/datetimepicker/css/bootstrap-datetimepicker.css" />
+<css href="__STATIC__/datetimepicker/css/dropdown.css" />
+<css href="__STATIC__/jcrop/jquery.Jcrop.min.css" />
+<js href="__JS__/parsley.min.js" />
+<js href="__JS__/zh_cn.js" />
+<js href="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.js" />
+<js href="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" />
+<js href="__STATIC__/uploadify/jquery.uploadify.min.js" />
+<js href="__STATIC__/jcrop/jquery.Jcrop.min.js" />
+<js href="__STATIC__/layer/layer.js" />
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.birthday').datetimepicker({
+		format: 'yyyy-mm-dd',
+		language:"zh-CN",
+		minView:2,
+		startView:4,
+		autoclose:true
+	});		
+
+	//上传图片
+	/* 初始化上传插件 */
+	$("#upload_picture").uploadify({
+		"swf"             : "__STATIC__/uploadify/uploadify.swf",
+		"fileObjName"     : "download",
+		"buttonClass"     :  "btn btn-default",
+		"buttonText"      : "上传头像",
+		"uploader"        : "{:U('Users/uploadPicture',array('session_id'=>session_id()))}",
+		"width"           : "80",
+		"height"          : "35",
+		'removeTimeout'	  : 1,
+		'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+		"onUploadSuccess" : uploadPicture,
+		'onFallback' : function() {
+			alert('未检测到兼容版本的Flash.');
+		}
+	});
+	
+	var crop;
+	var jcrop_api;
+	
+	function uploadPicture(file, data){
+		var data = eval('('+data+')');
+		//var data = $.parseJSON(data);
+		var src = '';
+		if(data.status){
+			src = data.url || '__ROOT__' + data.path;
+			$("#preview-hidden").show().removeClass('hidden');
+			$("#save_avatar_button").show().removeClass('hidden');
+			if($("#cropbox").length>0){ 
+				jcrop_api.setImage(src+'?random='+Math.random());
+				jcrop_api.setOptions({
+					aspectRatio: 1,
+					boxWidth : 300,		//画布宽度
+		            boxHeight : 300,	//画布高度
+					onSelect: updateCoordinate,
+					minSize: [100,100],
+					setSelect: [0,0,100,100]
+				});
+			}else{
+				$("#preview-hidden").append('<img />');
+				$("#preview-hidden").children('img').attr('id',"cropbox");
+				$("#cropbox").attr('src',src+'?random='+Math.random());
+			}
+			$('#cropbox').load(function () {
+				$('#cropbox').Jcrop({
+					aspectRatio: 1,
+					boxWidth : 300,		//画布宽度
+		            boxHeight : 300,	//画布高度
+					onSelect: updateCoordinate,
+					minSize: [100,100],
+					setSelect: [0,0,100,100]
+				},function(){
+					jcrop_api=this;
+					crop=jcrop_api.tellScaled();
+				});
+			})
+		} else {
+			updateAlert(data.info);
+			setTimeout(function(){
+				updateAlert();
+				$(that).prop('disabled',false);
+			},1500);
+		}
+	}
+	function updateCoordinate(c) {
+    	crop = c;
+    }
+	$('#save_avatar_button').click(function () {
+		//检查是否已经裁剪过
+		if (crop.w == undefined || crop.w == 0) {
+			layer.alert('请先选出图片中需要的部分', {
+					icon: 0,
+			})
+			return;
+		}
+
+		//显示正在保存
+		$(this).text('正在保存');
+		$(this).addClass('disabled');
+
+		//提交到服务器
+		var url = $(this).attr('data-url');
+		var imageWidth = $('.jcrop-holder img').width();
+		var imageHeight = $('.jcrop-holder img').height();
+		var crop2 = crop.x + ',' + crop.y + ',' + crop.w  + ',' + crop.h;
+		$.post(url, {crop: crop2}, function (a) {
+			if (a.status) {
+				$("#preview-hidden").hide();
+				$("#save_avatar_button").hide().removeClass('disabled');
+				$("#cropbox").remove();
+				$(".jcrop-holder").remove();
+				$(".img-circle").attr('src',a.path+'?random='+Math.random());
+				layer.msg(a.info);
+			} else {
+				layer.alert(a.info, {icon: 0});
+				//恢复按钮
+				$('#save_avatar_button').text('保存头像');
+				$('#save_avatar_button').removeClass('disabled');
+			}
+		});
+	})
+})
+</script>
+</block>

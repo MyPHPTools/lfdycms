@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<html class="bgcolor-fff">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="{$keywords}" name="keywords">
+    <meta content="{$description}" name="description">
+    <title>{$webtitle}--用户中心</title>
+    <css href="__CSS__/bootstrap.min.css" />
+    <css href="__CSS__/style.css" />
+    <css href="__CSS__/animate.css" />
+</head>
+<body>
+<div class="vbox">
+    <!-- <div class="h1 font-bold m-t-xl">用户中心</div> -->
+
+    <div class="navbar-login" style="box-shadow: 1px 1px 3px #ddd">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="/"><img src="/logo.png"></a>
+                    <big>找回密码</big>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top:30px">
+            <ul id="myTab">
+                <li id="step1Li" class="blue">                   
+                    <a>
+                        1.填写账户名
+                    </a>                    
+                </li>
+                <li id="step2Li"  class="active blue">
+                    <img id="step2Img" src="__IMG__/blue_blue.png"/>
+                    <a>
+                        2.验证身份
+                    </a>
+                </li>      
+                <li id="step3Li"  class="gray">
+                    <img id="step3Img" src="__IMG__/blue_gray.png"/>
+                    <a>
+                        3.设置新密码
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-t-lg wrapper-md animated">
+        <div class="container aside-xxl regedit" style="width: 520px;">
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">
+                找回密码
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <h2 class="text-success"><span class="glyphicon glyphicon-ok" style="color:#3c763d;margin-right: 10px;"></span>验证邮件已发送至您的邮箱</h2>
+                        <p>验证邮件已发送至：<span class="red">{$username}</span></p>
+                        <p>请验证邮箱并完成验证。</p>
+                        <p><button class="btn btn-info btn-lg ajax-get" url="{:U('public/againpwd',array('uid'=>$uid))}">再次发送</button></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center padder" style="margin-top: 30px;">
+      <p>
+        <small>Copyright &copy; {$webtitle} 版权所有</small>
+      </p>
+    </div>
+</div>
+<js href="__JS__/jquery.js" />
+<js href="__JS__/bootstrap.min.js" />
+<script src="__STATIC__/layer/layer.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.ajax-get').click(function() {
+        var target;
+        var that = this;
+        if ( (target = $(this).attr('href')) || (target = $(this).attr('url')) ) {
+            var index = layer.msg('加载中', {icon: 16,shade:0.8});
+            $.get(target).success(function(data){
+                layer.close(index);
+                if (data.status == 1) { 
+                    layer.msg(data.info, {icon: 1,shade:0.8},function(){
+                        location.href = data.url;
+                    });
+                } else {
+                    layer.msg(data.info, {icon: 2,shade:0.8});
+                }
+            });
+        }
+        return false;
+    });
+})
+</script>
+</body>
+</html>

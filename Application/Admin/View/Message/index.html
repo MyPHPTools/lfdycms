@@ -1,0 +1,30 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>消息管理</strong></div>
+        <div class="padding border-bottom">
+        	<div class="button-group button-group-small">
+             <a class="button message" href="{:U('add')}"><span class="icon-comment text-green"></span> 发送新消息</a>
+             <button class="button ajax-get confirm no-refresh" url="{:U('del')}"><span class="icon-trash-o text-red"></span> 清除已看消息</button>
+             </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+<js href="__STATIC__/layer/layer.js" />
+<script type="text/javascript">
+$(function(){
+	$(".message").click(function(){
+		layer.open({
+			type: 2,
+			area: ['580px', '570px'],
+			fix: false, //不固定
+			maxmin: true,
+			content: $(this).attr('href')
+		});
+		return false;
+	});
+})
+</script>
+</block>

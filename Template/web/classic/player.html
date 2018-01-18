@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+            <div class="k_lujing">
+                <ul>
+                    <li class="k_lujing-1">当前位置：</li>
+                    <li class="k_lujing-2"><a href="/">首页</a></li>
+                    <li class="k_lujing-3"><a href="{:url_change('lists',array('id'=>get_category_parent($cid),'name'=>get_category_name(get_category_parent($cid))))}">{:get_category(get_category_parent($cid))}</a></li>
+                    <li class="k_lujing-3">{$ctitle}</li>
+                </ul>
+            </div>
+            <div class="ad-b1">
+                广告位置
+            </div>
+            <div class="k_play-1">
+                <div class="k_play-3">
+                    <player />
+                </div>
+                <div class="k_play-4">
+                    <ul>
+                        <li class="k_play-4a">
+                            <div id="k_play-4a-1" {$digg['up_js']}>
+                                <span id="ahits">{$digg['up']}</span>
+                            </div>
+                            <div id="k_play-4a-l"></div>
+                            <div id="k_play-4a-2" {$digg['down_js']}>
+                                <span id="chits">{$digg['down']}</span>
+                            </div>
+                            <div id="k_play-4a-l"></div>
+                            <div id="k_play-4a-5">温馨提示：点击播放按纽后请稍等，视频载入需要时间</div>
+                        </li>
+                        <li class="k_play-4b">
+                            播放
+                            <span id="view_hits">{$hits}</span>
+                            次
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+            <div class="ad-a3">
+                    广告位置
+                </div>
+            <div class="k_play-qt-1">
+                <div class="k_play-qt-2">
+                    <ul>
+                        <li class="k_play-qt-2a">大家正在看什么？</li>
+                    </ul>
+                </div>
+                <div class="k_play-qt-3" id="more">
+                    <!-- k_play-more -->
+                    <div class="k_play-m">
+                        <div class="k_play-more">
+                            <ul>
+                                <list name="list" order="hits desc" limit="14">
+                                <li class="k_upnew-1d">
+                                    <div id="k_upnew-1d-imgs">
+                                        <a class="lz_img" href="{$list['url']}" target="_blank">
+                                            <img alt="{$list['title']}[{$list['serialize']}]" src="{$list['pic']}" border="0">
+                                            <span class="lz_bg"></span>
+                                            <span class="lz_time">{$list['serialize']}</span>
+                                        </a>
+                                    </div>
+                                    <div id="k_upnew-1d-title">
+                                        <a class="name" href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </div>
+                                    <div id="k_upnew-1d-zy">{$list['actors']}</div>
+                                </li>
+                                </list>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </DIV>
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$webtitle}-{$title}</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<meta name="ROBOTS" content="NOIMAGEINDEX">
+<link rel="alternate" href="{$rssurl}" type="application/rss+xml" title="rss" />
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<div class="wrapper">
+	<div class="brecam">您的当前位置：{$ctitle}<i>&gt;</i>{$title}</div>
+    <div class="comwrap clearfix">
+		<div class="continfo">
+			<div class="posta">
+				<dl>
+					<dt><img src="{$pic}" width="200" height="260" /></dt>
+					<dd>
+						<div class="titsub">
+							<h3 id="moid" sn="{$id}" cagegory="2">{$title}</h3>
+							<h6>
+								<a href="javascript:;" {$digg.up_js}><em></em>我喜欢</a>
+							</h6>
+							<h6>
+								<a href="javascript:;" {$favorites}><em></em>加入收藏</a>
+							</h6>
+						</div>
+						<p class="v_dirRow">
+                        	<em>主演：</em>
+                            <volist name="actors_array" id="actors">
+                            <span>
+                            	<a href="{$actors['url']}">{$actors['actors']}</a>
+                            </span>
+                            </volist>
+                        </p>
+                        <gt name="rating" value="0"><p><em>评分：</em>{$rating}</p></gt>
+                        <gt name="serialize" value="0"><p><em>连载：</em>连载至-{$serialize}</p></gt>
+                        <p><em>观看：</em>{$hits}</p>
+						<p><em>类型：</em>{$ctitle}</p>
+						<p><em>地区：</em>{$area}</p>
+                        <p><em>语言：</em>{$language}</p>
+                        <p><em>年份：</em>{$year}</p>
+						<p><em>更新日期：</em>{$time}</p>
+					</dd>
+				</dl>
+			</div>
+			<dl class="playurl">
+				<dt>
+					<span>播放地址</span>
+					<ul>
+                    	<playlist name="player">
+						<li <eq name="i" value="1">class="current"</eq>>
+							<em>{$player['title']}</em>
+						</li>
+                        </playlist>
+					</ul>
+				</dt>
+                <playlist name="player">
+                    <dd <eq name="i" value="1">style="display:block;"</eq>>
+                        <volist name="player['movie_url']" id="url">
+							<a history="{$i}" href="{$url['url']}" <eq name="player['vip']" value="1">{$url['vip_js']}</eq> target="_blank" rel="nofollow">{$url['title']}</a>
+                        </volist>
+                    </dd>
+                </playlist>
+			</dl>
+            <div class="comwrap">
+				<div class="inTitle">
+					<h6>内容简介</h6>
+				</div>
+                <div class="contSums">{$content}<span>详情<i></i></span></div>
+			</div>
+            <div class="comment">
+				{:hook('SocialComment')}
+			</div>
+        </div>
+    </div>
+    <div id="bde">
+    <!-- 广告位：首页横幅960*90 -->
+    </div>
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.lazyload.min.js" />
+<js href="{$tplpath}/js/common.source.js" />
+</body>
+</html>

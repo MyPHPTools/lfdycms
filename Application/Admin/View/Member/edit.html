@@ -1,0 +1,36 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>修改管理员密码</strong></div>
+      <div class="panel-body">
+      	<form method="post" class="form-x" action="{:U('submitPassword')}">
+            <div class="form-group">
+                <div class="label"><label>用户名</label></div>
+                <div class="field"> <input type="text" class="input input-auto"  size="30" name="username" value="" disabled="disabled" placeholder="{$username}" /> </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>原密码</label></div>
+                <div class="field"> <input type="password" class="input input-auto"  size="30" name="old" value="" placeholder="原密码" data-validate="required:清填写登陆密码" /> </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>新密码</label></div>
+                <div class="field"> <input type="password" class="input input-auto"  size="30" name="password" value="" placeholder="用户新密码不能少于6位" data-validate="required:清填写新的登陆密码" />
+               </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>确认密码</label></div>
+                <div class="field"> <input type="password" class="input input-auto"  size="30" name="repassword" value="" placeholder="用户新密码不能少于6位"  data-validate="repeat#password:两次输入的密码不一致" /> </div>
+            </div>
+            <input type="hidden" name="uid" id="uid" value="{$uid}" />
+          <br>
+        <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+        </form>
+      </div>
+    </div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+		highlight_subnav('{:U('Member/index')}');
+	</script>
+</block>

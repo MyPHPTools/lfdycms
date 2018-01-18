@@ -1,0 +1,35 @@
+<volist name="tree" id="list">
+	<dl>
+		<dt class="line border-bottom">
+			<form action="{:U('edit')}" method="post">
+			  <div class="x1 fold"><span></span></div>
+			  <div class="x1">{$list.id}</div>
+			  <div class="x1"><input name="sort" type="text" class="input input-auto input-small" value="{$list.sort}" size="3">
+				</div>
+				<div class="x1">{$list['display']?'是':'否'}</div>
+                <div class="x1">{:show_type_op($list['type'])}</div>
+				<div class="x4">
+					<span class="tab-sign"></span>
+					<input type="hidden" name="id" value="{$list.id}">
+					<input type="text" name="title" class="input input-auto input-small" class="text" value="{$list.title}" size="30">
+					<a class="add-sub-cate" title="添加子分类" href="{:U('add?pid='.$list['id'])}">
+						<span class="icon-plus-circle text-big"></span>
+                        添加子类
+					</a>
+				</div>
+                <div class="float-right">
+					<a title="编辑" href="{:U('edit?id='.$list['id'].'&pid='.$list['pid'])}">编辑</a>
+					<a title="{$list.status|show_status_op}" href="{:U('setStatus?id='.$list['id'].'&status='.abs(1-$list['status']))}" class="ajax-get">{$list.status|show_status_op}</a>
+					<a title="删除" href="{:U('remove?id='.$list['id'])}" class="confirm ajax-get">删除</a>
+					<a title="移动" href="{:U('operate?type=move&from='.$list['id'])}">移动</a>
+					<a title="合并" href="{:U('operate?type=merge&from='.$list['id'])}">合并</a>
+				</div>
+			</form>
+		</dt>
+		<notempty name="list['_']">
+			<dd>
+				{:R('Category/tree', array($list['_']))}
+			</dd>
+		</notempty>
+	</dl>
+</volist>

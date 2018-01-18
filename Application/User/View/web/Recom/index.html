@@ -1,0 +1,243 @@
+<extend name="Public/base"/>
+<block name="body">
+<div class="vbox scrollable wrapper m-t-xs">
+    <div class="container projects">
+        <div class="col-lg-9">
+            <eq name="Think.config.USER_ALLOW_SIGN" value="1">
+            <div class="panel b-a">
+                <div class="panel-heading b-b">
+                    用户签到
+                </div>
+                <div class="panel-body">
+                    <div class="progress progress-xs m-t-sm">
+                        <div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="{$sign/7*100}%" style="width: {$sign/7*100}%;"></div>
+                    </div>
+                    <div class="row">
+                        <for start="1" end="8">
+                        <div class="m-l text-center pull-left">
+                            <div class="btn btn-s-md <elt name="i" value="$sign">btn-warning<else/>btn-info</elt> disabled">
+                            <elt name="i" value="$sign"><i class="glyphicon glyphicon-ok"></i></elt>
+                            第{$i}天
+                            </div>
+                            <p class="text-center m-t-xs">{:C('USER_SIGN_'.$i)} 积分</p>
+                        </div>
+                        </for>
+                        <div class="m-l text-center pull-left">
+                            <div class="btn btn-s-md btn-success sign" url="{:U('Recom/sign')}">马上签到</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </eq>
+            <eq name="Think.config.USER_ALLOW_RLINK" value="1">
+            <div class="panel b-a">
+                <div class="panel-heading b-b">
+                    推广链接
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-2 pull-left"><img src="__IMG__/img_m.png"></div>
+                    <div class="col-sm-10">
+                        <p>邀请好友加入{$webname}，你可以获得{$Think.config.USER_RLINK}推广积分。积分可以兑换奖品。邀请好友越多，你获得的奖励越多，每日可邀请{$Think.config.USER_RLINK_COUNT}好友哦，快行动吧！</p>
+                        <label class="col-sm-2">推广链接</label>
+                        <div class="col-sm-6"><input type="text" id="recom_linl" class="form-control" value="{:get_recom_url()}"></div>
+                        <div class="col-sm-2"><button type="submit" id="btn_recom" class="btn btn-success">复制链接</button></div>
+                    </div>
+                </div>
+            </div>
+            </eq>
+            <eq name="Think.config.USER_ALLOW_PLAY" value="1">
+            <div class="panel b-a">
+                <div class="panel-heading b-b">
+                    看片赢积分
+                </div>
+                <div class="panel-body">
+                    <p>您在本站观看影片每{$Think.config.USER_PLAY_TIME}分钟增加{$Think.config.USER_PLAY}积分，每日最多增加{$Think.config.USER_PLAY_COUNT}次！积分可以兑换奖品。您还在等什么，快行动吧！</p>
+                    <a href="{:U('Home/Index/index')}" target="_blank" class="btn btn-success">马上去看片</a>
+                </div>
+            </div>
+            </eq>
+        </div>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="vbox">
+                    <div class="scrollable wrapper">
+                        <div class="text-center m-b m-t">
+                                <img src="{$path|default='__IMG__/user.jpg'}" class="img-circle img-users">
+                            <div>
+                                <div class="h4 m-t-xs m-b-xs">{$username}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer bg-info text-center">
+                    <div class="row pull-out">
+                        <div class="col-xs-4">
+                            <div class="padder-v">
+                                <a href="{:U('Users/user?state=follow&id='.$id)}">
+                                <span class="m-b-xs h3 block text-white">
+                                    {$follow}
+                                </span>
+                                <small class="text-muted">
+                                    关注
+                                </small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 dk">
+                            <div class="padder-v">
+                                <a href="{:U('Users/user?state=fans&id='.$id)}">
+                                <span class="m-b-xs h3 block text-white">
+                                    {$fans}
+                                </span>
+                                <small class="text-muted">
+                                    粉丝
+                                </small>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="padder-v">
+                                <span class="m-b-xs h3 block text-white">
+                                    {$integral}
+                                </span>
+                                <small class="text-muted">
+                                    积分
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="m-b m-t">
+                                    <if condition="$vip_time gt time()">
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">VIP到期：</dd>
+                                        <dd class="list-inline">{$vip_time|time_format=###,"Y-m-d"}</dd>
+                                    </dl>
+                                    </if>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">用户类型：</dd>
+                                        <dd class="list-inline"><if condition="$vip_time gt time()">VIP<else/>普通用户</if></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">帐号登录次数：</dd>
+                                        <dd class="list-inline">{$login}次</dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">上次登录IP：</dd>
+                                        <dd class="list-inline">{:long2ip($last_login_ip)}</dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">上次登录时间：</dd>
+                                        <dd class="list-inline">{$last_login_time|time_format}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div>
+                                    <h4 class="m-b"><b>会员功能</b></h4>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">发表评论</dd>
+                                        <dd class="col-xs-6 text-right"><img src="__IMG__/toggle.gif" /></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看游客视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <img src="__IMG__/toggle.gif" />
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看会员视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看付费视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">视频下载</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">私密夹</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">尊贵身份标识</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+        </div>
+    </div>
+</div>
+</block>
+<block name="script">
+<js href="__STATIC__/layer/layer.js" />
+<js href="__STATIC__/zclip/ZeroClipboard.js" />
+<script type="text/javascript">
+$(document).ready(function(){
+	init();
+	$('.sign').click(function(){
+		var url=$(this).attr("url");
+		$.get(url).success(function(data){
+			if(data){
+				layer.msg(data,{icon: 6});
+			}
+		})
+	});
+});
+function init() {
+	var clip = new ZeroClipboard.Client(); // 新建一个对象
+	clip.setHandCursor( true );
+	clip.setText($('#recom_linl').val()); // 设置要复制的文本。
+	clip.addEventListener( "mouseUp", function(client) {
+		layer.msg("复制地址成功！",{icon: 6});
+	});
+	clip.glue("btn_recom");
+}
+</script>
+</block>

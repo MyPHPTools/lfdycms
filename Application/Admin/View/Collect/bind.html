@@ -1,0 +1,14 @@
+<script src="__JS__/admin.js"></script>
+<form action="{:U()}" class="form-bing"  method="post">
+<div class="line margin">
+	<input name="bind" type="hidden" value="{$fid}_{$cid}" />
+  	<select class="input input-auto" name="category">
+        <volist name="category" id="vo">
+            <option value="{$vo.id}" <eq name="vo.id" value="$bindid">selected</eq>>{$vo.html}{$vo.title}</option>
+        </volist>
+        <option value="">取消绑定</option>
+     </select>
+  <button class="button bg-green ajax-post no-refresh" callback="removebind(that,{$cid})" type="submit" target-form="form-bing">提交</button>
+  <button class="button bg-red tips-close" type="button">关闭</button>
+</div>
+</form>

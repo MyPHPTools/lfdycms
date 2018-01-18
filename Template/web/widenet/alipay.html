@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+    <div id="app">
+        <include file="{$tplpath}/header.html" />
+        <div class="yk-content">
+    		<div style="background: #fff;padding-top: 30px;text-align: center;">
+    			<h1 style="padding-bottom: 30px;">支付宝充值</h1>
+                <div>
+    				<div class="mod_pay_list" style="height: 350px;">
+                        <img src="{$tplpath}/images/alipay.png" style="width: 300px;">
+                    </div>
+                    <div class="mod_pay_list" style="height: 350px;">
+                        <h2> 请点击下方按钮，联系客服，进行人工充值。</h2>
+
+                        <div style="text-align: center;">
+                            <table class="kftable">
+                                <thead>
+                                    <tr>
+                                        <th>在线交谈</th>
+                                        <th>QQ号</th>
+                                        <th>在线时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="{$tplpath}/images/qq-online.png"></td>
+                                        <td>123456789</td>
+                                        <td>23：00~09：00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{$tplpath}/images/qq-online.png"></td>
+                                        <td>123456789</td>
+                                        <td>23：00~09：00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="{$tplpath}/images/qq-online.png"></td>
+                                        <td>123456789</td>
+                                        <td>23：00~09：00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <table class="kftable">
+                                <thead>
+                                    <tr>
+                                        <th>在线交谈</th>
+                                        <th>微信号</th>
+                                        <th>在线时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="{:U('Home/Other/index/tpl/wxpay')}"><img src="{$tplpath}/images/wx-online.png"></a></td>
+                                        <td>lfdycms</td>
+                                        <td>23：00~09：00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <img src="{$tplpath}/images/alipay1.jpg">
+                    </div>
+                    <div>
+                        <img src="{$tplpath}/images/alipay2.jpg">
+                    </div>
+                </div>
+    		</div>
+    	</div>
+	   <include file="{$tplpath}/footer.html" />
+    </div>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+	</body>
+</html>

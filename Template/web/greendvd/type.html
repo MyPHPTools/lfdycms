@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+		<!--[if lt IE 8]>
+			<script src="./js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body class="bgcolor-f5f5">
+		<include file="{$tplpath}/header.html" />
+		<div class="content bgcolor-f8f8 border-top"></div>
+
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="col col12 color-line">
+					<h3 class="public_title">
+						<span>编辑推荐</span>
+					</h3>
+				</div>
+				<div class="col col12 ts-move-list move-list">
+					<list name="list" pos="1" order="update_time desc" limit="9">
+						<eq name="i" value="1">
+							<div class="col col36">
+								<a href="{$list['url']}">
+									<div class="list-img">
+										<span class="player"></span>
+										<img src="{$list['pic']}" class="img-full">
+									</div>
+									<dl class="profiles bgcolor-fff text-left">
+										<dt class="f16 h33">{$list['title']|msubstr=0,9}</dt>
+										<dd class="f12 h88">{$list['actors']|msubstr=0,11}</dd>
+										<em class="f12 h66"><i class="icon icon-small-play"></i>{$list['hits']}</em>
+									</dl>
+								</a>
+							</div>
+						<else />
+							<div class="col col26">
+								<a href="{$list['url']}">
+		                            <switch name="list.tj_tag">
+		                                <case value="1"><span class="tip tip-new"></span></case>
+		                                <case value="2"><span class="tip tip-hot"></span></case>
+		                                <case value="3"><span class="tip tip-big"></span></case>
+		                                <case value="4"><span class="tip tip-vip"></span></case>
+		                            </switch>
+									<div class="list-img">
+										<span class="player"></span>
+										<img src="{$list['pic']}" class="img-full">
+									</div>
+									<dl class="profiles bgcolor-fff text-left">
+										<dt class="f14 h33">{$list['title']|msubstr=0,9}</dt>
+										<dd class="f12 h88">{$list['actors']|msubstr=0,11}</dd>
+										<em class="f14 orange">{$list['ctitle']}</em>
+									</dl>
+								</a>
+							</div>
+						</eq>
+					</list>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="content margin-t30">
+			<div class="container bgcolor-fff move-type">
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">类型</span></dt>
+					<dd>
+						<type name="type">
+						<a href="{$type['url']}" class="a1">{$type['title']}</a>
+						</type>
+					</dd>
+				</dl>
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">地区</span></dt>
+					<dd>
+						<area name="area">
+						<a href="{$area['url']}" class="a1">{$area['title']}</a>
+						</area>
+					</dd>
+				</dl>
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">年代</span></dt>
+					<dd>
+						<year name="year">
+						<a href="{$year['url']}" class="a1">{$year['title']}</a>
+						</year>
+					</dd>
+				</dl>
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">语言</span></dt>
+					<dd>
+						<language name="language">
+						<a href="{$language['url']}" class="a1">{$language['title']}</a>
+						</language>
+					</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="ad-height col col12 border">
+					<script src="__AD__/type_1180x100.js"></script>
+				</div>
+			</div>
+		</div>
+		<nav name="nav" cid="$cid" type="1">
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="col col12 color-line">
+					<h3 class="public_title">
+						<span>最新{$nav['title']}</span>
+					</h3>
+					<div class="subtitle f14 h88">
+						<a href="{$nav['url']}">更多&gt;&gt;</a>
+					</div>
+				</div>
+				<div class="col col12 move-list">
+					<list name="list" cid="$nav['id']" order="update_time desc" limit="6">
+					<div class="col col26">
+						<a href="{$list['url']}">
+                            <switch name="list.tj_tag">
+                                <case value="1"><span class="tip tip-new"></span></case>
+                                <case value="2"><span class="tip tip-hot"></span></case>
+                                <case value="3"><span class="tip tip-big"></span></case>
+                                <case value="4"><span class="tip tip-vip"></span></case>
+                            </switch>
+							<div class="list-img">
+								<span class="player"></span>
+								<img src="{$list['pic']}" class="img-full">
+								<small>{$list['serialize']}</small>
+							</div>
+							<dl class="profiles bgcolor-fff text-left">
+								<dt class="f14 h33 like-dt">{$list['title']|msubstr=0,10}</dt>
+                                <dd class="f12 h88">主演：{$list['actors']|msubstr=0,11}</dd>
+							</dl>
+						</a>
+					</div>
+					</list>
+				</div>
+			</div>
+		</div>
+		</nav>
+				
+        <include file="{$tplpath}/footer.html" />
+	</body>
+</html>

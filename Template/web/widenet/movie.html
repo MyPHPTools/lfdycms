@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{$title}--{$webtitle}</title>
+	<meta name="keywords" content="{$keywords}">
+	<meta name="description" content="{$description}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/style.css">
+</head>
+<body>
+<div id="app">
+	<!-- 头部 -->
+	<include file="{$tplpath}/header.html" />
+	<div class="yk-content">
+		<div class="mod mod-new">
+			<div class="mod fix">
+				<div class="p-post">
+					<div class="yk-pack p-list">
+						<div class="p-thumb">
+							<a title="{$title}" href="{$url}" target="_blank"></a> <i class="bg"></i>
+							<img src="{$pic}" alt="{$title}">	
+							<div class="p-thumb-tagrt">
+								<switch name="tj_tag">
+                                    <case value="1"><span title="热剧更新" class="gengxin-icon">热剧更新</span></case>
+                                    <case value="2"><span title="正在热播" class="onlyp-icon">正在热播</span></case>
+                                    <case value="3"><span title="大片抢先看" class="qanxian-icon">大片抢先看</span></case>
+                                    <case value="4"><span title="VIP专享" class="vip-icon">VIP专享</span></case>
+                                </switch>
+							</div>
+						</div>
+						<ul class="p-info p-bottom">
+							<li class="status hover-hide">
+								<span class="p-time"> <i class="ibg"></i>
+									<span>{$serialize}</span>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="p-base">
+					<ul>
+						<li class="p-row p-title">
+							{$title}
+						</li>
+						<li class="p-performer" title="{$actors}">
+							主演：
+							<volist name="actors_array" id="actors">
+								<a href="{$actors['url']}" title="{$actors['actors']}">{$actors['actors']}</a>
+								<if condition="$i != count($actors_array)"><i class="p-s">/</i></if>
+							</volist>
+						</li>
+						<li>
+							导演：
+							<a href="{:url_change('search/index',array('keyword'=>$directors))}" title="{$directors}" target="_blank">{$directors}</a>
+						</li>
+						<li>
+							<span class="pub">
+								<label>添加时间：</label>
+								 {$create_time|time_format=###,"Y-m-d"}
+							</span>
+						</li>
+						<li>
+							<span class="ypub">
+								<label>更新时间：</label>
+								{$time}
+							</span>
+						</li>
+						<li class="p-score">
+							评分：
+							<span class="star-num">{$rating}</span>
+						</li>
+						
+						<li>
+							类型：
+							<a target="_blank" href="{$curl}">{$ctitle}</a>
+						</li>
+						<li>
+							地区：
+							<a href="{:U('lists/lists',array('id'=>$cid,'area'=>$area))}" target="_blank">{$area}</a>
+						</li>
+						<li>
+							年份：
+							<a href="{:U('lists/lists',array('id'=>$cid,'year'=>$year))}" target="_blank">{$year}</a>
+						</li>
+						<li>总播放数：{$hits}</li>
+						<li class="p-row p-intro">
+							<span class="text">
+								简介：{$content|msubstr=0,500}
+							</span>
+							<span class="intro-more hide">
+								简介：{$content}
+							</span>
+							<span class="more-default" id="pIntroMore" style="display: inline;background-color: white;">查看详情</span>
+						</li>
+					</ul>
+					<div class="p-interact">
+						<ul>
+							<li class="p-share bdsharebuttonbox" data-tag="share">
+								<dl>
+									<dt>
+										<span class="share-title">分享给朋友：</span>
+									</dt>
+									<dd>
+										<a href="javascript:void(0)" data-cmd="weixin" class="p-icon p-icon-weixin">
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:void(0)" data-cmd="qzone" class="p-icon p-icon-qzone" title="分享到Qzone">
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:void(0)" data-cmd="tsina" class="p-icon p-icon-weibo" title="分享到新浪微博">
+										</a>
+									</dd>
+									<dd>
+										<a href="javascript:void(0)" data-cmd="tqq" class="p-icon p-icon-qq" title="分享到QQ好友">
+										</a>
+									</dd>
+									<dd id="pShareHandle">
+										<a href="javascript:void(0)" data-cmd="more" class="fn-icon fn-icon-handle">
+										</a>
+									</dd>
+								</dl>
+								<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"tag":"share","bdSize" : 32,"bdCustomStyle":"/Template/web/widenet/css/share.css"},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+							</li>
+							<li class="p-divide"></li>
+							<li class="p-collect ">
+								<a href="javascript:void(0)" {$favorites}>
+									<i class="p-icon p-icon-collect p-icon-w15"></i>
+									<span class="c999">收藏</span>
+								</a>
+							</li>
+							<li class="p-download">
+								<a href="javascript:void(0)" {$digg['up_js']}>
+									<i class="p-icon p-icon-up p-icon-w15"></i>
+									<span class="c999">顶({$digg['up']})</span>
+								</a>
+							</li>
+							<li class="p-phone-see ">
+								<a href="javascript:void(0)" {$digg['down_js']}>
+									<i class="p-icon p-icon-down p-icon-w15"></i>
+									<span class="c999">踩({$digg['down']})</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mod-area-left">
+			<playlist name="player">
+			<div class="mod-new fix">
+				<div class="p-h">
+					{$player['title']}
+				</div>
+				<div class="c">
+					<div class="tab-c" id="showInfo">
+						<div class="p-panels">
+							<div class="p-panel">
+								<ul class="p-drama-grid fix">
+									<volist name="player['movie_url']" id="url">
+										<li>
+											<a href="{$url['url']}" class="c555" target="_player" <eq name="player['vip']" value="1">{$url['vip_js']}</eq> class="label label-hover margin-t10">{$url['title']}</a>
+											<if condition="($i == count($player['movie_url'])) AND ($i gt 1)"><i class="p-icon p-icon-new"></i></if>
+										</li>
+									</volist>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</playlist>
+			<div class="mod-new fix">
+				<comment size="12" />
+			</div>
+		</div>
+		<div class="mod-area-right">
+			<div class="mod-new">
+				<div class="p-h">{$ctitle}排行</div>
+				<div class="yk-rank yk-rank-long">
+					<list name="list" cid="$cid" order="hits desc" limit="10">
+					<div class="item c555">
+						<label <elt name="i" value="3">class="hot"</elt>>{$i}</label>
+						<a href="{$list['url']}" target="_blank" class="name">{$list['title']}</a>
+						<span class="extend">{$list['hits']}</span>
+					</div>
+					</list>
+				</div>
+			</div>
+			<div class="mod-new mod-p-related" id="relation">
+				<div class="p-h">
+					{$ctitle}推荐
+				</div>
+				<list name="list" cid="$cid" pos="1" order="update_time desc" limit="4">
+				<div class="yk-pack p-list">
+					<div class="p-thumb">
+						<a title="{$list['title']}" target="_blank" href="{$list['url']}"></a>
+						<i class="bg"></i>
+						<img class=" lazyImg" alt="{$list['title']}" src="{$list['pic']}"></div>
+					<ul class="info-list">
+						<li class="title short-title">
+							<a alt="{$list['title']}" href="{$list['url']}">{$list['title']}</a>
+						</li>
+						<li class="c999 ellipsis-100vw" title="主演:{$list['actors']}">
+							主演:
+							<volist name="list['actors_array']" id="actors">
+								<a href="{$actors['url']}" title="{$actors['actors']}">{$actors['actors']}</a>
+								<if condition="$i != count($list['actors_array'])"><i class="p-s">/</i></if>
+							</volist>
+						</li>
+					</ul>
+				</div>
+				</list>
+			</div>
+		</div>
+	</div>
+	<include file="{$tplpath}/footer.html" />
+</div>
+<script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

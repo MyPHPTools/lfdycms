@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$webtitle}-影视排行</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$list_keywords}">
+<meta name="description" content="{$list_description}">
+<meta name="ROBOTS" content="NOIMAGEINDEX">
+<link rel="alternate" href="{$rssurl}" type="application/rss+xml" title="rss" />
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<div class="wrapper" id="dexCol">
+	<div class="comwrap clearfix">
+		<div class="comwrap clearfix">
+		<div class="leftSide fl">
+			<div class="inTitle">
+				<h6>排行榜</h6>
+			</div>
+			<ul class="tdlistDetail">
+				<list name="top" cid="I('id')" order="hits desc" limit="100">
+                <elt name="i" value="3">
+                <li>
+					<p class="tdlistShow">
+                    	<em class="t01">{$i}</em>
+                        <a href="{$top['url']}" title="{$top['title']}">{$top['title']}</a><span>{$top['hits']}</span>
+                    </p>
+					<div class="tdlistSumm">
+						<a href="{$top['title']}" title="{$top['title']}">
+						<img src="{$top['pic']}" data-original="{$top['pic']}" alt="{$top['title']}" style="display: inline;width: 90px;height: 120px">
+						</a>
+						<p>{$top['content']|msubstr=0,100}</p>
+					</div>
+				</li>
+                <else/>
+				<li>
+                	<p class="tdlistShow"><em>{$i}</em><a href="{$top['url']}" title="{$top['title']}">{$top['title']}</a><span>{$top['hits']}</span></p>
+				</li>
+                </elt>
+                </list>
+			</ul>
+		</div>
+		<ul class="trendNavi fr">
+			<li><a href="{:U("?tpl=top")}" title="全部榜单">影视排行榜</a></li>
+            <nav name="nav" type="1">
+			<li <if condition="($nav['id'] eq $_GET['id']) OR ($nav['id'] eq $_GET['pid'])">class="active"</if>>
+				<a href="{:U("?tpl=top&id=".$nav['id'])}" title="{$nav['title']}榜单">{$nav['title']}排行榜<eq name="nav['branch']" value="1"><em></em></eq></a>
+                <eq name="nav['branch']" value="1">
+				<ol>
+                	<nav name="menu" cid="$nav['id']">
+					<li><a href="{:U("?tpl=top&id=".$menu['id']."&pid=".$menu['pid'])}">{$menu['title']}</a></li>
+                    </nav>
+				</ol>
+                </eq>
+			</li>
+            </nav>
+		</ul>
+		</div>
+	</div>
+    <div id="bde">
+	<!-- 广告位：首页横幅960*90 -->
+    </div>
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.lazyload.min.js" />
+<js href="{$tplpath}/js/common.source.js" />
+</body>
+</html>

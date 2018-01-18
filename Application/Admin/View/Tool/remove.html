@@ -1,0 +1,16 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong>{$meta_title}</strong></div>
+        <div class="panel-body">
+            <form class="form-x" method="post">
+            <div class="form-group">
+                <button class="button bg-main icon-trash-o ajax-post confirm" target-form="form-x" url="{:U('remove','type=movie')}"> 清空影片数据</button>
+                <button class="button bg-main icon-trash-o ajax-post confirm" target-form="form-x" url="{:U('remove','type=news')}"> 清空文章数据</button>
+                <button class="button bg-main icon-trash-o ajax-post confirm" target-form="form-x" url="{:U('remove','type=user')}"> 清空用户数据</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</block>

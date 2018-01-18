@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<html class="bgcolor-fff">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="{$keywords}" name="keywords">
+    <meta content="{$description}" name="description">
+    <title>{$webtitle}--用户中心</title>
+    <css href="__CSS__/bootstrap.min.css" />
+    <css href="__CSS__/style.css" />
+    <css href="__CSS__/animate.css" />
+</head>
+<body>
+<div class="vbox">
+    <!-- <div class="h1 font-bold m-t-xl">用户中心</div> -->
+
+    <div class="navbar-login" style="box-shadow: 1px 1px 3px #ddd">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="/"><img src="/logo.png"></a>
+                    <big>找回密码</big>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="margin-top:30px">
+            <ul id="myTab">
+                <li id="step1Li" class="blue">                   
+                    <a>
+                        1.填写账户名
+                    </a>                    
+                </li>
+                <li id="step2Li"  class="gray">
+                    <img id="step2Img" src="__IMG__/blue_gray.png"/>
+                    <a>
+                        2.验证身份
+                    </a>
+                </li>      
+                <li id="step3Li"  class="gray">
+                    <img id="step3Img" src="__IMG__/gray_gray.png"/>
+                    <a>
+                        3.设置新密码
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-t-lg wrapper-md animated fadeInUp">
+        <div class="container aside-xxl regedit">
+          <form id="form" method="post" action="{:U()}" data-parsley-validate>
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">
+                找回密码
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+                            <input type="text" class="form-control" id="username" name="username" data-parsley-length="[4, 30]" required placeholder="用户名"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></div>
+                            <input class="form-control" type="passcode" name="passcode" placeholder="验证码" required data-parsley-length="[4, 6]"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <img src="{:U('Public/verify')}" class="passcode" style="width: 100%" />
+                    </div>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <button type="submit" class="btn btn-danger btn-login">提交</button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    
+    <div class="text-center padder" style="margin-top: 30px;">
+      <p>
+        <small>Copyright &copy; {$webtitle} 版权所有</small>
+      </p>
+    </div>
+</div>
+<js href="__JS__/jquery.js" />
+<js href="__JS__/bootstrap.min.js" />
+<js href="__JS__/parsley.min.js" />
+<js href="__JS__/zh_cn.js" />
+<script type="text/javascript">
+$(document).ready(function(){
+	var verifyimg = $(".passcode").attr("src");
+    $(".passcode").click(function() {
+        if (verifyimg.indexOf('?') > 0) {
+            $(".passcode").attr("src", verifyimg + '&random=' + Math.random());
+        } else {
+            $(".passcode").attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+        }
+    });
+	$("form").submit(function(e){
+		if(onsubmit==false){
+			e.stopImmediatePropagation();
+			e.preventDefault();
+		}
+	});
+
+})
+</script>
+</body>
+</html>

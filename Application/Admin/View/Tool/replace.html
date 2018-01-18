@@ -1,0 +1,99 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong>{$meta_title}</strong></div>
+        <div class="panel-body">
+            <form class="form-x" action="{:U()}" method="post">
+            <div class="form-group">
+                <div class="label"><label>影片分类</label></div>
+                <div class="field">
+                    <select class="input input-auto" name="category">
+                        <option value="">所有分类</option>
+                        <volist name="category" id="vo">
+                            <option value="{$vo.id}">{$vo.html}{$vo.title}</option>
+                        </volist>
+                     </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>字段</label></div>
+                <div class="field">
+                    <select class="input input-auto" name="field">
+                        <option value="category">影片分类id</option>
+                        <option value="title">影片名称</option>
+                        <option value="path">影片图片-本地</option>
+                        <option value="url">影片图片-远程</option>
+                        <option value="actors">影片主演</option>
+                        <option value="directors">影片导演</option>
+                        <option value="area">影片地区</option>
+                        <option value="language">影片语言</option>
+                        <option value="year">影片年份</option>
+                        <option value="content">影片介绍</option>
+                        <option value="also_known_as">影片别名</option>
+                        <option value="up">影片顶</option>
+                        <option value="down">影片踩</option>
+                        <option value="hits">影片人气</option>
+                        <option value="rating">影片评分</option>
+                        <option value="rating_count">影片评分人数</option>
+                        <option value="serialize">影片连载信息</option>
+                        <option value="movie_url">影片地址</option>
+                        <option value="movie_player_id">影片播放器</option>
+                     </select>
+                </div>
+            </div>
+            <div class="form-group" id="str1">
+                <div class="label"><label>替换</label></div>
+                <div class="field">
+                    <input type="text" name="str1" class="input input-auto" size="15" value="">
+                </div>
+            </div>
+            <div class="form-group" id="str2">
+                <div class="label"><label>替换成</label></div>
+                <div class="field">
+                    <input type="text" name="str2" class="input input-auto" size="15" value="">
+                </div>
+            </div>
+            <div class="form-group hidden" id="player_str1">
+                <div class="label"><label>替换</label></div>
+                <div class="field">
+                    <select class="input input-auto" name="s_str1">
+                        <volist name="playerlist" id="vo">
+                            <option value="{$vo.id}">{$vo.title}</option>
+                        </volist>
+                     </select>
+                </div>
+            </div>
+            <div class="form-group hidden" id="player_str2">
+                <div class="label"><label>替换成</label></div>
+                <div class="field">
+                    <select class="input input-auto" name="s_str2">
+                        <volist name="playerlist" id="vo">
+                            <option value="{$vo.id}">{$vo.title}</option>
+                        </volist>
+                     </select>
+                </div>
+            </div>
+            <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">执 行</button></div>
+            </form>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        $("[name='field']").change(function(){
+            var field=$("[name='field']").val();
+            if(field=='movie_player_id'){
+                $('#str1').addClass('hidden');
+                $('#str2').addClass('hidden');
+                $('#player_str1').removeClass('hidden');
+                $('#player_str2').removeClass('hidden');
+            }else{
+                $('#str1').removeClass('hidden');
+                $('#str2').removeClass('hidden');
+                $('#player_str1').addClass('hidden');
+                $('#player_str2').addClass('hidden');
+            }
+        });
+    </script>
+</block>

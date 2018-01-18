@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<html class="bgcolor-fff">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="{$keywords}" name="keywords">
+    <meta content="{$description}" name="description">
+    <title>{$webtitle}--用户中心</title>
+    <css href="__CSS__/bootstrap.min.css" />
+    <css href="__CSS__/style.css" />
+    <css href="__CSS__/animate.css" />
+</head>
+<body>
+<div class="vbox">
+    <!-- <div class="h1 font-bold m-t-xl">用户中心</div> -->
+
+    <div class="navbar-login" style="box-shadow: 1px 1px 3px #ddd">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="/"><img src="/logo.png"></a>
+                    <big>欢迎注册</big>
+                </div>
+                <div class="col-md-4" style="margin-top: 30px;">
+                    <a href="{:U('login')}" class="pull-right">已有帐号？请登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-t-lg wrapper-md animated fadeInUp">
+        <div class="container aside-xxl regedit">
+          <form id="form" method="post" action="{:U()}" data-parsley-validate>
+            <div class="panel panel-default">
+              <div class="panel-heading font-bold">
+                用户注册
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+                            <input type="text" class="form-control" id="username" name="username" data-parsley-length="[4, 30]" required placeholder="用户名"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></div>
+                            <input class="form-control" type="email" name="email" required placeholder="E-mail"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+                            <input type="password" class="form-control" id="password" name="password" data-parsley-length="[6, 30]" required placeholder="密码"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+                            <input type="password" class="form-control" name="repassword" data-parsley-equalto="#password" required placeholder="重复密码"> 
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <button type="submit" class="btn btn-danger btn-lg btn-block">立即注册</button>
+              </div>
+            </div>
+            <div class="col-lg-12 text-center">
+                <div class="tit-panel margin-tb15">
+                    <span class="tit">使用第三方账号登录</span>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center">
+                <volist name="oauth_login" id="login">
+                    <a class="inl-b" href="{$login['url']}" title="{$login['title']}"><img src="{$login['pic']}"></a>
+                </volist>
+            </div>
+          </form>
+        </div>
+    </div>
+    
+    <div class="text-center padder" style="margin-top: 30px;">
+      <p>
+        <small>Copyright &copy; {$webtitle} 版权所有</small>
+      </p>
+    </div>
+</div>
+<js href="__JS__/jquery.js" />
+<js href="__JS__/bootstrap.min.js" />
+<js href="__JS__/parsley.min.js" />
+<js href="__JS__/zh_cn.js" />
+<script type="text/javascript">
+$(document).ready(function(){
+	var parsleyInstance = $('#username').parsley();
+	var onsubmit=false;
+	$("#username").blur(function(){
+		$.post("{:U('validate')}","username="+$(this).val()).success(function(data){
+			window.ParsleyUI.removeError(parsleyInstance, "username");
+			if(data=="false"){
+			 	window.ParsleyUI.addError(parsleyInstance,"username","抱歉！用户名已存在");
+             }else{
+			 	onsubmit=true;
+			 }
+		});
+	});
+	$("form").submit(function(e){
+		if(onsubmit==false){
+			e.stopImmediatePropagation();
+			e.preventDefault();
+		}
+	});
+})
+</script>
+</body>
+</html>

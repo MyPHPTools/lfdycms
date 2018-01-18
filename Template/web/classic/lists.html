@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+            <div class="k_lujing">
+                <ul>
+                    <li class="k_lujing-1">当前位置：</li>
+                    <li class="k_lujing-2"><a href="/">首页</a></li>
+                    <li class="k_lujing-3"><a href="{:url_change('lists',array('id'=>get_category_parent($cid),'name'=>get_category_name(get_category_parent($cid))))}">{:get_category(get_category_parent($cid))}</a></li>
+                    <li class="k_lujing-3">{$ctitle}</li>
+                </ul>
+            </div>
+            <div class="ad-b1">
+                广告位置
+            </div>
+            <div class="k_list-index">
+                <div class="k_list-index-1">
+                    <div class="k_list-index-1a">{$ctitle}索引</div>
+                    <div class="k_list-index-1b">
+                        <ul>
+                            <li class="k_list-index-1b-a">类型：</li>
+                            <type name="type">
+                                <li class="k_list-index-1b-b"><a href="{$type['url']}" <eq name="cid" value="$type['id']">class="active"</eq>>{$type['title']}</a></li>
+                            </type>
+                        </ul>
+                    </div>
+                    <div class="k_list-index-1b">
+                        <ul>
+                            <li class="k_list-index-1b-a">地区：</li>
+                            <area name="area">
+                                <li class="k_list-index-1b-b"><a href="{$area['url']}" <if condition="($Think.get.area eq '') AND ($i eq 1) OR ($Think.get.area eq $area['title'])">class="active"</if>>{$area['title']}</a></li>
+                            </area>
+                        </ul>
+                    </div>
+                    <div class="k_list-index-1b">
+                        <ul>
+                            <li class="k_list-index-1b-a">语言：</li>
+                            <language name="language">
+                                <li class="k_list-index-1b-b"><a href="{$language['url']}" <if condition="($Think.get.language eq '') AND ($i eq 1) OR ($Think.get.language eq $language['title'])">class="active"</if>>{$language['title']}</a></li>
+                            </language>
+                        </ul>
+                    </div>
+                    <div class="k_list-index-1c">
+                        <ul>
+                            <li class="k_list-index-1b-a">年份：</li>
+                            <year name="year">
+                                <li class="k_list-index-1b-b"><a href="{$year['url']}" <if condition="($Think.get.year eq '') AND ($i eq 1) OR ($Think.get.year eq $year['title'])">class="active"</if>>{$year['title']}</a></li>
+                            </year>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="k_list">
+                <div class="k_list-1">
+                    <div class="k_list-1a">
+                        <!-- 分类列表 -->
+                        <div class="k_list-1a-1">
+                            <ul>
+                                <li class="k_list-1a-1a">{$ctitle}列表</li>
+                            </ul>
+                        </div>
+                        <listpage name="list" limit="10" order="update_time desc">
+                        <div class="k_list-lb">
+                            <ul>
+                                <li class="k_list-lb-1">
+                                    <div id="k_upnew-1d-img">
+                                        <a class="lz_img" href="{$list['url']}" target="_blank">
+                                            <img src="{$list['pic']}" border="0">
+                                            <span class="lz_bg"></span>
+                                            <span class="lz_time">{$list['serialize']}</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="k_list-lb-2">
+                                    <div id="k_list-lb-2-a">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                        <span id="k_list-lb-2-a-hits">(评分：{$list['rating']})</span>
+                                    </div>
+                                    <div id="k_list-lb-2-d">
+                                        年代：
+                                        <a href="{:U('lists/lists',array('id'=>$list['cid'],'year'=>$list['year']))}" target="_blank">{$list['year']}</a>
+                                    </div>
+                                    <div id="k_list-lb-2-b">
+                                        <div id="k_list-lb-2-bb">
+                                            演员：
+                                            <volist name="list['actors_array']" id="actors">
+                                                <a href="{$actors['url']}">{$actors['actors']}</a>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                    <div id="k_sou-4c-c">
+                                        类型：
+                                        <a href="{$list['curl']}">{$list['ctitle']}</a>
+                                    </div>
+                                    <div id="k_list-lb-2-b">
+                                        <div id="k_list-lb-2-bb">语言：{$list['language']}</div>
+                                    </div>
+                                    <div id="k_list-lb-2-e">简介：{$list['content']|msubstr=0,50}</div>
+                                    <div id="k_list-lb-2-f">更新：{$list['time']}</div>
+                                </li>
+                            </ul>
+                        </div>
+                        </listpage>
+                        <div class="k_pape">
+                            <page listrow="10" />
+                        </div>
+                    </div>
+                    <div class="k_list-1b">
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">人气排行榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="$cid" order="hits desc" limit="20">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                        <div class="ad-b2">
+                            <!-- 广告位：B-05 -->            
+                            广告位置
+                        </div>
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">最新推荐榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="$cid" order="update_time desc" limit="15">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="ad-a3">
+                广告位置
+            </div>  
+        </DIV>
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/style.css">
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<!--头部结束-->
+<div class="warp">
+	<div class="container home">
+		<div class="content">
+			<section class="mod">
+				<div class="select-warp">
+					<div class="select-box clearfix">
+						<span class="title">类型：</span>
+						<div class="main">
+							<div class="mod">
+								<type name="type">
+								<li>
+									<a <eq name="cid" value="$type['id']">class="active"</eq> href="{$type['url']}">{$type['title']}</a>
+								</li>
+								</type>
+							</div>
+						</div>
+					</div>
+
+					<div class="select-box clearfix">
+						<span class="title">年代：</span>
+						<div class="main">
+							<div class="mod">
+								<year name="year">
+								<li>
+									<a href="{$year['url']}">{$year['title']}</a>
+								</li>
+								</year>
+							</div>
+						</div>
+					</div>
+					<div class="select-box clearfix">
+						<span class="title">地区：</span>
+						<div class="main">
+							<div class="mod">
+								<area name="area">
+								<li>
+									<a href="{$area['url']}">{$area['title']}</a>
+								</li>
+								</area>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="select-type">
+					<ul class="clearfix fl">
+						<li <if condition="($Think.get.order eq '') OR ($Think.get.order eq 'update_time')">class="active"</if>>
+							<a href="{:url_change('lists/lists',array('name'=>$cname,'id'=>$cid,'order'=>'update_time'))}" data="order-addtime">最新</a>
+						</li>
+						<li <eq name="Think.get.order" value="hits">class="active"</eq>>
+							<a href="{:url_change('lists/lists',array('name'=>$cname,'id'=>$cid,'order'=>'hits'))}" data="order-hits">人气</a>
+						</li>
+						<li <eq name="Think.get.order" value="rating">class="active"</eq>>
+							<a href="{:url_change('lists/lists',array('name'=>$cname,'id'=>$cid,'order'=>'rating'))}" data="order-gold">评分</a>
+						</li>
+					</ul>
+					<p class="fr">
+						共 <em>{$count}</em>
+						部电影
+					</p>
+				</div>
+			</section>
+			<!--今日更新-->
+			<section class="mod">
+				<div class="con-main">
+					<div class="bd">
+						<ul class="movie-List clearfix">
+							<listpage name="list" limit="30" order="update_time desc">
+							<li class="item">
+								<a class="link" href="{$list['url']}" title="{$list['title']}" target="_blank">
+									<img class="lazy" src="{$list['pic']}" alt="{$list['title']}">
+									<span class="t2">{$list['serialize']}</span>
+									<switch name="list.tj_tag">
+                                        <case value="1"><span class="t9">热剧更新</span></case>
+                                        <case value="2"><span class="t8">正在热播</span></case>
+                                        <case value="3"><span class="t7">大片抢先看</span></case>
+                                        <case value="4"><span class="t6">VIP专享</span></case>
+                                    </switch>
+									<span class="shadow"></span>
+								</a>
+								<div class="text">
+									<h3 class="title">
+										<a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']}</a>
+									</h3>
+									<p class="des">主演：{$list['actors']|msubstr=0,11}</p>
+								</div>
+							</li>
+							</listpage>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<div class="pag-warp clearfix">
+				<div class="page"><page listrow="30" /></div>
+			</div>
+			<!--广告位-->
+			<div style="text-align:center"></div>
+		</div>
+	</div>
+</div>
+
+<!--底部开始-->
+<include file="{$tplpath}/footer.html" />
+<script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

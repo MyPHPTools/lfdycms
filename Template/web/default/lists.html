@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$list_webtitle}</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$list_keywords}">
+<meta name="description" content="{$list_description}">
+<meta name="ROBOTS" content="NOIMAGEINDEX">
+<link rel="alternate" href="{$rssurl}" type="application/rss+xml" title="rss" />
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+
+<include file="{$tplpath}/header.html" />
+<div class="wrapper">
+	<div class="comwrap clearfix">
+		<div class="comAside fr">
+            <div class="sideCont">
+                <dl class="cateTags">
+                    <dt>按类型</dt>
+                    <dd>
+                    <type name="type">
+                        <a href="{$type['url']}" <eq name="cid" value="$type['id']">class="current"</eq>>{$type['title']}</a>
+                    </type>
+                    </dd>
+                </dl>
+                <dl class="cateTags">
+                    <dt>按年代</dt>
+                    <dd>
+                        <year name="year">
+                        <a href="{$year['url']}" <if condition="($Think.get.year eq '') AND ($i eq 1) OR ($Think.get.year eq $year['title'])">class="current"</if>>{$year['title']}</a>
+                        </year>
+                    </dd>
+                </dl>
+                <dl class="cateTags">
+                    <dt>按地区</dt>
+                    <dd>
+                    	<area name="area">
+                        <a href="{$area['url']}" <if condition="($Think.get.area eq '') AND ($i eq 1) OR ($Think.get.area eq $area['title'])">class="current"</if>>{$area['title']}</a>
+                        </area>
+                    </dd>
+                </dl>
+                 <dl class="cateTags">
+                    <dt>按语言</dt>
+                    <dd>
+                    	<language name="language">
+                        <a href="{$language['url']}" <if condition="($Think.get.language eq '') AND ($i eq 1) OR ($Think.get.language eq $language['title'])">class="current"</if>>{$language['title']}</a>
+                        </language>
+                    </dd>
+                </dl>
+            </div>
+            <div class="sideCont">
+               <div class="inTitle">
+                    <h6>{$ctitle}排行榜</h6>
+                </div>
+                <ul class="foldlist">
+                    <list name="list" cid="$cid" order="hits desc" limit="10">
+                    <li <eq name="i" value="1">class="hover"</eq>>
+                        <div class="hisus">
+                            <a href="{$list['url']}" class="img">
+                                <img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}" alt="{$list['title']}" style="display: inline;">
+                                <b>{$i}</b>
+                            </a>
+                            <div class="imr">
+                                <h4>{$list['title']}</h4>
+                                <p>类型：{$list['ctitle']}</p>
+                                <p>主演：{$list['actors']|substr='0,10'}</p>
+                                <a href="{$list['url']}" class="p">立即播放</a>
+                            </div>
+                        </div>
+                        <p><em>{$i}</em><a href="{$list['url']}">{$list['title']}</a><span>{$list['hits']}</span></p>
+                    </li>
+                    </list>
+                </ul>
+			</div>
+    	</div>
+        <div class="leftSide fl">
+			<div class="rowContr">
+				<dl class="totabs">
+					<dt>共<i>{$count}</i>部{$ctitle}</dt>
+				</dl>
+			</div>
+			<div class="listad"><!-- 广告位：列表页通用668*34 --></div>
+			<ul class="showList">
+            	<listpage name="list" limit="10">
+				<li>
+					<a href="{$list['url']}" class="img">
+						<img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}" alt="{$list['title']}" />
+						<cite>{$list['time']}</cite>
+					</a>
+					<div class="caseCont">
+						<h3><a href="{$list['url']}" title="{$list['title']}">{$list['title']}</a><span>{$list['area']}</span></h3>
+						<p><neq  name="$list['serialize']" value=""><em>连载：</em>{$list['serialize']}</neq></p>
+						<p><em>主演：</em>{$list['actors']|substr='0,40'}</p>
+                        <p><em>类型：</em>{$list['ctitle']}</p>
+						<p><em>简介：</em>{$list['content']|substr='0,250'}</p>
+					</div>
+				</li>
+                </listpage>
+			</ul>
+			<div class="pages">
+                <page listrow="10" />
+			</div>
+		</div>
+    </div>
+    <div id="bde">
+    <!-- 广告位：首页横幅960*90 -->
+    </div>
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.lazyload.min.js" />
+<js href="{$tplpath}/js/common.source.js" />
+</body>
+</html>

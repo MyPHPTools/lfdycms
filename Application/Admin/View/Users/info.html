@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>欢迎您登录雷风影视系统-{$meta_title}</title>
+    <link rel="stylesheet" href="__CSS__/pintuer.css">
+    <link rel="stylesheet" href="__CSS__/admin.css">
+    <css href="__STATIC__/face/css/face.css" />
+</head>
+<body class="bg-white">
+<div class="panel admin-panel margin-big">
+    <div class="panel-head"><strong>用户资料</strong></div>
+    <div class="panel-body">
+        <div class="x6">
+            <div class="form-group x12">
+                <div class="label x2"><label>id</label></div>
+                <div class="field x10">{$user['id']}</div>
+            </div>
+            
+            <div class="form-group x12">
+                <div class="label x2"><label>email</label></div>
+                <div class="field x10">{$user['email']}</div>
+            </div>
+            <div class="form-group x12">
+                <div class="label x2"><label>积分</label></div>
+                <div class="field x10">{$user['integral']}</div>
+            </div>
+            <div class="form-group x12">
+                <div class="label x2"><label>性别</label></div>
+                <div class="field x10">
+                <switch name="user['gender']">
+                <case value="0">男</case>
+                <case value="1">女</case>
+                <default />保密</switch>
+                </div>
+            </div>
+            <div class="form-group x12">
+                <div class="label x2"><label>生日</label></div>
+                <div class="field x10">{$user['birthday']}</div>
+            </div>
+        </div>
+        <div class="x6">
+            <div class="form-group x12">
+                <div class="label x2"><label>用户名</label></div>
+                <div class="field x10">{$user['username']}</div>
+            </div>
+            <div class="form-group x12">
+                <div class="label x2"><label>注册时间</label></div>
+                <div class="field x10">{$user['reg_time']|time_format}</div>
+            </div>
+            <div class="form-group x12">
+                <div class="label x2"><label>类型</label></div>
+                <div class="field x10">
+                    <egt name="user['vip_time']" value="$Think.const.NOW_TIME">
+                        <span class="tag bg-yellow">VIP</span>
+                    <else/>
+                        普通用户
+                    </egt>
+                </div>
+            </div>
+            <egt name="user['vip_time']" value="$Think.const.NOW_TIME">
+            <div class="form-group x12">
+                <div class="label x2"><label>到期时间</label></div>
+                <div class="field x10">{$user['vip_time']|time_format=###,"Y-m-d"}</div>
+            </div>
+            </egt>
+            <div class="form-group x12">
+                <div class="label x2"><label>介绍</label></div>
+                <div class="field x10">{$user['introduction']}</div>
+            </div>
+        </div>
+    <div class="clearfix"></div>
+    </div>
+</div>
+<script src="__JS__/jquery.js"></script>
+<script src="__JS__/pintuer.js"></script>
+<script src="__JS__/respond.js"></script>
+<script src="__JS__/admin.js"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+</body>
+</html>

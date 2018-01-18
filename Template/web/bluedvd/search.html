@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$keyword}</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<div id="main">
+    <div class="ads1200"><!--广告位置--></div>
+    <div class="box">
+        <div class="content">
+            <div class="title">
+                <span><b>{$ctitle}</b></span>
+                <p>共<i>{$count}</i>部</p>
+            </div>
+            <div class="bd clearfix">
+                <ul class="img-list dis clearfix">
+                    <search name="list" limit="18">
+                    <li>
+                        <a class="play-img" href="{$list['url']}" title="{$list['title']}" target="_blank">
+                            <img src="{$list['pic']}" alt="{$list['title']}"><i></i>
+                            <notempty name="list['serialize']"><em>{$list['serialize']}</em></notempty>
+                        </a>
+                        <b><a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,10}</a></b>
+                        <p>{$list['actors']|msubstr=0,10}</p>
+                    </li>
+                    </search>
+                </ul>
+            </div>
+            <div class="pages">
+               <page listrow="18" />
+            </div>
+        </div>
+        <div class="side">
+            <div class="shot">
+                <dl>
+                    <dt>{$ctitle}排行</dt>
+                </dl>
+                <div class="bd">
+                    <ul class="dis">
+                    <list name="list" cid="''" order="hits desc" limit="12">
+                        <li><span>{$list['hits']}</span><a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,10}</a></li>
+                    </list>									
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cr"></div>
+    </div>
+    <div class="ads1200"></div>
+    <!--/box-->
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.SuperSlide.js" />
+<js href="{$tplpath}/js/common.js" />
+</body>
+</html>

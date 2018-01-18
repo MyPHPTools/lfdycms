@@ -1,0 +1,55 @@
+<ul id="post-list" class="post-list">
+	<volist name="tree" id="list">
+	<li class="post">
+		<div class="post-content">
+			<div class="avatar hovercard">
+				<div class="user">
+					<img src="{$list['user']['path']}"></div>
+				<div style="color:#666;font-size: 12px;text-align: center;margin-top: 5px">
+				{$_POST['count']-($_POST['page']*$_POST['limit']+$i-$_POST['limit'])+1}楼</div>
+			</div>
+			<div class="post-body">
+				<div class="u-header">
+					<span class="author publisher-anchor-color" style="color:#f40;font-weight: initial;">{$list['user']['username']}</span>
+					<if condition="$list['user']['vip_time'] gt time()">
+						<div class="post-meta"><i class="icon icon-user-vip"></i></div>
+					</if>
+					<div class="post-meta">
+						<span aria-hidden="true" class="bullet time-ago-bullet">•</span>
+						<a class="time-ago">{$list['create_time']|tmspan}</a>
+					</div>
+				</div>
+				<div class="post-body-inner">
+					<div data-role="message-container" class="post-message-container">
+						<div data-role="message-content">
+							<div class="post-message publisher-anchor-color">
+								<p>{$list['content']|ubb_face}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="u-footer">
+					<ul>
+						<li>
+							<a onclick="up({$list['id']});" title="顶一下" href="javascript:void(0);" class="action">
+								<span></span>
+								顶<span style="font-size: 12px">（{$list['up']}）</span>
+							</a> <em>•</em>
+						</li>
+						<li class="reply">
+							<a class="action" href="javascript:void(0);" onclick="reply(this,{$list['mid']|default=0},{$list['id']|default=0});">回复</a>
+						</li>
+						<div class="claer"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="uyan-reply-postbox"></div>
+		<ul class="children">
+			<notempty name="list['_']">
+				{:R('Comment/tree', array($list['_']))}
+			</notempty>
+		</ul>
+	</li>
+	</volist>
+</ul>

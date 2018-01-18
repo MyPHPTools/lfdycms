@@ -1,0 +1,106 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div id="top-alert" class="alert fixed hidden alert-red"></div>
+    <div class="tab">
+        <div class="tab-head">
+            <ul class="tab-nav">
+                <li class="active"><a href="#tab-player">播放器</a></li>
+                <li><a href="#tab-playerad">播前广告</a></li>
+            </ul>
+         </div>
+         <div class="tab-body">
+            <br />
+            <form action="{:U()}" class="form-x"  method="post">
+            <div class="tab-panel active" id="tab-player">
+                <div class="form-group">
+                    <div class="label"><label>播放器名称</label></div>
+                    <div class="field">
+                        <input type="text" name="title" class="input input-auto" size="50" value="{$info.title|default=''}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>播放器排序</label></div>
+                    <div class="field">
+                        <input type="text" name="sort" class="input input-auto" size="10" value="{$info.sort|default=0}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>模式</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="vip">
+                            <option value="0">游客</option>
+                            <option value="1">VIP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>类型</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="type">
+                            <option value="0">播放</option>
+                            <option value="1">下载</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>播放器代码</label></div>
+                    <div class="field">
+                    	<p class="text-gray"><$url>影片地址 <$lasturl>上一集 <$nexturl>下一集 <$lastplay>上一集播放页 <$nextplay>下一集播放页</p>
+                    	<p>
+                        	<textarea name="player_code" class="input" rows="14" placeholder="播放器代码">{$info.player_code|default=''}</textarea>
+                        </p>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="label"><label>可见性</label></div>
+                    <div class="field">
+                    	<select class="input input-auto" name="display">
+                        	<option value="1">可见</option>
+                            <option value="0">不可见</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-panel" id="tab-playerad">
+                <div class="form-group">
+                    <div class="label"><label>播前广告时间</label></div>
+                    <div class="field">
+                    	<select class="input input-auto" name="adon">
+                        	<option value="0">关闭</option>
+                            <option value="1">开启</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>播前广告开关</label></div>
+                    <div class="field">
+                    	<input type="text" name="timer" class="input input-auto" size="10" value="{$info.timer|default=0}"/> 单位秒
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="label"><label>广告代码</label></div>
+                    <div class="field">
+                        <textarea name="player_ad" class="input" rows="15" placeholder="广告代码">{$info.player_ad|default=''}</textarea>                   
+                    </div>
+                </div>
+            </div>
+            <br />
+            <input type="hidden" name="id" value="{$info.id|default=''}">
+            <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+            </form>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		<present name="info.id">
+        setValue("vip", {$info.vip|default=0});
+        setValue("type", {$info.type|default=0});
+		setValue("display", {$info.display|default=1});
+		setValue("adon", {$info.adon|default=1});
+		highlight_subnav('{:U('Player/index')}');
+		</present>
+	</script>
+</block>

@@ -1,0 +1,53 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>绑定播放器列表</strong></div>
+        <div class="padding border-bottom">
+        	<div class="line-middle">
+            <form id="form" class="form-addbind">
+              <div class="x5"><input name="pname" type="text" class="input input-auto"  size="30" value=""/></div>
+              <div class="x5">
+                <select class="input input-auto" name="bpname">
+                    <volist name="playerlist" id="player">
+                    <option value="{$player.id}">{$player.title}</option>
+                    </volist>
+                </select>
+              </div>
+              <div class="x2"><a class="button ajax-post"  href="#" url="{:U('binbplay')}" target-form="form-addbind">添加</a></div>
+              </form>
+            </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th width="430">播放器名称</th>
+                <th>对应播放器</th>
+                <th width="180">操作</th>
+            </tr>
+           	<notempty name="playlist">
+            <volist name="playlist" id="vo">
+            <notempty name="vo.play">
+            <tr>
+            	<form id="form" class="form-{$vo['play']}">
+                <td><input name="pname" type="text" class="input input-auto"  size="30" value="{$vo['play']}"/></td>
+                <td>
+                    <select class="input input-auto" name="bpname">
+                        <volist name="playerlist" id="player">
+                        <option value="{$player.id}" <eq name="vo.bind" value="$player.id">selected</eq>>{$player.title}</option>
+                        </volist>
+                    </select>
+                </td>
+                <td>
+                	<a class="button ajax-post" href="#" url="{:U('binbplay')}" target-form="form-{$vo['play']}">修改</a>
+                    <a class="button ajax-post" href="#" url="{:U('delplay')}" target-form="form-{$vo['play']}">删除</a>
+                </td>
+                </form>
+            </tr>
+            </notempty>
+            </volist>
+            <else/>
+            <td colspan="3"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+    </div>
+</block>

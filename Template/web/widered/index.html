@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://tv.sohu.com/drama/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/global2014.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/nav_v1.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/channel.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/drama.css"></head>
+
+<body class="W_1380">
+    <include file="{$tplpath}/header.html" />
+    <div class="scroll2 cfix">
+        <div class="scroll2Inner">
+            <a id="banner_link" href="" target="_blank" style="display: block; position: absolute; height: 100%; left: 0px;"></a>
+            <div class="side" id="banner_ctr">
+                <div class="sideBg"></div>
+                <ul>
+                    <slider name="slider" limit="9">
+                    <li>
+                        <a href="javascript:void(0)" title="{$slider.title}">
+                            <span class="side-arrow"></span>
+                            {$slider.title}
+                        </a>
+                    </li>
+                    </slider>
+                </ul>
+            </div>
+        </div>
+        <ul class="photo" id="banner_img">
+            <slider name="slider" limit="9">
+            <li style="display: none;">
+                <a href="{$slider.url}" target="_blank">
+                    <img src="{$slider.pic}" data-adaptive-background="1" data-ab-parent="li" height="380">
+                </a>
+            </li>
+            </slider>
+        </ul>
+    </div>
+    <div id="content">
+        <div class="wrap">
+            <nav name="nav" type="1">
+            <div id="modD" class="mod">
+                <!-- Start:colL -->            
+                <div class="colL">
+                    <div class="tit">
+                        <h3 class="tith">{$nav['title']}</h3>
+                        <div class="titud l">
+                            <ul class="titu fs14 cf">
+                                <nav name="mnav" cid="$nav['id']">
+                                    <li class="titx">
+                                        <a href="{$mnav['url']}" target="_blank" class="tita">{$mnav['title']}</a>
+                                    </li>
+                                </nav>
+                                <li class="titx">
+                                    <a href="{$nav['url']}" target="_blank" class="tita more">更多</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="con">
+                        <ul class="lis cf">
+                            <list name="list" cid="$nav['id']" order="update_time desc" limit="14">
+                                <li class="lisi">
+                                    <a href="{$list['url']}" target="_blank" class="load sz2">
+                                        <img alt="{$list['title']}" class="sz2" lazysrc="{$list['pic']}" src="{$list['pic']}">           
+                                        <span class="lisBg"></span>
+                                        <span class="lisTx">{$list['serialize']}</span>
+                                        <switch name="list.tj_tag">
+                                            <case value="1"><span title="更新" class="gengxin">更新</span></case>
+                                            <case value="2"><span title="热播" class="onlyp">热播</span></case>
+                                            <case value="3"><span title="抢先" class="qanxian">抢先</span></case>
+                                            <case value="4"><span title="会员" class="vip">会员</span></case>
+                                        </switch>
+                                    </a>
+                                    <p class="p_bt">
+                                        <a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,10}</a>
+                                    </p>
+                                    <p class="p_info">
+                                        {$list['actors']|msubstr=0,11}
+                                    </p>
+                                </li>
+                            </list>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End:colL -->            
+                <!-- Start:colR -->            
+                <div class="colR">
+                    <div class="tit">
+                        <h3 class="tith">热播排行</h3>
+                    </div>
+                    <div class="con">
+                        <!-- Start:rank -->            
+                        <div class="rank cf">
+                            <ul class="ranku cf">
+                                <list name="list" cid="$nav['id']" order="hits desc" limit="10">
+                                    <li class="ranki">
+                                        <a href="{$list['url']}" target="_blank" title="{$list['title']}"> <i class="rki rki{$i-1}"></i> <em class="rke">{$list['title']|msubstr=0,10}</em>
+                                        </a>
+                                    </li>
+                                </list>
+                            </ul>
+                        </div>
+                        <!-- End:rank -->            
+                        <div class="dot1 mb10 mt10"></div>
+                        <div class="tit tit_show">
+                            <h3 class="tith">推荐</h3>
+                        </div>
+                        <div class="o">
+                            <ul class="lis lis70 cf">
+                                <list name="list" cid="$nav['id']"  pos="1" order="update_time desc" limit="6">
+                                    <li class="lisi">
+                                        <a href="{$list['url']}" target="_blank" class="load sz70">
+                                            <img lazysrc="{$list['pic']}" class="sz70" alt="{$list['title']}" src="{$list['pic']}">
+                                        </a>
+                                        <p class="p_bt">
+                                            <a href="{$list['url']}" target="_blank">{$list['title']|msubstr=0,10}</a>
+                                        </p>
+                                        <p class="p_info">{$list['actors']|msubstr=0,11}</p>
+                                    </li>  
+                                </list>                             
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End:colR --> 
+            </div>
+            <div class="mod_line"></div>
+            </nav>
+            <div id="modD" class="mod">
+                <!-- Start:colL -->            
+                <div class="col">
+                    <div class="tit">
+                        <h3 class="tith">友情连接</h3>
+                    </div>
+                    <div class="con">
+                        <div class="o">
+                            <p class="tuiap">
+                                <weblink name="link">
+                                    <a class="tuia" target="_blank" href="{$link['url']}">{$link['title']}</a>
+                                </weblink>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End:colL -->            
+                
+            </div>
+            <div class="mod_line"></div>
+        </div>
+    </div>
+    <include file="{$tplpath}/footer.html" />
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.New.Slider.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.adaptive-backgrounds.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.adaptiveBackground.run();
+        });
+    </script>
+</body>
+</html>

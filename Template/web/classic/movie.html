@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+            <div class="k_lujing">
+                <ul>
+                    <li class="k_lujing-1">当前位置：</li>
+                    <li class="k_lujing-2"><a href="/">首页</a></li>
+                    <li class="k_lujing-3"><a href="{:url_change('lists',array('id'=>get_category_parent($cid),'name'=>get_category_name(get_category_parent($cid))))}">{:get_category(get_category_parent($cid))}</a></li>
+                    <li class="k_lujing-3">{$ctitle}</li>
+                </ul>
+            </div>
+            <div class="ad-b1">
+                广告位置
+            </div>
+            <div class="k_jianjie">
+                <div class="k_jianjie-1">
+                    <ul>
+                        <li class="k_jianjie-2">
+                                <!-- 影片详细-->
+                            <div id="k_jianjie-2b">
+                                <a href="{$url}" title="{$title}">
+                                    <img src="{$pic}" alt="{$title}" border="0"></a>
+                            </div>
+                            <div id="k_jianjie-2c">您对此片有什么表态？</div>
+                            <div id="k_jianjie-2d">
+                                <div id="k_jianjie-2d-1">
+                                    <img src="{$tplpath}/images/hao.gif"></div>
+                                <div id="k_jianjie-2d-2" {$digg['up_js']}>超赞</div>
+                                <div id="k_jianjie-2d-3">
+                                    (<span id="ahits">{$digg['up']}</span>)
+                                </div>
+                            </div>
+                            <div id="k_jianjie-2d">
+                                <div id="k_jianjie-2d-1">
+                                    <img src="{$tplpath}/images/cha.gif"></div>
+                                <div id="k_jianjie-2d-2" {$digg['down_js']}>难看</div>
+                                <div id="k_jianjie-2d-3">
+                                    (<span id="chits">{$digg['down']}</span>)
+                                </div>
+                            </div>
+                            <div id="k_jianjie-2e">
+                                广告位置
+                            </div>
+                        </li>
+
+                        <li class="k_jianjie-3">
+                            <div id="k_jianjie-3a">
+                                <div class="k_jianjie-3a-1">
+                                    <ul>
+                                        <li class="k_jianjie-3a-1-name">{$title}</li>
+                                        <li class="k_jianjie-3a-1-gx">
+                                            (<a href="{:U('lists/lists',array('id'=>$cid,'year'=>$year))}" target="_blank">{$year}</a>)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-2">
+                                    <ul>
+                                        <li class="k_jianjie-3a-2a">状态：</li>
+                                        <li class="k_jianjie-3a-2c">{$serialize}</li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-3">
+                                    <ul>
+                                        <li class="k_jianjie-3a-3a">别名：</li>
+                                        <li class="k_jianjie-3a-3b">{$also_known_as}</li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-2">
+                                    <ul>
+                                        <li class="k_jianjie-3a-2a">类型：</li>
+                                        <li class="k_jianjie-3a-2b">
+                                            <a href="{$curl}">{$ctitle}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-2">
+                                    <ul>
+                                        <li class="k_jianjie-3a-2a">导演：</li>
+                                        <li class="k_jianjie-3a-2b">
+                                            <a href="{:U('search/index',array('keyword'=>$directors))}">{$directors}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-3">
+                                    <ul>
+                                        <li class="k_jianjie-3a-3a">演员：</li>
+                                        <li class="k_jianjie-3a-3b">
+                                        <volist name="actors_array" id="actors">
+                                            <a href="{$actors['url']}">{$actors['actors']}</a>
+                                        </volist>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-2">
+                                    <ul>
+                                        <li class="k_jianjie-3a-2a">地区：</li>
+                                        <li class="k_jianjie-3a-2b">{$area}</li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-2">
+                                    <ul>
+                                        <li class="k_jianjie-3a-2a">语言：</li>
+                                        <li class="k_jianjie-3a-2b">{$language}</li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-2">
+                                    <ul>
+                                        <li class="k_jianjie-3a-2a">日期：</li>
+                                        <li class="k_jianjie-3a-2b">{$time}</li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-3">
+                                    <ul>
+                                        <li class="k_jianjie-3a-3a">剧情：</li>
+                                        <li class="k_jianjie-3a-3b" id="link-report">{$content}</li>
+                                    </ul>
+                                </div>
+
+                                <div class="ad-c2">
+                                    广告
+                                </div>
+                                
+                                <playlist name="player">
+                                <div class="k_jianjie-3a-4">
+                                    <ul>
+                                        <li class="k_jianjie-3a-4-title">
+                                            {$player['title']}<span>&gt;&gt;</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="k_jianjie-3a-5">
+                                    <ul>
+                                        <volist name="player['movie_url']" id="url">
+                                        <li><a title="全集" <eq name="player['vip']" value="1">{$url['vip_js']}</eq> target="_player" href="{$url['url']}">{$url['title']}</a></li>
+                                        </volist>
+                                    </ul>
+                                </div>
+                                </playlist>
+
+                                <div class="k_jianjie-3a-8">
+                                    <div class="k_jianjie-3a-8a">
+                                        <comment />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ad-a3">
+                广告位置
+            </div>  
+        </DIV>
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

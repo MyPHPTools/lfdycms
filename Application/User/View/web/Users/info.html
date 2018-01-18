@@ -1,0 +1,149 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+                <div class="col-lg-9">
+                    <div class="timeline">
+                    	<div class="timeline-head">
+                        <i class="glyphicon glyphicon-calendar time-icon bg-warning"></i>
+                        </div>
+                    	<volist name="mov" id="record">
+                        <div class="timeline-item">
+                            <div class="timeline-caption">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <span class="arrow left"></span>
+                                        <span class="timeline-icon">
+                                            <i class="glyphicon glyphicon-facetime-video time-icon bg-primary"></i>
+                                        </span>
+                                        <span class="timeline-date">{$record['type']}</span>
+                                        <div class="row row-sm">
+                                        	<volist name="record['movie']" id="movie">
+                                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                                <div class="pos-rlt">
+                                                    <div class="item-overlay opacity r r-2x bg-black">
+                                                        <div class="center text-center">
+                                                            <a href="{$movie['url']}"><span class="glyphicon glyphicon-play i-2x"></span></a>
+                                                        </div>
+                                                    </div>
+                                                    <a href="{$movie['url']}"><img src="{$movie['pic']}" height="160" alt="" class="r r-2x img-full"></a>
+                                                </div>
+                                                <div class="padder-v">
+                                                    <a href="{$movie['url']}" class="text-ellipsis">{$movie['title']}</a>
+                                                </div>
+                                            </div>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </volist>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="text-center m-b m-t">
+                                        <img src="{$user['path']|default='__IMG__/user.jpg'}" class="img-circle img-users">
+                                    <div>
+                                        <div class="h4 m-t-xs m-b-xs">{$user['username']}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer bg-info text-center">
+                            <div class="row pull-out">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=follow&id='.$user['id'])}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$user['follow']}
+                                        </span>
+                                        <small class="text-muted">
+                                            关注
+                                        </small>
+										</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 dk">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=fans&id='.$user['id'])}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$user['fans']}
+                                        </span>
+                                        <small class="text-muted">
+                                            粉丝
+                                        </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$user['integral']}
+                                        </span>
+                                        <small class="text-muted">
+                                            积分
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group btn-group-justified m-b">
+                    	<eq name="user['cfollow']" value="false">
+                            <a class="btn btn-success btn-rounded follow" href="{:U('users/follow?uid='.$user['id'])}" data-toggle="button">
+                            <span class="text">
+                              <i class="glyphicon glyphicon-eye-open"></i> 关注
+                            </span>
+                            </a>
+                        <else />
+							<a class="btn btn-success btn-rounded follow" href="{:U('users/followDel?uid='.$user['id'])}" data-toggle="button">
+                            <span class="text">
+                              <i class="glyphicon glyphicon-eye-open"></i> 取消关注
+                            </span>
+                          </a>
+                        </eq>
+                         <a href="{:U('Message/add?uid='.$user['id'])}" class="btn btn-dark btn-rounded message">
+                            <i class="glyphicon glyphicon-comment"></i> 发消息
+                          </a>
+					</div>
+                    <div class="panel clearfix">
+                        <div class="panel-body">
+                            <div class="text-uc text-xs text-muted">个人签名：</div>
+                            <p>
+                                {$user['introduction']|default='这家伙很懒什么也没有留下'}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+<js href="__STATIC__/layer/layer.js" />
+<script type="text/javascript">
+$(function(){
+	$('.follow').click(function(){
+		var url=$(this).attr("href");
+		$.get(url).success(function(data){
+			if(data.status){
+				if(data.follow){
+					$('.follow').attr("href",'{:U('users/followDel?uid='.$user['id'])}');
+					$('.follow').find('span').html('<i class="glyphicon glyphicon-eye-open"></i> 取消关注');
+					layer.msg(data.info,{icon: 6});
+				}else{
+					$('.follow').attr("href",'{:U('users/follow?uid='.$user['id'])}');
+					$('.follow').find('span').html('<i class="glyphicon glyphicon-eye-open"></i> 关注');
+					layer.msg(data.info,{icon: 5});
+				}
+			}
+		});
+	});
+})
+</script>
+</block>

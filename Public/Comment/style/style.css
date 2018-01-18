@@ -1,0 +1,265 @@
+html, body { margin: 0; padding: 0;}
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, dfn, em, img, q, s, samp, small, strike, strong, sub, sup, tt, var, dd, dl, dt, li, ol, ul, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td { border: 0 none; /*font-family: inherit; font-size: 100%;font-weight: 400; line-height: 1; */ font-style: normal;margin: 0; padding: 0;}
+table { border-collapse: collapse; border-spacing: 0;}
+ol, ul { list-style: none outside none;}
+q:before, q:after, blockquote:before, blockquote:after { content: "";}
+body{
+	font-family: 'Microsoft YaHei',SimSun,sans-serif,'\65b9\6b63\5170\4ead\9ed1';
+	color:#404040;
+}
+a{ text-decoration:none;}
+h4 {font-size: 18px;font-weight: 600;line-height: 1.2;}
+h6 {color:#8E949C;font-size: 11px;font-weight:normal; line-height:15px;margin: 0 0 6px;}
+.global-nav { margin: 10px 0 18px;}
+.pull-right { float: right !important;}
+
+div.resetbox {
+    border: 0 none;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+div.resetbox select, div.resetbox input, div.resetbox textarea, div.resetbox select option {
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+}
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+.icon-user-vip {
+  width: 21px;
+  height: 20px;
+  background:url(../images/vip_1.png);
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+.uyanpost .sectionbox {
+    padding: 0 0 18x;
+}
+.uyanpost .sectionbox .blockbox .postarea {
+    margin: 0 0 12px;
+}
+.post-list .post .uyanpost .sectionbox .blockbox .postarea {
+    padding: 0 0 0 48px; margin: 0 0 12px;
+}
+
+.inputdefaultcolor {
+    color: #AAB2B8;
+}
+
+.post-list .post .children .post .children .post .children .uyanpost{ margin-left:-48px;}
+
+.avatar {float:left;}
+.avatar .user { display: block;z-index: 10;}
+.avatar .user img { border-radius: 50%; display: block; height: 48px; width: 48px;}
+
+.nav{ height:32px; overflow:hidden; border-bottom:2px solid #ebeef1; margin-bottom:15px;}
+.nav .nav-left{ float:left; line-height:32px; cursor:pointer;}
+.nav span{ display:block; line-height:32px; color:#404040;}
+.nav b{ display:block; float:left; margin-right:4px;}
+
+.post-list{}
+
+.post-list .post {z-index:10;border-bottom: 1px solid #ddd;margin-bottom: 10px}
+.post-list .post .post {border-bottom: none}
+.post-content { margin-bottom: 24px;transition: all 0.2s ease-in-out 0s;}
+.post-content .avatar { top: 0;}
+.post-content .post-body {z-index:10; *margin-top:-10px !important; margin-top:0;_margin-top:-10px; margin-left: 60px;}
+.post-content .u-header { color: #777777; font-size: 13px; /*line-height: 17px;height:17px;*/z-index:10;overflow: hidden;}
+.post-content .u-header a, .post-content .u-header .author { float:left; display:block; font-weight: 600; line-height:14px;}
+.publisher-anchor-color span { color: #999999 !important;}
+.publisher-anchor-color a { color: #44708E !important;}
+.post-content .u-header .bullet {  padding: 0 4px; float:left;}
+.post-content .bullet { color: #CCCCCC; /*font-size: 75%; line-height: 1.4;*/  padding: 0;}
+.post-content .u-header .time-ago, .post-content .u-header .total-votes, .post-content .u-header .parent-link { 
+color:#AAB2B8;font-size:12px; font-weight:normal; line-height:16px;
+}
+.post-meta { float:left;}
+
+.post-content .post-message-container {overflow: hidden;z-index:10; width: 100%; _width: 98%;}
+.post-content .post-message p {
+	line-height: 20px; margin: 5px 0 2px 0; font-size:14px;
+	word-wrap:break-word;
+	overflow:hidden;
+}
+
+.post-content .post-message-container .loading {
+   background:url(../images/waiting.gif) center left no-repeat;
+   height:22px
+}
+
+.loading{
+	background:;background:url(../images/loader.gif) no-repeat center center;
+	height:100px;
+}
+
+.post-content .u-footer {color: #6C6C6C; margin:2px 0 0; height:18px; overflow:hidden; line-height:18px;}
+.post-content .u-footer ul li{ display:block; float:left; font-size:13px; line-height:18px; list-style:none;}
+.post-content .u-footer ul li em{ 
+	font-weight:normal;  
+	color:#DEE2E5; 
+	line-height:16px;
+	margin-right:5px;
+}
+.post-content .u-footer a{color: #AAB2B8; }
+
+.post-content .u-footer .thread-voted {
+	margin-right:5px;
+	cursor:pointer;
+	height:16px; overflow:hidden; font-size:13px; 
+	line-height:18px; display:block; 
+	float:left; 
+}
+
+.post-content .u-footer .action:hover{ 
+	color:#777F85;
+}
+.post-list .post .post .avatar .user img { height: 36px;width: 36px;}
+
+.post-list .post .post,.post-list .post .children .post {padding-left: 60px !important;}
+.post-list .post .children .post .children .post {padding-left: 48px !important;}
+.post-list .post .children .post .children .post .children .post .children .post {padding-left: 0px !important;}
+
+.post-list .post .uyanpost{padding-left:60px;}
+.post-list .post .children .uyanpost,.post-list .post .children .post .children .uyanpost{padding-left:48px !important;}
+
+.post-list .post .post .post-content .post-body{margin-left:48px !important;}
+
+.post-list .post.minimized .avatar .user img {
+    height: 36px;
+    width: 36px;
+}
+.post-list .post.minimized .post-body{
+	margin-left: 48px;
+}
+
+.post-list .post.minimized .children .post{
+	padding-left: 48px !important;
+}
+
+.post-list .post.minimized.collapsed .post-content.mini .post-body-inner {
+    display: block;
+}
+.post-list .post.minimized.collapsed .post-content.mini .u-header {
+    padding-top: 0;
+}
+
+.post-list .post.minimized .post-content.mini {
+	margin-bottom:10px;
+}
+
+.post-list .post-content.mini .post-message p{
+	opacity:0.6;
+	filter: alpha(opacity=60);
+	font-size:12px;
+	line-height: 36px;
+}
+
+.post-list .post-content.mini .u-footer{
+	display: none;
+}
+
+.post-list .post-content.mini .u-header span{
+	display: none;
+}
+
+.post-list .post-content.mini .u-header .post-meta{
+	display: none;
+}
+
+.post-list .post.collapsed .children {
+    display: none;
+}
+.post-list .post.collapsed .uyanpost {
+    display: none;
+}
+
+.post-list .post.collapsed .post-body-inner {
+    display: none;
+}
+.post-list .post.collapsed .u-footer {
+    display: none;
+}
+
+.post-list .post.collapsed .u-header {
+    padding-top: 10px;
+}
+
+.post-list .post.collapsed .avatar .user img {
+    height: 36px;
+    width: 36px;
+}
+.post-list .post.collapsed .post-content .post-body{
+	margin-left: 48px;
+}
+
+
+.more{border-radius:3px; background:#f5f6f8; font-size:14px; height:36px; line-height:36px; display:block; width:100%; text-align:center; color:#fff; color:#404040;}
+.more:hover{ background:#ebeef1;}
+
+.busy{
+    color: #BBBBBB;
+    text-shadow: none;
+	cursor:not-allowed;
+}
+
+.more span{ display:block;border: 1px solid #CCD4D9;border-radius:3px; height:34px; }
+
+.Copyright{ border-top:2px solid #ebeef1; margin-top:20px; padding:20px 0;}
+.Copyright a{ float:right; font-size:12px; color: #AAB2B8;}
+
+.btn {
+	font-size: 14px;
+	padding:6px 14px;
+	background:#46B7D6;
+	color:#fff;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 405px){
+	.post-list .post .children .post .children .uyanpost .Social-Login .Login,.post-list .post .children .post .children .post .children .uyanpost .Social-Login .Login{
+ 		width:140px;
+ 	}
+	.post-list .post .children .post .children .uyanpost .Social-Login .Login .txt,.post-list .post .children .post .children .post .children .uyanpost .Social-Login .Login .txt {
+		width:57px;
+	}
+}
+@media screen and (max-width: 343px){
+	.post-list .post .children .post .children .uyanpost .Social-Login .Social,.post-list .post .children .post .children .post .children .uyanpost .Social-Login .Social{
+ 		margin-bottom:40px;
+		_margin-bottom:15px;
+		*margin-bottom:15px !important;
+ 	}
+} 
+@media screen and (max-width: 543px){
+	.post-list .post .children .post .children .uyanpost .Social-Login .Login{
+ 		float: left;
+ 	}
+	.post-list .post .children .post .children .post .children .uyanpost .Social-Login .Login{
+ 		float: left;
+ 	}
+ }
+ 
+@media screen and (max-width: 496px){
+	.post-list .post .children .uyanpost .Social-Login .Login{
+ 		float: left;
+ 	}
+}
+ 
+@media screen and (max-width: 447px){
+	.post-list .uyanpost .Social-Login .Login{
+ 		float: left;
+ 	}
+}
+  
+ 
+@media screen and (max-width: 400px){
+	.uyanpost .Social-Login .Login{
+ 		float: left;
+ 	}
+}

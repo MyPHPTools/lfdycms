@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+            <div class="k_lujing">
+                <ul>
+                    <li class="k_lujing-1">当前位置：</li>
+                    <li class="k_lujing-2"><a href="/">首页</a></li>
+                    <li class="k_lujing-3"><a href="{$curl}">{$ctitle}</a></li>
+                    <li class="k_lujing-3">{$title}</li>
+                </ul>
+            </div>
+            <div class="ad-b1">
+                广告位置
+            </div>
+
+            <div class="k_list">
+                <div class="k_list-1">
+                    <div class="k_list-1a">
+                        <div class="article-detail">
+                            <div class="article-detail-hd">
+                                <h2 class="title">{$title}</h2>
+                                <div class="meta"><span>{$time}</span></div>
+                            </div>
+                            <div class="article-detail-bd">
+                                <div class="detail" id="ctrlfscont">
+                                    <p style="text-align:center"><img alt="{$title}" src="{$pic}"></p>
+                                    {$content}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="k_list-1b">
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">人气排行榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="all" order="hits desc" limit="20">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                        <div class="ad-b2">
+                            <!-- 广告位：B-05 -->            
+                            广告位置
+                        </div>
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">最新推荐榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="all" order="update_time desc" limit="15">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="ad-a3">
+                广告位置
+            </div>  
+        </DIV>
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>{$operate}分类</strong></div>
+      <div class="panel-body">
+            <form action="{:U($type)}" class="form-x"  method="post">
+            <div class="tab-panel active" id="tab-basics">
+                <div class="form-group">
+                    <div class="label"><label>目标分类<span class="check-tips">（将{$operate}至的分类）</span></label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="to">
+                        	<volist name="list" id="vo">
+								<option value="{$vo.id}">{$vo.html}{$vo.title}</option>
+							</volist>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <input type="hidden" name="from" value="{$from}">
+            <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+            </form>
+        </div>
+    </div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+		highlight_subnav('{:U('Category/index')}');
+	</script>
+</block>

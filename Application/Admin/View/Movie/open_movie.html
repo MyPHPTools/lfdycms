@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>欢迎您登录雷风影视系统-{$meta_title}</title>
+    <link rel="stylesheet" href="__CSS__/pintuer.css">
+    <link rel="stylesheet" href="__CSS__/admin.css">
+</head>
+<body class="bg-white margin">
+    <div class="panel admin-panel">
+    <form method="post" class="form-x">
+    	<div class="panel-head"><strong>影片选择</strong></div>
+        <div class="padding border-bottom">
+            <div class="button-group button-group-small">
+            <button type="button" class="button dropdown-toggle">按分类查询<span class="downward"></span></button>
+            <ul class="drop-menu">
+            	<li><a href="{:U('index')}">所有分类</a></li>
+                <volist name="category" id="vo">
+                    <li><a href="{:U('index',array('category'=>$vo['id'],'open'=>1))}">{$vo.html}{$vo.title}</a></li>
+				</volist>
+            </ul>
+            </div>
+            <div class="button-group button-group-small">
+            <button type="button" class="button dropdown-toggle">排序查询<span class="downward"></span></button>
+            <ul class="drop-menu">
+                <li><a href="{:U('index',array('category'=>$_GET['category']))}">默认查询</a></li>
+                <li><a href="{:U('index',array('category'=>$_GET['category'],'order'=>'hits','type'=>'asc','open'=>1))}">人气升序</a></li>
+                <li><a href="{:U('index',array('category'=>$_GET['category'],'order'=>'hits','type'=>'desc','open'=>1))}">人气降序</a></li>
+                <li><a href="{:U('index',array('category'=>$_GET['category'],'order'=>'create_time','type'=>'asc','open'=>1))}">添加时间升序</a></li>
+                <li><a href="{:U('index',array('category'=>$_GET['category'],'order'=>'create_time','type'=>'desc','open'=>1))}">添加时间降序</a></li>
+                <li><a href="{:U('index',array('category'=>$_GET['category'],'order'=>'update_time','type'=>'asc','open'=>1))}">更新时间升序</a></li>
+                <li><a href="{:U('index',array('category'=>$_GET['category'],'order'=>'update_time','type'=>'desc','open'=>1))}">更新时间降序</a></li>
+            </ul>
+            </div>
+            <div class="button-group button-group-small">
+            <button type="button" class="button dropdown-toggle">按语言查询<span class="downward"></span></button>
+            <ul class="drop-menu">
+                <li><a href="{:U('index',array('category'=>$_GET['category']))}">所有语言</a></li>
+                <volist name="Think.config.MOVIE_LANGUAGE" id="language">
+                    <li><a href="{:U('index',array('category'=>$_GET['category'],'language'=>$language,'open'=>1))}">{$language}</a></li>
+                </volist>
+            </ul>
+            </div>
+            <div class="button-group button-group-small">
+            <button type="button" class="button dropdown-toggle">按年份查询<span class="downward"></span></button>
+            <ul class="drop-menu">
+                <li><a href="{:U('index',array('category'=>$_GET['category'],'open'=>1))}">所有年份</a></li>
+                <volist name="Think.config.MOVIE_YEAR" id="year">
+                    <li><a href="{:U('index',array('category'=>$_GET['category'],'year'=>$year,'open'=>1))}">{$year}</a></li>
+                </volist>
+            </ul>
+            </div>
+            <div class="float-right">
+            	<input type="text" name="keyword" class="input input-auto input-small" placeholder="搜索关键词" /> <a class="button button-small" href="javascript:;" id="search" url="{:U('index',array('open'=>1))}"><span class="icon-search"></span> 搜索</a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <notempty name="movielist">
+            <div class="line-middle">
+                <volist name="movielist" id="vo">
+                    <div class="x2 choose_movie" data-mid="{$vo['id']}">
+                        <div class="media clearfix" style="height: 180px;">
+                            <a href="#">
+                                <img src="{:get_cover($vo['cover_id'],'path')}" style="height: 156px" class="radius img-responsive img-border">
+                            </a>
+                            <div class="media-body">
+                                <strong>{$vo['title']}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+            <else/>
+                <div class="xl12 xs6 xm4 xb2"><p>aOh! 暂时还没有内容!</p></div>
+            </notempty>
+        </div>
+         <div class="panel-foot text-center">
+         	<div class="page">{$_page}</div>
+        </div>
+        </form>
+    </div>
+<script src="__JS__/jquery.js"></script>
+<script src="__JS__/pintuer.js"></script>
+<script src="__JS__/respond.js"></script>
+<script src="__JS__/admin.js"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+<script type="text/javascript">
+$(function(){
+    //搜索功能
+    $("#search").click(function(){
+        var url = $(this).attr('url');
+        var query = $(this).prev('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        window.location.href = url;
+    });
+
+    $(".order").click(function(){
+        var url = $(this).attr('url');
+         if( url.indexOf('?')>0 ){
+            url += '&';
+        }else{
+            url += '?';
+        }
+        if($(this).hasClass("icon-arrow-up")){
+            url += 'type=asc';
+            $(this).removeClass("icon-arrow-up text-red").addClass("icon-arrow-down text-green");
+        }else{
+            url += 'type=desc';
+            $(this).removeClass("icon-arrow-down text-green").addClass("icon-arrow-up text-red");
+        }
+        window.location.href = url;
+    });
+
+    $(".choose_movie").click(function(){
+        var mid = $(this).data('mid');
+        var index = parent.layer.getFrameIndex(window.name);
+        var type = $('[name="type"]', window.parent.document).val();
+        if(type==1){
+            var url=mid;
+        }else{
+            if({:C('WEB_PATTEM')}==1){
+                var url='/index.php?s=/movie/index/id/'+mid;
+            }else{
+                var url='/movie/'+mid+'/';
+            }
+        }
+        $('[name="link"]', window.parent.document).val(url);
+        parent.layer.close(index);
+        return false;
+    });
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+                <div class="col-lg-9">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            <b>兑换</b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row row-sm">
+                            	<volist name="prize" id="vo">
+                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                    <div class="pos-rlt">
+                                        <a href="{:U('Prize/detail?id='.$vo['id'])}">
+                                            <img src="{$vo['pic']|default='__IMG__/prize.jpg'}" alt="" class="r r-2x img-full prize">
+                                        </a>
+                                    </div>
+                                    <div class="padder-v">
+                                        <a href="{:U('Prize/detail?id='.$vo['id'])}" class="text-ellipsis">
+                                            {$vo['title']}
+                                        <span class="pull-right text-info text-xs">{$vo['integral']}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                </volist>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                        	<div class="text-center">
+                                <div class="page">
+                                {$_page}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="text-center m-b m-t">
+                                        <img src="{$path|default='__IMG__/user.jpg'}" class="img-circle img-users">
+                                    <div>
+                                        <div class="h4 m-t-xs m-b-xs">{$username}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer bg-info text-center">
+                            <div class="row pull-out">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=follow&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$follow}
+                                        </span>
+                                        <small class="text-muted">
+                                            关注
+                                        </small>
+										</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 dk">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=fans&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$fans}
+                                        </span>
+                                        <small class="text-muted">
+                                            粉丝
+                                        </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$integral}
+                                        </span>
+                                        <small class="text-muted">
+                                            积分
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">兑换排行榜</div>
+                        <div class="panel-body">
+                          <volist name="top" id="vo">
+                          <div class="media">
+                            <a href="{:U('Prize/detail?id='.$vo['id'])}" class="pull-left thumb-lg m-t-xs img-top">
+                              <img src="{$vo['pic']|default='__IMG__/prize.jpg'}" class="r r-2x">
+                            </a>
+                            <div class="media-body">                        
+                              <a href="{:U('Prize/detail?id='.$vo['id'])}" class="font-semibold">{$vo['title']}</a>
+                              <div class="text-xs block m-t-xs">兑换数量：{$vo['number']}</div>
+                            </div>
+                          </div>
+                          </volist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

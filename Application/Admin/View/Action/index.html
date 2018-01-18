@@ -1,0 +1,39 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    <form id="form">
+    	<div class="panel-head"><strong>日志管理</strong></div>
+        <div class="padding border-bottom">
+        	<div class="button-group button-group-small">
+             <button class="button ajax-get confirm" url="{:U('clear')}"><span class="icon-trash-o text-red"></span> 清空（保留一周日志）</button>
+             </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th>行为名称</th>
+                <th>执行者</th>
+                <th>执行时间</th>
+                <th>执行IP</th>
+                <th>日志</th>
+            </tr>
+           	<notempty name="_list">
+            <volist name="_list" id="vo">
+            <tr>
+                <td>{:get_action($vo['action_id'],'title')}</td>
+                <td>{:get_member_name($vo['user_id'])}</td>
+                <td>{$vo.create_time|time_format}</td>
+                <td>{:long2ip($vo['action_ip'])}</td>
+                <td style=" width:400px;word-break:break-all;">{$vo.remark}</td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="5"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+         <div class="panel-foot text-center">
+         	<div class="page">{$_page}</div>
+        </div>
+        </form>
+    </div>
+</block>

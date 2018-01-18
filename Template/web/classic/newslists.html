@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+            <div class="k_lujing">
+                <ul>
+                    <li class="k_lujing-1">当前位置：</li>
+                    <li class="k_lujing-2"><a href="/">首页</a></li>
+                    <li class="k_lujing-3">{$ctitle}</li>
+                </ul>
+            </div>
+            <div class="ad-b1">
+                广告位置
+            </div>
+            <div class="k_list-index">
+                <div class="k_list-index-1">
+                    <div class="k_list-index-1a">{$ctitle}索引</div>
+                    <div class="k_list-index-1b">
+                        <ul>
+                            <li class="k_list-index-1b-a">类型：</li>
+                            <type name="type">
+                                <li class="k_list-index-1b-b"><a href="{$type['url']}">{$type['title']}</a></li>
+                            </type>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="k_list">
+                <div class="k_list-1">
+                    <div class="k_list-1a">
+                        <!-- 分类列表 -->
+                        <div class="k_list-1a-1">
+                            <ul>
+                                <li class="k_list-1a-1a">{$ctitle}列表</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="k_list-lb">
+                            <ul class="imgTxtBar">
+                                <newspage name="newlist" limit="10" order="update_time desc">
+                                <li class="clearfix">
+                                    <a target="_blank" href="{$newlist['url']}">
+                                        <div class="icoposition">
+                                            <img class="img-full" src="{$newlist['pic']}" alt="{$newlist['title']}">
+                                        </div>
+                                        <div class="w510 fr">
+                                            <div class="txtBox w490">
+                                                <div class="txt">
+                                                    <h5 class="w490">{$newlist['title']}</h5>
+                                                    <p class="gray-8 SimSun">{:msubstr(strip_tags($newlist['content']),0,70)}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="tagtime">
+                                        <span class="date">{$newlist['time']}</span>
+                                    </div>
+                                </li>
+                                </newspage>
+                            </ul>
+                        </div>
+                        
+                        <div class="k_pape">
+                            <page listrow="10" />
+                        </div>
+                    </div>
+                    <div class="k_list-1b">
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">人气排行榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="all" order="hits desc" limit="20">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                        <div class="ad-b2">
+                            <!-- 广告位：B-05 -->            
+                            广告位置
+                        </div>
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">最新推荐榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="all" order="update_time desc" limit="15">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="ad-a3">
+                广告位置
+            </div>  
+        </DIV>
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

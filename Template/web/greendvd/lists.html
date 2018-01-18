@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+        <!--[if lt IE 8]>
+            <script src="{$tplpath}/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bgcolor-f5f5">
+        <include file="{$tplpath}/header.html" />
+		<div class="content bgcolor-f8f8 border-top"></div>
+
+		<div class="content">
+			<div class="container">
+				<div class="col col12 f14 padding-t15">
+					<a href="/">首页</a>	&gt;
+					<a href="{$curl}" class="a1">{$ctitle}</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="content margin-t15">
+			<div class="container bgcolor-fff move-type">
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">类型</span></dt>
+					<dd>
+						<type name="type">
+						<a href="{$type['url']}" <eq name="cid" value="$type['id']">class="active"</eq>>{$type['title']}</a>
+						</type>
+					</dd>
+				</dl>
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">地区</span></dt>
+					<dd>
+						<area name="area">
+						<a href="{$area['url']}" <if condition="($Think.get.area eq '') AND ($i eq 1) OR ($Think.get.area eq $area['title'])">class="active"</if>>{$area['title']}</a>
+						</area>
+					</dd>
+				</dl>
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">年代</span></dt>
+					<dd>
+						<year name="year">
+						<a href="{$year['url']}" <if condition="($Think.get.year eq '') AND ($i eq 1) OR ($Think.get.year eq $year['title'])">class="active"</if>>{$year['title']}</a>
+						</year>
+					</dd>
+				</dl>
+				<dl class="col col40 f12 vl-align-top">
+					<dt class="f14"><span class="padding-lr8">语言</span></dt>
+					<dd>
+						<language name="language">
+						<a href="{$language['url']}" <if condition="($Think.get.language eq '') AND ($i eq 1) OR ($Think.get.language eq $language['title'])">class="active"</if>>{$language['title']}</a>
+						</language>
+					</dd>
+				</dl>
+			</div>
+		</div>
+
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="ad-height col col12 border">
+					<script src="__AD__/type_1180x100.js"></script>
+				</div>
+			</div>
+		</div>
+
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="col col12 color-line">
+					<h3 class="public_title">
+						<span>{$ctitle}</span>
+					</h3>
+				</div>
+				<div class="col col12 move-list">
+					<listpage name="list" limit="30" order="update_time desc">
+					<div class="col col26">
+						<a href="{$list['url']}">
+							<switch name="list.tj_tag">
+								<case value="1"><span class="tip tip-new"></span></case>
+								<case value="2"><span class="tip tip-hot"></span></case>
+								<case value="3"><span class="tip tip-big"></span></case>
+								<case value="4"><span class="tip tip-vip"></span></case>
+							</switch>
+							<div class="list-img">
+								<span class="player"></span>
+								<img src="{$list['pic']}" class="img-full">
+								<small>{$list['serialize']}</small>
+							</div>
+							<dl class="profiles bgcolor-fff text-left">
+								<dt class="f14 h33 like-dt">{$list['title']|msubstr=0,10}</dt>
+                                <dd class="f12 h88">主演：{$list['actors']|msubstr=0,11}</dd>
+							</dl>
+						</a>
+					</div>
+					</listpage>
+				</div>
+				<div class="col col12 padding page margin-t30">
+					<page listrow="30" />
+				</div>
+				<div class="col col12 margin-t30">
+					<div class="ad-height border col col12">
+						<script src="__AD__/type_1180x100.js"></script>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<include file="{$tplpath}/footer.html" />
+	</body>
+
+</html>

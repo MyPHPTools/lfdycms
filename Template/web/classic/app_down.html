@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>app下载</title>
+		<style type="text/css">
+			html,body,div {margin:0 auto;padding:0;}
+			body {
+				background:#000405;}
+			.back {
+				width: 100%;
+				position: relative;
+				max-height: 769px;
+				overflow: hidden;
+			}
+			.back>img {width: 100%;display: block}
+			.ph {
+				position: absolute;
+				width: 28%;
+				right: 8%;
+				bottom: 0;
+				z-index: 99;
+				overflow: hidden;
+			}
+			.ph>img.pho {
+				width: 100%;
+			}
+			.ph>img.phos {
+				position: absolute;
+				width: 85.8%;
+				bottom: -5%;
+				left: 7%;
+			}
+			.down {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+			}
+			.down>.t {
+				position: absolute;
+				top: 10%;
+				left: 15%;
+				width: 40%;
+			}
+			.down>.ios,.down>.andr {
+				width: 20%;
+				margin-top: 30%;
+				display: inline-block;
+				margin-left: 14%;
+			}
+			.down>.andr {margin-left: 2%;}
+			.down>.t>img,
+			.down>.ios>img,
+			.down>.andr>img {width: 100%;display: block}
+		</style>
+	</head>
+	<body>
+		<div class="back" id="demoDiv" bg="{$tplpath}/images/pc-bg.jpg">
+			<img src="{$tplpath}/images/pc-bg1.png">
+			<div class="down">
+				<div class="t"><img src="{$tplpath}/images/appdown1.png"></div>
+				<a href="#" class="ios"><img src="{$tplpath}/images/appdown2.png"></a>
+				<a href="#" class="andr"><img src="{$tplpath}/images/appdown3.png"></a>
+			</div>
+			<div class="ph">
+				<img class="phos" src="{$tplpath}/images/ph_img.jpg">
+				<img class="pho" src="{$tplpath}/images/phone-pc.png">
+			</div>
+		</div>
+		
+
+		<script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+		<script type="text/javascript">
+			(function($) {
+
+			    var _options = new Array();
+				
+				
+				jQuery.fn.MyFloatingBg = function(options) {
+					_options[_options.length] = $.extend({}, $.fn.MyFloatingBg.defaults, options);
+					
+					var idx = _options.length-1;
+					var opt = _options[idx];
+					$(this).attr("idx", idx);
+
+					var direction = -1;
+					if (opt.direction == -1)
+						direction = getDirection();
+					else
+						direction = opt.direction;
+						
+					var sign1 = "+";
+					var sign2 = "+";
+					if (direction == 0)
+					{
+						sign1 = "+";
+						sign2 = "-";
+					}
+					else if (direction == 1)
+					{
+						sign1 = "-";
+						sign2 = "+";
+					}
+					else if (direction == 2)
+					{
+						sign1 = "+";
+						sign2 = "+";
+					}
+					else if (direction == 3)
+					{
+						sign1 = "-";
+						sign2 = "-";
+					}
+					
+					$(this).each(function(){
+						var bg = $(this).attr("bg");
+
+						$(this).css("background", "url('" + bg + "')");
+						$(this).attr("sign1", sign1);
+						$(this).attr("sign2", sign2);
+					
+						$(this).attr("cnt", 1);
+						doShift($(this));
+					});
+				}
+				
+				function doShift(o)
+				{
+					var idx = $(o).attr("idx", idx);
+					var opt = _options[idx];
+							
+					setTimeout(function(){
+									
+						var cnt = $(o).attr("cnt");
+
+						if (cnt>1000)
+							cnt = 0;
+						else
+							cnt = eval(cnt)+1;
+						$(o).attr("cnt", cnt);
+
+						var sign1 = $(o).attr("sign1");
+						var sign2 = $(o).attr("sign2");
+
+						o.css("backgroundPosition", sign1 + cnt+"px" + " " + sign2 + cnt+"px");
+						
+						doShift(o);
+					}, opt.speed);
+				}
+				
+				function getDirection()
+				{
+					return Math.floor(Math.random()*4)
+				}
+
+				//default values
+				jQuery.fn.MyFloatingBg.defaults = {
+					speed: 50,
+					direction: -1
+				};
+				
+			})(jQuery);
+		</script>
+		<SCRIPT type=text/javascript>
+			$(document).ready(function(){
+			  //weather
+				$("#demoDiv").MyFloatingBg({direction:0, speed:50});
+			});
+		</SCRIPT>
+
+
+	</body>
+
+</html>

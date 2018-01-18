@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css?v=0.02" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css?v=0.03" rel="stylesheet">
+        <link href="{$tplpath}/css/swiper-3.4.2.min.css" rel="stylesheet">
+        <!--[if lt IE 8]>
+            <script src="{$tplpath}/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bgcolor-f5f5">
+        <include file="{$tplpath}/header.html" />
+        
+        <div id="banner" class="content">
+            <ul id="banner_img">
+                <slider name="slider" limit="9">
+                <li>
+                    <a href="{$slider.url}" target="_blank">
+                        <img src="{$slider.pic}" data-adaptive-background="1">
+                    </a>
+                </li>
+                </slider>
+            </ul>
+            <div id="banner_ctr" class="banner-right">
+                <ul>
+                    <slider name="slider" limit="9">
+                    <li>{$slider.title}</li>
+                    </slider>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content bgcolor-000">
+            <div class="container padding-tb10">
+                <ul class="nav-box">
+                    <nav name="nav" limit="6">
+                    <li class="col nav-box-1">
+                        <a href="{$nav['url']}">{$nav['title']}</a>
+                    </li>
+                    <li class="col">
+                        <nav name="menu" cid="$nav['id']" limit="6">
+                        <a href="{$menu['url']}">{$menu['title']}</a>
+                        </nav>
+                    </li>
+                    </nav>
+                    <li class="col nav-box-3">
+                        <a href="{:U('Home/Other/index/tpl/vip')}" target="_blank">
+                            <div class="box-vip"></div>
+                            <h5>开通VIP</h5>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <nav name="nav" type="1">
+            <eq name="i" value="1">
+                <div class="content margin-t30">
+                    <div class="container">
+                        <div class="col col12 color-line padding-b5">
+                            <h3 class="public_title">
+                                <span>热映大片抢先看</span>
+                            </h3>
+                        </div>
+                        <div class="col col12 move-list">
+                            <list name="list" cid="$nav['id']" pos="1" order="update_time desc" limit="6">
+                            <div class="col col26">
+                                <a href="{$list['url']}">
+                                    <switch name="list.tj_tag">
+                                        <case value="1"><span class="tip tip-new"></span></case>
+                                        <case value="2"><span class="tip tip-hot"></span></case>
+                                        <case value="3"><span class="tip tip-big"></span></case>
+                                        <case value="4"><span class="tip tip-vip"></span></case>
+                                    </switch>
+                                    
+                                    <div class="list-img">
+                                        <span class="player"></span>
+                                        <img src="{$list['pic']}" class="img-full">
+                                        <i>{$list['year']}</i>
+                                    </div>
+                                    <dl class="profiles bgcolor-fff text-left">
+                                        <dt class="f14 h33">{$list['title']|msubstr=0,9}</dt>
+                                        <dd class="f12 h88">{$list['actors']|msubstr=0,11}</dd>
+                                        <em class="f14 orange">{$list['ctitle']}</em>
+                                    </dl>
+                                </a>
+                            </div>
+                            </list>
+                        </div>
+                    </div>
+                </div>
+                <div class="content margin-t30">
+                    <div class="container">
+                        <div class="col col106 vl-align-top">
+                            <div class="col col12 color-line">
+                                <h3 class="public_title">
+                                    <span>{$nav['title']}</span>
+                                </h3>
+                                <div class="subtitle f14 h88">
+                                    <nav name="mnav" cid="$nav['id']" limit="8">
+                                        <a href="{$mnav['url']}">{$mnav['title']}</a>
+                                        <span>/</span>
+                                    </nav>
+                                    <a href="{$nav['url']}">更多&gt;</a>
+                                </div>
+                            </div>
+                            <div class="col col12 move-list">
+                                <list name="list" cid="$nav['id']" order="update_time desc" limit="10">
+                                <div class="col col25">
+                                    <a href="{$list['url']}">
+                                        <switch name="list.tj_tag">
+                                            <case value="1"><span class="tip tip-new"></span></case>
+                                            <case value="2"><span class="tip tip-hot"></span></case>
+                                            <case value="3"><span class="tip tip-big"></span></case>
+                                            <case value="4"><span class="tip tip-vip"></span></case>
+                                        </switch>
+                                        <div class="list-img">
+                                            <span class="player"></span>
+                                            <img src="{$list['pic']}" class="img-full">
+                                            <small>{$list['actors']|msubstr=0,11}</small>
+                                        </div>
+                                        <dl class="profiles bgcolor-fff text-left">
+                                            <dt class="f14 h33">{$list['title']|msubstr=0,10}</dt>
+                                            <dd class="f12 h88"><i class="icon icon-small-play"></i>{$list['hits']}</dd>
+                                            <em class="f14 orange">{$list['ctitle']}</em>
+                                        </dl>
+                                    </a>
+                                </div>
+                                </list>
+                            </div>
+                        </div>
+
+                        <div class="col col26 rank">
+                            <div class="col col12">
+                                <h3 class="public_title_f">
+                                    <span>{$nav['title']}排行榜</span>
+                                </h3>
+                            </div>
+                            <div class="col col12 bgcolor-fff margin-t15 padding-b10">
+                                <list name="list" cid="$nav['id']" order="hits desc" limit="15">
+                                <dl class="col col12 rank-list">
+                                    <a href="{$list['url']}">
+                                        <dd>{$i}</dd>
+                                        <dt class="text-left">{$list['title']|msubstr=0,10}</dt>
+                                        <img src="{$list['pic']}" class="img-full">
+                                    </a>
+                                </dl>
+                                </list>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <else />
+                <div class="content margin-t30">
+                    <div class="container">
+                        <div class="col col106 ts-move-list move-list">
+                            <div class="col col12 color-line">
+                                <h3 class="public_title">
+                                    <span>{$nav['title']}</span>
+                                </h3>
+                                <div class="subtitle f14 h88">
+                                    <nav name="mnav" cid="$nav['id']">
+                                    <a href="{$mnav['url']}">{$mnav['title']}</a>
+                                    <span>/</span>
+                                    </nav>
+                                    <a href="{$nav['url']}">更多&gt;</a>
+                                </div>
+                            </div>
+                            <div class="col col42" id="{$nav['name']}">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <list name="list" pos="1" cid="$nav['id']" order="update_time desc" limit="3">
+                                        <div class="swiper-slide">
+                                            <a href="{$list['url']}">
+                                                <div class="list-img">
+                                                    <span class="player"></span>
+                                                    <img src="{$list['pic']}" class="img-full">
+                                                </div>
+                                                <dl class="profiles bgcolor-fff text-left">
+                                                    <dt class="f16 h33">{$list['title']|msubstr=0,10}</dt>
+                                                    <dd class="f12 h88">{$list['actors']|msubstr=0,11}</dd>
+                                                    <em class="f12 h66"><i class="icon icon-small-play"></i>{$list['hits']}</em>
+                                                </dl>
+                                            </a>
+                                        </div>
+                                        </list>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination swiper-pagination-p1"></div>
+                            </div>
+                            <list name="list" cid="$nav['id']" order="update_time desc" limit="6">
+                            <div class="col col266">
+                                <a href="{$list['url']}">
+                                    <switch name="list.tj_tag">
+                                        <case value="1"><span class="tip tip-new"></span></case>
+                                        <case value="2"><span class="tip tip-hot"></span></case>
+                                        <case value="3"><span class="tip tip-big"></span></case>
+                                        <case value="4"><span class="tip tip-vip"></span></case>
+                                    </switch>
+                                    <div class="list-img">
+                                        <span class="player"></span>
+                                        <img src="{$list['pic']}" class="img-full">
+                                        <small>{$list['serialize']}</small>
+                                    </div>
+                                    <dl class="profiles bgcolor-fff text-left">
+                                        <dt class="f14 h33">{$list['title']|msubstr=0,10}</dt>
+                                        <dd class="f12 h88">{$list['actors']|msubstr=0,11}</dd>
+                                        <em class="f14 orange">{$list['ctitle']}</em>
+                                    </dl>
+                                </a>
+                            </div>
+                            </list>
+                        </div>
+                        <div class="col col26 rank" style="padding-bottom: 0">
+                            <div class="col col12">
+                                <h3 class="public_title_f">
+                                    <span>{$nav['title']}排行榜</span>
+                                </h3>
+                            </div>
+                            <div class="col col12 bgcolor-fff margin-t15 padding-b10">
+                                <list name="list" cid="$nav['id']" order="hits desc" limit="10">
+                                <dl class="col col12 rank-list" style="margin-top: 6.5px">
+                                    <a href="{$list['url']}">
+                                        <dd>{$i}</dd>
+                                        <dt class="text-left">{$list['title']|msubstr=0,10}</dt>
+                                        <img src="{$list['pic']}" class="img-full">
+                                    </a>
+                                </dl>
+                                </list>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </eq>
+
+            <div class="content margin-t30">
+                <div class="container">
+                    <div class="ad-height col col36 border"><script src="__AD__/index_377x100.js"></script></div>
+                    <div class="ad-height col col70 border"><script src="__AD__/index_779x100.js"></script></div>
+                </div>
+            </div>
+        </nav>
+
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery.New.Slider.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/swiper-3.4.2.jquery.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.adaptive-backgrounds.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                <nav name="nav" type="1">
+                    <if condition="$i gt 1">
+                        var {$nav['name']} = new Swiper('#{$nav['name']} .swiper-container', {
+                            direction: 'horizontal',
+                            loop: true,
+                            pagination: '.swiper-pagination-p1',
+                            paginationType : 'bullets',
+                            autoplayDisableOnInteraction : false,
+                            autoplay: 5000
+                        });
+                    </if>
+                </nav>
+                $.adaptiveBackground.run();
+            });
+        </script>
+    </body>
+</html>

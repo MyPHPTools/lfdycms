@@ -1,0 +1,35 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong>{$meta_title}</strong></div>
+        <div class="panel-body">
+            <form class="form-x" action="{:U()}" method="post">
+            <div class="form-group">
+                <div class="label"><label>执行表</label></div>
+                <div class="field">
+                    <div class="button-group checkbox">
+                        <label class="button active">
+                            <input name="field[]" value="hits" checked="checkbox" type="checkbox">影片人气
+                        </label>
+                        <label class="button ">
+                            <input name="field[]" value="up" type="checkbox">顶
+                        </label>
+                        <label class="button ">
+                            <input name="field[]" value="down" type="checkbox">踩
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="str1">
+                <div class="label"><label>随机值</label></div>
+                <div class="field">
+                    <input type="text" name="str1" class="input input-auto" size="5" value="0"> 到
+                    <input type="text" name="str2" class="input input-auto" size="5" value="1000">
+                </div>
+            </div>
+            <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">执 行</button></div>
+            </form>
+        </div>
+    </div>
+</block>

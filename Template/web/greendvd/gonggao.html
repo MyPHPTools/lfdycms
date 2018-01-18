@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$title}-{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+        <!--[if lt IE 8]>
+            <script src="{$tplpath}/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bgcolor-f5f5">
+        <include file="{$tplpath}/header.html" />
+
+		<div class="content">
+			<div class="container">
+				<div class="col col12 f14 padding-t15">
+					<a href="/">首页</a>	&gt;
+					<a href="{$curl}" class="a1">{$ctitle}</a>	&gt;
+					{$title}
+				</div>
+			</div>
+		</div>
+
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="col col20 bgcolor-fff border padding box-shadow">
+				<div class="helper-img"><img src="{$tplpath}/images/helpcenter.gif"></div>
+				<news name="list" cid="101" limit="30" order="id">
+					<li class="f16 padding-tb10 border-bottom-d">
+					<a href="{$list['url']}">{$list['title']}</a>
+					</li>
+				</news>
+				</div>
+				<div class="col col80 bgcolor-fff border vl-align-top box-shadow">
+					<h1 class="f18 padding-tb15 border-bottom-e padding-lr30">{$title}</h1>
+					<div class="col col12 padding30 f16 l_height1">
+						<img src="{$pic}">
+						{$content}
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<include file="{$tplpath}/footer.html" />
+		<script type="text/javascript">
+		$(document).ready(function(){
+			function LeftHeight(){
+				$('.col80 img').css('max-width','100%');
+				var lh = $('.col20').outerHeight(true);
+				var RHeight = $('.col80').outerHeight(true);
+				if (RHeight>lh){
+					$('.col20').height(RHeight - 21);
+				}else {
+					$('.col20').height(lh);
+					$('.col80').height(lh + 21);
+				};
+			};
+			var imgdefereds=[];
+			$('.col80 img').each(function(){
+				var dfd=$.Deferred();
+				$(this).bind('load',function(){
+					dfd.resolve();
+				}).bind('error',function(){
+				//图片加载错误，加入错误处理
+				// dfd.resolve();
+				})
+				if(this.complete) setTimeout(function(){
+					dfd.resolve();
+				},1);
+				imgdefereds.push(dfd);
+			})
+			$.when.apply(null,imgdefereds).done(function(){
+				LeftHeight();
+                $(window).resize(function () {
+                    LeftHeight();
+                });
+			});
+		})
+		</script>
+	</body>
+
+
+</html>

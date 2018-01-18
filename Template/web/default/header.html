@@ -1,0 +1,49 @@
+<div id="header">
+	<div class="wrapper">
+		<h1 class="logo"><a href="{$weburl}"><img src="{$webpath}{$weblogo}" /></a></h1>
+		<div class="search">
+            <form name="search" id="searchform" action="{$webdir}{:U('Search/index')}" method="post" target="_blank">
+                <input type="text" placeholder="输入影片名称、演员" id="searchTxt" autocomplete="off" name="keyword">
+                <button type="submit">搜索</button>
+            </form>
+            <div class="queryList clearfix" id="js-query-data" style="display: none;">
+            	<ul id="js-calldata-list"></ul>
+                <div class="prevList" id="js-calldata-preview"></div>
+             </div>
+		</div>
+		<div class="operht">
+			<div class="userlog">
+            	<empty name="user['id']">
+                <a href="{$user['userlogin']}">登录</a>
+                <a href="{$user['userreg']}">注册</a>
+                <else />
+                <p class="loged">
+                    <a href="{$user['userurl']}" class="u">{$user['username']}</a>
+                	<a href="{$user['userlogout']}">退出</a>
+                </p>
+                </empty>
+	    	</div>
+			<div class="history">
+				<span class="kick">播放记录</span>
+		  		<dl class="hisCont">
+					<dt>播放记录</dt>
+					<dd id="hisStatu">
+						<ul><li id="noHis">您还没有观看记录~</li></ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navis">
+    <ul>
+    	<li><a href="{$webpath}" title="首页">首页</a></li>
+    <nav name="nav">
+        <li <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>><a href="{$nav['url']}" title="{$nav['title']}">{$nav['title']}</a></li>
+	</nav>
+		<li class="more" style="margin-right: 0px">
+            <span><a href="{:U('Home/Other/index/tpl/top')}" title="排行榜">排行榜</a></span>
+            <span><a href="javascript:;" title="收藏本站" id="collet">收藏本站</a></span>
+        </li>
+    </ul>
+</div>

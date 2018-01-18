@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$list_webtitle}</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$list_keywords}">
+<meta name="description" content="{$list_description}">
+<meta name="ROBOTS" content="NOIMAGEINDEX">
+<link rel="alternate" href="{$rssurl}" type="application/rss+xml" title="rss" />
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+
+<include file="{$tplpath}/header.html" />
+<div class="wrapper">
+	<div class="comwrap clearfix">
+		<div class="comAside fr">
+            <div class="sideCont">
+               <div class="inTitle">
+                    <h6>影视排行榜</h6>
+                </div>
+                <ul class="foldlist">
+                    <list name="list" cid="all" order="hits desc" limit="10">
+                    <li <eq name="i" value="1">class="hover"</eq>>
+                        <div class="hisus">
+                            <a href="{$list['url']}" class="img">
+                                <img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}" alt="{$list['title']}" style="display: inline;">
+                                <b>{$i}</b>
+                            </a>
+                            <div class="imr">
+                                <h4>{$list['title']}</h4>
+                                <p>类型：{$list['ctitle']}</p>
+                                <p>主演：{$list['actors']|substr='0,10'}</p>
+                                <a href="{$list['url']}" class="p">立即播放</a>
+                            </div>
+                        </div>
+                        <p><em>{$i}</em><a href="{$list['url']}">{$list['title']}</a><span>{$list['hits']}</span></p>
+                    </li>
+                    </list>
+                </ul>
+			</div>
+    	</div>
+        <div class="leftSide fl">
+			<div class="rowContr">
+				<dl class="totabs">
+					<dt>共<i>{$count}</i>篇{$ctitle}</dt>
+				</dl>
+			</div>
+			<div class="listad"><!-- 广告位：列表页通用668*34 --></div>
+            <div class="news_channel">
+            <ul>
+            <newsPage name="list" limit="20">
+            <li>
+                <h3><a href="{$list['url']}" target="_blank">{$list['title']}</a></h3>
+                <div class="timebox">
+                    <span pubtime="{$list['time']}"><span>{$list['time']}</span></span>
+                    <a href="javascript:void(0);" target="_blank" {$list['digg']['up_js']}><em class="icon_nbbs"></em>{$list['digg']['up']}</a>
+                </div>
+                <div class="news_spic">
+                	<notempty name="list['pic']">
+                    <div class="news_imgctrl">
+                        <a href="{$list['url']}" target="_blank"><img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}" alt="{$list['title']}"/></a>
+                    </div>
+                    </notempty>
+                    <p>{$list['content']|strip_tags|msubstr=0,250}</p>
+                </div>
+            </li>
+            </newsPage>
+            </ul>
+            </div>
+			<div class="pages">
+                <page listrow="20" />
+			</div>
+		</div>
+    </div>
+    <div id="bde">
+    <!-- 广告位：首页横幅960*90 -->
+    </div>
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.lazyload.min.js" />
+<js href="{$tplpath}/js/common.source.js" />
+</body>
+</html>

@@ -1,0 +1,17 @@
+body, button, input, select, textarea {
+    font: 12px/1.5 PingFangSC-Regular,Tahoma,Microsoft Yahei,sans-serif,Arial,Hiragino Sans GB;
+    _font-size: 62.5%;
+}
+
+.yk-content {
+	margin: 0 auto;
+	padding-top: 10px;
+	width: 1300px;
+	*zoom: 1;
+	font: 12px/20px "Microsoft YaHei",Lyh-Regular,helvetica,arial,sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}

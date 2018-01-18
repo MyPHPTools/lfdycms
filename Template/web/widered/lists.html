@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://tv.sohu.com/drama/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/global2014.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/nav_v1.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/channel.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/drama.css"></head>
+
+<body class="W_1380">
+    <include file="{$tplpath}/header.html" />
+    <div>
+        <!-- 广告开始 -->
+        <!-- <div class="ad1380">
+            <img src="{$tplpath}/images/1380x100.jpg">
+        </div> -->
+        <!-- 广告结束 -->
+        <div class="wrap">
+            <div class="area">
+                <div class="sort-type">
+                    <dl class="cfix">
+                        <dt>类别：</dt>
+                        <dd class="sort-tag">
+                            <type name="type">
+                                <a href="{$type['url']}" <eq name="cid" value="$type['id']">class="aon"</eq>>{$type['title']}</a>
+                            </type>
+                        </dd>
+                    </dl>
+                    <dl class="cfix">
+                        <dt>地区：</dt>
+                        <dd class="sort-tag">
+                            <area name="area">
+                                <a href="{$area['url']}" <if condition="($Think.get.area eq '') AND ($i eq 1) OR ($Think.get.area eq $area['title'])">class="aon"</if>>{$area['title']}</a>
+                            </area>
+                        </dd>
+                    </dl>
+                    <dl class="cfix">
+                        <dt>年代：</dt>
+                        <dd class="sort-tag">
+                            <year name="year">
+                                <a href="{$year['url']}" <if condition="($Think.get.year eq '') AND ($i eq 1) OR ($Think.get.year eq $year['title'])">class="aon"</if>>{$year['title']}</a>
+                            </year>
+                        </dd>
+                    </dl>
+                    <dl class="cfix">
+                        <dt>语言：</dt>
+                        <dd class="sort-tag">
+                            <language name="language">
+                                <a href="{$language['url']}" <if condition="($Think.get.language eq '') AND ($i eq 1) OR ($Think.get.language eq $language['title'])">class="aon"</if>>{$language['title']}</a>
+                            </language>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="sort-column area">
+                <div class="column-bd cfix">
+                    <ul class="st-list cfix">
+                        <listpage name="list" limit="32" order="update_time desc">  
+                        <li class="">
+                            <div class="st-pic">
+                                <a href="{$list['url']}" target="_blank"><img src="{$list['pic']}" alt=""> <span class="st-msk"></span> </a>
+                                <span class="maskTx">{$list['serialize']}</span>
+                                <switch name="list.tj_tag">
+                                    <case value="1"><span title="更新" class="gengxin">更新</span></case>
+                                    <case value="2"><span title="热播" class="onlyp">热播</span></case>
+                                    <case value="3"><span title="抢先" class="qanxian">抢先</span></case>
+                                    <case value="4"><span title="会员" class="vip">会员</span></case>
+                                </switch>
+                            </div>
+                            <strong>
+                                <a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,10}</a>
+                            </strong>
+                            <p class="actor">
+                                主演：
+                                <volist name="list['actors_array']" id="actors" offset="1" length='2'>
+                                    <a href="{$actors['url']}" title="{$actors['actors']}">{$actors['actors']}</a>
+                                    <eq name="i" value="1"> / </eq>
+                                </volist>
+                            </p>
+                            <p class="num-bf">播放量：{$list['hits']}</p>
+                        </li>
+                        </listpage>
+                    </ul>
+                            
+                    <div class="ssPages area">
+                        <page listrow="32" />
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <include file="{$tplpath}/footer.html" />
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

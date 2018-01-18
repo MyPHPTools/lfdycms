@@ -1,0 +1,17 @@
+.inner{PADDING-RIGHT:22px;PADDING-LEFT:22px;PADDING-BOTTOM:16px;LINE-HEIGHT:18px;PADDING-TOP:16px}
+.inner{PADDING-RIGHT:24px;PADDING-LEFT:24px;PADDING-BOTTOM:13px;LINE-HEIGHT:20px;PADDING-TOP:13px;MARGIN:0px;}
+.inner .pic{FLOAT:left;MARGIN-RIGHT:30px;PADDING:0px;}
+.inner .pic IMG{WIDTH:120px;HEIGHT:168px;margin-bottom:5px;}
+.inner UL{LIST-STYLE-TYPE:none;}
+.inner UL li{margin:4px}
+.tb{CLEAR:both;BORDER:#e3e3e3 1px solid;BACKGROUND:#fff;COLOR:#666;PADDING:0px;MARGIN:0px;}
+.tb .fr{FLOAT:right;}
+.tb H4{PADDING-RIGHT:10px;PADDING-LEFT:10px;FONT-WEIGHT:normal;FONT-SIZE:12px;PADDING-BOTTOM:0px;LINE-HEIGHT:35px;PADDING-TOP:0px;BORDER-BOTTOM:#e3e3e3 1px solid;HEIGHT:35px;MARGIN:0px;}
+.tb H4 LABEL{FLOAT:left;MARGIN-RIGHT:10px;FONT-SIZE:12px;font-weight:bold;}
+.tb TABLE{BORDER-RIGHT:#fff 1px solid;BORDER-TOP:#fff 1px solid;BORDER-LEFT:#fff 1px solid;WIDTH:100%;BORDER-BOTTOM:#e3e3e3 1px solid;PADDING:0px;MARGIN:0px;}
+.tb H4 div{line-height:20px; top:-15px;}
+.tb TH{PADDING-RIGHT:2px;BORDER-TOP:#e3e3e3 1px solid;PADDING-LEFT:8px;PADDING-BOTTOM:3px;LINE-HEIGHT:23px;PADDING-TOP:3px;HEIGHT:23px;TEXT-ALIGN:left;font-size:12px;COLOR:#666;}
+.tb TH{BORDER-RIGHT:#fff 0px solid;BORDER-TOP:#fff 0px solid;BACKGROUND:#f1f1f1;BORDER-LEFT:#fff 0px solid;BORDER-BOTTOM:#fff 1px solid}
+#Ajax_Content{height:130px;margin:10px;_margin:5px 5px 0px 5px;text-align:left;PADDING:0px;}
+#Ajax_Content li{line-height:25px;}
+#cplayer{height:535px; width:100%;}

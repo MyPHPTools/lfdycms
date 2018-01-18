@@ -1,0 +1,210 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div id="top-alert" class="alert fixed hidden alert-red"></div>
+    <div class="tab">
+        <div class="tab-head">
+            <ul class="tab-nav">
+                <li class="active"><a href="#tab-basics">基础</a></li>
+                <li><a href="#tab-senior">高级</a></li>
+            </ul>
+            </div>
+            <div class="tab-body">
+            <br />
+            <form action="{:U()}" class="form-x"  method="post">
+            <div class="tab-panel active" id="tab-basics">
+                <div class="form-group">
+                    <div class="label"><label>上级分类</label></div>
+                    <div class="field">
+                        <input type="text" class="input input-auto" size="50" value="{$category['title']|default='无'}" disabled="disabled" placeholder="上级分类"/>                    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>分类名称</label></div>
+                    <div class="field">
+                        <input type="text" name="title" class="input input-auto" size="50" value="{$info.title|default=''}" placeholder="名称不能为空"/>                    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>分类标识</label></div>
+                    <div class="field">
+                        <input type="text" name="name" class="input input-auto" size="50" value="{$info.name|default=''}" placeholder="分类标识"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>分类图标</label></div>
+                    <div class="field">
+                        <input type="text" name="icon" class="input input-auto" size="50" value="{$info.icon|default=''}" placeholder="分类图标"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>分类模型</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="type">
+                        	<option value="1">视频模型 | vod</option>
+                            <option value="2">文章模型 | news</option>
+                            <option value="3">外链模型 | url</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>外链地址</label></div>
+                    <div class="field">
+                        <input type="text" name="link" class="input input-auto" size="50" value="{$info.link|default=''}" placeholder="外链url"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>播放记录</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="record">
+                            <option value="1">记录</option>
+                            <option value="0">不记录</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>收藏</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="private">
+                            <option value="0">收藏夹</option>
+                            <option value="1">私密收藏夹</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>app见性</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="appno">
+                            <option value="1">可见</option>
+                            <option value="0">不可见</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>导航见性</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="navno">
+                            <option value="1">可见</option>
+                            <option value="0">不可见</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>可见性</label></div>
+                    <div class="field">
+                    	<select class="input input-auto" name="display">
+                        	<option value="1">可见</option>
+                            <option value="0">不可见</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-panel" id="tab-senior">
+            	 <div class="form-group">
+                    <div class="label"><label>排序</label></div>
+                    <div class="field">
+                        <input type="text" name="sort" class="input input-auto" size="10" value="{$info.sort|default=0}"/> <span class="text-gray">（仅对当前层级分类有效）</span>                   
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="label"><label>网页标题</label></div>
+                    <div class="field">
+                        <input type="text" name="meta_title" class="input input-auto" size="50" value="{$info.meta_title|default=''}" placeholder="SEO 网页标题"/>                    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>关键字</label></div>
+                    <div class="field">     
+                        <textarea name="keywords"  class="input input-auto" rows="5" cols="50" placeholder="SEO 关键字">{$info.keywords|default=''}</textarea>           
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>描述</label></div>
+                    <div class="field">     
+                        <textarea name="description" class="input input-auto" rows="5" cols="50" placeholder="SEO 描述">{$info.description|default=''}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>频道模板</label></div>
+                    <div class="field">     
+                        <input type="text" name="template_index" class="input input-auto" size="50" value="{$info.template_index|default=''}"/>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <div class="label"><label>详情模板</label></div>
+                    <div class="field">     
+                        <input type="text" name="template_detail" class="input input-auto" size="50" value="{$info.template_detail|default=''}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>播放模板</label></div>
+                    <div class="field">     
+                        <input type="text" name="template_play" class="input input-auto" size="50" value="{$info.template_play|default=''}"/>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <div class="label"><label>筛选模板</label></div>
+                    <div class="field">     
+                        <input type="text" name="template_type" class="input input-auto" size="50" value="{$info.template_type|default=''}"/>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <input type="hidden" name="id" value="{$info.id|default=''}">
+			<input type="hidden" name="pid" value="{:isset($category['id'])?$category['id']:$info['pid']}">
+            <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+            </form>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		<present name="info.id">
+        setValue("record", {$info.record|default=1});
+        setValue("private", {$info.private|default=0});
+        setValue("appno", {$info.appno|default=1});
+        setValue("navno", {$info.navno|default=1});
+		setValue("display", {$info.display|default=1});
+		setValue("type", {$info.type|default=1});
+		highlight_subnav('{:U('Category/index')}');
+		</present>
+        type_show('{$info.type|default=1}');
+        $('[name="type"]').change(function(event) {
+            var type_value=$(this).val();
+            type_show(type_value);
+        });
+
+        function type_show(type){
+            switch(type){
+            case '1':
+              $('[name="link"]').parents('.form-group').hide();
+              $('[name="record"]').parents('.form-group').show();
+              $('[name="private"]').parents('.form-group').show();
+              $('[name="template_index"]').parents('.form-group').show();
+              $('[name="template_detail"]').parents('.form-group').show();
+              $('[name="template_play"]').parents('.form-group').show();
+              $('[name="template_type"]').parents('.form-group').show();
+              break;
+            case '2':
+              $('[name="template_index"]').parents('.form-group').show();
+              $('[name="template_detail"]').parents('.form-group').show();
+              $('[name="link"]').parents('.form-group').hide();
+              $('[name="record"]').parents('.form-group').hide();
+              $('[name="private"]').parents('.form-group').hide();
+              $('[name="template_play"]').parents('.form-group').hide();
+              $('[name="template_type"]').parents('.form-group').hide();
+              break;
+            case '3':
+              $('[name="link"]').parents('.form-group').show();
+              $('[name="record"]').parents('.form-group').hide();
+              $('[name="private"]').parents('.form-group').hide();
+              $('[name="template_index"]').parents('.form-group').hide();
+              $('[name="template_detail"]').parents('.form-group').hide();
+              $('[name="template_play"]').parents('.form-group').hide();
+              $('[name="template_type"]').parents('.form-group').hide();
+              break;
+            }
+        }
+	</script>
+</block>

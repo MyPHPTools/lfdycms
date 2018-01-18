@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$webtitle}</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<meta name="ROBOTS" content="NOIMAGEINDEX">
+<link rel="alternate" href="{$rssurl}" type="application/rss+xml" title="rss" />
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+
+<include file="{$tplpath}/header.html" />
+<div class="wrapper" id="dexCol">
+	<nav name="nav" cid="0" type="1">
+	<div class="comwrap clearfix">
+		<div class="leftSide fl ingrep">
+			<dl class="inTitle">
+				<dt>推荐{$nav["title"]}</dt>
+				<dd class="contabs">
+					<ul>
+                    	<nav name="menu" cid="$nav['id']">
+						<li <eq name="i" value="1">class="current"</eq>><a href="javascript:;">{$menu['title']}</a></li>
+                        </nav>
+					</ul>
+				</dd>
+			</dl>
+            <eq name="nav['branch']" value="0">
+            <div class="ingrep-Cont" style="display:block;">
+				<ul class="sumgroup entire clearfix">
+                	<list name="list" cid="$nav['id']" order="update_time desc" limit="8">
+					<li>
+						<a href="{$list['url']}" title="{$list['title']}">
+							<img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}">
+							<cite>{$list['title']}</cite>
+                            <em></em>
+                        </a>
+						<p>主演：{$list['actors']}</p>
+					</li>
+                    </list>
+				</ul>
+			</div>
+            <else/>
+            <nav name="mnav" cid="$nav['id']">
+			<div class="ingrep-Cont" <eq name="i" value="1">style="display:block;"</eq>>
+				<ul class="sumgroup entire clearfix">
+                	<list name="list" cid="($mnav['id'])?$mnav['id']:$nav['id']" order="update_time desc" limit="8">
+					<li>
+						<a href="{$list['url']}" title="{$list['title']}">
+							<img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}">
+							<cite>{$list['title']}</cite>
+                            <em></em>
+                        </a>
+						<p>主演：{$list['actors']}</p>
+					</li>
+                    </list>
+				</ul>
+			</div>
+            </nav>
+            </eq>
+		</div>
+       <div class="sideCont fr ingrep">
+           <div class="inTitle">
+                <h6>{$nav["title"]}排行榜</h6>
+            </div>
+            <div class="ingrep-Cont" style="display:block;">
+                <ul class="foldlist">
+                    <list name="list" cid="$nav['id']" order="hits desc" limit="10">
+                    <li <eq name="i" value="1">class="hover"</eq>>
+                        <div class="hisus">
+                            <a href="{$list['url']}" class="img">
+                                <img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}" alt="{$list['title']}" style="display: inline;">
+                                <b>{$i}</b>
+                            </a>
+                            <div class="imr">
+                                <h4>{$list['title']}</h4>
+                                <p>类型：{$list['ctitle']}</p>
+                                <p>地区：{$list['area']}</p>
+                                <p>主演：{$list['actors']|msubstr=0,10}</p>
+                                <a href="{$list['url']}" class="p">立即播放</a>
+                            </div>
+                        </div>
+                        <p><em>{$i}</em><a href="{$list['url']}">{$list['title']}</a><span>{$list['hits']}</span></p>
+                    </li>
+                    </list>
+                </ul>
+            </div>
+		</div>
+	</div>
+    </nav>
+
+    <div id="bde">
+	<!-- 广告位：首页横幅960*90 -->
+    </div>
+	<dl class="flink">
+		<dt class="comTitle">
+			<h6>友情链接</h6>
+		</dt>
+		<dd>
+        	<weblink name="link">
+			<a href="{$link['url']}" target="_blank">{$link['title']}</a>
+            </weblink>
+		</dd>
+	</dl>
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.lazyload.min.js" />
+<js href="{$tplpath}/js/common.source.js" />
+</body>
+</html>

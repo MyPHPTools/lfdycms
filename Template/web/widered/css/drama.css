@@ -1,0 +1,811 @@
+/* sohutv 2017-05-18 10:32:33 */
+.sorbox {
+	width: 290px;
+	float: left;
+	display: inline;
+	background: #f4f5f5;
+	overflow: hidden
+}
+
+.sorboxM {
+	margin: 0 65px
+}
+
+.soru {
+	margin-left: -17px;
+	height: 20px;
+	overflow: hidden
+}
+
+.sorh {
+	padding: 0 0 0 12px;
+	font-weight: 700;
+	margin: 0 0 10px;
+	background: url(images/sort.png) no-repeat left center;
+	font-size: 14px
+}
+
+.sori {
+	display: inline;
+	float: left;
+	margin-left: 17px;
+	font-size: 14px;
+	margin-right: 0
+}
+
+.w120 {
+	width: 120px
+}
+
+.w110 {
+	width: 110px
+}
+
+.w360 {
+	width: 360px
+}
+
+.more14 {
+	float: right;
+	margin: 7px 20px 0 0;
+	font-size: 14px;
+	background-position: right -105px
+}
+
+.more14:hover {
+	background-position: right -128px
+}
+
+.tags {
+	line-height: 23px
+}
+
+.colL {
+	width: 760px;
+	float: left
+}
+
+.colR {
+	width: 240px;
+	float: right;
+	overflow: hidden
+}
+
+.sorbox {
+	width: 210px
+}
+
+.sorbox1 {
+	margin: 0 44px 0 0
+}
+
+.sorbox2 {
+	margin-right: 43px
+}
+
+.sorbox4 {
+	margin: 0 0 0 43px
+}
+
+.zjuBtn .btn-roL,.zjuBtn .btn-roR,.zju_date,.btn_upload,.ico_tj {
+	background: url(index_images/ico.png) no-repeat
+}
+
+.btn_upload {
+	background-position: 0 -95px;
+	display: inline-block;
+	width: 68px;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 0 0 32px
+}
+
+.btn_upload:hover {
+	color: #fff
+}
+
+.ico_tj {
+	background-position: 0 -132px;
+	width: 31px;
+	height: 16px;
+	margin-right: 5px;
+	line-height: 16px;
+	padding: 0 0 0 3px;
+	*padding: 1px 0 0 3px;
+	display: inline-block;
+	color: #fff
+}
+
+.btn-ro {
+	width: 71px
+}
+
+.btn-roL,.btn-roR {
+	display: inline-block;
+	height: 24px;
+	background: url(images/arr.png) no-repeat
+}
+
+.btn-roL {
+	width: 36px;
+	background-position: 0 -26px
+}
+
+.btn-roR {
+	width: 35px;
+	background-position: -36px -26px
+}
+
+.arrowPreDisable {
+	background-position: 0 0;
+	cursor: default
+}
+
+.arrowNextDisable {
+	background-position: -36px 0;
+	cursor: default
+}
+
+.zjuBtn .btn-roL,.zjuBtn .btn-roR {
+	width: 40px;
+	height: 25px;
+	display: block
+}
+
+.zjuBtn .btn-roR {
+	background-position: 0 -28px
+}
+
+.zjuBtn .arrowPreDisable {
+	background-position: -44px -28px;
+	cursor: default
+}
+
+.zjuBtn .arrowNextDisable {
+	background-position: -44px 0;
+	cursor: default
+}
+
+.zju .p_bt {
+	height: 42px;
+	font-size: 12px
+}
+
+.zju_date {
+	color: #3a3a3a;
+	display: block;
+	width: 105px;
+	padding: 0 0 0 55px;
+	height: 23px;
+	line-height: 23px;
+	background-color: #fafafa;
+	background-position: 35px -62px;
+	border-top: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4
+}
+
+.zju_date.c-red {
+	color: #e73c31
+}
+
+.zju .lisi {
+	padding-bottom: 24px
+}
+
+.zju .lisTx {
+	text-align: left;
+	padding-left: 5px;
+	width: 60px
+}
+
+.lis70 {
+	margin-right: -15px
+}
+
+.lis70 .lisi {
+	width: 70px;
+	margin-right: 15px
+}
+
+.lis70 .elli {
+	width: 70px
+}
+
+.lis75 .lisi {
+	width: 75px
+}
+
+.lisCi {
+	width: 100%;
+	float: left;
+	margin: 0 0 20px
+}
+
+.ltww {
+	width: 150px
+}
+
+.ltwi {
+	width: 100%;
+	float: left;
+	margin: 0 0 20px
+}
+
+.dot {
+	background: url(images/dot1.png) repeat-x;
+	height: 1px;
+	overflow: hidden
+}
+
+.con_pp {
+	height: 100px;
+	position: relative
+}
+
+.h42-btn .w50-pre,.h42-btn .w50-next {
+	height: 42px
+}
+
+.rank {
+	margin-top: -4px
+}
+
+.ranki {
+	padding: 0 0 14px;
+	float: left;
+}
+
+.ranki .rke {
+	width: 85px
+}
+
+.ztbox {
+	background: #fafafa;
+	border: 1px solid #efefef;
+	padding: 9px 8px;
+	margin: 16px 0 0
+}
+
+.ztbi {
+	background: url(images/point.png) no-repeat left center;
+	padding: 0 0 0 10px;
+	width: 100px;
+	float: left;
+	overflow: hidden
+}
+
+#modA .colL {
+	width: 240px
+}
+
+#modA .colR {
+	width: 760px
+}
+
+#modA .lisi {
+	margin: 0 0 0 20px
+}
+
+#modA .colL .lisTx {
+	right: auto;
+	left: 5px;
+	font-size: 14px
+}
+
+#modA .colL .acount {
+	left: auto;
+	right: 5px
+}
+
+#modB .dot {
+	margin-top: -15px
+}
+
+#modB .tags {
+	margin-top: 6px
+}
+
+#modC {
+	border-bottom: none;
+	margin: 0;
+	padding: 0 0 10px
+}
+
+#modC .colL {
+	width: 360px
+}
+
+#modC .colM {
+	float: left;
+	width: 380px;
+	margin-left: 20px;
+	overflow: hidden
+}
+
+#modC .colR {
+	width: 240px;
+	overflow: hidden
+}
+
+#modC .colR .mt5 {
+	margin: 0;
+	padding: 5px 0 0
+}
+
+#modC .dot {
+	margin-right: 20px;
+	margin-bottom: 7px
+}
+
+#modC .lisi {
+	padding-bottom: 17px
+}
+
+#modC .colL .lisTx {
+	bottom: 8px;
+	width: 350px;
+	text-align: left;
+	cursor: pointer;
+	text-decoration: none
+}
+
+#modC .ztbox {
+	margin-top: 20px
+}
+
+#modD .dot,#modF .dot,#modH .dot {
+	margin: 8px 0 29px
+}
+
+#modE .rank,#modG .rank {
+	margin: 0 0 10px
+}
+
+#modL .colL {
+	width: 240px
+}
+
+#modL .colR {
+	width: 740px;
+	overflow: hidden
+}
+
+#modL .lis {
+	margin-right: -20px
+}
+
+#modL .colL .lisTx {
+	right: auto;
+	left: 5px;
+	font-size: 14px
+}
+
+#modL .colL .acount {
+	left: auto;
+	right: 5px
+}
+
+#modJ .colM {
+	width: 380px;
+	overflow: hidden
+}
+
+#modJ .jieshao {
+	height: 36px;
+	overflow: hidden;
+	margin: 4px 20px 14px 0
+}
+
+#modJ .colL .lisTx {
+	left: 5px;
+	right: auto;
+	text-align: left
+}
+
+#modJ .colM {
+	margin-top: -4px
+}
+
+#modJ .colR .con {
+	height: 280px
+}
+
+#modI .colR .c-red {
+	color: #ba6262
+}
+
+#modI .mb20 {
+	width: 100%;
+	float: left
+}
+
+#modI .lisi {
+	padding: 0 0 17px
+}
+
+#modI .colL {
+	padding: 0 0 8px
+}
+
+#modN {
+	margin: 0 0 30px
+}
+
+#modN .p_bt {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 75px
+}
+
+.W_1190 .sorbox {
+	width: 252px
+}
+
+.W_1190 .sorbox1 {
+	margin-right: 51px
+}
+
+.W_1190 .sorbox2 {
+	margin-right: 51px
+}
+
+.W_1190 .sorbox4 {
+	margin: 0 15px 0 50px
+}
+
+.W_1190 #modA .colR {
+	width: 950px
+}
+
+.W_1190 #modC .colM {
+	width: 570px
+}
+
+.W_1190 #modL .colR {
+	width: 930px
+}
+
+.W_1190 #modJ .colM {
+	width: 570px
+}
+
+.W_1190 .con_pp {
+	width: 1140px
+}
+
+.W_1190 .sorboxM {
+	margin: 0 44px 0 45px
+}
+
+.W_1380 .sorbox {
+	width: 300px
+}
+
+.W_1380 .sorbox1 {
+	margin-right: 50px
+}
+
+.W_1380 .sorbox2 {
+	margin-right: 50px
+}
+
+.W_1380 .sorbox4 {
+	margin: 0 15px 0 50px
+}
+
+.W_1380 #modA .colR {
+	width: 1140px
+}
+
+.W_1380 #modC .colM {
+	width: 760px
+}
+
+.W_1380 #modL .colR {
+	width: 1120px
+}
+
+.W_1380 #modJ .colM {
+	width: 760px
+}
+
+.W_1380 .con_pp {
+	width: 1330px
+}
+
+.W_1380 .sorboxM {
+	margin: 0 52px 0 53px
+}
+
+.titmore {
+	margin-top: 5px
+}
+
+.titmore .more {
+	background-position: right -103px
+}
+
+.titmore .more:hover {
+	background-position: right -126px
+}
+
+.zju ul,#modI .colR .con ul,#splan_con .con,#modM .mastercon ul,#modN .con_pp ul {
+	display: none
+}
+
+
+
+.p_info a {
+	color: #999
+}
+
+.p_info {
+	width: 170px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 18px;
+}
+
+.top100 {
+	float: right;
+	line-height: 12px;
+	margin: 10px 0 0
+}
+
+.super,.lisTx,.acount {
+	cursor: pointer
+}
+
+.zju {
+	height: 438px
+}
+
+#content {
+	min-width: 1000px
+}
+
+@media all and (max-width:1010px) {
+	#content {
+		overflow: hidden
+	}
+}
+
+#modB {
+	position: relative;
+	margin: -26px 0 -1px;
+	background: #fff
+}
+
+#modB .colL {
+	padding: 25px 0 0;
+	width: 740px;
+	background: url(drama_images/sx_bg.jpg) no-repeat
+}
+
+#modB .colL .con {
+	margin-right: -20px
+}
+
+#modB .colR {
+	padding: 25px 0 0
+}
+
+.W_1000 #modB .colL {
+	width: 740px
+}
+
+.W_1190 #modB .colL {
+	width: 930px
+}
+
+.W_1380 #modB .colL {
+	width: 1130px
+}
+
+.W_1380 .lux_logo {
+	right: 340px
+}
+
+.W_1190 .lux_logo {
+	right: 260px
+}
+
+.lux_left,.lux_right {
+	height: 625px;
+	display: block;
+	position: absolute;
+	top: 0;
+	overflow: hidden
+}
+
+.lux_left {
+	left: -140px;
+	width: 140px
+}
+
+.lux_right {
+	right: -140px;
+	width: 130px
+}
+
+.lux_logo {
+	cursor: pointer;
+	display: block;
+	background: url(drama_images/lux_logo.png) no-repeat;
+	_background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='drama_images/lux_logo.png');
+	width: 105px;
+	height: 45px;
+	position: absolute;
+	top: 30px;
+	left: 100px
+}
+
+#modB .colL .tith {
+	color: #fff
+}
+
+#modB .colL .lisi .p_bt a {
+	color: #dadada
+}
+
+#modB .colL .lisi .p_info {
+	color: #9f8687
+}
+
+.scroll2 {
+	width: 100%;
+	height: 380px;
+	overflow: hidden
+}
+
+.scroll2Inner {
+	width: 1190px;
+	margin: 0 auto;
+	position: relative;
+	height: 380px
+}
+
+.W_1380 .scroll2Inner {
+	width: 1380px
+}
+
+.W_1190 .scroll2Inner {
+	width: 1190px
+}
+
+.W_1000 .scroll2Inner {
+	width: 1000px
+}
+
+.scroll2 .sideBg {
+	background: #000;
+	opacity: .6;
+	filter: alpha(opacity=60);
+	width: 260px;
+	height: 380px
+}
+
+.scroll2 .side {
+	width: 260px;
+	height: 380px;
+	position: absolute;
+	top: 0;
+	right: 0
+}
+
+.scroll2 .side a {
+	color: #fff;
+	line-height: 39px;
+	overflow: hidden;
+	width: 220px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+	padding: 0;
+	font-size: 14px
+}
+
+.scroll2 .side ul {
+	width: 260px;
+	height: 380px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 11px 0
+}
+
+.scroll2 .side li.on {
+	color: #fff;
+	background: url(../images/point24.png) no-repeat 20px center #e73c31;
+	text-decoration: none;
+	opacity: 1;
+	filter: alpha(opacity=100)
+}
+
+.scroll2 .side .on:active {
+	color: #fff;
+	background: url(../images/point24.png) no-repeat 20px center #e73c31;
+	text-decoration: none;
+	opacity: 1;
+	filter: alpha(opacity=100)
+}
+
+.scroll2 .side li.on a:active {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-color: #e73c31
+}
+
+.scroll2 .side li {
+	margin: 0 0 1px;
+	opacity: .8;
+	filter: alpha(opactiy=80);
+	position: relative;
+	background: url(../images/point24.png) no-repeat 20px center;
+	padding: 0 20px 0 32px
+}
+
+.scroll2 .side a:hover {
+	text-decoration: none
+}
+
+.scroll2 .side-arrow {
+	background: url(../images/scroll2-arrow.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/scroll2-arrow.png');
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 39px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -16px;
+	display: none
+}
+
+.scroll2 .on .side-arrow {
+	display: block
+}
+
+.scroll2 .photo {
+	height: 380px;
+	overflow: hidden;
+	margin-top: -380px;
+	text-align: center
+}
+
+.W_1000 .scroll2Inner {
+	width: 1000px
+}
+
+.W_1000 .scroll2 .photo {
+	overflow: hidden
+}
+
+.W_1000 .scroll2 .photo img {
+	margin-left: -95px
+}
+
+.W_1380 #banner_link {
+	width: 1120px
+}
+
+.W_1190 #banner_link {
+	width: 930px
+}
+
+.W_1000 #banner_link {
+	width: 740px
+}
+
+.dot, .dot1 {
+    background: url(../images/dot1.png) repeat-x;
+    height: 1px;
+    overflow: hidden;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}

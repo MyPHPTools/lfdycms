@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+        <link href="{$tplpath}/css/idangerous.swiper.css" rel="stylesheet">
+        <!--[if lt IE 8]>
+            <script src="{$tplpath}/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bgcolor-f5f5">
+        <include file="{$tplpath}/header.html" />
+
+		<div class="content bgcolor-f8f8 border-top"></div>
+
+		<div class="content">
+			<div class="container">
+				<div class="col col12 f14 padding-t15">
+					<a href="/">首页</a>	&gt;
+					<a href="{$curl}" class="a1">{$ctitle}</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="col col77 bgcolor-fff padding vl-align-top">
+					<newspage name="newlist" limit="15" order="update_time desc">
+						<a href="{$newlist['url']}" class="col col12 padding-tb15 border-bottom" name="NewsList">
+							<div class="col col3 newimg vl-align-top">
+								<img src="{$newlist['pic']}" class="img-full">
+							</div>
+							<div class="col col9 vl-align-top">
+								<h1 class="f18">{$newlist['title']}</h1>
+								<div class="col col12 f12 h88 margin-t8">
+									{:msubstr(strip_tags($newlist['content']),0,120)}
+								</div>
+								<div class="col col12 f12 hdd margin-t15">{$newlist['time']}</div>
+							</div>
+						</a>
+					</newspage>
+				</div>
+				<div class="col col33 f14 bgcolor-fff vl-align-top padding">
+					<div class="col col12">
+						<h3 class="public_title"><span>资讯排行榜</span></h3>
+                    </div>
+					<div class="col col12 margin-t15 rank">
+						<news name="newlist" order="hits desc" limit="10">
+                        <dl class="col col12 rank-list">
+                            <a href="{$newlist['url']}">
+                                <dd>{$i}</dd>
+                                <dt class="text-left">{$newlist['title']}</dt>
+                                <img src="{$newlist['pic']}" class="img-full">
+                            </a>
+                        </dl>
+                        </news>
+                    </div>
+				</div>
+				
+				<div class="col col12 padding page margin-t30">
+					<page listrow="10" />
+				</div>
+			</div>
+		</div>
+
+		
+		<include file="{$tplpath}/footer.html" />
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('[name="NewsList"]').each(function() {
+				var Timgsrc = $(this).children('.newimg').children('img').attr('src');
+				if (Timgsrc==""){
+					$(this).children('.newimg').hide();
+				}
+			});
+		});
+		</script>
+	</body>
+	
+
+</html>

@@ -1,0 +1,76 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>{$meta_title}</strong></div>
+      <div class="panel-body">
+            	<form method="post" class="form-x" action="{:U('saveAction')}">
+            <div class="form-group">
+                <div class="label"><label>行为标识</label></div>
+                <div class="field">
+                <input type="text" class="input input-auto"  size="30" name="name" value="{$data.name}"/>
+                <span class="text-gray">（输入行为标识 英文字母）</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>行为名称</label></div>
+                <div class="field"><input type="text" class="input input-auto"  size="50" name="title" value="{$data.title}"/> </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>行为类型</label></div>
+                <div class="field"> 
+                <select name="type" class="input input-auto">
+					<volist name=":get_action_type(null,true)" id="vo">
+						<option value="{$key}">{$vo}</option>
+					</volist>
+				</select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>行为描述</label></div>
+                <div class="field">
+                <textarea name="remark" class="input input-auto" rows="5" cols="50">{$data.remark}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>行为规则</label></div>
+                <div class="field">
+                <textarea name="rule" class="input input-auto" rows="5" cols="50">{$data.rule}</textarea>
+                <ul class="list-unstyle height text-gray">
+                    <li>（输入行为规则，不写则只记录日志）</li>
+                    <li>规则定义  table:$table|field:$field|condition:$condition|rule:$rule[|cycle:$cycle|max:$max][;......]</li>
+                    <li>table->要操作的数据表，不需要加表前缀</li>
+                    <li>field->要操作的字段</li>
+                    <li>condition->操作的条件，目前支持字符串，默认变量{$self}为执行行为的用户</li>
+                    <li>rule->对字段进行的具体操作，目前支持四则混合运算，如：1+score*2/2-3</li>
+                    <li>cycle->执行周期，单位（小时），表示$cycle小时内最多执行$max次</li>
+                    <li>max->单个周期内的最大执行次数（$cycle和$max必须同时定义，否则无效）</li>
+                </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>日志规则</label></div>
+                <div class="field">
+                <textarea name="log" class="input input-auto" rows="5" cols="50">{$data.log}</textarea>
+                <ul class="list-unstyle height text-gray">
+                    <li>（记录日志备注时按此规则来生成，支持[变量|函数]。目前变量有：user,time,model,record,data）</li>
+                    <li>user：触发行为的用户编号（uid）；time：触发行为的时间（NOW_TIME）；model：触发行为的模型；record：触发行为记录编号</li>
+                    <li>data：上述变量结合的一个数组array('user'=>$user_id,,'model'=>$model,'record'=>$record_id,'time'=>NOW_TIME)</li>
+                </ul>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{$data.id}" />
+          <br>
+        <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+        </form>
+      </div>
+    </div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+		<present name="data.id">
+		setValue('type',{$data.type|default=1});
+		highlight_subnav('{:U('Action/editAction')}');
+		</present>
+	</script>
+</block>

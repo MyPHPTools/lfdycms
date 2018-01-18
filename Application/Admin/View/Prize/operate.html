@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>欢迎您登录雷风影视系统-{$meta_title}</title>
+    <link rel="stylesheet" href="__CSS__/pintuer.css">
+    <link rel="stylesheet" href="__CSS__/admin.css">
+    <script src="__JS__/jquery.js"></script>
+    <script src="__JS__/pintuer.js"></script>
+    <script src="__JS__/respond.js"></script>
+    <script src="__JS__/admin.js"></script>
+</head>
+<body class="bg-white">
+<div class="panel admin-panel margin-big">
+    <div class="panel-head"><strong>兑奖信息</strong></div>
+    <table class="table table-hover">
+        <tr>
+            <td width="180">兑奖用户</td>
+            <td>{$operate['usersname']} <a href="{:U('message/add?id='.$operate['uid'])}" class="message"><span class="icon-comment text-sub"></span></a></td>
+        </tr>
+        <tr>
+            <td width="180">奖品名称</td>
+            <td>{$operate['pid']|get_prizetitle}</td>
+        </tr>
+        <tr>
+            <td width="180">兑奖积分</td>
+            <td>{$operate['integral']}</td>
+        </tr>
+        <tr>
+            <td width="180">收货人</td>
+            <td>{$operate['name']}</td>
+        </tr>
+        <tr>
+            <td width="180">联系QQ</td>
+            <td>{$operate['qq']}</td>
+        </tr>
+        <tr>
+            <td width="180">联系电话</td>
+            <td>{$operate['tel']}</td>
+        </tr>
+        <tr>
+            <td width="180">收货地址</td>
+            <td>{$operate['address']}</td>
+        </tr>
+        <tr>
+            <td width="180">备注</td>
+            <td>{$operate['remarks']}</td>
+        </tr>
+    </table>
+    <neq name="operate['mode']" value="2">
+    <div class="panel-foot text-center">
+		<a href="{:U('cancel?id='.$operate['id'])}" class="button bg-red ajaxget margin-right">取消交易</a>
+        <a href="{:U('delivery?id='.$operate['id'])}" class="button bg-main ajaxget">发货</a>
+	</div>
+    </neq>
+</div>
+<js href="__STATIC__/layer/layer.js" />
+<script type="text/javascript">
+$(function(){
+	$(".ajaxget").click(function(){
+		var target;
+		var index = parent.layer.getFrameIndex(window.name);
+		if ( (target = $(this).attr('href')) || (target = $(this).attr('url')) ) {
+			$.get(target).success(function(data){
+				 if (data.status==1) {
+					parent.layer.msg(data.info,{icon: 1,shade: 0.3},function(){
+						parent.location.reload();
+						parent.layer.close(index);
+					});
+				 }else{
+					parent.layer.msg(data.info,{icon: 0,shade: 0.3});
+				 }
+			});
+		}
+		return false;
+	});
+	$(".message").click(function(){
+		parent.layer.open({
+			type: 2,
+			area: ['580px', '570px'],
+			fix: false, //不固定
+			maxmin: true,
+			content: $(this).attr('href')
+		});
+		return false;
+	});
+})
+</script>
+</body>
+</html>

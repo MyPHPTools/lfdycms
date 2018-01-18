@@ -1,0 +1,14 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+        <div class="panel-head"><strong>{$meta_title}</strong></div>
+        <div class="panel-body">
+        	<form action="{:U()}" class="form-cache"  method="post">
+            <div class="form-button">
+           	 <button class="button bg-main ajax-post" type="submit" target-form="form-cache">清除缓存</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</block>

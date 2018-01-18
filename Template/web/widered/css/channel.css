@@ -1,0 +1,702 @@
+/* sohutv 2017-02-15 10:46:15 */
+a,a:hover {
+	text-decoration: none
+}
+
+.tit:after,.mod:after,.con:after {
+	content: ".";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both
+}
+
+.tit,.mod,.con {
+	zoom: 1
+}
+
+#content {
+	padding: 24px 0 0
+}
+
+.wrap {
+	width: 1000px;
+	margin: 0 auto
+}
+
+.hid21 {
+	height: 21px;
+	overflow: hidden;
+	word-break: break-all
+}
+
+.sz70 {
+	width: 70px;
+	height: 70px
+}
+
+
+.sz75 {
+	width: 75px;
+	height: 75px;
+	border-radius: 50%
+}
+
+.sz110 {
+	width: 110px;
+	height: 70px
+}
+
+.sz170 {
+	height: 140px;
+	overflow: hidden;
+    position: relative;
+}
+
+.sz170 img{
+	width: 170px;
+}
+
+.sz170s {
+	width: 170px;
+	height: 225px
+}
+
+.con_pp {
+	width: 950px;
+	overflow: hidden;
+	float: left;
+	position: relative
+}
+
+.con_pp ul {
+	width: 20000px;
+	position: absolute
+}
+
+.dot {
+	background: url(images/dot1.png) repeat-x;
+	height: 1px;
+	overflow: hidden
+}
+
+.top50,.top100 {
+	margin: 7px 0 0
+}
+
+.lisi {
+	width: 140px;
+	_background: 0 0
+}
+
+.lisiw {
+	width: 170px;
+	_background: 0 0
+}
+
+.p_name {
+	width: 152px
+}
+
+.mod_line {
+	background: #e9e9e9;
+	height: 1px;
+	margin-bottom: 25px;
+	overflow: hidden
+}
+
+.modAdv {
+	margin-bottom: 24px
+}
+
+.change {
+	background: url(images/ico.png) no-repeat 0 1px;
+	padding: 0 0 0 20px;
+	display: inline-block
+}
+
+.change:hover {
+	background-position: 0 -45px
+}
+
+.lis_r3 {
+	display: none
+}
+
+.lis_r2 {
+	display: none
+}
+
+.tit {
+	height: 41px
+}
+
+.tith {
+	font-size: 22px;
+	line-height: 30px;
+	margin-right: 40px;
+	font-weight: 400;
+	color: #3a3a3a;
+	float: left
+}
+
+.titu {
+	margin: 3px 0 0 -1px;
+	line-height: 25px
+}
+
+.colL .titu {
+	float: left
+}
+
+.titu .more {
+	background-position: right -102px;
+	padding-right: 13px
+}
+
+.titu .more:hover {
+	background-position: right -125px
+}
+
+.titud {
+	margin-left: -17px;
+	overflow: hidden;
+	padding-right: 20px
+}
+
+.tita {
+	padding: 1px 15px;
+	display: block;
+	color: #3a3a3a;
+	cursor: pointer
+}
+
+.titx {
+	float: left;
+	background: url(../images/fenge.png) no-repeat 0 7px
+}
+
+.titx_on {
+	background: #e73c31;
+	margin-right: -1px;
+	position: relative
+}
+
+.titx_on .tita,.titx_on .tita:hover {
+	color: #fff;
+	text-decoration: none
+}
+
+.btiu {
+	margin: 7px 0 0
+}
+
+.btix {
+	float: left;
+	margin-right: 18px;
+	background: url(images/point.png) no-repeat left center;
+	padding: 0 0 0 7px
+}
+
+.colR .tith {
+	font-size: 18px;
+	margin: 1px 10px 0 0
+}
+
+.colR .tit .more {
+	margin-top: 8px
+}
+
+.tit .ad {
+	float: left
+}
+
+.sorbar {
+	height: 62px;
+	background: #f4f5f5;
+	padding: 12px 0 0;
+	min-width: 1000px
+}
+
+.sorbox {
+	width: 320px;
+	float: left;
+	display: inline
+}
+
+.sorboxM {
+	margin: 0 28px 0 32px;
+	_margin-right: 25px
+}
+
+.sorboxR {
+	overflow: hidden;
+	width: 300px
+}
+
+.sorboxR .soru {
+	margin-right: -16px
+}
+
+.sorh {
+	padding: 0 0 0 12px;
+	font-weight: 700;
+	margin: 0 0 11px;
+	background: url(images/sort.png) no-repeat left center;
+	font-size: 14px
+}
+
+.sori {
+	display: inline;
+	margin-right: 16px;
+	font-size: 14px
+}
+
+.w50-btn {
+	width: 50px;
+	float: right
+}
+
+.w50-pre,.w50-next {
+	display: block;
+	width: 48px;
+	height: 128px;
+	background: #f5f5f5 url(images/btn_arr.png) no-repeat 0 0;
+	border: 1px solid #e4e4e4;
+	cursor: pointer
+}
+
+.w50-pre {
+	background-position: 0 center;
+	margin-bottom: 10px
+}
+
+.w50-pre:hover {
+	background-position: -50px center;
+	border-color: #e73c31
+}
+
+.w50-next {
+	background-position: -150px center
+}
+
+.w50-next:hover {
+	background-position: -200px center;
+	border-color: #e73c31
+}
+
+.w50-btn .disPre,.w50-btn .disPre:hover {
+	background-position: -100px center;
+	cursor: default;
+	background-color: #f5f5f5;
+	border-color: #e4e4e4
+}
+
+.w50-btn .disNext,.w50-btn .disNext:hover {
+	background-position: -250px center;
+	cursor: default;
+	background-color: #f5f5f5;
+	border-color: #e4e4e4
+}
+
+.ranku {
+	font-size: 14px
+}
+
+.ranki {
+	padding: 0 0 20px
+}
+
+.ranka {
+	display: block;
+	height: 16px;
+	line-height: 16px;
+	overflow: hidden
+}
+
+.rankuL {
+	width: 120px;
+	float: left
+}
+
+.rankuR {
+	width: 120px;
+	float: right;
+	background-position: 0 -178px
+}
+
+.rki {
+	background: url(../images/rank.png) no-repeat;
+	margin-right: 8px;
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	overflow: hidden;
+	vertical-align: middle
+}
+
+.rke {
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	height: 21px;
+	width: 218px;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.rki1 {
+	background-position: 0 -36px
+}
+
+.rki2 {
+	background-position: 0 -72px
+}
+
+.rki3 {
+	background-position: 0 -108px
+}
+
+.rki4 {
+	background-position: 0 -144px
+}
+
+.rki5 {
+	background-position: 0 -180px
+}
+
+.rki6 {
+	background-position: 0 -216px
+}
+
+.rki7 {
+	background-position: 0 -252px
+}
+
+.rki8 {
+	background-position: 0 -288px
+}
+
+.rki9 {
+	background-position: 0 -324px
+}
+
+.scroll {
+	width: 100%;
+	height: 350px;
+	position: relative
+}
+
+.scroll .scroll-img {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	z-index: 0;
+	min-width: 1000px
+}
+
+.scroll .scroll-img .img-show {
+	height: 100%;
+	width: 100%;
+	background: center 0 no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0
+}
+
+.scroll .scroll-img .active {
+	z-index: 100
+}
+
+.scroll-txt {
+	position: absolute;
+	width: 980px;
+	left: 50%;
+	margin-left: -490px;
+	bottom: 62px;
+	height: 288px;
+	top: 0;
+	z-index: 15
+}
+
+.scroll-txt a {
+	font: 18px "Microsoft yahei";
+	color: #fff;
+	outline: 0;
+	display: block;
+	width: 100%;
+	height: 100%
+}
+
+.scroll-txt a:hover {
+	color: #fff;
+	text-decoration: none
+}
+
+.scroll-txt .videoBtn {
+	vertical-align: middle;
+	_cursor: pointer
+}
+
+.scroll-txt .slider-txt {
+	vertical-align: middle;
+	display: inline-block;
+	cursor: pointer
+}
+
+.scroll-txt p {
+	position: absolute;
+	bottom: 0
+}
+
+.scroll-nav {
+	z-index: 10;
+	width: 100%;
+	height: 120px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#FFF, endColorstr=#FFF)
+}
+
+.scroll-tab {
+	width: 972px;
+	padding-left: 8px;
+	height: 54px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	bottom: 8px;
+	margin: 0 0 0 -490px
+}
+
+.scroll-tab .prev,.scroll-tab .next {
+	margin-top: 7px
+}
+
+.scroll-ul {
+	width: 880px;
+	margin: 0 8px 0 10px;
+	overflow: hidden
+}
+
+.scroll-ul ul {
+	float: left;
+	overflow: hidden
+}
+
+.scroll-ul li {
+	float: left;
+	width: 94px;
+	margin: 0 8px;
+	_display: inline
+}
+
+.scroll-ul li:hover {
+	cursor: pointer
+}
+
+.scroll-ul li a {
+	display: block;
+	width: 90px;
+	height: 45px;
+	padding: 7px 2px 2px
+}
+
+.scroll-ul li a img {
+	opacity: .7;
+	filter: alpha(opacity=70)
+}
+
+.scroll-ul li.on a,.scroll-ul li a:hover {
+	background: url(//css.tv.itc.cn/global/images/focus/lion.png) no-repeat
+}
+
+.scroll-ul li.on a img,.scroll-ul li a:hover img {
+	opacity: 1;
+	filter: alpha(opacity=100)
+}
+
+.scroll .prev,.scroll .next {
+	width: 31px;
+	height: 46px
+}
+
+.scroll .prev {
+	background: url(//css.tv.itc.cn/global/images/focus/prev.png) no-repeat center;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//css.tv.itc.cn/global/images/focus/prev.png", sizingMethod="noscale");
+	_background: 0 0
+}
+
+.scroll .prev:hover {
+	background: url(//css.tv.itc.cn/global/images/focus/prev-h.png) no-repeat center;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//css.tv.itc.cn/global/images/focus/prev-h.png", sizingMethod="noscale");
+	_background: 0 0;
+	_cursor: pointer
+}
+
+.scroll .next {
+	background: url(//css.tv.itc.cn/global/images/focus/next.png) no-repeat center;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//css.tv.itc.cn/global/images/focus/next.png", sizingMethod="noscale");
+	_background: 0 0
+}
+
+.scroll .next:hover {
+	background: url(//css.tv.itc.cn/global/images/focus/next-h.png) no-repeat center;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//css.tv.itc.cn/global/images/focus/next-h.png", sizingMethod="noscale");
+	_background: 0 0;
+	_cursor: pointer
+}
+
+.scroll .videoBtn {
+	display: inline-block;
+	background: url(//css.tv.itc.cn/global/images/focus/videoBtn24.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//css.tv.itc.cn/global/images/focus/videoBtn24.png');
+	width: 45px;
+	height: 45px
+}
+
+.scroll a:hover .videoBtn {
+	background: url(//css.tv.itc.cn/global/images/focus/videoBtn24-hover.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//css.tv.itc.cn/global/images/focus/videoBtn24-hover.png')
+}
+
+.scroll .fade-cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 5;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: .5;
+	filter: alpha(opacity=50);
+	display: none
+}
+
+.scroll-tip {
+	position: absolute;
+	left: 50%;
+	width: 980px;
+	margin: 0 0 0 -490px;
+	bottom: 71px
+}
+
+.scroll-tip .music-tip {
+	margin: 0 0 0 58px;
+	height: 61px;
+	color: #fff;
+	font: 16px "Microsoft yahei"
+}
+
+.scroll-tip .music-tip span {
+	display: block;
+	float: left
+}
+
+.scroll-tip .music-tip .tip-left {
+	background: url(//css.tv.itc.cn/channel/music-images/tip-left.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//css.tv.itc.cn/channel/music-images/tip-left.png');
+	width: 60px;
+	height: 61px
+}
+
+.scroll-tip .music-tip .tip-center {
+	background: url(//css.tv.itc.cn/channel/music-images/tip-center.png) repeat-x;
+	_background-image: none;
+	margin-top: 27px;
+	height: 33px;
+	line-height: 33px;
+	_background: #000;
+	_filter: alpha(opacity=50)
+}
+
+.scroll-tip .music-tip .tip-right {
+	background: url(//css.tv.itc.cn/channel/music-images/tip-right.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//css.tv.itc.cn/channel/music-images/tip-right.png');
+	width: 17px;
+	height: 33px;
+	margin-top: 27px
+}
+
+.exclusive {
+	background: url(//css.tv.itc.cn/channel/drama-images/only.png) no-repeat;
+	_background-image: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='//css.tv.itc.cn/channel/drama-images/only.png');
+	display: block;
+	height: 17px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 36px
+}
+
+.W_1000 #footArea {
+	min-width: 1000px
+}
+
+.W_1000 #hd_nav {
+	min-width: 1000px
+}
+
+.W_1190 .wrap {
+	width: 1190px
+}
+
+.W_1190 .colL {
+	width: 950px
+}
+
+.W_1190 .lis_r3 {
+	display: block
+}
+
+.W_1190 .lis_r2 {
+	display: none
+}
+
+.W_1190 #footArea {
+	min-width: 1190px
+}
+
+.W_1190 .sorbox {
+	width: 367px
+}
+
+.W_1190 .sorboxM {
+	margin: 0 44px 0 45px
+}
+
+.W_1380 .wrap {
+	width: 1380px
+}
+
+.W_1380 .colL {
+	width: 1140px
+}
+
+.W_1380 .lis_r2,.W_1380 .lis_r3 {
+	display: block
+}
+
+.W_1380 #footArea {
+	min-width: 1380px
+}
+
+.W_1380 .sorbox {
+	width: 425px
+}
+
+.W_1380 .sorboxM {
+	margin: 0 52px 0 53px
+}
+
+.editer {
+	text-align: right;
+	padding: 20px 0 15px;
+	color: #999
+}

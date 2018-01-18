@@ -1,0 +1,40 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>模板管理</strong></div>
+        <notempty name="Think.get.path">
+        <div class="padding border-bottom">
+			{$file}
+        </div>
+        </notempty>
+        <table class="table table-hover">
+        	<tr>
+                <th>文件名/文件夹</th>
+                <th>文件类型</th>
+                <th>修改时间</th>
+                <th>文件大小</th>
+                <th>操作</th>
+            </tr>
+           	<notempty name="info">
+            <volist name="info" id="vo">
+            <tr>
+                <td><a href="{$vo['url']}"><span class="{$vo['icon']}"></span> {$vo['title']}</a></td>
+                <td>{$vo['type']}</td>
+                <td>{$vo.time|time_format}</td>
+                <td>{$vo['size']|format_bytes}</td>
+                <td>{$vo['edit']}</td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="5"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+	  highlight_subnav('{:U('Template/index')}');
+</script>
+</block>

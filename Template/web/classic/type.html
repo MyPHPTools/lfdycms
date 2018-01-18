@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+            <div class="k_lujing">
+                <ul>
+                    <li class="k_lujing-1">当前位置：</li>
+                    <li class="k_lujing-2">
+                        <a href="/">首页</a>
+                    </li>
+                    <li class="k_lujing-3">{$ctitle}</li>
+                </ul>
+            </div>
+            <div class="ad-b1">
+                广告位置
+            </div>
+            <div class="k_list-index">
+                <div class="k_list-index-1">
+                    <div class="k_list-index-1a">{$ctitle}索引</div>
+                    <div class="k_list-index-1b">
+                        <ul>
+                            <li class="k_list-index-1b-a">类型：</li>
+                            <type name="type">
+                                <li class="k_list-index-1b-b"><a href="{$type['url']}">{$type['title']}</a></li>
+                            </type>
+                        </ul>
+                    </div>
+                    <div class="k_list-index-1b">
+                        <ul>
+                            <li class="k_list-index-1b-a">地区：</li>
+                            <area name="area">
+                                <li class="k_list-index-1b-b"><a href="{$area['url']}">{$area['title']}</a></li>
+                            </area>
+                        </ul>
+                    </div>
+                    <div class="k_list-index-1b">
+                        <ul>
+                            <li class="k_list-index-1b-a">语言：</li>
+                            <language name="language">
+                                <li class="k_list-index-1b-b"><a href="{$language['url']}">{$language['title']}</a></li>
+                            </language>
+                        </ul>
+                    </div>
+                    <div class="k_list-index-1c">
+                        <ul>
+                            <li class="k_list-index-1b-a">年份：</li>
+                            <year name="year">
+                                <li class="k_list-index-1b-b"><a href="{$year['url']}">{$year['title']}</a></li>
+                            </year>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="k_list">
+                <div class="k_list-1">
+                    <div class="k_list-1a">
+                        <!-- 动作片 -->
+                        <nav name="nav" cid="$cid" type="1">          
+                        <div class="k_list-1a-1">
+                            <ul>
+                                <li class="k_list-1a-1a">{$nav['title']}</li>
+                                <li class="k_list-1a-1b">
+                                    <a href="{$nav['url']}">更多</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="k_list-1a-2">
+                            <ul>
+                                <list name="list" cid="$nav['id']" order="update_time desc" limit="5">
+                                <li class="k_upnew-1d">
+                                    <div id="k_upnew-1d-img">
+                                        <a class="lz_img" href="{$list['url']}" target="_blank">
+                                            <img alt="{$list['title']}[{$list['serialize']}]" src="{$list['pic']}" border="0"/>        
+                                            <span class="lz_bg"></span>
+                                            <span class="lz_time">{$list['serialize']}</span>
+                                        </a>
+                                    </div>
+                                    <div id="k_upnew-1d-title">
+                                        <a class="name" href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </div>
+                                    <div id="k_upnew-1d-zy">{$list['actors']|msubstr=0,11}</div>
+                                </li>
+                                </list>
+                            </ul>
+                        </div>
+                        <div class="k_list-1a-3">
+                            <list name="list" cid="$nav['id']" order="update_time desc" limit="11">
+                            <gt name="i" value="5">
+                            <div class="k_list-1a-3a">
+                                <ul>
+                                    <li class="k_list-1a-3a-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_list-1a-3a-list">
+                                        /
+                                        <span>{$list['serialize']}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            </gt>
+                            </list>
+                        </div>
+                        </nav>
+                    </div>
+
+                    <div class="k_list-1b">
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">人气排行榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="$cid" order="hits desc" limit="20">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                        <div class="ad-b2">
+                            <!-- 广告位：B-05 -->            
+                            广告位置
+                        </div>
+                        <div class="k_list-1b-a">
+                            <div class="k_list-1b-a1">最新推荐榜</div>
+                        </div>
+                        <div class="k_list-1b-b">
+                            <list name="list" cid="$cid" order="update_time desc" limit="15">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                    </div>
+
+                </div>
+            </div> 
+            <div class="ad-a3">
+                广告位置
+            </div>  
+        </DIV>
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

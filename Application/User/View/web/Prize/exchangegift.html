@@ -1,0 +1,101 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+                <div class="col-lg-9">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            <b>我的兑奖</b>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width:200px;">兑奖时间</th>
+                                        <th>奖品名称</th>
+                                        <th style="width:100px;">状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                	<notempty name="exchange">
+                                	<volist name="exchange" id="vo">
+                                    <tr>
+                                        <td>{$vo['create_time']|time_format}</td>
+                                        <td><a href="{:U('Prize/detail?id='.$vo['pid'])}" target="_blank">{$vo['pid']|get_prize_name}</a></td>
+                                      <td>{$vo['mode']|show_mode}</td>
+                                    </tr>
+                                    </volist>
+                                    <else/>
+                                    <tr>
+                                        <td colspan="3"><i class="glyphicon glyphicon-alert"></i> 暂无该项记录！</td>
+                                      </tr>
+                					</notempty>
+                                </tbody>
+                            </table>
+                      </div>
+                        <div class="panel-footer">
+                            <div class="text-center">
+                                <div class="page">
+                                {$_page}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="text-center m-b m-t">
+                                        <img src="{$path|default='__IMG__/user.jpg'}" class="img-circle img-users">
+                                    <div>
+                                        <div class="h4 m-t-xs m-b-xs">{$username}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer bg-info text-center">
+                            <div class="row pull-out">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=follow&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$follow}
+                                        </span>
+                                        <small class="text-muted">
+                                            关注
+                                        </small>
+										</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 dk">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=fans&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$fans}
+                                        </span>
+                                        <small class="text-muted">
+                                            粉丝
+                                        </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$integral}
+                                        </span>
+                                        <small class="text-muted">
+                                            积分
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

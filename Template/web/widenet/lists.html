@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{$webtitle}</title>
+	<meta name="keywords" content="{$list_keywords}">
+	<meta name="description" content="{$list_description}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/style.css">
+</head>
+<body>
+<div id="app">
+	<!-- 头部 -->
+	<include file="{$tplpath}/header.html" />
+	<!-- 筛选标签 -->
+	<div id="t-movie-filter">
+		<div class="w-movie-filter">
+			<ol>
+				<li>
+					<dt>类型：</dt>
+					<dd>
+						<type name="type">
+                            <a href="{$type['url']}" <eq name="cid" value="$type['id']">class="active"</eq>>{$type['title']}</a>
+                        </type>
+					</dd>
+				</li>
+				<li>
+					<dt>地区：</dt>
+					<dd>
+						<area name="area">
+                            <a href="{$area['url']}" <if condition="($Think.get.area eq '') AND ($i eq 1) OR ($Think.get.area eq $area['title'])">class="active"</if>>{$area['title']}</a>
+                        </area>
+					</dd>
+				</li>
+				<li>
+					<dt>年代：</dt>
+					<dd>
+						<year name="year">
+                            <a href="{$year['url']}" <if condition="($Think.get.year eq '') AND ($i eq 1) OR ($Think.get.year eq $year['title'])">class="active"</if>>{$year['title']}</a>
+                        </year>
+					</dd>
+				</li>
+				<li data-role="cl">
+					<dt>状态：</dt>
+					<dd>
+						<language name="language">
+                            <a href="{$language['url']}" <if condition="($Think.get.language eq '') AND ($i eq 1) OR ($Think.get.language eq $language['title'])">class="active"</if>>{$language['title']}</a>
+                        </language>
+					</dd>
+				</li>
+			</ol>
+		</div>
+	</div>
+	<!-- 筛选结果 -->
+	<div id="t-pager-cont">
+		<div class="w-movie-page">
+			<header>
+				<div class="tab-menu">
+					<a href="{:url_change('lists/lists',array('name'=>$cname,'id'=>$cid,'order'=>'id'))}" <eq name="Think.get.order" value="id">class="active"</eq>>最新上架</a>
+					<a href="{:url_change('lists/lists',array('name'=>$cname,'id'=>$cid,'order'=>'update_time'))}" <if condition="($Think.get.order eq '') OR ($Think.get.order eq 'update_time')">class="active"</if>>最新更新</a>
+					<a href="{:url_change('lists/lists',array('name'=>$cname,'id'=>$cid,'order'=>'hits'))}" <eq name="Think.get.order" value="hits">class="active"</eq>>最多播放</a>
+					<a href="{:url_change('lists/lists',array('name'=>$cname,'id'=>$cid,'order'=>'rating'))}" <eq name="Think.get.order" value="rating">class="active"</eq>>最受好评</a>
+				</div>
+				<div id="t-mini-pager">
+					<div class="mini-pager">
+						<p>
+							共
+							<span class="total-num">{$count}</span>
+							条筛选结果
+						</p>
+					</div>
+				</div>
+			</header>
+			<div class="tab-cont">
+				<ul class="movie-filter-lists">
+					<listpage name="list" limit="30" order="update_time desc"> 
+					<li class="slider-item">
+						<div class="slider-info-box">
+							<div class="img-box">
+								<a href="{$list['url']}" target="_blank">
+									<img width="200" height="300" alt="{$list['title']}" src="{$list['pic']}" style="display: inline;">
+								</a>
+								<a href="{$list['url']}" target="_blank" class="play-btn">观看正片</a>
+								<switch name="list.tj_tag">
+                                    <case value="1"><span title="热剧更新" class="gengxin-icon">热剧更新</span></case>
+                                    <case value="2"><span title="正在热播" class="onlyp-icon">正在热播</span></case>
+                                    <case value="3"><span title="大片抢先看" class="qanxian-icon">大片抢先看</span></case>
+                                    <case value="4"><span title="VIP专享" class="vip-icon">VIP专享</span></case>
+                                </switch>
+								<span class="figure_caption">{$list['serialize']}</span>
+							</div>
+							<div class="info">
+								<h2>
+									<a href="{$list['url']}" target="_blank">{$list['title']}</a>
+								</h2>
+								<p class="txt">{$list['actors']|msubstr=0,11}</p>
+								<span class="scores">{$list['rating']}</span>
+							</div>
+						</div>
+					</li>
+					</listpage>
+				</ul>
+			</div>
+			<div class="w-pager-wrap">
+				<div class="w-pager all-pager">
+					<page listrow="30" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="{$tplpath}/footer.html" />
+</div>
+<script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

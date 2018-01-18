@@ -1,0 +1,43 @@
+<header>
+    <div class="header">
+        <div class="head">
+            <!--logo-->
+            <div class="logo">
+                <a href="/">
+                    <img src="{$webpath}{$weblogo}"></a>
+            </div>
+            <!--顶部导航-->
+            <div class="header-menu">
+                <ul class="nav">
+                    <li><a target="_self" href="{$webpath}">首页</a></li>
+                    <nav name="nav">
+                        <li <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>><a title="{$nav['title']}" target="_self" href="{$nav['url']}">{$nav['title']}</a></li>
+                    </nav>
+                </ul>
+            </div>
+            <!--登录、注册-->
+
+            <!--搜索-->
+            <div id="search">
+                <div class="ser" >
+                    <form action="{:U('Search/index')}" method="post">
+                        <input type="text" id="keyword" name="keyword" class="search-input" x-webkit-speech value="请输入影片名或演员名称" onfocus="if(this.value=='请输入影片名或演员名称'){this.value='';}" onblur="if(this.value==''){this.value='请输入影片名或演员名称';};"/>
+                        <input type="submit" name="submit" class="sub" value="" title="搜索"/>
+                    </form>
+                </div>
+            </div>
+            <empty name="user['id']">
+                <div class="history">
+                    <a href="{$user['userlogin']}" class="gk">
+                        登录
+                    </a>
+                </div>
+            <else />
+                <div class="logined">
+                    <a href="{$user['userurl']}" title="" target="_blank"><img src="{$user['path']}" alt=""></a>
+                    <a href="{$user['userlogout']}" class="J-logout">退出</a>
+                </div>
+            </empty>
+        </div>
+    </div>
+</header>

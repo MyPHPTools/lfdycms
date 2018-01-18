@@ -1,0 +1,299 @@
+<div class="content bgcolor-fff header">
+    <div class="container">
+        <div class="col col2">
+            <a href="/" class="logo"><img src="{$webpath}{$weblogo}"></a>
+        </div>
+        <div class="col col5 text-right">
+            <form name="search" id="searchform" action="{$webdir}{:U('Search/index')}" method="post" target="_blank">
+            <div class="search">
+                <ul class="search_show">
+                    <list name="list" order="hits desc" limit="5">
+                    <li class="f14">
+                        <span class="text-center">{$i}</span>
+                        <a href="{$list['url']}">{$list['title']|msubstr=0,10}</a>
+                        <em>{$list['ctitle']}</em>
+                    </li>
+                    </list>
+                </ul>
+                <input type="text" class="word" placeholder="三生三世十里桃花" id="searchTxt" autocomplete="off" name="keyword">
+                <button class="search_enter"><i class="icon search_icon"></i>搜 索</button>
+            </div>
+            </form>
+        </div>
+        <div class="col col5 text-right" name="TopIcon">
+            <div class="col col2 f14 text-center">
+                <a href="{:U('Home/Other/index/tpl/vip')}" target="_blank" class="tr_icons">
+                    <i class="icon icon-vip"></i>
+                    <span>开通VIP</span>
+                </a>
+            </div>
+            <div class="col col2 f14 text-center">
+                <a href="#" class="tr_icons">
+                    <i class="icon icon-look"></i>
+                    <span>观看记录</span>
+                </a>
+                <div class="show-record border-top text-left">
+                    <em></em><i></i>
+                    <div id="hisStatu"></div>
+                    <div class="record text-center">
+                        <h4 class="col col12 f12 h66 text-left margin-t15">大家都在看</h4>
+                        <div class="col col12 margin-t10">
+                            <list name="list" order="hits desc" limit="3">
+                            <div class="col col37">
+                                <a href="{$list['url']}">
+                                    <div style="height: 90px;overflow: hidden;">
+                                        <img src="{$list['pic']}" class="img-full">
+                                    </div>
+                                    <span class="f12 h66 Show-Word">{$list['title']|msubstr=0,10}</span>
+                                </a>
+                            </div>
+                            </list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col2 f14 text-center">
+                <a href="#" class="tr_icons">
+                    <i class="icon icon-history"></i>
+                    <span>收藏</span>
+                </a>
+                <div class="show-record border-top text-left">
+                    <em></em><i></i>
+                    <div id="favorite"></div>
+                    <div class="record text-center">
+                        <div class="col col6 f12"></div>
+                        <div class="col col6 f12 text-right"><a href="{:U('/User/Favorites/index',array('type'=>1))}" class="a1">私密收藏夹</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col2 f14 text-center">
+                <a href="{:U('Home/Other/index/tpl/app_down')}" target="_blank" class="tr_icons">
+                    <i class="icon icon-phone"></i>
+                    <span>下载APP</span>
+                </a>
+            </div>
+            <div class="col col2 text-center">
+            	<empty name="user['id']">
+                <a href="{$user['userlogin']}" class="tr_icons top_user">
+                    <i class="icon icon-user"></i>
+                    <span class="f14">注册/登录</span>
+                </a>
+                <else />
+                <a href="{$user['userurl']}" class="tr_icons top_user">
+                    <img src="{$user['path']}">
+                    <span class="f12 h66 text-center">{$user['username']}</span>
+                </a>
+                </empty>
+                <div class="show-record border-top text-left">
+                    <em></em><i></i>
+                    <div class="top-user text-center">
+                        <empty name="user['id']">
+                        <h3 class="h66 f14 margin-t15">您还没有登录，请登录！</h3>
+                        <a href="{$user['userlogin']}" class="btn btn-blue btn-big btn-radius margin-t15">登录</a>
+                        <h3 class="h66 f12 margin-t15"><a href="{$user['userreg']}" class="a1">还没有帐号？立即注册</a></h3>
+                        <else />
+                        <a href="{$user['userurl']}">
+                        <div class="col col4 padding vl-align-top">
+                            <img src="{$user['path']}" class="img-full">
+                        </div>
+                        <div class="col col8 padding text-left h66">
+                            <ul class="padding-b8">
+                                <li class="col col5 f12">用户名：</li>
+                                <li class="col col7 f12">{$user['username']}</li>
+                            </ul>
+                            <if condition="$user['vip_time'] gt time()">
+                                <ul class="padding-b8">
+                                    <li class="col col5 f12">到期时间：</li>
+                                    <li class="col col7 f12">{$user['vip_time']|time_format=###,"Y-m-d"}</li>
+                                </ul>
+                                <ul>
+                                    <li class="col col5 f12">VIP：</li>
+                                    <li class="col col7"><i class="icon icon-user-vip"></i></li>
+                                </ul>
+                            </if>
+                        </div>
+                        </a>
+                        <div class="col col12 border-top">
+                            <div class="col col6 padding f12 text-left">
+                                <a href="{$user['userurl']}"><b>用户中心</b></a>
+                            </div>
+                            <div class="col col6 padding f12"><a href="{:U('/User/Recom/index')}">用户签到</a></div>
+                        </div>
+                        <div class="col col12 user-top-bottom bgcolor-f5f5 padding-tb8 padding-lr15 text-left">
+                            <div class="col col6 f12"><if condition="$user['vip_time'] lt time()"><a href="{:U('Home/Other/index/tpl/vip')}" target="_blank" class="a1">立即开通VIP</a></if></div>
+                            <div class="col col6 f12 text-right"><a href="{$user['userlogout']}" class="a1">退出</a></div>
+                        </div>
+                        </empty>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content bgcolor-f8f8 border-top">
+    <div class="container">
+        <div class="col col8 f14 menu">
+            <a href="{$webpath}" title="首页" <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>>首页<em></em></a>
+            <nav name="nav">
+                <span>
+                    <a href="{$nav['url']}" <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>>{$nav['title']}<em></em></a>
+                    <eq name="nav['branch']" value="1">
+                    <div class="tow-menu">
+                        <b></b>
+                        <nav name="menu" cid="$nav['id']"><a href="{$menu['url']}">{$menu['title']}</a></nav>
+                    </div>
+                    </eq>
+                </span>
+            </nav>
+        </div>
+        <div class="col col4 text-right f14 menu">
+            <a href="javascript:AddFavorite('{$weburl}', '{$webname}')">收藏本站</a>
+            <a href="{:U('Home/Other/index/tpl/time')}" class="hot" target="_blank">最近更新</a>
+        </div>
+    </div>
+</div>
+
+<!-- 浮动header -->
+<div class="content bgcolor-fff play-header" style="display: none;" name="play-header">
+    <div class="container">
+        <div class="col col2">
+            <a href="/" class="logo"><img src="{$webpath}{$weblogo}"></a>
+        </div>
+        <div class="col col6" name="TopIcon">
+            <div class="col col2 f14">
+                <a href="#" class="pindao">
+                    <i class="icon top_menu"></i>
+                    频道
+                </a>
+                <div class="show-record border-top text-left">
+                    <em></em><i></i>
+                    <div class="top-class f14">
+                        <a href="{$webpath}" title="首页" <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>>首页<em></em></a>
+                        <nav name="nav">
+                            <span>
+                                <a href="{$nav['url']}" <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>>{$nav['title']}<em></em></a>
+                                <eq name="nav['branch']" value="1">
+                                <div class="tow-menu">
+                                    <b></b>
+                                    <nav name="menu" cid="$nav['id']"><a href="{$menu['url']}">{$menu['title']}</a></nav>
+                                </div>
+                                </eq>
+                            </span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col col10 text-right">
+                <div class="search">
+                    <form name="search" id="searchform" action="{:U('Search/index')}" method="post" target="_blank">
+                        <input type="text" class="word" placeholder="三生三世十里桃花" id="searchTxt" autocomplete="off" name="keyword">
+                    <button class="search_enter"><i class="icon search_icon"></i>搜 索</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col col4 text-right text-center" name="TopIcon">
+
+            <div class="col col2 f14 text-center">
+                <a href="{:U('Home/Other/index/tpl/vip')}"  target="_blank" class="tr_icons">
+                    <i class="icon icon-vip"></i>
+                </a>
+            </div><div class="col col2 f14 text-center">
+                <a href="#" class="tr_icons">
+                    <i class="icon icon-look"></i>
+                </a>
+                <div class="show-record border-top text-left">
+                    <em></em><i></i>
+                    <div id="hisStatu"></div>
+                    <div class="record text-center">
+                        <h4 class="col col12 f12 h66 text-left margin-t15">大家都在看</h4>
+                        <div class="col col12 margin-t10">
+                            <list name="list" order="hits desc" limit="3">
+                            <div class="col col37">
+                                <a href="{$list['url']}">
+                                    <div style="height: 90px;overflow: hidden;">
+                                        <img src="{$list['pic']}" class="img-full">
+                                    </div>
+                                    <span class="f12 h66 Show-Word">{$list['title']|msubstr=0,10}</span>
+                                </a>
+                            </div>
+                            </list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col2 f14 text-center">
+                <a href="#" class="tr_icons">
+                    <i class="icon icon-history"></i>
+                </a>
+                <div class="show-record border-top text-left">
+                    <em></em><i></i>
+                    <div id="favorite"></div>
+                    <div class="record text-center">
+                        <div class="col col6 f12"></div>
+                        <div class="col col6 f12 text-right"><a href="{:U('/User/Favorites/index',array('type'=>1))}" class="a1">私密收藏夹</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col2 f14 text-center">
+                <a href="{:U('Home/Other/index/tpl/app_down')}" target="_blank" class="tr_icons">
+                    <i class="icon icon-phone"></i>
+                </a>
+            </div>
+            <div class="col col2 text-center">
+                <empty name="user['id']">
+                <a href="{$user['userlogin']}" class="tr_icons top_user">
+                    <i class="icon icon-user"></i>
+                </a>
+                <else />
+                <a href="{$user['userurl']}" class="tr_icons top_user">
+                    <img src="{$user['path']}">
+                </a>
+                </empty>
+                <div class="show-record border-top text-left">
+                    <em></em><i></i>
+                    <div class="top-user text-center">
+                        <empty name="user['id']">
+                        <h3 class="h66 f14 margin-t15">您还没有登录，请登录！</h3>
+                        <a href="{$user['userlogin']}" class="btn btn-blue btn-big btn-radius margin-t15">登录</a>
+                        <h3 class="h66 f12 margin-t15"><a href="{$user['userreg']}" class="a1">还没有帐号？立即注册</a></h3>
+                        <else />
+                        <a href="{$user['userurl']}">
+                        <div class="col col4 padding vl-align-top">
+                            <img src="{$user['path']}" class="img-full">
+                        </div>
+                        <div class="col col8 padding text-left h66">
+                            <ul class="padding-b8">
+                                <li class="col col5 f12">用户名：</li>
+                                <li class="col col7 f12">{$user['username']}</li>
+                            </ul>
+                            <if condition="$user['vip_time'] gt time()">
+                                <ul class="padding-b8">
+                                    <li class="col col5 f12">到期时间：</li>
+                                    <li class="col col7 f12">{$user['vip_time']|time_format=###,"Y-m-d"}</li>
+                                </ul>
+                                <ul>
+                                    <li class="col col5 f12">VIP：</li>
+                                    <li class="col col7"><i class="icon icon-user-vip"></i></li>
+                                </ul>
+                            </if>
+                        </div>
+                        </a>
+                        <div class="col col12 border-top">
+                            <div class="col col6 padding f12 text-left">
+                                <a href="{$user['userurl']}"><b>用户中心</b></a>
+                            </div>
+                            <div class="col col6 padding f12"><a href="{:U('/User/Recom/index')}">用户签到</a></div>
+                        </div>
+                        <div class="col col12 user-top-bottom bgcolor-f5f5 padding-tb8 padding-lr15 text-left">
+                            <div class="col col6 f12"><if condition="$user['vip_time'] lt time()"><a href="/vip" target="_blank" class="a1">立即开通VIP</a></if></div>
+                            <div class="col col6 f12 text-right"><a href="{$user['userlogout']}" class="a1">退出</a></div>
+                        </div>
+                        </empty>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

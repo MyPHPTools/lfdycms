@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$title}-{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+        <link href="{$tplpath}/css/idangerous.swiper.css" rel="stylesheet">
+        <!--[if lt IE 8]>
+            <script src="{$tplpath}/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bgcolor-f5f5">
+        <include file="{$tplpath}/header.html" />
+		<div class="content profile-top-bg">
+			<div class="container">
+				<div class="col col3"></div>
+				<div class="col col9">
+					<h1 class="white f36 margin-t30">
+						{$title}
+					</h1>
+                    <gt name="serialize" value="0"><h3 class="white f14 margin-t10">{$serialize}</h3></gt>
+				</div>
+			</div>
+		</div>
+
+		<div class="content bgcolor-fff padding-tb15">
+			<div class="container">
+				<div class="col col3 vl-align-top">
+					<div class="profile-cover"><img src="{$pic}" class="img-full"></div>
+					<div class="dig">
+						<span {$digg['up_js']} class="player_up pl_mov">{$digg['up']}</span>
+						<span {$digg['down_js']} class="player_down pl_mov pl_movri">{$digg['down']}</span>
+						<a href="javascript:;" {$favorites} class="player_sc pl_mov margin-t15">收藏</a>
+						<span class="player_hot pl_mov pl_movri margin-t15">{$hits}</span>
+					</div>
+				</div>
+				<div class="col col6 h88 vl-align-top padding-r15">
+					<div class="col col12 f14 padding-tb8">
+						<a href="/">首页</a>	&gt;
+						<a href="{:url_change('lists',array('id'=>get_category_parent($cid),'name'=>get_category_name(get_category_parent($cid))))}" class="a1">{:get_category(get_category_parent($cid))}</a>	&gt;
+						<a href="{$curl}" class="a1">{$ctitle}</a>	&gt;
+						<a href="{$url}" class="a1">{$title}</a>
+					</div>
+					<div class="col col12 f14 padding-tb8">类型：<a href="{$curl}" class="a1">{$ctitle}</a></div>
+					<div class="col col12 f14 padding-tb8">主演：
+						<volist name="actors_array" id="actors">
+							<a href="{$actors['url']}" class="a1">{$actors['actors']}</a> /
+						</volist>
+					</div>
+					<div class="col col6 f14 padding-tb8">年份：<a href="{:U('lists/lists',array('id'=>$cid,'year'=>$year))}" class="a1">{$year}</a></div>
+					<div class="col col6 f14 padding-tb8">导演：<a href="{:U('search/index',array('keyword'=>$directors))}" class="a1">{$directors}</a></div>
+					<div class="col col6 f14 padding-tb8">区域：<a href="{:U('lists/lists',array('id'=>$cid,'area'=>$area))}" class="a1">{$area}</a></div>
+					<div class="col col6 f14 padding-tb8">语言：<a href="{:U('lists/lists',array('id'=>$cid,'language'=>$language))}" class="a1">{$language}</a></div>
+					<div class="col col12 f14 padding-tb8 profile-word">简介：{$content}</div>
+					<div class="col col12 f14 padding-tb8 a2 profile-show">点击展开全部</div>
+				</div>
+				<div class="col col3 bgcolor-f8f8 padding label-radius">
+					<div class="col col12">
+						<h3 class="public_title_f">
+							<span>公告</span>
+						</h3>
+					</div>
+					<ul class="col col12 margin-t10">
+						<news name="news" cid="101" limit="8" order="id">
+							<a href="{$news['url']}" class="col col12 f12 border-bottom-d padding-tb8 a1">• {$news['title']}</a>
+						</news>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="content margin-t15 padding-tb15">
+			<div class="container">
+				<div class="col col77 f12 bgcolor-fff padding vl-align-top">
+					<div class="col col12 ad-height">
+						<script src="__AD__/movie_840x100.js"></script>
+					</div>
+					<playlist name="player">
+					<div class="col col12 play-list <neq name="i" value="1">margin-t30</neq>">
+						<h2 class="col f16 u-tab-title">{$player['title']}<em></em></h2>
+					</div>
+					<div class="col col12 padding-tb15" name="PlayList">
+						<volist name="player['movie_url']" id="url">
+						<a href="{$url['url']}" target="_player" <eq name="player['vip']" value="1">{$url['vip_js']}</eq> class="label label-hover margin-t10">{$url['title']}</a>
+						</volist>
+						<span class="label label-hover margin-t10" name="play-show"></span>
+					</div>
+					</playlist>
+
+
+					<div class="col col12 ad-height">
+						<script src="__AD__/movie_840x100.js"></script>
+					</div>
+
+					<div class="col col12 margin-t30">
+						<h3 class="public_title_f">猜你喜欢</h3>
+					</div>
+					<div class="col col12 move-list">
+						<list name="list" order="hits desc" limit="12">
+						<div class="col col286">
+							<a href="{$list['url']}">
+								<span class="tip"></span>
+								<div class="list-img">
+									<span class="player"></span>
+									<img src="{$list['pic']}" class="img-full">
+									<i>{$list['year']}</i>
+								</div>
+								<dl class="profiles bgcolor-fff text-left">
+									<dt class="f14 h33 like-dt">{$list['title']|msubstr=0,9}</dt>
+									<dd class="f12 h88">{$list['actors']|msubstr=0,11}</dd>
+								</dl>
+							</a>
+						</div>
+						</list>
+						<div class="col col12 margin-t30">
+							<comment />
+						</div>
+					</div>
+				</div>
+
+				<div class="col col33 vl-align-top">
+					<div class="col col12 bgcolor-fff padding">
+						<div class="col col12">
+							<h3 class="public_title_f">{$ctitle}排行榜</h3>
+						</div>
+						<div class="col col12 margin-t15 padding-b10 rank">
+							<list name="list" order="hits desc" limit="10">
+							<dl class="col col12 rank-list">
+								<a href="{$list['url']}">
+									<dd>{$i}</dd>
+									<dt>{$list['title']|msubstr=0,10}</dt>
+									<img src="{$list['pic']}" class="img-full">
+								</a>
+							</dl>
+							</list>
+						</div>
+					</div>
+
+
+					<div class="col col12 bgcolor-fff margin-t15 padding move-type">
+						<dl class="col col12 f12 vl-align-top">
+							<dt class="f14"><span class="padding-lr8">类型</span></dt>
+							<dd>
+								<type name="type">
+								<a href="{$type['url']}" class="a1">{$type['title']}</a>
+								</type>
+							</dd>
+						</dl>
+						<dl class="col col12 f12 vl-align-top">
+							<dt class="f14"><span class="padding-lr8">地区</span></dt>
+							<dd>
+								<area name="area">
+								<a href="{$area['url']}" class="a1">{$area['title']}</a>
+								</area>
+							</dd>
+						</dl>
+						<dl class="col col12 f12 vl-align-top">
+							<dt class="f14"><span class="padding-lr8">年代</span></dt>
+							<dd>
+								<year name="year">
+								<a href="{$year['url']}" class="a1">{$year['title']}</a>
+								</year>
+							</dd>
+						</dl>
+						<dl class="col col12 f12 vl-align-top">
+							<dt class="f14"><span class="padding-lr8">语言</span></dt>
+							<dd>
+								<language name="language">
+								<a href="{$language['url']}" class="a1">{$language['title']}</a>
+								</language>
+							</dd>
+						</dl>
+					</div>
+
+					<div class="col col12 bgcolor-fff padding margin-t15 ">
+						<div class="col col12">
+							<h3 class="public_title_f">最新更新</h3>
+						</div>
+						<div class="col col12 margin-t15 r-h-list">
+							<list name="list" order="update_time desc" limit="6">
+							<dl class="col col6 padding">
+								<a href="{$list['url']}">
+									<dd><img src="{$list['pic']}" class="img-full"></dd>
+									<dt class="f14 h88">{$list['title']|msubstr=0,10}</dt>
+								</a>
+							</dl>
+							</list>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<include file="{$tplpath}/footer.html" />
+		<script type="text/javascript">
+			$(function(){
+				// 顶和踩的位置
+				function DigChenge() {
+					var DigTop = $('.profile-cover').outerHeight(true) - 100;
+					var DigWidth = $('.profile-cover').outerWidth(true);
+					$('.dig').css({'top':DigTop,'width':DigWidth});
+				};
+
+				var img = new Image();
+				img.src = $('.profile-cover img').attr("src");
+				img.onload = function(){
+					DigChenge();
+					$(window).resize(function () {
+						DigChenge()
+					});
+				};
+
+			});
+		</script>
+	</body>
+	
+
+</html>

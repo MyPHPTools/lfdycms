@@ -1,0 +1,326 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+                <div class="col-lg-9">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            我的主页
+                        </div>
+                        <div class="panel-body">
+                            <div class="row row-sm padder-v">
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:url_change('Home/lists/index',array('id'=>102,'name'=>'help'))}" target="_blank">
+                                        <i class="iconu iconu-help"></i>
+                                        <h5 class="text-center">帮助中心</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row row-sm padder-v">
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('Favorites/index')}">
+                                        <i class="iconu iconu-scj"></i>
+                                        <h5 class="text-center">收藏夹</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('User/Favorites/index/type/1')}">
+                                        <i class="iconu iconu-smscj"></i>
+                                        <h5 class="text-center">私密收藏夹</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('Record/index')}">
+                                        <i class="iconu iconu-jl"></i>
+                                        <h5 class="text-center">播放记录</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('Message/index')}">
+                                        <i class="iconu iconu-mail"></i>
+                                        <h5 class="text-center">消息中心</h5>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row row-sm padder-v">
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('Pay/card')}">
+                                        <i class="iconu iconu-card"></i>
+                                        <h5 class="text-center">充值卡充值</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('Pay/log')}">
+                                        <i class="iconu iconu-czjl"></i>
+                                        <h5 class="text-center">充值记录</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('Recom/index')}">
+                                        <i class="iconu iconu-jf"></i>
+                                        <h5 class="text-center">积分</h5>
+                                    </a>
+                                </div>
+                                <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{:U('Users/profile')}">
+                                        <i class="iconu iconu-user"></i>
+                                        <h5 class="text-center">个人信息</h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            猜你喜欢
+                            <a href="javascript:void(0)" class="pull-right text-muted change_movie">
+                                <span class="glyphicon glyphicon-refresh inline"></span>换一批
+                            </a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row row-sm randMovie">
+                            	<div class="text-center wrapper"><img src="__IMG__/loading.gif" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            <b>
+                                兑换
+                            </b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row row-sm">
+                            	<volist name="prize" id="vo">
+                                <div class="col-xs-6 col-sm-4 col-md-3">
+                                    <div class="pos-rlt">
+                                        <a href="{:U('Prize/detail?id='.$vo['id'])}">
+                                            <img src="{$vo['pic']|default='__IMG__/prize.jpg'}" alt="" class="r r-2x img-full prize">
+                                        </a>
+                                    </div>
+                                    <div class="padder-v">
+                                        <a href="{:U('Prize/detail?id='.$vo['id'])}" class="text-ellipsis">
+                                            {$vo['title']}
+                                            <span class="pull-right text-info text-xs">{$vo['integral']}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                </volist>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="text-center m-b m-t">
+                                        <img src="{$path|default='__IMG__/user.jpg'}" class="img-circle img-users">
+                                    <div>
+                                        <div class="h4 m-t-xs m-b-xs">{$username}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer bg-info text-center">
+                            <div class="row pull-out">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=follow&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$follow}
+                                        </span>
+                                        <small class="text-muted">
+                                            关注
+                                        </small>
+										</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 dk">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=fans&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$fans}
+                                        </span>
+                                        <small class="text-muted">
+                                            粉丝
+                                        </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$integral}
+                                        </span>
+                                        <small class="text-muted">
+                                            积分
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="m-b m-t">
+                                    <if condition="$vip_time gt time()">
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">VIP到期：</dd>
+                                        <dd class="list-inline">{$vip_time|time_format=###,"Y-m-d"}</dd>
+                                    </dl>
+                                    </if>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">用户类型：</dd>
+                                        <dd class="list-inline"><if condition="$vip_time gt time()">VIP<else/>普通用户</if></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">帐号登录次数：</dd>
+                                        <dd class="list-inline">{$login}次</dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">上次登录IP：</dd>
+                                        <dd class="list-inline">{:long2ip($last_login_ip)}</dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">上次登录时间：</dd>
+                                        <dd class="list-inline">{$last_login_time|time_format}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div>
+                                    <h4 class="m-b"><b>会员功能</b></h4>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">发表评论</dd>
+                                        <dd class="col-xs-6 text-right"><img src="__IMG__/toggle.gif" /></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看游客视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <img src="__IMG__/toggle.gif" />
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看会员视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看付费视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">视频下载</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">私密夹</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">尊贵身份标识</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="vbox">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="activity">
+                                <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+                                	<volist name="u_l_list" id="vo">
+                                    <li class="list-group-item">
+                                        <a href="{:U('Users/info?id='.$vo['id'])}" class="thumb-sm pull-left m-r-sm">
+                                            <img src="{$vo['path']|default='__IMG__/user.jpg'}" class="img-circle">
+                                        </a>
+                                        <a href="{:U('Users/info?id='.$vo['id'])}" class="clear">
+                                            <small class="pull-right">{$vo['last_login_time']|tmspan}</small>
+                                            <strong class="block">{$vo['username']}</strong>
+                                        </a>
+                                    </li>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	function randMovie(url){
+		$.getJSON(url,function(result){
+			if(result){
+				var html = '';
+				$.each(result, function(i, field){
+					html += '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">';
+					html += '<div class="pos-rlt">';
+					html += '<div class="item-overlay opacity r r-2x bg-black">';
+					html += '<div class="center text-center">';
+					html += '<a href="'+field['url']+'"><span class="glyphicon glyphicon-play i-2x"></span></a>';
+					html += '</div></div>';
+					html += '<a href="'+field['url']+'">';
+					html += '<img src="'+field['pic']+'" alt="'+field['title']+'" class="r r-2x img-full" height="168">';
+					html += '</a></div>';
+					html += '<div class="padder-v">';
+					html += '<a href="'+field['url']+'" class="text-ellipsis">'+field['title']+'</a>';
+					html += '</div></div>';
+				});
+				$(".randMovie").html(html);
+			}else{
+				$(".randMovie").html("<p>没有数据！</p>");
+			}
+	  });
+  }
+  randMovie('{:U("Home/Ajax/randMovie?limit=12")}');
+  
+  $(".change_movie").click(function(){
+  	$(".randMovie").html('<div class="text-center wrapper"><img src="__IMG__/loading.gif" /></div>');
+	randMovie('{:U("Home/Ajax/randMovie?limit=12")}');
+  });
+})
+</script>
+</block>

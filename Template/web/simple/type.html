@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/style.css">
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<!--头部结束-->
+<div class="warp">
+	<div class="container home">
+		<div class="content">
+			<section class="mod">
+				<div class="select-warp">
+					<div class="select-box clearfix">
+						<span class="title">类型：</span>
+						<div class="main">
+							<div class="mod">
+								<nav name="menu" cid="$cid">
+								<li>
+									<a href="{$menu['url']}">{$menu['title']}</a>
+								</li>
+								</nav>
+							</div>
+						</div>
+					</div>
+
+					<div class="select-box clearfix">
+						<span class="title">年代：</span>
+						<div class="main">
+							<div class="mod">
+								<year name="year">
+								<li>
+									<a href="{$year['url']}">{$year['title']}</a>
+								</li>
+								</year>
+							</div>
+						</div>
+					</div>
+					<div class="select-box clearfix">
+						<span class="title">地区：</span>
+						<div class="main">
+							<div class="mod">
+								<area name="area">
+								<li>
+									<a href="{$area['url']}">{$area['title']}</a>
+								</li>
+								</area>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--今日更新-->
+			<section class="mod">
+				<div class="con-head">
+					<h2 class="title">
+						热播推荐
+					</h2>
+				</div>
+				<div class="con-main">
+					<div class="bd">
+						<ul class="movie-List clearfix" style="height:560px;">
+							<list name="list" cid="$cid" pos="1" order="update_time desc" limit="12">
+							<li class="item">
+								<a class="link" href="{$list['url']}" title="{$list['title']}" target="_blank">
+									<img class="lazy" src="{$list['pic']}" alt="{$list['title']}">
+									<span class="t2">{$list['serialize']}</span>
+									<switch name="list.tj_tag">
+                                        <case value="1"><span class="t9">热剧更新</span></case>
+                                        <case value="2"><span class="t8">正在热播</span></case>
+                                        <case value="3"><span class="t7">大片抢先看</span></case>
+                                        <case value="4"><span class="t6">VIP专享</span></case>
+                                    </switch>
+									<span class="shadow"></span>
+								</a>
+								<div class="text">
+									<h3 class="title">
+										<a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']}</a>
+									</h3>
+									<p class="des">主演：{$list['actors']|msubstr=0,11}</p>
+								</div>
+							</li>
+							</list>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<nav name="nav" cid="$cid" type="1">
+			<section class="mod">
+				<div class="con-head">
+					<h2 class="title">
+						最新{$nav['title']}
+					</h2>
+					<span class="right">
+						<a target="_blank" href="{$nav['url']}">更多</a>
+					</span>
+				</div>
+				<div class="con-main">
+					<div class="bd">
+						<ul class="movie-List clearfix" style="height:560px;">
+							<list name="list" cid="$nav['id']" order="update_time desc" limit="12">
+							<li class="item">
+								<a class="link" href="{$list['url']}" title="{$list['title']}" target="_blank">
+									<img class="lazy" src="{$list['pic']}" alt="{$list['title']}">
+									<span class="t2">{$list['serialize']}</span>
+									<switch name="list.tj_tag">
+                                        <case value="1"><span class="t9">热剧更新</span></case>
+                                        <case value="2"><span class="t8">正在热播</span></case>
+                                        <case value="3"><span class="t7">大片抢先看</span></case>
+                                        <case value="4"><span class="t6">VIP专享</span></case>
+                                    </switch>
+									<span class="shadow"></span>
+								</a>
+								<div class="text">
+									<h3 class="title">
+										<a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']}</a>
+									</h3>
+									<p class="des">主演：{$list['actors']|msubstr=0,11}</p>
+								</div>
+							</li>
+							</list>
+						</ul>
+					</div>
+				</div>
+			</section>
+			</nav>
+			<!--广告位-->
+			<div style="text-align:center"></div>
+		</div>
+	</div>
+</div>
+
+<!--底部开始-->
+<include file="{$tplpath}/footer.html" />
+<script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

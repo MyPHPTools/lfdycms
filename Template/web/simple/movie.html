@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/style.css">
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<!--头部结束-->
+<div class="warp">
+	<div class="container home">
+		<div class="content">
+			<div class="breadcrumb">
+				<a href="/">首页</a>&nbsp;&nbsp;»&nbsp;&nbsp;<a href="{$curl}">{$ctitle}</a>&nbsp;&nbsp;»&nbsp;&nbsp;<a href="#">{$title}</a> 
+			</div>
+			<div class="content mt20">
+				<div class="vod-detail">
+					<div class="info clearfix">
+						<div class="detail-left">
+							<div class="cover">
+								<a href="{$url}" class="img" rel="nofollow" target="_blank">
+									<img src="{$pic}" alt="{$title}"></a>
+							</div>
+						</div>
+						<div class="detail-right">
+							<div class="detail-head">
+								<h1>{$title}</h1>
+							</div>
+							<!--详细信息-->			
+							<div class="info-detail clearfix">
+								<div class="clearfix">
+									<div class="c">
+										<p class="d">
+											<span>类型：</span>
+											<a target="_blank" href="{$curl}">{$ctitle}</a>
+										</p>
+										<p class="d">
+											<span>年代：</span>
+											{$year}
+										</p>
+									</div>
+									<div class="c">
+										<p class="d">
+											<span>导演：</span>
+											<a href="{:url_change('search/index',array('id'=>$cid,'keyword'=>$directors))}">{$directors}</a>
+											&nbsp;
+										</p>
+									</div>
+									<div class="c">
+										<p class="d">
+											<span>主演：</span>
+											<volist name="actors_array" id="actors">
+												<a href="{$actors['url']}" title="{$actors['actors']}">{$actors['actors']}</a>
+												&nbsp;
+											</volist>
+										</p>
+
+									</div>
+								</div>
+								<p class="item-desc">
+									<span>简介：</span>{$content}
+								</p>
+							</div>
+						</div>
+						<!--广告-->			
+						<div style="text-align:center"></div>
+
+						<!--片源-->			
+						<div class="tabConList globalPadding">
+							<div class="tabCon" style="display:block">
+								<playlist name="player">
+								<dl class="tab2">
+									<dt class="tabt3">
+										<span style="background:none;color:#333333;font-size:15px;width:auto;font-weight:bold; ">{$player['title']}</span>
+									</dt>
+									<dd class="kkyun">
+										<ul class="ulNumList clearfix list_1">
+											<volist name="player['movie_url']" id="url">
+											<li>
+												<a href="{$url['url']}" <eq name="player['vip']" value="1">{$url['vip_js']}</eq> class="cur" target="_self" title="{$url['title']}" alt="{$url['title']}">
+													{$url['title']} <i class="iNewIcon"></i>
+												</a>
+											</li>
+											</volist>
+										</ul>
+									</dd>
+								</dl>
+								</playlist>
+							</div>
+						</div>
+						<section class="mod">
+							<div class="con-head">
+								<h2 class="title">
+									热播推荐
+								</h2>
+							</div>
+							<div class="con-main">
+								<div class="bd">
+									<ul class="movie-List clearfix" style="height:280px;">
+										<list name="list" cid="$cid" order="hits desc" limit="6">
+										<li class="item">
+											<a class="link" href="{$list['url']}" title="{$list['title']}" target="_blank">
+												<img class="lazy" src="{$list['pic']}" alt="{$list['title']}">
+												<span class="t2">{$list['serialize']}</span>
+												<switch name="list.tj_tag">
+			                                        <case value="1"><span class="t9">热剧更新</span></case>
+			                                        <case value="2"><span class="t8">正在热播</span></case>
+			                                        <case value="3"><span class="t7">大片抢先看</span></case>
+			                                        <case value="4"><span class="t6">VIP专享</span></case>
+			                                    </switch>
+												<span class="shadow"></span>
+											</a>
+											<div class="text">
+												<h3 class="title">
+													<a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']}</a>
+												</h3>
+												<p class="des">主演：{$list['actors']|msubstr=0,11}</p>
+											</div>
+										</li>
+										</list>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<div class="comment"><comment size="12" /></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--底部开始-->
+<include file="{$tplpath}/footer.html" />
+<script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

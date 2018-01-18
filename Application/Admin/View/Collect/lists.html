@@ -1,0 +1,186 @@
+<extend name="Public/base"/>
+<block name="style">
+	<link rel="stylesheet" href="__CSS__/dialogmovie.css">
+</block>
+<block name="body">
+    <div class="panel admin-panel">
+    <form id="form" class="form-collect">
+    	<div class="panel-head"><strong>影片列表</strong></div>
+        <div class="padding border-bottom">
+            <div class="tab">
+                <div class="tab-head">
+                    <ul class="tab-nav">
+                        <li class="active"><a href="#tab-type">类型绑定</a></li>
+                        <notempty name="playlist"><li><a href="#tab-player">播放器绑定</a></li></notempty>
+                    </ul>
+                 </div>
+                 <div class="tab-body">
+                    <div class="tab-panel active" id="tab-type">
+                        <ul class="list-inline">
+                            <volist name="typelist" id="tlist">
+                            <li class="margin">
+                            <a href="{:U('lists?url='.$_GET['url'].'&type='.$_GET['type'].'&t='.$tlist['id'].'&fid='.$_GET['fid'])}">{$tlist.title}</a>
+                            <a href="javascript:;" class="tips" id="bing_{$tlist['id']}" data-place="auto" data-toggle="click" data-mask="1" data-url="{:U('bind?cid='.$tlist['id'].'&fid='.$_GET['fid'])}"><if condition="bind_id($_GET['fid'].'_'.$tlist['id']) gt 0"><span class="text-green icon-check"></span>已绑定<else/><span class="text-red icon-times"></span>未绑定</if></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="tab-panel" id="tab-player">
+                        <ul class="list-inline">
+                            <volist name="playlist" id="plist">
+                            <li class="margin">{$plist.title}
+                            <a href="javascript:;" class="tips" id="pbing_{$plist['id']}" data-place="auto" data-toggle="click" data-mask="1" data-url="{:U('pbind?ptitle='.$plist['title'].'&pid='.$plist['id'])}"><if condition="bind_play($plist['title']) gt 0"><span class="text-green icon-check"></span>已绑定<else/><span class="text-red icon-times"></span>未绑定</if></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        	<div class="button-group button-group-small">
+            <button type="button" class="button checkall" checkfor="id[]" name="checkall"><span class="icon-check-square-o"></span> 全选</button>
+            <a class="button"  href="javascript:ajaxjson('{:U('collect?fid='.$_GET['fid'].'&url='.$_GET['url'].'&type='.$_GET['type'])}',1)"><span class="icon-magnet text-blue"></span> 采集</a>
+            <a class="button"  href="javascript:ajaxjson('{:U('collect?h=24&fid='.$_GET['fid'].'&url='.$_GET['url'].'&type='.$_GET['type'])}',1)"><span class="icon-magnet text-blue"></span> 采集当日</a>
+            <notempty name="Think.get.t">
+            <a class="button"  href="javascript:ajaxjson('{:U('collect?t='.$_GET['t'].'&fid='.$_GET['fid'].'&url='.$_GET['url'].'&type='.$_GET['type'])}',1)"><span class="icon-magnet text-blue"></span> 采集本类</a>
+            </notempty>
+             <a class="button"  href="javascript:ajaxjson('{:U('collect?fid='.$_GET['fid'].'&url='.$_GET['url'].'&type='.$_GET['type'])}',1)"><span class="icon-magnet text-blue"></span> 采集全部</a>
+            </div>
+            <div class="float-right">
+            	<input type="text" name="wd" class="input input-auto input-small" size="50" placeholder="搜索关键词" /> <a class="button button-small" href="javascript:;" id="search" url="{:U('lists?url='.$_GET['url'].'&pg='.$_GET['pg'].'&t='.$_GET['t'].'&type='.$_GET['type'].'&fid='.$_GET['fid'])}"><span class="icon-search"></span> 搜索</a>
+            </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th width="45">选择</th>
+                <th width="60">id</th>
+                <th>影片名称</th>
+                <th width="120">影片分类</th>
+                <th width="120">更新时间</th>
+                <th width="80">操作</th>
+            </tr>
+           	<notempty name="movielist">
+            <volist name="movielist" id="vo">
+            <tr>
+                <td><input type="checkbox" name="id[]" value="{$vo.mid}" /></td>
+                <td>{$vo['mid']}</td>
+                <td><a href="javascript:ajaxmoviejson('{:U('moviejson','type='.$_GET['type'].'&url='.$_GET['url'].'&id='.$vo['mid'])}')">{$vo['title']}</a><notempty name="vo.serialize"><span class="text-yellow padding-left">{$vo['serialize']}</span></notempty></td>
+                <td>{$vo['type']}</td>
+                <td>{$vo.last|time_format=###,"Y-m-d"}</td>
+                <td>
+                    <a href="javascript:ajaxjson('{:U('collect?action=id&id='.$vo['mid'].'&fid='.$_GET['fid'].'&url='.$_GET['url'].'&type='.$_GET['type'])}',1)">采集</a>
+                </td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="6"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+         <div class="panel-foot text-center">
+         	<div class="page">{$_page}</div>
+        </div>
+        </form>
+    </div>
+    <div id="mydialog">
+        <div class="dialog">
+            <div class="dialog-head">
+                <span class="dialog-close close rotate-hover"></span>
+                <strong>采集进度</strong>
+            </div>
+            <div class="dialog-body">
+                <p class="text-center">已采集 <span class="badge bg-green num">0</span> 条 共采集<span class="badge bg-green count">0</span> 条</p>
+                <div class="progress progress-striped active progress-big">
+                	<div class="progress-bar bg-sub" style="width:0%;">进度：0%</div>
+                </div>
+                <div style="width:100%;height:150px;OVERFLOW-Y: auto; OVERFLOW-X:hidden; margin-top:10px">
+                    <ul class="list-group">
+                    </ul>
+                </div>
+            </div>
+            <div class="dialog-foot">
+            	<button class="dialog-close button">取消</button>
+            </div>
+        </div>
+    </div>
+    <div id="dialogmovie">
+        <div class="dialog">
+            <div class="dialog-head">
+                <span class="dialog-close close rotate-hover"></span>
+                影片内容
+            </div>
+            <div class="dialog-body">
+                <DIV class="inner">
+                    <DIV class="pic"><IMG id="movie_pic" class="img-border radius padding-small img-responsive" src=""></DIV>
+                    <UL>
+                    <LI>ID： <span id="movie_mid"></span></LI>
+                    <LI>标题： <span id="movie_title"></span></LI>
+                    <LI>分类： <span id="movie_type"></span></LI> 
+                    <LI>主演： <span id="movie_actors"></span></LI> 
+                    <LI>地区： <span id="movie_area"></span></LI>
+                    <LI>语言： <span id="movie_language"></span></LI>
+                    <LI>时间： <span id="movie_last"></span></LI>
+                    </UL>
+                    <div class="panel margin-bottom">
+                      <div class="panel-body" style="height:100px; overflow:auto;" id="movie_content"></div>
+                    </div>
+                    <DIV class="tb">
+                        <H4>
+                            <LABEL>影片地址</LABEL>
+                            <span class="downward"></span>
+                            <div class="drop">
+                              <ul class="drop-menu">
+                              </ul>
+                            </div>
+                        </H4>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                            <TR>
+                            <TH>标题</TH>
+                            <TH>资源地址</TH>
+                            <TH>播放</TH>
+                            </TR>
+                        </TABLE>
+                        <div id="Ajax_Content">
+                        
+                        </div>
+                        <DIV id="Pages"></DIV>
+                    </DIV>
+                </DIV>
+            </div>
+            <div class="dialog-foot">
+                <button class="button bg-green dialog-close">关闭</button>
+            </div>
+        </div>
+	</div>
+    <div id="dialogplayer">
+        <div class="dialog">
+            <div class="dialog-head">
+                <span class="dialog-close close rotate-hover"></span>
+                影片播放
+            </div>
+            <div class="dialog-body">
+            <iframe id="cplayer" width="100%" height="100%" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+            </div>
+            <div class="dialog-foot">
+                <button class="button bg-green dialog-close">关闭</button>
+            </div>
+        </div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+		var query = $(this).prev('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	highlight_subnav('{:U('Collect/index')}');
+})
+</script>
+</block>

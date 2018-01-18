@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://tv.sohu.com/drama/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/global2014.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/nav_v1.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/channel.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/drama-album.css"></head>
+
+<body class="W_1380">
+    <include file="{$tplpath}/header.html" />
+    <div id="content">
+        <div class="wrapDrama cf">
+            <div class="main">
+                <p class="fs18 mb5">{$title}</p>
+                <div class="fs18" style="line-height:35px;"><img src="{$pic}">{$content}</div>
+            </div>
+            <div class="side">
+                <div class="modRB">
+                    <div class="tit">最新更新</div>
+                    <ul class="lisPT cf" id="likelist">
+                        <list name="list" cid="all" order="update_time desc" limit="4">
+                        <li class="lisPi cf">
+                            <a href="{$list['url']}" target="_blank" class="sz110 load">
+                            <img src="{$list['pic']}" class="sz110" title="{$list['title']}">
+                            </a><div class="pic"><p class="fs14 pt"><a href="{$list['url']}" target="_blank" title="{$list['title']}">{$list['title']|msubstr=0,10}</a></p><p class="pi break">{$list['actors']|msubstr=0,11}</p></div>
+                        </li>
+                        </list>
+                    </ul>
+                </div>
+                <div class="mod_line"></div>
+                <div class="modRC">
+                    <div class="tit">{$ctitle}排行榜</div>
+                    <div class="rankud cf" id="tvrank">
+                        <ul class="ranku cf">
+                        <list name="list" cid="all" order="hits desc" limit="10">
+                            <li class="ranki rk{$i-1}">
+                            <a title="{$list['title']}" target="_blank" href="{$list['url']}" class="ranka">{$list['title']|msubstr=0,10}</a></li>
+                        </list>
+                        </ul>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </div>
+    <include file="{$tplpath}/footer.html" />
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

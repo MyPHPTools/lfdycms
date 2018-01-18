@@ -1,0 +1,35 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    	<div class="panel-head"><strong>播放器管理</strong></div>
+        <div class="padding border-bottom">
+        	<div class="button-group button-group-small">
+             <a class="button" href="{:U('add')}"><span class="icon-plus text-green"></span> 新 增</a>
+             </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th>ID</th>
+                <th>播放器名称</th>
+                <th>可见</th>
+                <th>模式</th>
+                <th>类型</th>
+                <th>操作</th>
+            </tr>
+            <volist name="player" id="list">
+            <tr>
+                <td>{$list.id} </td>
+                <td>{$list.title}</td>
+                <td>{$list['display']?'是':'否'}</td>
+                <td>{$list['vip']?'VIP':'游客'}</td>
+                <td>{$list['type']?'下载':'播放'}</td>
+                <td>
+                <a href="{:U('edit?id='.$list['id'])}">修改</a>
+                <a href="{:U('del?id='.$list['id'])}" class="confirm ajax-get">删除</a>
+                </td>
+            </tr>
+            </volist>
+        </table>
+    </div>
+</block>

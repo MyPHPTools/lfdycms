@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+            <div class="k_lujing">
+                <ul>
+                    <li class="k_lujing-1">当前位置：</li>
+                    <li class="k_lujing-2"><a href="/">首页</a></li>
+                </ul>
+            </div>
+            <div class="ad-b1">
+                广告位置
+            </div>
+            <div class="k_sou">
+                <div class="k_sou-1">
+                    <div class="k_sou-2">
+                        <ul>
+                            <li class="k_sou-2a">
+                                <h3>搜索结果</h3> <em>共搜索到 <b>{$Think.get.keyword}</b>
+                                    相关视频{$count}个</em> 
+                            </li>
+                            <li class="k_sou-2b"></li>
+                        </ul>
+                    </div>
+                    <div class="k_sou-3">
+                        <search name="list" limit="10" order="update_time desc">
+                        <div class="k_sou-4">
+                            <ul>
+                                <li class="k_sou-4a">
+                                    <a href="{$list['curl']}">{$list['ctitle']}</a>
+                                </li>
+                                <li class="k_sou-4b">
+                                    <div id="k_upnew-1d-img">
+                                        <a class="lz_img" href="{$list['url']}" target="_blank">
+                                            <img alt="{$list['title']}[{$list['serialize']}]" src="{$list['pic']}" border="0">            
+                                            <span class="lz_bg"></span>
+                                            <span class="lz_time">{$list['serialize']}</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="k_sou-4c">
+                                    <div id="k_sou-4c-a">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                        <span id="k_sou-4c-a-hits">(评分：{$list['rating']})</span>
+                                    </div>
+                                    <div id="k_sou-4c-d">
+                                        年代：
+                                        <a href="{:U('lists/lists',array('id'=>$list['cid'],'year'=>$list['year']))}" target="_blank">{$list['year']}</a>
+                                    </div>
+                                    <div id="k_sou-4c-b">
+                                        <div id="k_sou-4c-bb">
+                                            演员：
+                                            <volist name="list['actors_array']" id="actors">
+                                                <a href="{$actors['url']}">{$actors['actors']}</a>
+                                            </volist>
+                                        </div>
+                                    </div>
+                                    <div id="k_sou-4c-c">
+                                        类型：
+                                        <a href="{$list['curl']}">{$list['ctitle']}</a>
+                                    </div>
+                                    <div id="k_sou-4c-b">
+                                        <div id="k_sou-4c-bb">语言：{$list['language']}</div>
+                                    </div>
+                                    <div id="k_sou-4c-e">
+                                        简介：{$list['content']|msubstr=0,50}
+                                    </div>
+                                    <div id="k_sou-4c-f">更新：{$list['time']}</div>
+                                </li>
+                            </ul>
+                        </div>
+                        </search>
+                        <div class="k_sou-5"><page listrow="10" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-a3">
+                广告位置
+            </div>  
+        </DIV>
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

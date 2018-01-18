@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+        <link href="{$tplpath}/css/idangerous.swiper.css" rel="stylesheet">
+        <!--[if lt IE 8]>
+            <script src="{$tplpath}/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bgcolor-f5f5">
+        <include file="{$tplpath}/header.html" />
+		<div class="content bgcolor-fff padding-t15">
+			<div class="container padding">
+				<h1 class="f24 green">充值中心</h1>
+			</div>
+		</div>
+		<div class="content bgcolor-fff">
+			<div class="container padding">
+				<h3 class="col col12 f18 h33">请选择一种充值套餐</h3>
+			</div>
+			<div class="container padding">
+				<div class="col col35 vl-align-top">
+					<div class="col col12">
+						<img src="{$tplpath}/images/chongzhi_1.jpg" class="img-full">
+					</div>
+				</div>
+				<div class="col col35 vl-align-top">
+					<div class="col col12">
+						<img src="{$tplpath}/images/chongzhi_2.jpg" class="img-full">
+					</div>
+				</div>
+				<div class="col col35 vl-align-top">
+					<div class="col col12">
+						<img src="{$tplpath}/images/chongzhi_3.jpg" class="img-full">
+					</div>
+				</div>
+				<div class="col col12 f18 orange margin-t15">
+					<p>注：用户对于赠送的服务不享有任何技术支持，维护，退款等权益。</p>
+					<p>点击下方按钮，进行充值。&darr;&darr;&darr;</p>
+				</div>
+			</div>
+			<div class="container padding text-center">
+				<div class="col col60 padding-b15">
+					<a href="{:U('Home/Other/index/tpl/wxpay')}" target="_blank"><img src="{$tplpath}/images/wx.jpg"></a></div>
+				<div class="col col60 padding-b15">
+					<a href="{:U('Home/Other/index/tpl/alipay')}" target="_blank"><img src="{$tplpath}/images/alipay.jpg"></a>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="container">
+				<img src="{$tplpath}/images/caption.jpg" class="img-full">
+			</div>
+		</div>
+
+		<include file="{$tplpath}/footer.html" />
+	</body>
+	
+
+</html>

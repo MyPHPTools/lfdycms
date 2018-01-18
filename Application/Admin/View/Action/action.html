@@ -1,0 +1,53 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    <form method="post" class="form-x">
+    	<div class="panel-head"><strong>行为列表</strong></div>
+        <div class="padding border-bottom">
+        	<div class="button-group button-group-small">
+            <button type="button" class="button checkall" checkfor="id[]" name="checkall"><span class="icon-check-square-o"></span> 全选</button>
+             <a class="button" href="{:U('addaction')}"><span class="icon-plus text-green"></span> 新 增</a>
+             <button class="button ajax-post confirm" url="{:u('setstatus?Model=Action&status=1')}" target-form="form-x"><span class="icon-check-circle-o text-green"></span> 启 用</button>
+             <button class="button ajax-post confirm" url="{:u('setstatus?Model=Action&status=0')}" target-form="form-x"><span class=" icon-times-circle-o text-red"></span> 禁 用</button>
+             <button class="button ajax-post confirm" url="{:U('del')}" target-form="form-x"><span class="icon-trash-o text-red"></span> 删 除</button>
+            </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th width="45">选择</th>
+                <th width="45">id</th>
+                <th width="120">标识</th>
+                <th width="120">名称</th>
+                <th width="80">类型</th>
+                <th>规则</th>
+                <th width="60">状态</th>
+                <th width="120">操作</th>
+            </tr>
+           	<notempty name="_list">
+            <volist name="_list" id="vo">
+            <tr>
+                <td><input type="checkbox" name="id[]" value="{$vo.id}" /></td>
+                <td>{$vo['id']}</td>
+                <td>{$vo['name']}</td>
+                <td><a href="{:U('editAction?id='.$vo['id'])}">{$vo['title']}</a></td>
+                <td>{:get_action_type($vo['type'])}</td>
+                <td>{$vo.remark}</td>
+                <td>{$vo.status_text}</td>
+                <td>
+                    <a href="{:U('editAction?id='.$vo['id'])}">修改</a>
+                    <a href="{:U('setStatus?Model=action&id='.$vo['id'].'&status='.abs(1-$vo['status']))}" class="ajax-get">{$vo.status|show_status_op}</a>
+                    <a href="{:U('del?id='.$vo['id'])}" class="confirm ajax-get">删除</a>
+                </td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="5"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+         <div class="panel-foot text-center">
+         	<div class="page">{$_page}</div>
+        </div>
+        </form>
+    </div>
+</block>

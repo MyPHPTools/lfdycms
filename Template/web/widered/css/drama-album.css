@@ -1,0 +1,1478 @@
+/* sohutv 2017-08-21 17:20:04 */
+a:hover {
+	text-decoration: none
+}
+
+body {
+	background: #fff
+}
+
+#content {
+	_margin-top: 0
+}
+
+.main {
+	width: 1120px;
+	float: left
+}
+
+.side {
+	width: 240px;
+	float: right;
+	margin-top: 4px
+}
+
+.header {
+	margin: 0
+}
+
+.wrapDrama {
+	width: 1380px;
+	margin: 0 auto
+}
+
+.mb13 {
+	margin-bottom: 13px
+}
+
+.ranku {
+	background: url(../images/rank.png) no-repeat 0 2px;
+	font-size: 14px
+}
+
+.ranku li {
+	line-height: 16px;
+	height: 16px;
+	padding: 0 0 20px 22px;
+	width: 98px;
+	float: left
+}
+
+.ranku li a {
+	display: block;
+	height: 16px;
+	overflow: hidden;
+	width: 98px
+}
+
+.rankuL {
+	width: 120px;
+	float: left;
+	overflow: hidden
+}
+
+.rankuR {
+	width: 120px;
+	float: right;
+	background-position: 0 -178px;
+	overflow: hidden
+}
+
+.ranta {
+	padding: 0 16px
+}
+
+.rankall .ranki {
+	width: 218px
+}
+
+.rankall .ranka {
+	width: auto
+}
+
+.ranku {
+	background: 0 0
+}
+
+.ranku .ranki {
+	padding: 0 0 21px 22px
+}
+
+.ranki {
+	background: url(../images/rank.png) no-repeat 0 1px
+}
+
+.rk1 {
+	background-position: 0 -35px
+}
+
+.rk2 {
+	background-position: 0 -71px
+}
+
+.rk3 {
+	background-position: 0 -107px
+}
+
+.rk4 {
+	background-position: 0 -143px
+}
+
+.rk5 {
+	background-position: 0 -179px
+}
+
+.rk6 {
+	background-position: 0 -215px
+}
+
+.rk7 {
+	background-position: 0 -251px
+}
+
+.rk8 {
+	background-position: 0 -287px
+}
+
+.rk9 {
+	background-position: 0 -323px
+}
+
+.ico-view,.ico-list,.btn-play,.btn-see,.shouqi,.zhankai,.debox .time,.shareArr {
+	background: url(../images/btn.png) no-repeat 0 -97px;
+	cursor: pointer;
+	display: inline-block
+}
+
+.ico-list,.ico-view {
+	margin: 0 0 0 5px;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle
+}
+
+.ico-list {
+	background-position: -34px -65px
+}
+
+.ico-list-on {
+	background-position: -34px -97px
+}
+
+.ico-view-on {
+	background-position: 0 -65px
+}
+
+.yu,.xin {
+	background: url(../drama_album_images/series.png) no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	width: 14px;
+	height: 15px
+}
+
+.xin {
+	background-position: 0 -24px
+}
+
+.btn-play {
+	background-position: 0 0;
+	width: 40px;
+	padding: 0 0 0 32px;
+	font-size: 12px;
+	height: 25px;
+	line-height: 25px;
+	cursor: pointer
+}
+
+.btn-play:hover {
+	background-position: 0 -31px;
+	color: #fff
+}
+
+.shouqi,.zhankai {
+	padding: 0 15px 0 5px;
+	color: #3a3a3a;
+	cursor: pointer
+}
+
+.zhankai {
+	background-position: right -30px
+}
+
+.shouqi {
+	background-position: right 11px
+}
+
+.shouqi:hover {
+	text-decoration: none;
+	background-position: right -188px
+}
+
+.zhankai:hover {
+	text-decoration: none;
+	background-position: right -228px
+}
+
+.modRA .bot span.onzhankai {
+	text-decoration: none;
+	background-position: right -228px
+}
+
+.modRA .bot span.onshouqi {
+	text-decoration: none;
+	background-position: right -188px
+}
+
+.socre {
+	font-size: 22px;
+	color: #e73c31;
+	margin: 0 5px;
+	background: url(../images/fg.png) no-repeat right -99px;
+	padding: 0 10px 0 0
+}
+
+.share {
+	margin: 7px 0 0;
+	float: right
+}
+
+.share img {
+	vertical-align: middle;
+	margin: 0 0 0 2px
+}
+
+.shareArr {
+	background-position: right -36px;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle
+}
+
+.tit {
+	font-size: 20px;
+	color: #3a3a3a;
+	margin: 0 0 10px
+}
+
+.tith {
+	float: left;
+	font-size: 18px
+}
+
+.tmt {
+	background: url(../drama_album_images/time.png) no-repeat 0 5px;
+	color: #fff;
+	padding: 0 0 0 13px;
+	position: absolute;
+	bottom: 3px;
+	right: 5px
+}
+
+.more {
+	font-size: 12px;
+	margin: 8px 0 0
+}
+
+.side .adv {
+	margin: 20px 0 25px
+}
+
+.w120 {
+	width: 1000px
+}
+
+.sz170 {
+	width: 170px;
+	height: 110px;
+	display: block
+}
+
+.sz170225 {
+	width: 170px;
+	height: 225px
+}
+
+.sz70a {
+	width: 70px;
+	height: 70px
+}
+
+.sz70a-mask {
+	background: url(drama_album_images/photo-mask.png) no-repeat;
+	_background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='drama_album_images/photo-mask.png');
+	width: 70px;
+	height: 70px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0
+}
+
+.sz110 {
+	width: 110px;
+	height: 150px
+}
+
+.p_bt {
+	margin: 5px 2px 3px
+}
+
+#pianhualist .p_bt,#pianhua .p_bt {
+	height: 42px
+}
+
+#actorlist li .p_bt a:hover {
+	text-decoration: none
+}
+
+.lisuu {
+	margin-right: -20px;
+	_padding-right: 19px
+}
+
+.lisi {
+	padding: 0 0 22px;
+	width: 170px
+}
+
+.lis70 {
+	margin-right: -30px
+}
+
+.lis70 .lisi {
+	width: 70px;
+	margin-right: 15px;
+	text-align: center;
+	padding: 0 0 22px;
+	display: inline
+}
+
+.lis70 .lisi .sz70a {
+	width: 70px;
+	height: 70px;
+	display: block;
+	overflow: hidden
+}
+
+.lisPT {
+	margin: 0 0 0 -20px
+}
+
+.lisPi {
+	margin: 0 0 19px 20px;
+	width: 110px;
+	line-height: 21px;
+	float: left;
+	display: inline
+}
+
+.lisPi .pt {
+	margin: 5px 0 1px
+}
+
+#likelist .lisPi .pt,#likelist .lisPi .pi {
+	overflow: hidden;
+	width: 110px;
+	height: 21px
+}
+
+.debox {
+	background: #f9f9fc;
+	padding: 17px 20px;
+	margin: 0 0 20px
+}
+
+.debox h4 {
+	font-size: 16px
+}
+
+.debox .colL {
+	width: 170px;
+	position: relative
+}
+
+.debox .colR {
+	width: 512px;
+	font-size: 14px;
+	line-height: 28px;
+	position: relative;
+	margin: -5px 0 -4px
+}
+
+.debox .copy {
+	font-size: 12px;
+	margin: 5px 0 0
+}
+
+.debox .tith4 {
+	float: left
+}
+
+.debox .time {
+	background-position: -142px -86px;
+	padding: 0 0 0 12px;
+	margin: 4px 0 0;
+	display: block
+}
+
+.btn-see,.btn-grey {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 16px
+}
+
+.btn-grey {
+	border: 1px solid #d5d5d5;
+	height: 38px;
+	width: 110px;
+	line-height: 38px;
+	background: #fafafa;
+	text-align: center
+}
+
+.btn-grey:hover {
+	background: #fafafa
+}
+
+.btn-see {
+	line-height: 40px;
+	width: 88px;
+	color: #fff;
+	height: 40px;
+	padding: 0 0 0 42px;
+	background-position: 0 -133px
+}
+
+.btn-see:hover {
+	color: #fff
+}
+
+.header .info {
+	background: #fff;
+	padding: 20px 0;
+	width: 1380px;
+	margin: 0 auto
+}
+
+.header .info .row2 {
+	margin: 20px 0 9px
+}
+
+.header .info .row3 {
+	margin-bottom: 30px;
+	line-height: 29px;
+}
+
+.header .info .zhankai {
+	bottom: auto;
+	top: 58px
+}
+
+.infoL {
+	width: 200px;
+	background: #000
+}
+
+.infoL:hover .info-mk,.infoL:hover .info-video {
+	display: block
+}
+
+.infoR {
+	width: 1160px;
+	font-size: 14px
+}
+
+.infoR h2 {
+	margin: -7px 45px 0 0;
+	font-size: 22px
+}
+
+.infoR .p1 {
+	margin: 0 0 9px
+}
+
+.infoR .starDiv {
+	margin: -5px 0 0
+}
+
+.infoR .colL {
+	width: 774px
+}
+
+.infoR .colR {
+	width: 350px
+}
+
+.info-mk {
+	background: #000;
+	cursor: pointer;
+	display: none;
+	width: 100%;
+	height: 265px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: .5;
+	filter: alpha(opacity=50)
+}
+
+.info-video {
+	background: url(drama_album_images/video.png) no-repeat;
+	cursor: pointer;
+	width: 100px;
+	height: 100px;
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -50px
+}
+
+.star,.starIn {
+	background: url(drama_album_images/star-png24.png) repeat-x 0 -24px;
+	_background: url(drama_album_images/star.png) repeat-x 0 -24px;
+	display: inline-block;
+	width: 125px;
+	height: 18px
+}
+
+.star {
+	*margin-top: -20px
+}
+
+.starIn {
+	background-position: 0 0
+}
+
+.star1 .starIn {
+	width: 13px
+}
+
+.star2 .starIn {
+	width: 25px
+}
+
+.star3 .starIn {
+	width: 38px
+}
+
+.star4 .starIn {
+	width: 50px
+}
+
+.star5 .starIn {
+	width: 63px
+}
+
+.star6 .starIn {
+	width: 75px
+}
+
+.star7 .starIn {
+	width: 88px
+}
+
+.star8 .starIn {
+	width: 100px
+}
+
+.star9 .starIn {
+	width: 113px
+}
+
+.star10 .starIn {
+	width: 125px
+}
+
+.series {
+	margin-right: -20px
+}
+
+.series .seri.df {
+	display: none
+}
+
+.seri {
+	width: 65px;
+	float: left;
+	margin: 0 10px 8px 0;
+	_margin-right: 8px;
+	display: inline;
+	position: relative
+}
+
+.sera {
+	padding: 0 5px;
+	display: block;
+	min-width: 61px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 14px;
+	text-align: center;
+	background: #f9f9fc;
+	border: 1px solid #e6e6e6
+}
+
+.sera:hover {
+	background: #fff
+}
+
+.series-tab {
+	margin-bottom: 15px
+}
+
+.serti {
+	float: left;
+	line-height: 22px;
+	width: 65px;
+	text-align: center;
+	cursor: pointer;
+	color: #3a3a3a;
+	background: url(../images/fg.png) no-repeat 0 -53px
+}
+
+.serti-on {
+	background: #e73c31;
+	color: #fff
+}
+
+.seri-emot .sera {
+	background: #f9f9fc url(drama_album_images/series.png) no-repeat 27px -53px
+}
+
+.seri-emot .sera:hover {
+	border-color: #f9f9fc
+}
+
+.tabC {
+	border-bottom: 2px solid #e6e6e6;
+	margin: 0 0 10px
+}
+
+.tabCu {
+	_padding-bottom: 2px
+}
+
+.tabCi {
+	float: left;
+	font-size: 16px;
+	margin: 0 0 -2px -1px;
+	padding: 0 27px;
+	color: #3a3a3a;
+	cursor: pointer;
+	background: url(../images/fg.png) no-repeat 0 9px
+}
+
+.tabCi:first-child {
+	background: 0 0
+}
+
+.tabCi-on {
+	color: #e73c31
+}
+
+.tabCa {
+	padding: 5px 1px 10px;
+	display: inline-block
+}
+
+.tabCi-on .tabCa {
+	background: url(drama_album_images/tabC.png) no-repeat center bottom;
+	color: #e73c31
+}
+
+#likelist .pt a {
+	text-decoration: none
+}
+
+.main-adv {
+	margin: 0 0 16px
+}
+
+.mod_line {
+	height: 1px;
+	background: #ddd;
+	overflow: hidden;
+	margin: 0 0 20px
+}
+
+.modA {
+	margin: 0 0 30px
+}
+
+.modB .con {
+	overflow: hidden
+}
+
+.modB .lisuu {
+	margin-right: -20px
+}
+
+.modF .lisi {
+	width: 170px
+}
+
+.modF .lisi .p_bt {
+	height: 63px
+}
+
+.modF .colR .tit {
+	margin: 0 0 4px
+}
+
+.modRA .bot {
+	cursor: pointer;
+	background: #f9f9fc;
+	height: 28px;
+	line-height: 28px;
+	padding: 2px 0;
+	margin: 0 0 32px;
+	text-align: center;
+	font-size: 14px
+}
+
+.modRA .zhankai,.modRA .shouqi {
+	position: static;
+	padding-right: 20px
+}
+
+.modRA .zhankai:hover,.modRA .shouqi:hover {
+	color: #e73c31
+}
+
+.modRB {
+	margin-bottom: 5px
+}
+
+.modRC {
+	font-size: 14px
+}
+
+.modRD {
+	font-size: 14px
+}
+
+.modRD .sort {
+	line-height: 26px
+}
+
+.modRD .sort a {
+	margin: 0 14px 0 0
+}
+
+.modRD h6 {
+	margin: 10px 0 5px;
+	font-size: 14px
+}
+
+bot .pageB {
+	width: 176px
+}
+
+.pageB .page-pre,.pageB .page-next {
+	float: left;
+	display: inline-block;
+	width: 48px;
+	height: 23px;
+	text-align: center;
+	line-height: 23px;
+	border: 1px solid #d5d5d5;
+	background: #fafafa
+}
+
+.pageB .page-pre:hover,.pageB .page-next:hover {
+	border: 1px solid #e63c31;
+	color: #e63c31
+}
+
+.pageB .pud {
+	height: 150px;
+	background: #fff;
+	overflow: auto;
+	border: 1px solid #d5d5d5;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 55px
+}
+
+.pageB .pi {
+	height: 25px;
+	line-height: 25px;
+	color: #333;
+	cursor: pointer;
+	text-align: center
+}
+
+.pageB .pi:hover {
+	background: #f4f4f4;
+	color: #e63c31
+}
+
+.pageB .pon {
+	background: url(drama_album_images/page-arrow.png) no-repeat right 6px;
+	color: #333;
+	padding: 0 10px 0 0;
+	cursor: pointer
+}
+
+.pageB .pond {
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	text-align: center
+}
+
+.pageB .page-num {
+	float: left;
+	margin: 0 10px;
+	width: 55px;
+	position: relative
+}
+
+.pageB .ps {
+	padding: 0 10px
+}
+
+.pageB .pi-on .ps {
+	background: url(drama_album_images/page-arrow.png) no-repeat right -40px
+}
+
+.pageB .pud {
+	display: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scrollbar-3dlight-color: #b0b0b0;
+	scrollbar-highlight-color: #b0b0b0;
+	scrollbar-arrow-color: #7e7e7e;
+	scrollbar-shadow-color: #b0b0b0;
+	scrollbar-darkshadow-color: #b0b0b0;
+	scrollbar-base-color: #b0b0b0;
+	scrollbar-track-color: #d5d5d5
+}
+
+.pageB .pud::-webkit-scrollbar {
+	width: 10px;
+	height: 10px
+}
+
+.pageB .pud::-webkit-scrollbar-track:vertical {
+	background-color: #d5d5d5
+}
+
+.pageB .pud::-webkit-scrollbar-track-piece {
+	background-color: transparent
+}
+
+.pageB .pud::-webkit-scrollbar-thumb:vertical {
+	background-color: #b0b0b0
+}
+
+.header-photo .info {
+	background: rgba(255,255,255,.8)
+}
+
+.header-photo .share {
+	float: left;
+	margin-left: 20px
+}
+
+.c-black.acount {
+	background: 0 0;
+	position: static;
+	color: #3a3a3a;
+	padding: 0
+}
+
+.starInfo {
+	position: absolute;
+	top: -20px;
+	left: 0;
+	border: 1px #A9CFEF solid;
+	background: #f6f6f6;
+	font-size: 12px;
+	padding: 3px 3px 0;
+	display: none
+}
+
+.starInfo em {
+	background: url(http://tv.sohu.com/upload/tv110421/images/icon.png) no-repeat -135px -170px;
+	position: absolute;
+	top: 21px;
+	width: 7px;
+	height: 5px;
+	left: 10px
+}
+
+.starTip {
+	display: none
+}
+
+#wBox_weixin {
+	width: 650px
+}
+
+#wBox_weixin .wBox-tit {
+	background: #f8f8f8;
+	height: 40px;
+	line-height: 40px;
+	color: #3a3a3a;
+	padding: 0 20px
+}
+
+#wBox_weixin .wBox-con {
+	height: 360px
+}
+
+#wBox_weixin .wBox-con {
+	background: url(http://css.tv.itc.cn/channel/play_v1_img/wbox_erwm.jpg) no-repeat 330px 40px
+}
+
+#wBox_weixin .ico-close {
+	background: url(http://css.tv.itc.cn/channel/play_v1_img/close.png) no-repeat;
+	width: 14px;
+	height: 14px;
+	margin: 12px 0 0
+}
+
+#wBox_weixin .ico-close:hover {
+	background-position: 0 -32px
+}
+
+#wBox_weixin .wei_txt {
+	width: 320px;
+	text-align: center;
+	padding: 40px 0 0
+}
+
+#wBox_weixin .wei_txt .fs18 {
+	line-height: 22px;
+	margin-left: 20px;
+	text-align: left
+}
+
+#wBox_weixin .wei_bd {
+	border: 3px solid #e5e5e5;
+	width: 172px;
+	height: 172px;
+	margin: 12px auto
+}
+
+.wBox {
+	background: url(http://css.tv.itc.cn/channel/play_v1_img/wbox-png24.png);
+	padding: 2px;
+	width: 310px;
+	margin: 0 0 20px
+}
+
+.wBox .wBox-wrap {
+	background: #fefefe;
+	border: 1px solid #c9c9c9
+}
+
+.wBox .ico-close {
+	display: block;
+	width: 10px;
+	height: 10px;
+	overflow: hidden;
+	background-position: -330px -71px
+}
+
+.wBox .ico-close:hover {
+	background-position: -330px -113px
+}
+
+.wBox .ico-ok {
+	background-position: -307px -176px;
+	width: 32px;
+	height: 28px
+}
+
+.wBox .ico-ok,.wBox .ico-error {
+	margin: 5px 10px 0 0
+}
+
+.wBox .btn-2,.wBox .btn-grey {
+	width: 62px;
+	height: 31px;
+	line-height: 30px;
+	color: #fff;
+	border: 0;
+	cursor: pointer;
+	margin: 0 5px;
+	padding: 0 0 4px;
+	overflow: hidden
+}
+
+.wBox .btn-2 {
+	background-position: -91px -101px;
+	display: inline-block;
+	text-align: center
+}
+
+.wBox .btn-2:hover {
+	background-position: -91px -138px;
+	text-decoration: none
+}
+
+.wBox .btn-2:active {
+	background-position: -91px -175px
+}
+
+.wBox .btn-grey {
+	background-position: -161px -101px;
+	color: #3a3a3a
+}
+
+.wBox .btn-grey:hover {
+	background-position: -161px -138px;
+	color: #cd071c
+}
+
+.wBox .btn-grey:active {
+	background-position: -161px -175px
+}
+
+.wBox h6 {
+	font-size: 14px;
+	color: #3a3a3a;
+	line-height: 21px
+}
+
+#wBoxA {
+	width: 365px
+}
+
+.wBoxA .wBox-wrap {
+	padding: 10px
+}
+
+.wBoxA .wBox-con {
+	padding: 0 0 10px 10px
+}
+
+.wBoxA .p1 {
+	margin: 5px 0 10px
+}
+
+.wBoxA .txt strong {
+	color: #3a3a3a
+}
+
+.wBoxA .btn-2 {
+	vertical-align: middle;
+	margin: 0 0 10px
+}
+
+.wBoxA .wL {
+	width: 178px
+}
+
+.wBoxA .wR {
+	width: 145px;
+	padding-left: 8px;
+	border-left: 1px solid #d8d8d8
+}
+
+.wBox-fav .wR {
+	width: 160px
+}
+
+.wBox-fav .wL {
+	width: 160px
+}
+
+.wBox-fav .ico-ok {
+	margin: 20px 15px 0 0
+}
+
+.wBox-fav .txt {
+	padding: 10px 0 0
+}
+
+.wBox-fav .btn-2 {
+	margin-top: 12px
+}
+
+.wBox-xia .wBox-wrap {
+	padding: 13px 10px 20px
+}
+
+.wBox-xia .wBox-con {
+	padding: 10px 8px 0 10px
+}
+
+.wBox-xia .btn-xia {
+	display: block;
+	margin: 0 auto;
+	overflow: hidden;
+	width: 83px;
+	line-height: 28px;
+	color: #fff;
+	text-align: center;
+	height: 31px;
+	background-position: 0 -101px
+}
+
+.wBox-xia .btn-xia:hover {
+	background-position: 0 -138px;
+	text-decoration: none;
+	color: #fff
+}
+
+.wBox-xia .btn-xia:active {
+	background-position: 0 -175px
+}
+
+.wBox-cancel .wBox-wrap {
+	padding: 13px 10px 25px;
+	text-align: center
+}
+
+.wBox-cancel .wBox-con h6 {
+	margin: 15px 0
+}
+
+.info-arrT,.info-arrB,.botBtn .sbtn-feed,.botBtn .sbtn-return,.botBtn .sbtn-remark,.botBtn .sbtn-fav,.botBtn .sbtn-erwm,.botBtn .sbtn-desktop,.btn-vip,.wBox .ico-close,.wBox-xia .btn-xia,.wBox .btn-2,.wBox .ico-ok,.wBox .ico-error,.wBox .btn-grey {
+	background: url(http://css.tv.itc.cn/channel/play_v1_img/ico.png) no-repeat
+}
+
+.btn-vip {
+	background-position: -99px -213px;
+	display: inline-block;
+	width: 57px;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 0 0 28px
+}
+
+.btn-vip:hover {
+	background-position: -99px -243px;
+	text-decoration: none
+}
+
+.read_tips,.read_arr {
+	background: url(http://css.tv.itc.cn/global/images/readtips.png) no-repeat
+}
+
+.read_tips {
+	background-color: #f3f3f3;
+	border: 1px solid #f3c38e;
+	line-height: 23px;
+	height: 23px;
+	padding: 0 6px 0 34px;
+	position: absolute;
+	top: -35px;
+	left: -1px;
+	box-shadow: 1px 1px 2px #a5a29d;
+	color: #6d6d6d
+}
+
+.read_arr {
+	display: inline-block;
+	background-position: 0 -114px;
+	*background-position: 0 -230px;
+	width: 14px;
+	height: 9px;
+	overflow: hidden;
+	position: absolute;
+	bottom: -9px;
+	left: 20px
+}
+
+.read_tips_fail {
+	background-position: 9px -191px;
+	width: 70px
+}
+
+.read_tips_ok {
+	background-position: 9px -150px;
+	width: 100px
+}
+
+.w100 {
+	width: 100px
+}
+
+.zi10 {
+	z-index: 10
+}
+
+.black .read_arr {
+	background-position: 0 0
+}
+
+.black .read_tips {
+	background-color: #191919;
+	border-color: #515151;
+	box-shadow: 0 0 2px #000;
+	color: #999
+}
+
+.black .read_tips_fail {
+	background-position: 9px -67px
+}
+
+.black .read_tips_ok {
+	background-position: 9px -27px
+}
+
+.havesubscribe {
+	color: #b3b3b3
+};
+
+.btn-rssSmall {
+	color: #b3b3b3
+}
+
+.cancelsubscribe {
+	color: #e73a31
+}
+
+.tabCi {
+	font-size: 20px;
+	background: url(../images/fg.png) no-repeat 0 13px
+}
+
+.tabCu .tabCi-lt {
+	padding-left: 0
+}
+
+.co-red {
+	color: #e73c31
+}
+
+.series-tab {
+	margin-top: 10px
+}
+
+.serti {
+	font-size: 14px;
+	width: 90px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	margin-bottom: 10px
+}
+
+.series2 table {
+	border-collapse: collapse
+}
+
+.series2 table td {
+	border: 1px solid #e6e6e6
+}
+
+.sera2 {
+	position: relative;
+	display: block;
+	min-width: 72px;
+	height: 51px;
+	line-height: 51px;
+	text-align: center;
+	font-size: 18px;
+	background: #fcfcfe;
+	float: left
+}
+
+
+.seri-on-red {
+	position: absolute;
+	left: -1px;
+	top: -1px;
+	display: block;
+	width: 100%;
+	height: 50px;
+	border: 1px solid #e73c31;
+	z-index: 10;
+	display: none
+}
+
+.sera2-on.sera2 {
+	color: #e73c31;
+	background: #fff
+}
+
+.sera2:hover {
+	background: #fff
+}
+
+.sera2:hover .seri-on-red,.sera2-on .seri-on-red {
+	display: block
+}
+
+.yu,.xin,.tips_vip {
+	background: url(drama_album_images/series-new.png) no-repeat
+}
+
+.yu {
+	background-position: 0 0
+}
+
+.xin {
+	background-position: 0 -20px
+}
+
+.tips_vip {
+	position: absolute;
+	background-position: 0 -40px;
+	display: inline-block;
+	width: 25px;
+	height: 14px;
+	right: 0;
+	top: 0
+}
+
+.tith {
+	font-size: 20px
+}
+
+.more {
+	background-position: right -105px;
+	font-size: 14px
+}
+
+.more:hover {
+	background-position: right -128px;
+	*background-position: right -128px
+}
+
+.debox .colR {
+	overflow: hidden
+}
+
+.colL-img {
+	display: inline-block;
+	width: 170px;
+	height: 110px
+}
+
+.colL-bg {
+	background: #000;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 170px;
+	height: 110px;
+	filter: alpha(opacity=50);
+	-moz-opacity: .5;
+	opacity: .5;
+	z-index: 1;
+	display: none
+}
+
+.colL-play {
+	background: url(drama_album_images/icon-pl.png) no-repeat;
+	display: block;
+	width: 50px;
+	height: 50px;
+	left: 50%;
+	top: 50%;
+	margin-left: -25px;
+	margin-top: -25px;
+	z-index: 2;
+	display: none
+}
+
+.colL-img:hover .colL-bg,.colL-img:hover .colL-play {
+	display: block
+}
+
+.rt-bg {
+	display: inline;
+	width: 56px;
+	height: 20px;
+	line-height: 20px;
+	background: #f9f9fc
+}
+
+.colR .shouqi {
+	background-position: right 7px
+}
+
+.colR .zhankai {
+	background-position: right -34px
+}
+
+.colR .shouqi:hover {
+	text-decoration: none;
+	background-position: right -192px
+}
+
+.colR .zhankai:hover {
+	text-decoration: none;
+	background-position: right -232px
+}
+
+.debox {
+	padding-bottom: 12px
+}
+
+.debox-ul {
+	padding: 15px 0 0;
+	border-top: 1px dotted #c9c9ca;
+	margin-top: 12px
+}
+
+.debox-ul li {
+	float: left;
+	overflow: hidden;
+	margin: 0 30px 10px 0
+}
+
+.debox-ul .tm {
+	font-size: 12px;
+	float: left;
+	margin-right: 10px;
+	background: #cecece;
+	color: #fff;
+	width: 40px;
+	height: 18px;
+	overflow: hidden;
+	line-height: 18px;
+	text-align: center;
+	border-radius: 2px
+}
+
+.debox-ul a {
+	float: left;
+	font-size: 14px;
+	display: inline-block;
+	height: 18px;
+	line-height: 18px;
+	overflow: hidden;
+	vertical-align: middle
+}
+
+.debox-ul a:hover .tm {
+	background: #e73c31
+}
+
+.series-tab2 {
+	margin-bottom: 15px
+}
+
+.serti2 {
+	float: left;
+	line-height: 25px;
+	padding: 0 20px;
+	font-size: 14px;
+	text-align: center;
+	cursor: pointer;
+	color: #3a3a3a;
+	background: url(../images/fg.png) no-repeat 0 4px
+}
+
+.serti-on2 {
+	background: #e73c31;
+	color: #fff
+}
+
+.modC {
+	margin-bottom: 5px
+}
+
+#content .crossPage {
+	margin: 0 auto 20px
+}
+
+.lisCi {
+    width: 100%;
+    float: left;
+    margin: 0 0 20px;
+}

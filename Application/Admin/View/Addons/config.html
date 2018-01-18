@@ -1,0 +1,344 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>插件配置 [ {$data.title} ]</strong></div>
+      <div class="panel-body">
+      	<form method="post" class="form-x" action="{:U('saveConfig')}">
+        <empty name="custom_config">
+			<foreach name="data['config']" item="form" key="o_key">
+            <div class="form-group">
+                <div class="label">
+                	<label>{$form.title|default=''}</label>
+                </div>
+                <present name="form.tip">
+                    <span class="float-right">{$form.tip}</span>
+                </present>
+                <switch name="form.type">
+                <case value="text">
+                <div class="field">
+                    <input type="text" name="config[{$o_key}]" class="input input-auto"  size="50" value="{$form.value}">
+                </div>
+                </case>
+                <case value="password">
+                <div class="field">
+                    <input type="password" name="config[{$o_key}]" class="input input-auto"  size="50" value="{$form.value}">
+                </div>
+                </case>
+                <case value="hidden">
+                    <input type="hidden" name="config[{$o_key}]" value="{$form.value}">
+                </case>
+                <case value="radio">
+                <div class="field">
+                	<div class="button-group radio">
+                    <foreach name="form.options" item="opt" key="opt_k">
+                        <label class="button <eq name="form.value" value="$opt_k">active</eq>">
+                            <input type="radio" name="config[{$o_key}]" value="{$opt_k}" <eq name="form.value" value="$opt_k"> checked</eq>>{$opt}
+                        </label>
+                    </foreach>
+                    </div>
+                </div>
+                </case>
+                <case value="checkbox">
+                <div class="field">
+                	<div class="button-group checkbox">
+                    <foreach name="form.options" item="opt" key="opt_k">
+                        <label class="button <in name="opt_k" value="$form.value">active</in>">
+                            <php>
+                                is_null($form["value"]) && $form["value"] = array();
+                            </php>
+                            <input type="checkbox" name="config[{$o_key}][]" value="{$opt_k}" <in name="opt_k" value="$form.value"> checked</in>>{$opt}
+                        </label>
+                    </foreach>
+                    </div>
+                </div>
+                </case>
+                <case value="select">
+                <div class="field">
+                    <select name="config[{$o_key}]" class="input input-auto">
+                        <foreach name="form.options" item="opt" key="opt_k">
+                            <option value="{$opt_k}" <eq name="form.value" value="$opt_k"> selected</eq>>{$opt}</option>
+                        </foreach>
+                    </select>
+                </div>
+                </case>
+                <case value="textarea">
+                <div class="field">
+                        <textarea name="config[{$o_key}]" cols="50" rows="5" class="input input-auto">{$form.value}</textarea>
+                </div>
+                </case>
+                <case value="copy">
+                    <div class="input-inline clearfix">
+                        <input type="text" class="input" id="copy_text_{$o_key}" readonly="readonly" value="{$form.value}" name="config[{$o_key}]" size="41" />
+                        <input class="button" type="button" id="copy_{$o_key}" value="复制" />
+                    </div>
+                    <script type="text/javascript">
+                        window.onload=function(){
+                            $('#copy_{$o_key}').zclip({
+                                path: '__STATIC__/zclip/ZeroClipboard.swf',
+                                copy: function(){
+                                    return $('#copy_text_{$o_key}').val();
+                                },
+                                afterCopy: function(){
+                                    layer.msg("复制成功", {icon: 1});
+                                }
+                            });
+                        }
+                    </script>
+                </case>
+                <case value="picture_union">
+                    <div class="field">
+                    <input type="file" id="upload_picture_{$o_key}">
+                    <input type="hidden" name="config[{$o_key}]" id="cover_id_{$o_key}" value="{$form.value}"/>
+                    <div class="upload-img-box">
+                        <notempty name="form['value']">
+                        <php> $mulimages = explode(",", $form["value"]); </php>
+                        <foreach name="mulimages" item="one">
+                            <div class="upload-addons-item" val="{$one}">
+                                <img src="{$one|get_cover='path'}"  ondblclick="removePicture{$o_key}(this)"/>
+                            </div>
+                        </foreach>
+                        </notempty>
+                    </div>
+                    </div>
+                    <script type="text/javascript">
+                        //上传图片
+                        /* 初始化上传插件 */
+                        $("#upload_picture_{$o_key}").uploadify({
+                            "height"          : 30,
+                            "swf"             : "__STATIC__/uploadify/uploadify.swf",
+                            "fileObjName"     : "download",
+							"buttonClass"     :  "button bg-green",
+                            "buttonText"      : "上传图片",
+                            "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+                            "width"           : 100,
+                            'removeTimeout'   : 1,
+                            'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+                            "onUploadSuccess" : uploadPicture{$o_key},
+                            'onFallback' : function() {
+                                alert('未检测到兼容版本的Flash.');
+                            }
+                        });
+
+                        function uploadPicture{$o_key}(file, data){
+							var data = eval('('+data+')');
+                            //var data = $.parseJSON(data);
+                            var src = '';
+                            if(data.status){
+                                src = data.url || '__ROOT__' + data.path
+                                $("#cover_id_{$o_key}").parent().find('.upload-img-box').append(
+                                    '<div class="upload-addons-item" val="' + data.id + '"><img src="__ROOT__' + src + '" ondblclick="removePicture{$o_key}(this)"/></div>'
+                                );
+                                setPictureIds{$o_key}();
+                            } else {
+                                updateAlert(data.info);
+                                setTimeout(function(){
+                                    $('#top-alert').removeClass('show').addClass('hidden');
+                                    $(that).removeClass('disabled').prop('disabled',false);
+                                },1500);
+                            }
+                        }
+                        function removePicture{$o_key}(o){
+                            var p = $(o).parent().parent();
+                            $(o).parent().remove();
+                            setPictureIds{$o_key}();
+                        }
+                        function setPictureIds{$o_key}(){
+                            var ids = [];
+                            $("#cover_id_{$o_key}").parent().find('.upload-img-box').find('.upload-addons-item').each(function(){
+                                ids.push($(this).attr('val'));
+                            });
+                            if(ids.length > 0)
+                                $("#cover_id_{$o_key}").val(ids.join(','));
+                            else
+                                $("#cover_id_{$o_key}").val('');
+                        }
+                    </script>
+                </case>
+                <case value="group">
+                <div class="tab">
+  					<div class="tab-head">
+                    <ul class="tab-nav">
+                        <volist name="form.options" id="li">
+                            <li <eq name="i" value="1">class="active"</eq>><a href="#tab{$i}">{$li.title}</a></li>&nbsp;
+                        </volist>
+                    </ul>
+                    </div>
+                    <div class="tab-body">
+                    <volist name="form.options" id="tab">
+                        <div id="tab{$i}" class="tab-panel <eq name="i" value="1">active</eq> tab{$i}">
+                            <foreach name="tab['options']" item="tab_form" key="o_tab_key">
+                            <div class="form-group">
+                            <div class="label">
+                                <label>{$tab_form.title|default=''}</label>
+                            </div>
+                            <div class="field">
+                                <switch name="tab_form.type">
+                                    <case value="text">
+                                        <input type="text" name="config[{$o_tab_key}]" class="input input-auto"  size="50" value="{$tab_form.value}">
+                                    </case>
+                                    <case value="password">
+                                        <input type="password" name="config[{$o_tab_key}]" class="input input-auto"  size="50" value="{$tab_form.value}">
+                                    </case>
+                                    <case value="hidden">
+                                        <input type="hidden" name="config[{$o_tab_key}]" value="{$tab_form.value}">
+                                    </case>
+                                    <case value="radio">
+                                    	<div class="button-group radio">
+                                        <foreach name="tab_form.options" item="opt" key="opt_k">
+                                            <label class="button <eq name="tab_form.value" value="$opt_k">active</eq>">
+                                                <input type="radio" name="config[{$o_tab_key}]" value="{$opt_k}" <eq name="tab_form.value" value="$opt_k"> checked</eq>>{$opt}
+                                            </label>
+                                        </foreach>
+                                        </div>
+                                    </case>
+                                    <case value="checkbox">
+                                    	<div class="button-group checkbox">
+                                        <foreach name="tab_form.options" item="opt" key="opt_k">
+                                            <label class="button <in name="opt_k" value="$tab_form.value">active</in>">
+                                                <php> is_null($tab_form["value"]) && $tab_form["value"] = array();</php>
+                                                <input type="checkbox" name="config[{$o_tab_key}][]" value="{$opt_k}" <in name="opt_k" value="$tab_form.value"> checked</in>>{$opt}
+                                            </label>
+                                        </foreach>
+                                        </div>
+                                    </case>
+                                    <case value="select">
+                                        <select name="config[{$o_tab_key}]" class="input input-auto">
+                                            <foreach name="tab_form.options" item="opt" key="opt_k">
+                                                <option value="{$opt_k}" <eq name="tab_form.value" value="$opt_k"> selected</eq>>{$opt}</option>
+                                            </foreach>
+                                        </select>
+                                    </case>
+                                    <case value="textarea">
+                                        <textarea name="config[{$o_tab_key}]" class="input input-auto" cols="50" rows="5">{$tab_form.value}</textarea>
+                                    </case>
+                                    <case value="copy">
+                                        <div class="input-inline clearfix">
+                                            <input type="text" class="input" id="copy_text_{$o_tab_key}" readonly="readonly" value="{$tab_form.value}" name="config[{$o_tab_key}]" size="41" />
+                                            <input class="button" type="button" id="copy_{$o_tab_key}" value="复制" />
+                                        </div>
+                                        <script type="text/javascript">
+                                            window.onload=function(){
+                                                $('#copy_{$o_tab_key}').zclip({
+                                                    path: '__STATIC__/zclip/ZeroClipboard.swf',
+                                                    copy: function(){
+                                                        return $('#copy_text_{$o_tab_key}').val();
+                                                    },
+                                                    afterCopy: function(){
+                                                        layer.msg("复制成功", {icon: 1});
+                                                    }
+                                                });
+                                            }
+                                        </script>
+                                    </case>
+                                    <case value="picture_union">
+                                        <div class="field">
+                                        <input type="file" id="upload_picture_{$o_tab_key}">
+                                        <input type="hidden" name="config[{$o_tab_key}]" id="cover_id_{$o_tab_key}" value="{$tab_form.value}"/>
+                                        <div class="upload-img-box">
+                                            <notempty name="tab_form['value']">
+                                            <php> $mulimages = explode(",", $tab_form["value"]); </php>
+                                            <foreach name="mulimages" item="one">
+                                                <div class="upload-addons-item" val="{$one}">
+                                                    <img src="{$one|get_cover='path'}"  ondblclick="removePicture{$o_tab_key}(this)"/>
+                                                </div>
+                                            </foreach>
+                                            </notempty>
+                                        </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            //上传图片
+                                            /* 初始化上传插件 */
+                                            $("#upload_picture_{$o_tab_key}").uploadify({
+                                                "height"          : 30,
+                                                "swf"             : "__STATIC__/uploadify/uploadify.swf",
+                                                "fileObjName"     : "download",
+												"buttonClass"     :  "button bg-green",
+                                                "buttonText"      : "上传图片",
+                                                "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+                                                "width"           : 120,
+                                                'removeTimeout'   : 1,
+                                                'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+                                                "onUploadSuccess" : uploadPicture{$o_tab_key},
+                                                'onFallback' : function() {
+                                                    alert('未检测到兼容版本的Flash.');
+                                                }
+                                            });
+
+                                            function uploadPicture{$o_tab_key}(file, data){
+                                                var data = eval('('+data+')');
+												//var data = $.parseJSON(data);
+                                                var src = '';
+                                                if(data.status){
+                                                    src = data.url || '__ROOT__' + data.path
+													alert(data.id);
+                                                    $("#cover_id_{$o_tab_key}").parent().find('.upload-img-box').append(
+                                                        '<div class="upload-addons-item" val="' + data.id + '"><img src="__ROOT__' + src + '" ondblclick="removePicture{$o_tab_key}(this)"/></div>'
+                                                    );
+                                                    setPictureIds{$o_tab_key}();
+                                                } else {
+                                                    updateAlert(data.info);
+                                                    setTimeout(function(){
+                                                        $('#top-alert').removeClass('show').addClass('hidden');
+                                    					$(that).removeClass('disabled').prop('disabled',false);
+                                                    },1500);
+                                                }
+                                            }
+                                            function removePicture{$o_tab_key}(o){
+                                                var p = $(o).parent().parent();
+                                                $(o).parent().remove();
+                                                setPictureIds{$o_tab_key}();
+                                            }
+                                            function setPictureIds{$o_tab_key}(){
+                                                var ids = [];
+                                                $("#cover_id_{$o_tab_key}").parent().find('.upload-img-box').find('.upload-addons-item').each(function(){
+													alert('1235');
+                                                    ids.push($(this).attr('val'));
+                                                });
+                                                if(ids.length > 0)
+                                                    $("#cover_id_{$o_tab_key}").val(ids.join(','));
+                                                else
+                                                    $("#cover_id_{$o_tab_key}").val('');
+                                            }
+                                        </script>
+                                    </case>
+                                </switch>
+                                <present name="tab_form.tip">
+                                {$tab_form.tip}
+                            	</present>
+                            </div>
+                            </div>
+                            </foreach>
+                    	</div>
+                    </volist>
+                    </div>
+                </div>
+                </case>
+            </switch>
+            </div>
+            </foreach>
+		<else />
+			<present name="custom_config">
+				{$custom_config}
+			</present>
+		</empty>
+        <br>
+        <div class="form-button">
+        <input type="hidden" name="id" value="{:I('id')}" readonly>
+        <button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button>
+        <button class="button bg-dot" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+        </form>
+      </div>
+    </div>
+</block>
+
+<block name="script">
+<script src="__STATIC__/layer/layer.js"></script>
+<script src="__STATIC__/zclip/jquery.zclip.js"></script>
+<script type="text/javascript" charset="utf-8">
+	//导航高亮
+	highlight_subnav('{:U('Addons/index')}');
+</script>
+</block>

@@ -1,0 +1,306 @@
+<extend name="Public/base"/>
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div id="top-alert" class="alert fixed hidden alert-red"></div>
+    <div class="tab">
+        <div class="tab-head">
+            <ul class="tab-nav">
+                <li class="active"><a href="#tab-basics">基础</a></li>
+                <li><a href="#tab-senior">高级</a></li>
+            </ul>
+            </div>
+            <div class="tab-body">
+            <br />
+            <form action="{:U()}" class="form-x"  method="post">
+            <div class="tab-panel active" id="tab-basics">
+                <div class="form-group">
+                    <div class="label"><label>影片名称</label></div>
+                    <div class="field">
+                        <input type="text" name="title" class="input input-auto" size="50" value="{$info.title|default=''}" placeholder="影片名称"/>                    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>影片主演</label></div>
+                    <div class="field">
+                        <input type="text" name="actors" class="input input-auto" size="50" value="{$info.actors|default=''}" placeholder="多个主演使用半角逗号分隔开"/>                    
+                    </div>
+                </div>
+              <div class="form-group">
+                    <div class="label"><label>影片分类</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="category">
+                        	<volist name="category" id="vo">
+								<option value="{$vo.id}">{$vo.html}{$vo.title}</option>
+							</volist>
+                         </select>
+                    </div>
+              </div>
+                <div class="form-group">
+                    <div class="label"><label>影片地区</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="area">
+                            <volist name="Think.config.MOVIE_AREA" id="area">
+                            	<option value="{$area}">{$area}</option>
+                        	</volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>影片语言</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="language">
+                            <volist name="Think.config.MOVIE_LANGUAGE" id="language">
+                            	<option value="{$language}">{$language}</option>
+                        	</volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>影片年份</label></div>
+                    <div class="field">
+                        <select class="input input-auto" name="year">
+                                <volist name="Think.config.MOVIE_YEAR" id="year">
+                                    <option value="{$year}">{$year}</option>
+                                </volist>
+                        </select>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="label"><label>影片图片</label></div>
+                    <div class="field">
+                    	<input type="file" id="upload_picture">
+                    	<input type="hidden" name="cover_id" id="cover_id" value="{$info.cover_id|default=0}"/>
+                        <div class="upload-img-box">
+                            <notempty name="info.picurl">
+                                <div class="upload-pre-item"><img width="155" height="220" class="img-border" src="{$info.picurl}"/></div>
+                            </notempty>
+               			</div>
+                        <script type="text/javascript">
+    						//上传图片
+    					    /* 初始化上传插件 */
+    						$("#upload_picture").uploadify({
+    					        "height"          : 35,
+    					        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+    					        "fileObjName"     : "download",
+    							"buttonClass"     :  "button bg-green",
+    					        "buttonText"      : "上传图片",
+    					        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id(),'water'=>1))}",
+    					        "width"           : 100,
+    					        'removeTimeout'	  : 1,
+    					        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+    					        "onUploadSuccess" : uploadPicture,
+    					        'onFallback' : function() {
+    					            alert('未检测到兼容版本的Flash.');
+    					        }
+    					    });
+    						function uploadPicture(file, data){
+    							var data = eval('('+data+')');
+    					    	//var data = $.parseJSON(data);
+    					    	var src = '';
+    					        if(data.status){
+    					        	$("#cover_id").val(data.id);
+    					        	src = data.url || '__ROOT__' + data.path
+    					        	$("#cover_id").parent().find('.upload-img-box').html(
+    					        		'<div class="upload-pre-item"><img width="155" height="220" class="img-border" src="__ROOT__' + src + '"/></div>'
+    					        	);
+    					        } else {
+    					        	updateAlert(data.info);
+    					        	setTimeout(function(){
+    					                updateAlert();
+                       					$(that).prop('disabled',false);
+    					            },1500);
+    					        }
+    					    }
+    					</script>
+                    </div>
+                </div>
+                <if condition="($info.id neq '') AND ($info.palyer neq '') ">
+                <volist name="info.palyer" id="playerurl" key="num">
+                <div class="form-group" id="movieurl">
+                    <div class="label"><label>播放地址{$num}</label></div>
+                    <div class="field">
+                        <p>
+                            <select class="input input-auto" name="movie_player_id[]">
+                                <volist name="playerlist" id="player">
+                                    <option value="{$player.id}" <eq name="playerurl.movie_player_id" value="$player.id">selected</eq>>{$player.title}</option>
+                                </volist>
+                        </select>
+                            <span class="text-gray">注：分集名称用"$"分隔，一行一集播放地址。</span>
+                            <eq name="num" value="1">
+                            <button name="addurl" class="float-right button button-small icon-plus bg-yellow addurl" type="button"> 添加一组播放地址</button>
+                            <else/>
+                            <button name="addurl" class="float-right button button-small icon-minus bg-yellow delurl confirm ajax-get no-refresh" callback="removeurl(that)" type="button" url="{:U('delurl?pid='.$playerurl['id'])}"> 删除这组播放地址</button>
+                            </eq>
+                        </p>
+                        <p>
+                        	<input type="hidden" name="pid[]" value="{$playerurl.id|default=0}">
+                        	<textarea id="movie_url_{$num}" name="movie_url[]" class="input" rows="6">{$playerurl.movie_url|default=''}</textarea>
+                        </p>
+                    </div>
+                </div>
+                </volist>
+                <else/>
+                <div class="form-group" id="movieurl">
+                    <div class="label"><label>播放地址1</label></div>
+                    <div class="field">
+                        <p>
+                            <select class="input input-auto" name="movie_player_id[]">
+                                <volist name="playerlist" id="player">
+                                    <option value="{$player.id}">{$player.title}</option>
+                                </volist>
+                            </select>
+                            <span class="text-gray">注：分集名称用"$"分隔，一行一集播放地址。</span>
+                             <button name="addurl" class="float-right button button-small icon-plus bg-yellow addurl" type="button"> 添加一组播放地址</button>
+                        </p>
+                        <p>
+                        	<textarea name="movie_url[]" class="input" rows="6"></textarea>
+                        </p>
+                    </div>
+                </div>
+                </if>
+                <div class="form-group">
+                    <div class="label"><label>影片介绍</label></div>
+                    <div class="field">
+                        <js href="__STATIC__/ueditor/ueditor.config.js" />
+                        <js href="__STATIC__/ueditor/ueditor.all.js" />
+                        <script id="container" name="content" style="width:100%;height:300px;" type="text/plain">{$info.content|htmlspecialchars_decode|stripslashes}</script>
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('container',{
+                              serverUrl :'{:U('Ueditor/Index')}',
+                                    UEDITOR_HOME_URL:'__STATIC__/ueditor/',
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-panel" id="tab-senior">
+            	<div class="form-group">
+                    <div class="label"><label>影片别名</label></div>
+                    <div class="field">
+                        <input type="text" name="also_known_as" class="input input-auto" size="50" value="{$info.also_known_as|default=''}"/>      
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>导演</label></div>
+                    <div class="field">     
+						<input type="text" name="directors" class="input input-auto" size="50" value="{$info.directors|default=''}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>影片推荐</label></div>
+                    <div class="field">
+                    	<div class="button-group checkbox">
+                        <volist name="Think.config.DOCUMENT_POSITION" id="pos">
+                        <label class="button <if condition="check_document_position($info['position'],$key)">active</if>"><input type="checkbox" value="{$key}" name="position[]" <if condition="check_document_position($info['position'],$key)">checked="checked"</if>>{$pos}</label>
+                        </volist>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>推荐标签</label></div>
+                    <div class="field">
+                        <div class="button-group radio">
+                            <label class="button <eq name="info['tj_tag']" value="0">active</eq>">
+                                <input name="tj_tag" value="0" checked="checked" type="radio">无
+                            </label>
+                            <label class="button <eq name="info['tj_tag']" value="1">active</eq>">
+                                <input name="tj_tag" value="1" type="radio">热剧更新
+                            </label>
+                            <label class="button <eq name="info['tj_tag']" value="2">active</eq>">
+                                <input name="tj_tag" value="2" type="radio">正在热播
+                            </label>
+                            <label class="button <eq name="info['tj_tag']" value="3">active</eq>">
+                                <input name="tj_tag" value="3" type="radio">大片抢先看
+                            </label>
+                            <label class="button <eq name="info['tj_tag']" value="4">active</eq>">
+                                <input name="tj_tag" value="4" type="radio">VIP专享
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>连载信息</label></div>
+                    <div class="field">     
+						<input type="text" name="serialize" class="input input-auto" size="15" value="{$info.serialize|default=''}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>影片人气</label></div>
+                    <div class="field">
+                        <input type="text" name="hits" class="input input-auto" size="15" value="{$info.hits|default=0}"/>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="label"><label>影片评分</label></div>
+                    <div class="field">
+                        <input type="text" name="rating" class="input input-auto" size="15" value="{$info.rating|default=0}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>评分人数</label></div>
+                    <div class="field">
+                        <input type="text" name="rating_count" class="input input-auto" size="15" value="{$info.rating_count|default=0}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>顶</label></div>
+                    <div class="field">
+                        <input type="text" name="up" class="input input-auto" size="15" value="{$info.up|default=0}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>踩</label></div>
+                    <div class="field">
+                        <input type="text" name="down" class="input input-auto" size="15" value="{$info.down|default=0}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="label"><label>创建时间</label></div>
+                    <div class="field">     
+                        <input type="text" name="create_time" class="input input-auto time" size="15" value="{$info.create_time|time_format=###,'Y-m-d'}"/>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <div class="label"><label>可见性</label></div>
+                    <div class="field">
+                    	<select class="input input-auto" name="display">
+                        	<option value="1">可见</option>
+                            <option value="0">不可见</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <input type="hidden" name="id" value="{$info.id|default=''}">
+            <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+            </form>
+        </div>
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/layer/layer.js"></script>
+    <link href="__STATIC__/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.time').datetimepicker({
+				format: 'yyyy-mm-dd',
+				language:"zh-CN",
+				minView:2,
+				autoclose:true
+			});
+		});	
+		<present name="info.id">
+		setValue("category", {$info.category|default=1});
+		setValue("area", "{$info.area|default=''}");
+		setValue("language", "{$info.language|default=''}");
+		setValue("year", {$info.year|default=2014});
+		setValue("display", {$info.display|default=1});
+        setValue("tj_tag", {$info.tj_tag|default=0});
+		highlight_subnav('{:U('Movie/index')}');
+		</present>
+	</script>
+</block>

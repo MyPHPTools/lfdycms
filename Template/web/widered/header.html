@@ -1,0 +1,142 @@
+<div id="hd_nav">
+    <!-- Start:navwrap -->
+    <div class="hd_navwrap">
+        <!-- Start:fun -->
+        <div class="hd_tool">
+            <div class="l hd_logo">
+                <a href="{$weburl}" target="_blank" class="mr20">
+                    <img src="{$webpath}{$weblogo}" width="140" height="50"></a>
+                <a class="mr20"></a>
+            </div>
+            <div class="hd_search l">
+                <form action="{:U('Search/index')}" method="post" target="_blank"><input type="text" name="keyword" class="hd_in" value=""><input type="submit" class="hd_serbtn" value="">
+                </form>
+            </div>
+            <div id="navLocker" class="hd_fun cf r">
+                <empty name="user['id']">
+                <div class="hd-fBox">
+                    <div class="hd-fBtn hd-fBtn1">
+                        <a data-action="login" href="{$user['userlogin']}" class="hd_xian">登录</a>
+                        <a target="_blank" href="{$user['userreg']}">注册</a>
+                    </div>
+                </div>
+                <else />
+                <div class="hd-fBox nav-user-panel nav-drop-down">
+                    <div class="hd-fBtn hd-fBtn1 hd-logined">
+                        <a class="nav-user-link" target="_blank" href="{$user['userurl']}" title="{$user['username']}">
+                            <img src="{$user['path']}" width="40" height="40" class="nav-user-avatar hd-circle"></a>
+                    </div>
+                    <div class="hd-fCont hd-fCont1">
+                        <span class="hd-fArr"></span>
+                        <div class="hd-info">
+                            <a target="_blank" href="{$user['userurl']}">
+                                <img src="{$user['path']}" width="60" height="60" class="l hd-photo nav-user-avatar">
+                            </a>
+                            <p class="row1">
+                                <a target="_blank" href="{$user['userurl']}" title="{$user['username']}">{$user['username']}</a>
+                            </p>
+                            <if condition="$user['vip_time'] gt time()">
+                            <p class="row2">
+                                到期时间：{$user['vip_time']|time_format=###,"Y-m-d"}
+                            </p>
+                            <else/>
+                            <p class="row3">
+                                <a target="_blank" href="{:U('Home/Other/index/tpl/vip')}" class="hd-orange">
+                                    加入会员
+                                    <span class="f-song">&gt;</span>
+                                </a>
+                            </p>
+                            </if>
+                        </div>
+                        <div class="hd-fBot">
+                            <a target="_blank" href="{$user['userurl']}">个人中心</a>
+                            <a href="{$user['userlogout']}" class="logout r">退出登录</a>
+                        </div>
+                    </div>
+                </div>
+                </empty>
+                <div class="hd-fBox nav-history-panel nav-drop-down">
+                    <div class="hd-fBtn hd-fBtn2">
+                        <a href="#">记录</a>
+                    </div>
+                    <div class="hd-fCont hd-fCont2">
+                        <span class="hd-fArr"></span>
+                        <div class="h-wrap">
+                            <div class="h-login-wrap" style="display:none;"></div>
+                            <div class="h-logout-wrap" style="display:none;">
+                                <div class="hd-list">
+                                    <div class="js-box">
+                                        <ul class="hd-his-list" id="hisStatu"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hd-fBox nav-rss-panel nav-drop-down">
+                    <div class="hd-fBtn hd-fBtn3">
+                        <a href="#">收藏</a>
+                    </div>
+                    <div class="hd-fCont hd-fCont2">
+                        <span class="hd-fArr"></span>
+                        <div class="h-wrap">
+                            <div class="h-login-wrap" style="display:none;"></div>
+                            <div class="h-logout-wrap" style="display:none;">
+                                <div class="hd-list">
+                                    <div class="js-box">
+                                        <ul class="hd-his-list" id="favorite"></ul>
+                                    </div>
+                                </div>
+                                <div class="hd-his-login">
+                                    <a href="{:U('/User/Favorites/index',array('type'=>1))}" class="hd_btn hd-hid-btn mr10">私密收藏夹</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hd-fBox nav-upload-panel">
+                    <div class="hd-fBtn hd-fBtn4">
+                        <a target="_blank" href="{:U('Home/Other/index/tpl/vip')}">VIP&nbsp;</a>
+                    </div>
+                </div>
+                <div class="hd-fBox nav-app-panel">
+                    <div class="hd-fBtn hd-fBtn5">
+                        <a target="_blank" href="{:U('Home/Other/index/tpl/app_down')}">APP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End:fun -->
+
+        <!-- Start:nav -->
+        <div class="hd_nav cf">
+            <ul class="l hd_n1">
+                <li class="hd_n">
+                    <a href="{$webpath}" title="首页">首页</a>
+                </li>
+                <nav name="nav">
+                <li class="hd_n <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">hd_n_on</if>">
+                    <a href="{$nav['url']}">{$nav['title']}</a>
+                    <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)"><span class="hd_arr"></span></if>
+                    <eq name="nav['branch']" value="1">
+                        <!-- Start:subNav -->
+                        <div class="hd_subnav cf">
+                            <ul class="cf l">
+                                <nav name="menu" cid="$nav['id']">
+                                    <li class="hd_sn hd_sn_on">
+                                        <a href="{$menu['url']}">{$menu['title']}</a>
+                                    </li>
+                                </nav>
+                            </ul>
+
+                        </div>
+                        <!-- End:subNav -->
+                    </eq>
+                </li>
+                </nav>
+            </ul>
+        </div>
+        <!-- End:nav -->
+    </div>
+    <!-- End:navwrap --> 
+</div>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://tv.sohu.com/drama/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/global2014.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/nav_v1.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/channel.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/drama-album.css"></head>
+
+<body class="W_1380">
+    <include file="{$tplpath}/header.html" />
+    <div class="header header-photo">
+        <div class="info cfix" id="topInfo">
+            <div class="infoL l rel">
+                <img src="{$pic}" width="200" height="265">
+            </div>
+            <div class="infoR r">
+                <div class="row1 cf">
+                    <h2 class="dbt c-black l">{$title}</h2>
+                    <span class="socre">{$rating}</span>
+                    <span class="r">播放数：<em class="c-black acount">{$hits}</em></span>
+                </div>
+                <div class="row2 cf">
+                    <div class="cf">
+                        <p class="p1 colL l">主演：
+                            <volist name="actors_array" id="actors">
+                                <a href="{$actors['url']}" target="_blank">{$actors['actors']}</a> /
+                            </volist> 
+                        </p>
+                        <p class="p1 r colR">导演：<a href="{:U('search/index',array('keyword'=>$directors))}" target="_blank">{$directors}</a></p>
+                    </div>
+                    <div class="cf">
+                        <p class="p2 colL l">类型：
+                            <a href="{$curl}" target="_blank">{$ctitle}</a>
+                        </p>
+                        <p class="p2 colR r">年份：<span class="c-black">{$year}</span></p>
+                    </div>
+                </div>
+                <div class="row3 rel J-fullintro" style="display: none;">简介：{$content}<a href="javascript:;" class="shouqi">收起</a></div>
+                <div class="row3 rel J-halfintro" style="display: block;">简介：{$content|msubstr=0,200}<a href="javascript:;" class="zhankai">展开</a></div>
+                <div class="td-n cf">
+                    <div class="share"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="wrapDrama cf">
+            <div class="main">
+                <!-- 广告开始 -->
+                <!-- <div class="ad1120">
+                    <img src="{$tplpath}/images/1120x100.jpg">
+                </div> -->
+                <!-- 广告结束 -->
+                <playlist name="player">
+                <div class="modA">
+                    <div class="tit cf"><h3 class="tith">{$player['title']}</h3></div>
+                    <div class="td-n cf">
+                        <ul class="series2">
+                            <volist name="player['movie_url']" id="url">
+                            <li class="sera2">
+                                <a href="{$url['url']}" class="sera" <eq name="player['vip']" value="1">{$url['vip_js']}</eq> target="_player">{$url['title']}
+                                <em class="seri-on-red"></em>
+                                </a>
+                            </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                </playlist>
+                <div class="mod_line"></div>
+                <div class="modB pianhua">
+                    <comment />
+                </div>
+            </div>
+            <div class="side">
+                <!-- 广告开始 -->
+                <!-- <div class="ad240">
+                    <img src="{$tplpath}/images/240x100.jpg">
+                </div> -->
+                <!-- 广告结束 -->
+                <div class="modRB">
+                    <div class="tit">最新更新</div>
+                    <ul class="lisPT cf" id="likelist">
+                        <list name="list" order="update_time desc" limit="4">
+                        <li class="lisPi cf">
+                            <a href="{$list['url']}" target="_blank" class="sz110 load">
+                            <img src="{$list['pic']}" class="sz110" title="{$list['title']}">
+                            </a><div class="pic"><p class="fs14 pt"><a href="{$list['url']}" target="_blank" title="{$list['title']}">{$list['title']|msubstr=0,10}</a></p><p class="pi break">{$list['actors']|msubstr=0,11}</p></div>
+                        </li>
+                        </list>
+                    </ul>
+                </div>
+                <div class="mod_line"></div>
+                <div class="modRC">
+                    <div class="tit">{$ctitle}排行榜</div>
+                    <div class="rankud cf" id="tvrank">
+                        <ul class="ranku cf">
+                        <list name="list" order="hits desc" limit="10">
+                            <li class="ranki rk{$i-1}">
+                            <a title="{$list['title']}" target="_blank" href="{$list['url']}" class="ranka">{$list['title']|msubstr=0,10}</a></li>
+                        </list>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mod_line"></div>
+                <div class="modRD">
+                    <div class="tit" target="_blank">分类检索</div>
+                    
+                    <div class="con">
+                        <h6>按地区 |</h6>
+                        <div class="sort">
+                            <area name="area">
+                                <a href="{$area['url']}" target="_blank">{$area['title']}</a>
+                            </area>
+                        </div>
+                        <h6>按类型 |</h6>
+                        <div class="sort">
+                            <type name="type">
+                                <a href="{$type['url']}" target="_blank">{$type['title']}</a>
+                            </type>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="{$tplpath}/footer.html" />
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<div id="t-header">
+    <header class="gb-topbar">
+        <div class="topbar-inner">
+            <a href="/" class="logo"><img src="{$webpath}{$weblogo}"></a>
+            <div class="search">
+                <form id="search_form" target="_blank" action="{:U('Search/index')}" method="post">
+                    <div class="input_wrapper">
+                        <input id="q" name="keyword" type="text" placeholder="请输入关键字" class="">
+                        <input type="submit" id="search_icon" class="search_icon" value="">
+                    </div>
+                </form>
+            </div>
+            <div class="ucenter">
+                <ul>
+                    <empty name="user['id']">
+                        <li class="u-login">
+                            <a href="{$user['userlogin']}" title="登录" class="J-login">
+                                <span>登录</span>
+                            </a>
+                        </li>
+                    <else />
+                        <li class="u-logined">
+                            <a href="{$user['userurl']}" title="" target="_blank"><img src="{$user['path']}" alt=""></a>
+                        </li>
+                        <li class="u-logout"><a href="{$user['userlogout']}" class="J-logout">退出</a></li>
+                    </empty>
+                    <li class="u-record">
+                        <a href="#" title="记录">记录</a>
+                        <div id="history_list" class="alert_wrap user_list_pd hidden">
+                            <div id="history_list_wrap" class="user_list">
+                                <div class="user_list_info"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="u-collect">
+                        <a href="#" title="收藏">收藏</a>
+                        <div id="collect_list" class="alert_wrap user_list_pd hidden">
+                            <div id="collect_list_wrap" class="user_list">
+                                <div class="user_list_info"></div>
+                                <div class="bottom_btn"><a href="{:U('/User/Favorites/index',array('type'=>1))}" class="headerPay" position="header_open">私密收藏夹</a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="u-upload">
+                        <a href="{:U('Home/Other/index/tpl/vip')}" title="vip" target="_blank">vip</a>
+                    </li>
+                    <li class="u-app">
+                        <a href="{:U('Home/Other/index/tpl/app_down')}" title="app" target="_blank">app</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div id="J-sub-nav" class="w-sub-nav">
+        <div class="l-row">
+            <div>
+                <ul class="main-sub">
+                    <li><a href="{$webpath}">首页</a></li>
+                    <nav name="nav">
+                    <li <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>>
+                        <a href="{$nav['url']}">{$nav['title']}</a>
+                        <eq name="nav['branch']" value="1">
+                        <ul class="subs-nav" style="display: none;">
+                            <nav name="menu" cid="$nav['id']">
+                                <li>
+                                    <a href="{$menu['url']}">{$menu['title']}</a>
+                                </li>
+                            </nav>
+                        </ul>
+                        </eq>
+                    </li>
+                    </nav>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

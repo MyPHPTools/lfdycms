@@ -1,0 +1,283 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+                <div class="col-lg-9">
+                    <div class="panel b-a">
+                        <div class="bg-light lt">
+                            <ul class="nav nav-tabs">
+                                <li <empty name="type">class="active"</empty>><a href="{:U('index','type=0')}">收藏夹</a></li>
+                                <li <eq name="type" value="1">class="active"</eq>><a href="{:U('index','type=1')}">私密收藏夹</a></li>
+                                <if condition="($Think.session.favorites eq 1) AND ($type eq 1)"><li class="pull-right"><button type="button" class="btn btn-primary" onclick="location.href='{:U('logout')}'">关闭</button></li></if>
+                                <!-- 未完成 居中 -->
+                            </ul>
+                        </div>
+                        <if condition="($vip_time lt time()) AND ($type eq 1)">
+                            <div class="panel-body">
+                                <div class="row row-sm">
+                                    <a href="{:U('Home/Other/index/tpl/vip')}">请先开通VIP</a>
+                                </div>
+                            </div>
+                        <else/>
+                        <div class="panel-body">
+                            <div class="row row-sm">
+                                <if condition="($Think.session.favorites eq 0) AND ($type eq 1)">
+                                <notempty name="favorites_password">
+                                    <form class="form-horizontal" method="post" action="{:U('login')}" data-parsley-validate>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">
+                                                收藏夹密码
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control input-s-lg" name="favorites_password" data-parsley-length="[6, 30]" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                <button type="submit" class="btn btn-primary">开启</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <else />
+                                    {:cookie('__forward__',$_SERVER['HTTP_REFERER'])}
+                                    <form class="form-horizontal" method="post" action="{:U('Users/favorites_add_password')}" data-parsley-validate>
+                                        <div class="form-group">
+                                            <h3 class="col-sm-12">设置收藏夹密码</h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">
+                                                新收藏夹密码
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control input-s-lg" name="favorites_password" id="fpwd" data-parsley-length="[6, 30]" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">
+                                                重复收藏夹密码
+                                            </label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control input-s-lg" name="favorites_repassword" data-parsley-equalto="#fpwd" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                <button type="submit" class="btn btn-primary">设置</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </notempty>
+                                <else />
+                                <volist name="list" id="movie">
+                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                    <div class="pos-rlt">
+                                        <div class="item-overlay opacity r r-2x bg-black">
+                                            <div class="center text-center">
+                                                <a href="{$movie['url']}"><span class="glyphicon glyphicon-play i-2x"></span></a>
+                                            </div>
+                                            <div class="bottom padder m-b-sm">
+                                              <a href="{:U('remove?id='.$movie['fid'])}" class="pull-right active ajaxget" data-toggle="class">
+                                                <i class="glyphicon glyphicon-remove text"></i>
+                                              </a>
+                                            </div>
+                                        </div>
+                                        <a href="{$movie['url']}"><img src="{$movie['pic']}" height="160" alt="" class="r r-2x img-full"></a>
+                                    </div>
+                                    <div class="padder-v">
+                                        <a href="{$movie['url']}" class="text-ellipsis">{$movie['title']}</a>
+                                    </div>
+                                </div>
+                                </volist>
+                                </if>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                        	<div class="text-center">
+                                <div class="page">
+                                {$_page}
+                                </div>
+                            </div>
+                        </div>
+                        </if>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="text-center m-b m-t">
+                                        <img src="{$path|default='__IMG__/user.jpg'}" class="img-circle img-users">
+                                    <div>
+                                        <div class="h4 m-t-xs m-b-xs">{$username}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer bg-info text-center">
+                            <div class="row pull-out">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=follow&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$follow}
+                                        </span>
+                                        <small class="text-muted">
+                                            关注
+                                        </small>
+										</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 dk">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=fans&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$fans}
+                                        </span>
+                                        <small class="text-muted">
+                                            粉丝
+                                        </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$integral}
+                                        </span>
+                                        <small class="text-muted">
+                                            积分
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="m-b m-t">
+                                    <if condition="$vip_time gt time()">
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">VIP到期：</dd>
+                                        <dd class="list-inline">{$vip_time|time_format=###,"Y-m-d"}</dd>
+                                    </dl>
+                                    </if>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">用户类型：</dd>
+                                        <dd class="list-inline"><if condition="$vip_time gt time()">VIP<else/>普通用户</if></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">帐号登录次数：</dd>
+                                        <dd class="list-inline">{$login}次</dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">上次登录IP：</dd>
+                                        <dd class="list-inline">{:long2ip($last_login_ip)}</dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6 rno">上次登录时间：</dd>
+                                        <dd class="list-inline">{$last_login_time|time_format}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div>
+                                    <h4 class="m-b"><b>会员功能</b></h4>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">发表评论</dd>
+                                        <dd class="col-xs-6 text-right"><img src="__IMG__/toggle.gif" /></dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看游客视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <img src="__IMG__/toggle.gif" />
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看会员视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">观看付费视频</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">视频下载</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">私密夹</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dd class="col-xs-6">尊贵身份标识</dd>
+                                        <dd class="col-xs-6 text-right">
+                                            <if condition="$vip_time gt time()">
+                                            <img src="__IMG__/toggle.gif" />
+                                            <else />
+                                            <img src="__IMG__/toggleb.gif" />
+                                            </if>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <js href="__JS__/parsley.min.js" />
+    <js href="__JS__/zh_cn.js" />
+    <js href="__STATIC__/layer/layer.js" />
+    <script type="text/javascript">
+        $(function(){
+            $('.ajaxget').click(function(){
+                var url;
+                if ( url = $(this).attr('href')) {
+                    $.get(url).success(function(data){
+                        layer.msg(data.info,{icon: 5},function(){
+                            location.reload();
+                        }); 
+                    });
+                }
+                return false;
+            });
+        })
+    </script>
+</block>

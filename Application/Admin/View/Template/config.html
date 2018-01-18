@@ -1,0 +1,27 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>{$meta_title}</strong></div>
+      <div class="panel-body">
+      	<form method="post" class="form-x" action="{:U()}">
+            <div class="form-group">
+                <div class="label"><label>web模板选择</label></div>
+                <div class="field">
+                <select name="Web_Tpl" class="input input-auto" data-validate="required:请选择web模板">
+                    <volist name="info['web']" id="vo">
+                        <option value="{$vo.title}" <eq name="Think.config.DEFAULT_WEB_TPl" value="$vo.title">selected</eq>>{$vo.title}</option>
+                    </volist>
+                </select>
+               	</div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>wap模板选择</label></div>
+                <div class="field"><a target="_blank" class="button bg-yellow text-white icon-cubes" href="http://www.lfdycms.com/home/lists/index/id/83.html"> 马上获取该功能</a></div>
+            </div>
+          <br>
+        <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+        </form>
+      </div>
+    </div>
+</block>

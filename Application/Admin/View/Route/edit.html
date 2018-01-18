@@ -1,0 +1,33 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>{$meta_title}</strong></div>
+      <div class="panel-body">
+      	<form method="post" class="form-x" action="{:U()}">
+            <div class="form-group">
+                <div class="label"><label>路由名称</label></div>
+                <div class="field"> <input type="text" class="input input-auto"  size="30" name="title" value="{$info.title|default=''}"/> </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>路由方式</label></div>
+                <div class="field"> <input type="text" class="input input-auto"  size="50" name="name" value="{$info.name|default=''}"/> </div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>路由规则</label></div>
+                <div class="field"><textarea name="value" class="input input-auto" rows="5" cols="70">{$info.value|default=''}</textarea></div>
+            </div>
+            <input type="hidden" name="id" id="id" value="{$info.id}" />
+          <br>
+        <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+        </form>
+      </div>
+    </div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+		<present name="info.id">
+		highlight_subnav('{:U('Route/index')}');
+		</present>
+	</script>
+</block>

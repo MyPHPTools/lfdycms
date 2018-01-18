@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond $1 !^(Uploads|Public|Html)
+  RewriteRule ^(.*)$ index.php/$1 [QSA,PT]
+  RewriteRule ^(.*)/lists/(\w+)/(\d+)/(.*)/$ $1/Home/lists/lists/id/$3/$4 [QSA,PT]
+  RewriteRule ^(.*)/lists/(\w+)/(\d+)/$ $1/Home/lists/lists/id/$3
+  RewriteRule ^(.*)/movie/(\d+)/$ $1/Home/movie/Index/id/$2
+  RewriteRule ^(.*)/news/(\d+)/$ $1/Home/news/Index/id/$2
+  RewriteRule ^(.*)/player/(.*)/$ $1/Home/player/Index/$2
+  RewriteRule ^(.*)/down/(.*)/$ $1/Home/player/down/$2
+  RewriteRule ^(.*)/keyword/(\S+)/(.*)/$ $1/Home/Search/Index/keyword/$2/$3
+  RewriteRule ^(.*)/keyword/(\S+)/$ $1/Home/Search/Index/keyword/$2
+  RewriteRule ^(.*)/(\w+)/(\d+)/p/(\d+)/$ $1/Home/lists/Index/id/$3/p/$4
+  RewriteRule ^(.*)/(\w+)/(\d+)/$ $1/Home/lists/Index/id/$3 [QSA,PT,L]
+</IfModule>

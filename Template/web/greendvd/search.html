@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/global.css" rel="stylesheet">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+        <link href="{$tplpath}/css/idangerous.swiper.css" rel="stylesheet">
+        <!--[if lt IE 8]>
+            <script src="{$tplpath}/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body class="bgcolor-f5f5">
+        <include file="{$tplpath}/header.html" />
+		<div class="content bgcolor-f8f8 border-top"></div>
+
+		<div class="content margin-t30">
+			<div class="container bgcolor-fff">
+				<div class="col col12 padding f14">共 <span class="red">{$count}</span> 部{$ctitle}</div>
+			</div>
+		</div>
+
+		<div class="content margin-t30">
+			<div class="container">
+				<div class="col col12 color-line">
+					<h3 class="public_title"><span>搜索结果</span></h3>
+				</div>
+				<div class="col col12 move-list">
+					<search name="list" limit="30" order="update_time desc">
+					<div class="col col26">
+						<a href="{$list['url']}">
+							<switch name="list.tj_tag">
+								<case value="1"><span class="tip tip-new"></span></case>
+								<case value="2"><span class="tip tip-hot"></span></case>
+								<case value="3"><span class="tip tip-big"></span></case>
+								<case value="4"><span class="tip tip-vip"></span></case>
+							</switch>
+							<div class="list-img">
+								<span class="player"></span>
+								<img src="{$list['pic']}" class="img-full">
+								<small>{$list['actors']|msubstr=0,11}</small>
+							</div>
+							<dl class="profiles bgcolor-fff text-left">
+								<dt class="f14 h33">{$list['title']|msubstr=0,10}</dt>
+                                <dd class="f12 h88">主演：{$list['actors']|msubstr=0,11}</dd>
+								<em class="f14 orange">{$list['ctitle']}</em>
+							</dl>
+						</a>
+					</div>
+					</search>
+				</div>
+				<div class="col col12 padding page margin-t30">
+					<page listrow="30" />
+				</div>
+				<div class="col col12 margin-t30">
+					<div class="ad-height border col col12"></div>
+				</div>
+			</div>
+		</div>
+		
+
+		<include file="{$tplpath}/footer.html" />
+	</body>
+
+</html>

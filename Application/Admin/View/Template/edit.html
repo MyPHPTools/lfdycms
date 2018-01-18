@@ -1,0 +1,51 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+      <div class="panel-head"><strong>{$meta_title}</strong></div>
+      <div class="panel-body">
+      	<form method="post" class="form-x" action="{:U()}">
+            <div class="form-group">
+                <div class="label"><label>模板名称</label></div>
+                <div class="field"> <input type="text" class="input input-auto" disabled="disabled" size="30" name="title" value="{$title}"/></div>
+            </div>
+            <div class="form-group">
+                <div class="label"><label>模板内容</label></div>
+                <div class="field"> 
+                  <textarea id="content" name="content">{$content|default=''}</textarea> 
+              </div>
+            </div>
+            <input type="hidden" name="path" id="path" value="{$path}" />
+          <br>
+        <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+        </form>
+      </div>
+    </div>
+</block>
+
+<block name="script">
+<link rel="stylesheet" href="__STATIC__/codemirror/codemirror.css">
+<link rel="stylesheet" href="__STATIC__/codemirror/theme/solarized.css">
+<script type="text/javascript" src="__STATIC__/codemirror/codemirror.js"></script>
+<script type="text/javascript" src="__STATIC__/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script type="text/javascript" src="__STATIC__/codemirror/mode/xml/xml.js"></script>
+<script type="text/javascript" src="__STATIC__/codemirror/mode/javascript/javascript.js"></script>
+<script type="text/javascript" src="__STATIC__/codemirror/mode/css/css.js"></script>
+<script type="text/javascript" src="__STATIC__/codemirror/mode/clike/clike.js"></script>
+<script type="text/javascript" src="__STATIC__/codemirror/mode/php/php.js"></script>
+<script type="text/javascript">
+  var cEditor = CodeMirror.fromTextArea($("#content")[0], {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: '{$mode}',
+		indentUnit: 4,
+		lineNumbers   :true,
+		lineWrapping  :true,
+		autoMatchParens: true,
+		theme: 'solarized'
+      });
+	  <present name="path">
+	  highlight_subnav('{:U('Template/index')}');
+	  </present>
+</script>
+</block>

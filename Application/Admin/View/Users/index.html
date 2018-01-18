@@ -1,0 +1,129 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    <form method="post" class="form-x">
+    	<div class="panel-head"><strong>用户管理</strong></div>
+        <div class="padding border-bottom">
+        	<div class="button-group button-group-small">
+            <button type="button" class="button checkall" checkfor="id[]" name="checkall"><span class="icon-check-square-o"></span> 全选</button>
+             <a class="button" href="{:U('add')}"><span class="icon-plus text-green"></span> 新 增</a>
+             <button class="button ajax-post confirm" url="{:U('del')}" target-form="form-x"><span class="icon-trash-o text-red"></span> 删 除</button>
+            </div>
+            <div class="button-group button-group-small">
+                <button type="button" class="button dropdown-toggle">按类型查询<span class="downward"></span></button>
+                <ul class="drop-menu">
+                    <li><a href="{:U('index')}">所有用户</a></li>
+                    <li><a href="{:U('index?type=1')}">普通用户</a></li>
+                    <li><a href="{:U('index?type=2')}">VIP用户</a></li>
+                </ul>
+            </div>
+            <div class="button-group button-group-small padding-small">
+                用户：<span class="badge bg-green">{$count['pt']+$count['vip']}</span>
+                普通用户：<span class="badge bg-blue">{$count['pt']}</span>
+                VIP用户：<span class="badge bg-yellow">{$count['vip']}</span>
+            </div>
+            <div class="float-right">
+            	<input type="text" name="keyword" class="input input-auto input-small search-form" size="50" placeholder="搜索关键词" /> <a class="button button-small" href="javascript:;" id="search" url="{:U('index')}"><span class="icon-search"></span> 搜索</a>
+            </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th width="45">选择</th>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>登录次数</th>
+                <th>最后登录时间</th>
+                <th>最后登录IP</th>
+                <th>操作</th>
+            </tr>
+           	<notempty name="_list">
+            <volist name="_list" id="vo">
+            <tr>
+                <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+                <td>{$vo.id}</td>
+                <td><a href="{:U('info?id='.$vo['id'])}" class="userinfo">{$vo.username}</a>
+                <egt name="vo['vip_time']" value="$Think.const.NOW_TIME">
+                    <span class="tag bg-yellow">VIP</span>
+                    <span class="text-small">到期：{$vo.vip_time|time_format=###,"Y-m-d"}</span>
+                </egt>
+                </td>
+                <td>{$vo.login}</td>
+                <td>{$vo.last_login_time|time_format}</td>
+                <td>{:long2ip($vo['last_login_ip'])}</td>
+                <td>
+                <a href="{:U('message/add?id='.$vo['id'])}" class="message">发消息</a>
+                <a href="{:U('timeadd?id='.$vo['id'])}" class="addvip">到期时间</a>
+                <a href="{:U('edit?id='.$vo['id'])}">修改密码</a>
+                <eq name="vo.status" value="1">
+                    <a href="{:U('disable?id='.$vo['id'])}" class="ajax-get confirm">禁用</a>
+                <else/>
+                    <a href="{:U('enable?id='.$vo['id'])}" class="ajax-get confirm">启用</a>
+                </eq>
+                <a href="{:U('del?id='.$vo['id'])}" class="confirm ajax-get">删除</a>
+                </td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="7"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+         <div class="panel-foot text-center">
+         	<div class="page">{$_page}</div>
+        </div>
+        </form>
+    </div>
+</block>
+<block name="script">
+<js href="__STATIC__/layer/layer.js" />
+<script type="text/javascript">
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+		var query = $(this).prev('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+    $(".userinfo").click(function(){
+        layer.open({
+            type: 2,
+            area: ['800px', '350px'],
+            fix: false, //不固定
+            maxmin: true,
+            content: $(this).attr('href')
+        });
+        return false;
+    });
+
+    $(".addvip").click(function(){
+        layer.open({
+            type: 2,
+            area: ['400px', '350px'],
+            fix: false, //不固定
+            maxmin: true,
+            content: $(this).attr('href')
+        });
+        return false;
+    });
+
+	$(".message").click(function(){
+		layer.open({
+			type: 2,
+			area: ['580px', '570px'],
+			fix: false, //不固定
+			maxmin: true,
+			content: $(this).attr('href')
+		});
+		return false;
+	});
+})
+</script>
+</block>

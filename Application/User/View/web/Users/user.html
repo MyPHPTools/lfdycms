@@ -1,0 +1,86 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+            	<div class="col-lg-3 b-l">
+                    <div class="panel clearfix">
+                        <div class="panel-body">
+                            <p style="margin-bottom: 9px">搜索：</p>
+                            <form action="{:U('user')}" method="post">
+                          	<div class="input-group">
+                              <input type="text" name="keyword" class="form-control">
+                              <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">搜索</button>
+                              </span>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <notempty name="user">
+                <volist name="user" id="rs">
+				<div class="col-lg-3 b-l">
+					<div class="panel clearfix">
+                        <div class="panel-body">
+                          <a href="{:U('Users/info?id='.$rs['id'])}" class="thumb pull-left m-r">
+                            <img src="{$rs['path']|default='__IMG__/user.jpg'}" class="img-circle">
+                          </a>
+                          <div class="clear">
+                            <a href="{:U('Users/info?id='.$rs['id'])}" class="text-info">{$rs['username']}</a>
+                            <small class="block text-muted">{$rs['follow']} 关注 / {$rs['fans']} 粉丝</small>
+                            <eq name="rs['cfollow']" value="false">
+                            <a href="{:U('users/follow?uid='.$rs['id'])}" class="btn btn-xs btn-success m-t-xs follow" data-toggle="button" url="{:U('users/followDel?uid='.$rs['id'])}">关注</a>
+                            <else />
+                            <a href="{:U('users/followDel?uid='.$rs['id'])}" class="btn btn-xs btn-success m-t-xs follow" data-toggle="button" url="{:U('users/follow?uid='.$rs['id'])}">取消关注</a>
+                            </eq>
+                          </div>
+                        </div>
+					</div>
+				</div>
+                </volist>
+                <else/>
+                    <div class="col-lg-3 b-l">
+						<div class="panel clearfix">
+                        	<div class="panel-body">
+                        		暂时还没有内容! 
+                        	 </div>
+                        </div>
+					</div>
+                </notempty>
+                <div class="col-lg-12  m-b">
+                <div class="text-center">
+                	<div class="page">
+                    {$_page}
+                    </div>
+                </div>
+                <div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+<js href="__STATIC__/layer/layer.js" />
+<script type="text/javascript">
+$(function(){
+	$('.follow').click(function(){
+		var href=$(this).attr("href");
+		var url=$(this).attr("url");
+		var obj=$(this);
+		$.get(href).success(function(data){
+			if(data.status){
+				obj.attr("href",url);
+				obj.attr("url",href);
+				if(data.follow){
+					obj.text('取消关注');
+					layer.msg(data.info,{icon: 6});
+				}else{
+					obj.text('关注');
+					layer.msg(data.info,{icon: 5});
+				}
+			}
+		});
+	});
+})
+</script>
+</block>

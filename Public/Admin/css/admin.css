@@ -1,0 +1,140 @@
+body{background-color:#f2f9fd;}
+.panel{background:#fff;}
+form .form-group:last-child{padding-bottom:0;}
+.passcode{position:absolute;right:0;top:0;height:32px;margin:1px;border-left:solid 1px #ddd;text-align:center;line-height:32px;border-radius:0 4px 4px 0;cursor:pointer;}
+
+
+.lefter{position:relative;float:left;width:180px;margin-right:-180px;background:#e6f2fb;text-align:center;}
+.righter{float:right;width:100%;padding-top:15px;background:#e6f2fb;}
+.mainer{margin-left:180px;}
+
+.logo{border-bottom:solid 1px #b5cfd9;padding:23px 10px;}
+
+.admin-navbar{border-bottom:solid 5px #09c;padding:0 15px;}
+.admin-nav li{display:inline-block;}
+.admin-nav ul{display:none;}
+.admin-nav ul li{float:none;display:block;}
+.admin-nav .active a{background:#09c;color:#fff;border-radius:4px 4px 0 0;}
+
+
+.sub-nav{display:block;position:fixed;left:0;width:180px;margin-top:41px;}
+.sub-nav h4{padding-left:20px;margin:10px;cursor: pointer;}
+.sub-nav h4 span{padding-right:5px}
+.sub-nav li{list-style:circle;display:block;line-height:25px;}
+.sub-nav a{background:transparent;color:#333;border-radius:0;}
+.sub-nav .active a{background:#e6f2fb;border-top:solid 1px #b5cfd9;border-bottom:solid 1px #b5cfd9;line-height:25px;}
+.sub-nav li a{padding:5px 40px;line-height:20px;display:block;}
+
+.admin-bread{background:#f2f9fd;border-left:solid 1px #b5cfd9;border-bottom:solid 1px #b5cfd9;line-height:20px;}
+.admin-bread .bread{margin-bottom:0;}
+.admin-bread span{float:right;font-size:12px;color:#666;line-height:36px;}
+
+.admin{padding:30px;background:#fff;position:fixed;border-left:solid 1px #b5cfd9;right:0;bottom:0;top:87px;left:180px; overflow:auto;}
+.alert{margin-bottom:20px;}
+.admin-panel td{line-height:24px;}
+.admin-panel td .button{line-height:16px;}
+.admin-panel .pagination .active{background:#fff;}
+.fixed{position: fixed!important;z-index:3000;margin:0 auto;width:80%;}
+.pointer{ cursor:pointer}
+
+.page{list-style:none;margin:0;padding:0;display:inline-block;vertical-align:bottom;font-size:12px;}
+.page span{display:inline-block;border:solid 1px #ddd;border-radius:4px; float:left;padding:5px 10px;line-height:18px;display:block;transition:all 1s cubic-bezier(0.175, 0.885, 0.32, 1) 0s;cursor:not-allowed;pointer-events:none;color:#333; margin:0 2px;}
+.page span.current{background-color:#ddd;}
+.page a{float:left;display:inline-block;border:solid 1px #ddd;border-radius:4px;color:#333;line-height:18px;display:block;transition:all 1s cubic-bezier(0.175, 0.885, 0.32, 1) 0s; padding:5px 10px; margin:0 2px;}
+.category .line{padding: 0 10px;font-weight: normal;line-height:40px;}
+.category dl,.category dd{margin:0;padding:0;}
+.category .tab-sign {
+	display: inline-block;
+	margin-left: 15px;
+	height: 21px;
+	vertical-align: middle;
+	background-image: url(../images/tab_sign.png);
+	background-repeat: no-repeat;
+}
+
+/* 二级分类 */
+.category > dl > dd > dl > dt .tab-sign {
+	width: 55px;
+	background-position: 0 0;
+}
+.category > dl > dd > dl:last-child > dt .tab-sign {
+	background-position: -55px 0;
+}
+/* 三级分类 */
+.category > dl > dd > dl > dd > dl > dt  .tab-sign {
+	width: 110px;
+	background-position: 0 -30px;
+}
+.category > dl > dd > dl > dd > dl:last-child > dt .tab-sign {
+	background-position: 0 -60px;
+}
+
+.category > dl > dd > dl:last-child > dd > dl > dt .tab-sign {
+	background-position: 0 -90px;
+}
+.category > dl > dd > dl:last-child > dd > dl:last-child > dt .tab-sign {
+	background-position: 0 -120px;
+}
+.category > dl > dd > dl:last-child > dd > dl:last-child > dt .add-sub-cate{
+    display: none;
+}
+/* = uploadify上传插件样式
+------------------------------------------ */
+.uploadify-button {
+	text-align: center;
+	padding: inherit;
+}
+.uploadify-queue-item {
+	position: absolute;
+	margin-top: 4px;
+	padding: 15px;
+	width: 470px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	z-index:999;
+}
+.uploadify-queue-item .cancel {
+	float: right;
+}
+.uploadify-queue-item .cancel a,
+.uploadify-queue-item .cancel a:hover {
+	font-family: Consolas;
+	color: #404040;
+	text-decoration: none;
+	border-bottom: 0 none;
+}
+.uploadify-queue-item .fileName {
+	color: #2D7200;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	background-color: #E5E5E5;
+	margin-top: 10px;
+	width: 100%;
+}
+.uploadify-progress-bar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
+.upload-pre-item{  
+    position:absolute;
+    left:220px;top:-180px;
+}  
+.upload-news-item{  
+    position:absolute;
+    left:400px;top:-115px;
+}
+.upload-addons-item{  
+    position:absolute;
+    right:0px; bottom:10px;
+}
+.upload-prize-item{  
+    position:absolute;
+    left:400px;top:-90px;
+} 

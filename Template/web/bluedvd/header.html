@@ -1,0 +1,63 @@
+<div id="header">
+	<div class="head">
+        <div class="logo"><a href="{$weburl}"><img src="{$webpath}{$weblogo}" /></a></div>
+        <div id="search">
+            <div class="ser">
+                    <form name="formsearch" id="formsearch" action="{$webdir}{:U('Search/index')}" method="post" target="_blank">
+                    <input type="text" id="keyword" name="keyword" class="search-input" value="请在此处输入影片片名或演员名称。" onfocus="if(this.value=='请在此处输入影片片名或演员名称。'){this.value='';}" onblur="if(this.value==''){this.value='请在此处输入影片片名或演员名称。';};">
+                        <input type="submit" name="submit" class="sub" value="搜索电影">
+                    </form>
+            </div>
+        </div>
+        <p class="plus">
+            <a href="{:U('Home/Other/index/tpl/top')}" class="ph">排行榜</a>
+            <div class="history">
+            <a href="javascript:void(0);" class="dq">播放记录</a>
+            <div class="drop-box">
+                <div class="lookedlist">
+                  <p><a class="closehis" href="javascript:;">关闭</a></p>
+                  <ul class="highlight"><div id="morelog" class="histodo">您的观看历史为空。</div></ul>
+                </div>
+            </div>
+            </div>
+        </p>
+        <div class="login">
+        <empty name="user['id']">
+            <a href="{$user['userlogin']}">登录</a>
+            <a href="{$user['userreg']}">注册</a>
+        <else />
+            <a href="{$user['userurl']}" class="u">{$user['username']}</a>
+            <a href="{$user['userlogout']}">退出</a>
+        </empty>
+        </div>
+	</div>
+    <div id="menu">
+        <div class="m">
+            <p>
+            	<li><a href="{$webpath}" title="首页">首页</a></li>
+                <nav name="nav">
+                    <li <if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">class="active"</if>><a href="{$nav['url']}" title="{$nav['title']}">{$nav['title']}</a>
+                    </li>
+                </nav>
+                <span>
+                    <a href="javascript:AddFavorite('{$weburl}', '{$webname}')">收藏本站</a>
+                    <a href="{:U('Home/Other/index/tpl/top')}">排行榜</a>
+                    <a href="{:U('Home/Other/index/tpl/time')}">最近更新</a>
+                </span>
+            </p>
+        </div>
+        <div id="nav">
+        <p class="s"></p>
+        <nav name="nav">
+        <p class="s">
+        	<eq name="nav['branch']" value="1">
+    		{$nav['title']}分类：
+            <nav name="menu" cid="$nav['id']">
+            <a href="{$menu['url']}">{$menu['title']}</a>
+            </nav>
+            </eq >
+    	</p>
+        </nav>
+        </div>
+    </div>
+</div>

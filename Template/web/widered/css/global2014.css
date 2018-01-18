@@ -1,0 +1,868 @@
+/* sohutv 2017-04-07 10:57:06 */
+body {
+	background: #fff;
+	color: #999;
+	font: 12px/1.5 hiragino sans gb,microsoft yahei,simsun
+}
+
+body,form,ul,ol,li,p,dl,dt,dd,h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 0
+}
+
+h1,h2,h3,h4,h5,h6,input,textarea {
+	font-size: 12px;
+	font-weight: 400
+}
+
+li {
+	list-style: none
+}
+
+img {
+	border: 0;
+	vertical-align: top
+}
+
+em {
+	font-style: normal
+}
+
+textarea {
+	resize: none
+}
+
+a {
+	outline: 0
+}
+
+.cfix:after,.cf:after,.clear:after {
+	content: ".";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both
+}
+
+.cfix,.cf,.clear {
+	zoom: 1
+}
+
+.cfixBoth {
+	clear: both;
+	height: 1px;
+	overflow: hidden
+}
+
+.o {
+	overflow: hidden
+}
+
+.l {
+	float: left
+}
+
+.r {
+	float: right
+}
+
+.ta-r,.tar {
+	text-align: right
+}
+
+.ta-c,.tac {
+	text-align: center
+}
+
+.ta-l,.tal {
+	text-align: left
+}
+
+.va-t,.vat {
+	vertical-align: top
+}
+
+.va-m,.vam {
+	vertical-align: middle
+}
+
+.va-b,.vab {
+	vertical-align: bottom
+}
+
+.hid {
+	display: none
+}
+
+.rel {
+	position: relative
+}
+
+.abs {
+	position: absolute
+}
+
+.bold {
+	font-weight: 700
+}
+
+.break {
+	word-wrap: break-word;
+	word-break: break-all
+}
+
+.elli {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis
+}
+
+.pointer {
+	cursor: pointer
+}
+
+.area {
+	width: 980px;
+	margin: 0 auto
+}
+
+.new_result,.hide {
+	display: none
+}
+
+.disb {
+	display: block
+}
+
+.disi {
+	display: inline
+}
+
+.disib {
+	display: inline-block
+}
+
+.disit {
+	display: inline-table
+}
+
+a {
+	text-decoration: none;
+	color: #3a3a3a
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #e73c31
+}
+
+.td-u,.td-u a {
+	text-decoration: underline
+}
+
+.td-u:hover,.td-u a:hover,.td-n,.td-n a,.td-n:hover,.td-n a:hover {
+	text-decoration: none
+}
+
+.c-red,.c-red a {
+	color: #e73c31
+}
+
+.c-grey,.c-grey a {
+	color: #999
+}
+
+.c-black,.c-black a {
+	color: #3a3a3a
+}
+
+.c-white,.c-white a {
+	color: #fff
+}
+
+.blank5 {
+	height: 5px;
+	overflow: hidden
+}
+
+.blank10 {
+	height: 10px;
+	overflow: hidden
+}
+
+.blank15 {
+	height: 15px;
+	overflow: hidden
+}
+
+.blank20 {
+	height: 20px
+}
+
+.mL6 {
+	margin-left: 6px
+}
+
+.mR6 {
+	margin-right: 6px
+}
+
+.mLR6 {
+	margin-left: 6px;
+	margin-right: 6px
+}
+
+.mB5,.mb5 {
+	margin-bottom: 5px
+}
+
+.mB10,.mb10 {
+	margin-bottom: 10px
+}
+
+.mB15,.mb15 {
+	margin-bottom: 15px
+}
+
+.mB20,.mb20 {
+	margin-bottom: 20px
+}
+
+.mt5 {
+	margin-top: 5px
+}
+
+.mt10 {
+	margin-top: 10px
+}
+
+.mt15 {
+	margin-top: 15px
+}
+
+.mt20 {
+	margin-top: 20px
+}
+
+.ml10 {
+	margin-left: 10px
+}
+
+.ml15 {
+	margin-left: 15px
+}
+
+.ml20 {
+	margin-left: 20px
+}
+
+.mr10 {
+	margin-right: 10px
+}
+
+.mr15 {
+	margin-right: 15px
+}
+
+.mr20 {
+	margin-right: 20px
+}
+
+.fs12 {
+	font-size: 12px
+}
+
+.fs14 {
+	font-size: 14px
+}
+
+.fs16 {
+	font-size: 16px
+}
+
+.fs18 {
+	font-size: 18px
+}
+
+.fs20 {
+	font-size: 20px
+}
+
+.f-arial {
+	font-family: arial
+}
+
+.f-yahei {
+	font-family: "Microsoft yahei"
+}
+
+.f-song {
+	font-family: simsun
+}
+
+.f-hir {
+	font-family: "hiragino sans gb"
+}
+
+.sz1 {
+	width: 140px;
+	height: 100px
+}
+
+.sz2 {
+	width: 140px;
+	height: 190px
+}
+
+.sz240{
+	max-height: 190px;
+    min-height: 190px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rad3 {
+	border-radius: 3px;
+	-webkit-border-radius: 3px
+}
+
+.rad5 {
+	border-radius: 5px;
+	-webkit-border-radius: 5px
+}
+
+.load {
+	background: #f0f0f0 url(../images/loading.png) no-repeat center center;
+	display: block;
+	width: 100%;
+	position: relative
+}
+
+.maskTx,.maskBg {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	height: 18px
+}
+
+.maskBg {
+	width: 100%;
+	opacity: .3;
+	filter: alpha(opacity=30);
+	background: #000
+}
+
+.maskTx {
+	color: #fff;
+	padding: 0 5px
+}
+
+
+.acount,.bcount,.ecount,.pcount {
+	background-position: 0 -40px;
+	padding: 0 0 0 17px;
+	color: #999
+}
+
+.rcount {
+	margin: 0 0 0 15px;
+	padding: 0 0 0 18px
+}
+
+.name {
+	background-position: 0 -82px;
+	padding: 0 0 0 18px
+}
+
+.more {
+	background-position: right -107px;
+	*background-position: right -108px;
+	padding: 0 13px 0 0
+}
+
+.more:hover {
+	background-position: right -130px;
+	*background-position: right -131px
+}
+
+.super,.origin {
+	width: 15px;
+	height: 13px;
+	display: block;
+	text-indent: -100px;
+	overflow: hidden;
+	position: absolute;
+	left: 2px;
+	top: 2px
+}
+
+.super {
+	background-position: 0 0
+}
+
+.super:hover {
+	background-position: 0 -18px
+}
+
+.origin {
+	background-position: 0 -247px;
+	width: 19px
+}
+
+.origin:hover {
+	background-position: 0 -265px
+}
+
+.acount{
+	position: absolute;
+	bottom: 3px;
+	_bottom: 0;
+	left: 7px;
+	color: #fff;
+	padding: 0 0 0 13px
+}
+
+.lisi {
+	float: left;
+	margin: 0 20px 0 0;
+	padding: 0 0 27px;
+	display: inline
+}
+
+.lisiw {
+	float: left;
+	margin: 0 20px 0 0;
+	padding: 0 0 27px;
+	display: inline
+}
+
+.p_bt {
+	height: 21px;
+	line-height: 21px;
+	overflow: hidden;
+	word-wrap: break-word;
+	margin: 6px 0 4px;
+	font-size: 14px
+}
+
+.p_name {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: inline-block;
+	background-position: 0 -82px;
+	padding: 0 0 0 18px
+}
+
+.lisBg,.lisTx {
+	position: absolute;
+	display: block
+}
+
+.lisBg {
+	background: url(../images/lisBg.png) repeat-x;
+	_background: 0 0;
+	height: 44px;
+	bottom: 0;
+	left: 0;
+	width: 100%
+}
+
+.lisTx {
+	color: #fff;
+	text-align: right;
+	bottom: 3px;
+	_bottom: 1px;
+	right: 5px
+}
+
+.onlyp {
+	background: url(../images/onlyp.png) no-repeat;
+	display: block;
+	height: 17px;
+	right: 0;
+	overflow: hidden;
+	position: absolute;
+	text-indent: -100px;
+	top: 0;
+	width: 36px
+}
+
+.gengxin {
+	background: url(../images/gengxin.png) no-repeat;
+	display: block;
+	height: 17px;
+	right: 0;
+	overflow: hidden;
+	position: absolute;
+	text-indent: -100px;
+	top: 0;
+	width: 36px
+}
+
+.qanxian {
+	background: url(../images/qanxian.png) no-repeat;
+	display: block;
+	height: 17px;
+	right: 0;
+	overflow: hidden;
+	position: absolute;
+	text-indent: -100px;
+	top: 0;
+	width: 36px
+}
+
+.vip {
+	background: url(../images/vip.png) no-repeat;
+	display: block;
+	height: 17px;
+	right: 0;
+	overflow: hidden;
+	position: absolute;
+	text-indent: -100px;
+	top: 0;
+	width: 36px
+}
+
+.area {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.sort-type {
+    padding-top: 6px;
+}
+
+.sort-type dl {
+    padding: 11px 0 0;
+    border-bottom: 1px dotted #e1e1e1;
+    color: #666;
+    font-size: 14px;
+    height: 32px;
+    overflow: hidden;
+}
+.sort-type dt {
+    float: left;
+    width: 45px;
+}
+
+.sort-type dl {
+    padding: 11px 0 0;
+    border-bottom: 1px dotted #e1e1e1;
+    color: #666;
+    font-size: 14px;
+    height: 32px;
+    overflow: hidden;
+}
+
+.sort-type .sort-tag {
+    float: left;
+    width: 1300px;
+    font-size: 0;
+}
+
+.sort-type .sort-tag a:hover, .sort-type .sort-tag .aon {
+    color: #da2128;
+    text-decoration: none;
+}
+.sort-type .sort-tag a {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #666;
+    height: 32px;
+}
+
+.cfix, .cf, .clear {
+    zoom: 1;
+}
+
+.cfix:after, cf:after, .clear:after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+}
+
+.sort-column {
+    position: relative;
+    margin-top: 21px;
+}
+
+.column-bd {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.st-list {
+    margin-right: -30px;
+}
+
+.st-list li {
+    display: inline;
+    float: left;
+    margin-right: 28px;
+    width: 140px;
+    height: 292px;
+}
+
+.st-list .st-pic {
+    position: relative;
+    width: 140px;
+    height: 190px;
+    overflow: hidden;
+}
+
+.st-list .st-pic img {
+    width: 140px;
+    height: 190px;
+}
+
+.st-list .st-msk {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 140px;
+    height: 100px;
+    background: url(images/mk_140.png) no-repeat;
+    _background-image: none;
+    _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://css.tv.itc.cn/sort/images/mk_140.png');
+    cursor: pointer;
+}
+
+.maskTx {
+    color: #fff;
+    padding: 0 5px;
+}
+.maskTx, .maskBg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 18px;
+}
+
+.rl-zzhi {
+    background-position: 0 -140px;
+}
+.rl-sbo, .rl-zbo, .rl-zzhi, .rl-qjing, .rl-dbo, .rl-phua, .rl-ygao, .rl-hyuan, .rl-hxu {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: url(../images/ico_corner_new.png) no-repeat;
+    width: 36px;
+    height: 18px;
+}
+
+.st-list strong {
+    display: block;
+    padding: 6px 0 0;
+    font-weight: 400;
+    font-size: 14px;
+    max-height: 20px;
+    overflow: hidden;
+    _height: 20px;
+}
+
+.st-list p {
+    padding-top: 3px;
+}
+.actor, .lh-zy, .lh-area, .lh-type, .lh-tit, .introA {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ssPages {
+    text-align: center;
+}
+
+.ssPages span {
+	margin: 0 5px;
+    height: 30px;
+    padding: 0 10px;
+    background: #c3c3c3;
+    color: #fff;
+    z-index: 999;
+}
+.ssPages a, .ssPages span {
+    min-width: 15px;
+    _width: 15px;
+    text-align: center;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.ssPages a, .ssPages em, .ssPages span {
+    display: inline-block;
+    line-height: 28px;
+    vertical-align: top;
+}
+
+.ssPages a {
+	margin: 0 5px;
+    padding: 0 9px;
+    border: 1px solid #d5d5d5;
+    height: 28px;
+    background: url(../images/pages.png) repeat-x;
+}
+.ssPages a, .ssPages span {
+    min-width: 15px;
+    _width: 15px;
+    text-align: center;
+    font-size: 14px;
+    white-space: nowrap;
+}
+.ssPages a, .ssPages em, .ssPages span {
+    display: inline-block;
+    line-height: 28px;
+    vertical-align: top;
+}
+
+#playerBar{
+	width: 1380px;
+	margin: 0 auto;
+}
+
+#playerBar .area{
+	height: 535px;
+}
+
+#playerBar .left {
+    float: none;
+}
+#playerBar .left {
+	background: #fff url(//css.tv.itc.cn/channel/play_v1_img/playerbar_bg.jpg) repeat-x left bottom;
+    border: 1px solid #ebecee;
+}
+
+.videoBox {
+    padding: 17px 20px 0;
+    height: 37px;
+}
+.videoBox, .vBox {
+    position: relative;
+}
+
+.vBox-ding {
+    border: none;
+    padding-left: 0;
+}
+.videoBox, .vBox {
+    position: relative;
+}
+
+.vBox .vbtn, .vBox .vbtn-arr, .vBox .fa-arr, .vBoxVis .arr, .vBox-fa .cpflash-ok, .vBox-fa .j-share-item {
+    background: url(//css.tv.itc.cn/channel/play_v1_img/video/ico.png) no-repeat;
+}
+
+.vBox {
+    float: left;
+    z-index: 20;
+    border-left: 1px solid #e0e0e2;
+    padding: 0 15px;
+}
+
+.vBox .vbtn {
+    cursor: pointer;
+    padding-left: 30px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 22px;
+    height: 20px;
+}
+
+.vBox .vbtn i {
+    font-style: normal;
+}
+
+.vBox-ding {
+	border: none;
+	padding-left: 0
+}
+
+.vBox-ding .vbtn {
+	background-position: 0 0;
+	padding-left: 30px
+}
+
+.vBox-ding .vbtn:hover {
+	background-position: 0 -30px;
+	color: #3a3a3a
+}
+
+.vBox-ding .vbtn-active,.vBox-ding .vbtn-active:hover {
+	background-position: 0 -30px;
+	color: #3a3a3a;
+	cursor: default
+}
+
+.vBox-ding .vbtn-dis,.vBox-ding .vbtn-dis:hover {
+	color: #999;
+	background-position: 0 0
+}
+
+.vBox-cai {
+	border: none;
+	padding-left: 0
+}
+
+.vBox-cai .vbtn {
+	background-position: 0 -87px;
+	padding: 0 0 3px 30px
+}
+
+.vBox-cai .vbtn:hover {
+	color: #3a3a3a;
+	background-position: 0 -117px
+}
+
+.vBox-cai .vbtn-active,.vBox-cai .vbtn-active:hover {
+	color: #3a3a3a;
+	background-position: 0 -117px;
+	cursor: default
+}
+
+.vBox-cai .vbtn-dis,.vBox-cai .vbtn-dis:hover {
+	color: #999;
+	background-position: 0 -87px
+}
+
+.vBox-fav .vbtn {
+	background-position: 0 -180px
+}
+
+.vBox-fav .vbtn:hover,.vBox-fav .mark,.vBox-fav .vbtn-dis {
+	background-position: 0 -210px
+}
+
+.vBox-play .vbtn {
+    background-position: -339px -90px;
+    padding-left: 26px;
+}
+.ad1380 {
+	width: 1380px;
+	margin: 0 auto;
+}
+.ad1120 {
+	width: 1120px;
+	margin: 0 auto;
+}
+.ad240 {
+	width: 240px;
+	margin: 0 auto;
+}
+
+.tuia {
+    background: url(../images/fg.png) no-repeat 0 3px;
+    padding: 0 23px 7px;
+    display: inline-block;
+}
+
+.tuiap {
+    margin-left: -23px;
+    margin-right: -23px;
+}

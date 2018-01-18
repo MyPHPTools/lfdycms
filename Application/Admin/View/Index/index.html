@@ -1,0 +1,38 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="line-big">
+        <div class="panel">
+            <div class="panel-head"><strong>站点统计</strong></div>
+            <ul class="list-group">
+                <li><span class="float-right badge bg-red">{$info.movie}</span><span class="icon-video-camera"></span> 影片</li>
+                <li><span class="float-right badge bg-red">{$info.comment}</span><span class="icon-comment"></span> 评论</li>
+                <li><span class="float-right badge bg-main">{$info.news}</span><span class="icon-file"></span> 文章</li>
+                <li><span class="float-right badge bg-main">{$info.users}</span><span class="icon-user"></span> 用户</li>
+            </ul>
+        </div>
+        <br />
+        <div class="panel">
+            <div class="panel-head"><strong>系统信息</strong></div>
+            <table class="table">
+                <tr>
+                    <td width="200" align="right">操作系统：</td><td>{$Think.const.PHP_OS}</td>
+                    <td width="200" align="right">运行环境：</td><td>{$_SERVER['SERVER_SOFTWARE']}</td>
+                </tr>
+                <tr>
+                    <td align="right">MYSQL版本：</td><php>
+                            $system_info_mysql = M()->query("select version() as v;");
+                        </php><td>{$system_info_mysql.0.v}</td>
+                    <td align="right">上传限制：</td><td>{:ini_get('upload_max_filesize')}</td>
+                </tr>
+                <tr>
+                    <td align="right">程序语言：</td><td>PHP</td>
+                    <td align="right">系统版本：</td><td>{:C('WEB_VERSION')}</td>
+                </tr>
+                <tr>
+                    <td align="right">数据库：</td><td>MySQL</td>
+                    <td align="right">官网：</td><td><a class="text-red" href="{:C('UPDATE_URL')}" target="_blank">{:C('UPDATE_URL')}</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</block>

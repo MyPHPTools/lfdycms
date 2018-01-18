@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="{$keywords}" name="keywords">
+    <meta content="{$description}" name="description">
+    <title>{$webtitle}--用户中心</title>
+    <css href="__CSS__/bootstrap.min.css" />
+    <css href="__CSS__/style.css" />
+    <css href="__CSS__/animate.css" />
+</head>
+<body>
+<div class="vbox">
+    <div class="bg-white-only header navbar navbar-fixed-top-xs">
+        <div class="container">
+            <div class="navbar-right">
+                <ul class="nav navbar-nav m-n hidden-xs nav-user">
+                    <li><a href="{:U('Home/Index/index')}"><span class="glyphicon glyphicon-home text-info"></span> 主页</a></li>
+                    <li><a href="{:U('Pay/card')}">充值卡充值</a></li>
+                    <li><a href="{:U('Pay/log')}">充值记录</a></li>
+                    <li><a href="{:U('Record/index')}">播放记录</a></li>
+                    <li><a href="{:U('Favorites/index')}">收藏夹</a></li>
+                    <li><a href="{:U('Prize/index')}">兑换</a></li>
+                    <li><a href="{:U('Recom/index')}">积分</a></li>
+                    <li><a href="{:U('users/user')}">用户</a></li>
+                    <li class="hidden-xs">
+                        <a href="#" class="dropdown-toggle clear" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                            <span class="badge badge-sm up bg-danger count" style="display: none;">0</span>
+                        </a>
+                        <div class="dropdown-menu aside-xl animated fadeInUp">
+                            <div class="panel bg-white">
+                                <div class="panel-heading b-light bg-light">
+                                    <strong>
+                                        您有 <span class="count" style="display: inline;">0</span> 条消息
+                                    </strong>
+                                </div>
+                                <div class="list-group list-group-alt">
+                                    
+                                </div>
+                                <div class="panel-footer text-sm">
+                                    <a href="{:U('Message/index')}">查看所有消息</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle clear" data-toggle="dropdown">
+                            <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                                <img src="{$path|default='__IMG__/user.jpg'}" alt="头像">
+                            </span>
+                            {$username}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight">
+                            <li><span class="arrow top"></span><a href="{:U('Index/index')}">个人主页</a></li>
+                            <li><a href="{:U('Record/index')}">播放记录</a></li>
+                            <li><a href="{:U('Favorites/index')}">收藏夹</a></li>
+                            <li><a href="{:U('Prize/exchangegift')}">兑奖记录</a></li>
+                            <li><a href="{:U('Pay/card')}">充值卡充值</a></li>
+                            <li><a href="{:U('Pay/log')}">充值记录</a></li>
+                            <li><a href="{:U('Message/index')}"><span class="badge bg-danger pull-right count" style="display: none;">0</span>消息</a></li>
+                            <li><a href="{:U('Users/profile')}">修改资料</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{:U('Public/logout')}" data-toggle="ajaxModal">退出</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <block name="body">
+    </block>
+    <div class="text-center padder">
+	<p>
+		<small>{$webtitle} &copy; 2014</small>
+	</p>
+	</div>
+</div>
+<js href="__JS__/jquery.js" />
+<js href="__JS__/bootstrap.min.js" />
+<js href="__JS__/users.js" />
+<block name="script"></block>
+</body>
+</html>

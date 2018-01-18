@@ -1,0 +1,311 @@
+@charset "utf-8";
+
+.uheader {height: 80px;}
+.logo {
+  display: block;
+  margin-top:13px;
+  margin-bottom: 7px;
+}
+.logo>img {
+  border:none;
+  max-width: 165px;
+}
+/*Image Icon*/
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+.top_menu {
+  width: 14px;
+  height: 14px;
+  background:url(../images/meun_icon.png);
+}
+.search_icon {
+  width: 13px;
+  height: 13px;
+  background:url(../images/search_icon.png);
+  margin-right: 8px;
+}
+.icon-vip,.icon-look,.icon-history,.icon-phone,.icon-user {
+  width:24px;
+  height: 24px;
+  background:url(../images/icon01.png);
+  transition: all .1s linear
+}
+.icon-look {
+  background:url(../images/icon02.png); 
+}
+.icon-history {
+  width:27px;
+  background:url(../images/icon03.png); 
+}
+.icon-phone {
+  background:url(../images/icon04.png); 
+}
+.icon-user {
+  background:url(../images/icon05.png); 
+}
+.icon-small-play {
+  width: 12px;
+  height: 12px;
+  background:url(../images/small-paly.png);
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.icon-user-vip {
+  width: 21px;
+  height: 20px;
+  background:url(../images/vip_1.png);
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+
+[name="TopIcon"]>.col3 {height: 49px;}
+
+/*弹出显示*/
+.show-record {
+  position: absolute;
+  top:64px;
+  right: 0;
+  width: auto;
+  background:#fff;
+  z-index: 999999;
+  visibility: hidden;
+}
+.show-record>em {
+  position: absolute;
+  right: 0;
+  top:-6px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #eee;
+}
+.show-record>i {
+  position: absolute;
+  right: 0;
+  top:-4px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #FFF;
+}
+
+.show-record .record {
+  width: 260px;
+  padding:15px;
+}
+.show-record .record .Show-Word {
+  width: 100%;
+  height: 21px;
+  line-height: 21px;
+  overflow: hidden;
+  display: block;
+}
+.show-record .record-list {
+  width: 100%;
+  box-sizing:border-box;
+  padding:10px;
+  display: block;
+  position: relative;
+  z-index: 99;
+}
+.show-record .record-list>em {
+  position: absolute;
+  right: 10px;
+  font-style: initial;
+}
+.show-record .record-list:hover {
+  background:#fafafa;
+}
+
+.show-record .down-app {
+  width: 130px;
+  padding:15px;
+}
+
+
+.show-record .top-user {
+  width: 258px;
+  padding:15px;
+  padding-bottom: 35px;
+}
+
+
+.show-record .top-user .user-top-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+/*search*/
+.search {
+  display: inline-block;
+  height: 36px;
+  width: 90%;
+  vertical-align: middle;
+  padding:2px 0 2px 2px;
+  background: #46B7D6;
+  position: relative;
+}
+.search input.word,.search button.search_enter {
+  display: inline-block;
+  width: 76%;
+  height: 32px;
+  background:#fff;
+  border:none;
+  box-sizing:border-box;
+  padding-left:10px;
+  font-size: 14px;
+  color:#666;
+}
+.search button.search_enter {
+  width: 24%;
+  background: #46B7D6;
+  color:#fff;
+  padding-left: 0;
+  cursor: pointer;
+}
+/*搜索弹出搜索排行*/
+.search .search_show {
+  background:#fff;
+  position: absolute;
+  left: 0;
+  right: 23.5%;
+  top:40px;
+  z-index: 99;
+  border:2px solid #eee;
+  border-top:none;
+  padding-bottom: 10px;
+  display: none;
+}
+.search .search_show>li {
+  display: table;
+  height: 24px;
+  line-height: 24px;
+  padding:0 5px;
+  margin-top:5px;
+}
+.search .search_show>li>a {
+  display: table-cell;
+  font-style: initial;
+  width: 84%;
+  text-align: left;
+  padding-left: 10px;
+  color: #666
+}
+.search .search_show>li>span {
+  width: 24px;
+  height: 24px;
+  background: #d6d6d6;
+  color:#fff;
+  display: block;
+}
+.search .search_show>li:first-child>span {
+  background: #46B7D6;
+}
+.search .search_show>li>em {
+  display: block;
+  width: 45px;
+  font-style: initial;
+  color: #888
+}
+
+/*顶部图标文字*/
+.tr_icons span {
+  display: block;
+  margin-top:6px;
+}
+.tr_icons:hover .icon-vip {
+  background-position: 0 -24px;
+}
+.tr_icons:hover .icon-look {
+  background-position: 0 -24px;
+}
+.tr_icons.active .icon-look {
+  background-position: 0 -24px;
+}
+.tr_icons:hover .icon-history {
+  background-position: 0 -24px;
+}
+.tr_icons:hover .icon-phone {
+  background-position: 0 -24px;
+}
+.tr_icons:hover .icon-user {
+  background-position: 0 -24px;
+}
+
+.top_user {
+  height: 49px;
+  display: inline-block;
+}
+.top_user img {
+  width: 26px;
+  height: 26px;
+  margin:0 auto;
+  border-radius: 50%;
+  display: block;
+}
+
+/*顶部导航菜单*/
+.menu a {
+  display: inline-block;
+  padding:0 10px;
+  height: 45px;
+  line-height: 45px;
+  color:#333;
+  position: relative;
+}
+.menu a.active {color:#46B7D6;}
+.menu a.active em {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background:#46B7D6;
+}
+.menu a.hot {color:#c40000;}
+
+.menu span {position: relative;height: 45px;display: inline-block;}
+.menu span:hover .tow-menu {
+  opacity: 1;
+  z-index: 999999;
+}
+.menu .tow-menu {
+  position: absolute;
+  border-top: 3px solid #46B7D6;
+  z-index: -99;
+  background:rgba(255,255,255,.95);
+  left: 0;
+  width: 200px;
+  margin-top: -3px;
+  opacity: 0;
+  transition: opacity .1s linear;
+  top:45px;
+}
+.menu .tow-menu>b {
+  position: absolute;
+  left: 25px;
+  top:-6px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 3px solid #46B7D6;
+}
+
+
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .nav-box li {padding:10px 12px;}
+}
+@media (max-width: 768px) {
+  .nav-box li {padding:10px 8px;}
+}
+

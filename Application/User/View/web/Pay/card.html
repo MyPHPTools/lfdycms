@@ -1,0 +1,88 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="hbox stretch">
+        <div class="vbox scrollable wrapper m-t-xs">
+            <div class="container projects">
+                <div class="col-lg-9">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b">
+                            <b>充值</b>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal" method="post" action="{:U()}" data-parsley-validate>
+                            <div class="form-group">
+                              <label class="col-sm-2 control-label">充值卡key：</label>
+                              <div class="col-sm-10">
+                                <input type="text" name="key" class="form-control rounded" value="{$ptitle}" required>
+                              </div>
+                            </div>
+                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                            <div class="form-group">
+                              <div class="col-sm-4 col-sm-offset-2">
+                                <button type="submit" class="btn btn-primary">充值</button>
+                              </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="panel panel-default">
+                        <div class="vbox">
+                            <div class="scrollable wrapper">
+                                <div class="text-center m-b m-t">
+                                        <img src="{$path|default='__IMG__/user.jpg'}" class="img-circle img-users">
+                                    <div>
+                                        <div class="h4 m-t-xs m-b-xs">{$username}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer bg-info text-center">
+                            <div class="row pull-out">
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=follow&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$follow}
+                                        </span>
+                                        <small class="text-muted">
+                                            关注
+                                        </small>
+										</a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 dk">
+                                    <div class="padder-v">
+                                    	<a href="{:U('Users/user?state=fans&id='.$id)}">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$fans}
+                                        </span>
+                                        <small class="text-muted">
+                                            粉丝
+                                        </small>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="padder-v">
+                                        <span class="m-b-xs h3 block text-white">
+                                            {$integral}
+                                        </span>
+                                        <small class="text-muted">
+                                            积分
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+<js href="__JS__/parsley.min.js" />
+<js href="__JS__/zh_cn.js" />
+</block>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>欢迎您登录雷风影视系统-{$meta_title}</title>
+    <link rel="stylesheet" href="__CSS__/pintuer.css">
+    <link rel="stylesheet" href="__CSS__/admin.css">
+</head>
+<body class="bg-white">
+<div class="panel admin-panel margin-big">
+    <div class="panel-head"><strong>定时采集</strong></div>
+    <div class="panel-body">
+    	<form method="post" action="{:U('cron')}" class="form-x">
+        <div class="form-group">
+            <div class="label"><label>采集间隔</label></div>
+            <div class="field">
+                <select class="input input-auto" name="cron_time">
+                    <option value="">关闭</option>
+                    <option value="600" <eq name="crons[$key][1]" value="600">selected="selected"</eq>>10分钟</option>
+                    <option value="1800" <eq name="crons[$key][1]" value="1800">selected="selected"</eq>>30分钟</option>
+                    <option value="3600" <eq name="crons[$key][1]" value="3600">selected="selected"</eq>>1小时</option>
+                    <option value="7200" <eq name="crons[$key][1]" value="7200">selected="selected"</eq>>2小时</option>
+                    <option value="21600" <eq name="crons[$key][1]" value="21600">selected="selected"</eq>>6小时</option>
+                    <option value="43200" <eq name="crons[$key][1]" value="43200">selected="selected"</eq>>12小时</option>        
+                </select>
+    		</div>
+        </div>
+        <input type="hidden" name="key" value="{$key}">
+        <div class="form-button"><button class="button bg-main ajaxpost" type="submit" target-form="form-x">确 认</button></div>
+        </form>
+    </div>
+</div>
+<script src="__JS__/jquery.js"></script>
+<script src="__JS__/pintuer.js"></script>
+<script src="__JS__/respond.js"></script>
+<script src="__JS__/admin.js"></script>
+<script src="__STATIC__/layer/layer.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".ajaxpost").click(function(){
+		var url;
+		var target_form = $(this).attr('target-form');
+		var index = parent.layer.getFrameIndex(window.name);
+		var form = $('.'+target_form);
+		if (url = form.get(0).action) {
+			query = form.serialize();
+			$.post(url,query).success(function(data){
+				 if (data.status==1) {
+					parent.layer.msg(data.info,{icon: 1,shade: 0.3},function(){
+						parent.location.reload();
+						parent.layer.close(index);
+					});
+				 }else{
+					parent.layer.msg(data.info,{icon: 0,shade: 0.3});
+				 }
+			});
+		}
+		return false;
+	});
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{$webtitle}</title>
+	<meta name="keywords" content="{$list_keywords}">
+	<meta name="description" content="{$list_description}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/style.css">
+</head>
+<body>
+<div id="app">
+	<!-- 头部 -->
+	<include file="{$tplpath}/header.html" />
+	<div id="t-pager-cont">
+		<div class="w-movie-page">
+			<div id="indx-pro-ms" class="indx-pro-box">
+				<ul class="pro-ms-wrap clearfix">
+					<newspage name="newlist" limit="12" order="update_time desc">
+					<li class="pro-ms-visibox">
+						<a class="pro-ms-one" href="{$newlist['url']}" target="_blank">
+							<div class="ms-one-img">
+								<img src="{$newlist['pic']}" alt="{$newlist['title']}"></div>
+							<div class="ms-one-msg alrdraw">
+								<div class="one-msg-l">
+									<h4 title="{$newlist['title']}">{$newlist['title']}</h4>
+									<p>{:msubstr(strip_tags($newlist['content']),0,120)}</p>
+								</div>
+							</div>
+						</a>
+					</li>
+					</newspage>
+				</ul>
+			</div>
+			<div class="w-pager-wrap">
+				<div class="w-pager all-pager">
+					<page listrow="12" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<include file="{$tplpath}/footer.html" />
+</div>
+<script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

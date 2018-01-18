@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/style.css">
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<!--头部结束-->
+<div class="warp">
+	<div class="container home">
+		<div class="content">
+			<div class="main">
+                <ul class="lisC cf">
+                    <newspage name="newlist" limit="10" order="update_time desc">
+                    <li class="lisCi cf">
+                        <a class="sz110 l load" href="{$newlist['url']}" target="_blank">
+                            <img class="sz110" alt="{$newlist['title']}" src="{$newlist['pic']}">
+                        </a> 
+                        <div class="w120 r">
+                            <p class="fs18"><a href="{$newlist['url']}" target="_blank">{$newlist['title']}</a></p>
+                            <p class="fs14">{:msubstr(strip_tags($newlist['content']),0,200)}</p>
+                        </div>
+                    </li>
+                    </newspage>
+                </ul>
+                <div class="mod_line"></div>
+            </div>
+			<div class="pag-warp clearfix">
+				<div class="page"><page listrow="30" /></div>
+			</div>
+			<!--广告位-->
+			<div style="text-align:center"></div>
+		</div>
+	</div>
+</div>
+
+<!--底部开始-->
+<include file="{$tplpath}/footer.html" />
+<script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

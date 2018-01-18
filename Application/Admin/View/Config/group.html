@@ -1,0 +1,53 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="tab">
+      <div class="tab-head">
+        <ul class="tab-nav">
+        <volist name="Think.config.CONFIG_GROUP_LIST" id="group">
+			<li <eq name="id" value="$key">class="active"</eq>><a href="{:U('?id='.$key)}">{$group}配置</a></li>&nbsp;
+		</volist>
+        </ul>
+      </div>
+      <div class="tab-body">
+        <br />
+        <form method="post" class="form-x" action="{:U('save')}">
+        <div class="tab-panel active" id="tab-set">
+            <volist name="list" id="config">
+                <div class="form-group">
+                    <div class="label"><label>{$config.title}</label></div>
+                    <div class="field">
+                        <switch name="config.type">
+                            <case value="0">
+                                <input type="text" class="input input-auto"  size="30" name="config[{$config.name}]" value="{$config.value}" placeholder="{$config.remark}" data-validate="required:请填写{$config.title}" />
+                            </case>
+                            <case value="1">
+                                 <input type="text" class="input input-auto" size="50" name="config[{$config.name}]" value="{$config.value}" placeholder="{$config.remark}" data-validate="required:请填写{$config.title}" />
+                            </case>
+                            <case value="2">
+                                <textarea name="config[{$config.name}]" class="input input-auto" rows="5" cols="50" placeholder="{$config.remark}" data-validate="required:请填写{$config.title}">{$config.value}</textarea>
+                            </case>
+                            <case value="3">
+                                <textarea name="config[{$config.name}]" class="input  input-auto" rows="5" cols="50" placeholder="{$config.remark}" data-validate="required:请填写{$config.title}">{$config.value}</textarea>
+                            </case>
+                            <case value="4">
+                                <select name="config[{$config.name}]" class="input input-auto" data-validate="required:请选择{$config.title}">
+                                    <volist name=":parse_config_attr($config['extra'])" id="vo">
+                                        <option value="{$key}" <eq name="config.value" value="$key">selected</eq>>{$vo}</option>
+                                    </volist>
+                                </select>
+                            </case>
+                            <case value="5">
+                                <textarea name="config[{$config.name}]" class="input  input-auto" rows="5" cols="50" placeholder="{$config.remark}" data-validate="required:请填写{$config.title}">{$config.value}</textarea>
+                            </case>
+                        </switch>
+                    </div>
+                </div>
+            </volist>
+        </div>
+        <br>
+        <div class="form-button"><button class="button bg-main ajax-post" type="submit" target-form="form-x">提 交</button></div>
+        </form>
+      </div>
+    </div>
+</block>

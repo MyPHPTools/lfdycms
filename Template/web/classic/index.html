@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>{$webtitle}</title>
+        <meta name="keywords" content="{$keywords}">
+        <meta name="description" content="{$description}">
+        <link href="{$tplpath}/css/style.css" rel="stylesheet">
+        <link href="{$tplpath}/css/swiper.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <include file="{$tplpath}/header.html" />
+        <DIV class="main">
+
+            <!-- k_upnew -->        
+            <DIV class="k_upnew">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <slider name="slider">
+                        <div class="swiper-slide">
+                            <a href="{$slider.url}" style="background-image: url({$slider.pic});">
+                                <div class="bottom">
+                                    <div class="main_title">{$slider.title}</div>
+                                </div>
+                            </a>
+                        </div>
+                        </slider>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </DIV>
+            <!---->        
+
+            <div class="ad-a3">
+                广告位置
+            </div>
+
+            <!-- k_movie -->
+            <nav name="nav" type="1">
+            <div class="k_movie">
+                <div class="k_movie-1">
+                    <div class="k_movie-1a">
+                        <div class="k_movie-1a-a">
+                            <ul>
+                                <li class="k_movie-1a-a1">
+                                    <h3>{$nav['title']}</h3>
+                                </li>
+                                </li>
+                                <li class="k_movie-1a-a3">
+                                    <a href="{$nav['url']}">{$nav['title']}频道</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="k_movie-1a-b">
+                            <ul>
+                                <list name="list" cid="$nav['id']" order="update_time desc" limit="9">
+                                    <eq name="i" value="1">
+                                    <li class="k_movie-1a-b1">
+                                    <div id="k_movie-1a-b1-img">
+                                        <a class="lztj_img" href="{$list['url']}" target="_blank">
+                                            <img alt="{$list['title']}[{$list['serialize']}]" src="{$list['pic']}" border="0"/>        
+                                            <span class="lztj_bg"></span>
+                                            <span class="lztj_time">{$list['serialize']}</span>
+                                        </a>
+                                    </div>
+                                    <div id="k_movie-1a-b1-title">
+                                        <a class="name" href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </div>
+                                    <div id="k_movie-1a-b1-zy">
+                                        {$list['actors']|msubstr=0,11}
+                                    </div>
+                                </li>
+                                <else/>
+                                <li class="k_upnew-1d">
+                                    <div id="k_upnew-1d-img">
+                                        <a class="lz_img" href="{$list['url']}" target="_blank">
+                                            <img alt="{$list['title']}[{$list['serialize']}]" src="{$list['pic']}" border="0"/>        
+                                            <span class="lz_bg"></span>
+                                            <span class="lz_time">{$list['serialize']}</span>
+                                        </a>
+                                    </div>
+                                    <div id="k_upnew-1d-title">
+                                        <a class="name" href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </div>
+                                    <div id="k_upnew-1d-zy">{$list['actors']|msubstr=0,11}</div>
+                                </li>
+                                </eq>
+                                </list>
+                            </ul>
+                        </div>
+                        <div class="k_movie-1a-c">
+                            <list name="list" cid="$nav['id']" order="update_time desc" limit="18">
+                            <gt name="i" value="9">
+                            <div class="k_movie-1a-d">
+                                <div class="k_movie-1a-e">
+                                    <ul>
+                                        <li class="k_movie-1a-e-title">
+                                            <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                        </li>
+                                        <li class="k_movie-1a-e-list">
+                                            /
+                                            <span>{$list['serialize']}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </gt>
+                            </list>
+                        </div>
+                    </div>
+
+                    <div class="k_movie-1b">
+                        <div class="k_movie-1b-a">
+                            <div class="k_movie-1b-a1">{$nav['title']}人气排行榜</div>
+                        </div>
+                        <div class="k_movie-1b-b">
+                            <list name="list" cid="$nav['id']" order="hits desc" limit="10">
+                            <div class="k_movie-1b-b1">
+                                <ul>
+                                    <li class="k_movie-1b-b1-1">{$i}</li>
+                                    <li class="k_movie-1b-b1-title">
+                                        <a href="{$list['url']}" target="_blank">{$list['title']}</a>
+                                    </li>
+                                    <li class="k_movie-1b-b1-hits">{$list['hits']}</li>
+                                </ul>
+                            </div>
+                            </list>
+                        </div>
+                        <div class="k_movie-1b-c">
+                            <eq name="nav['branch']" value="1">
+                            <div class="k_movie-1b-c1">按类型</div>
+                            <div class="k_movie-1b-c2">
+                                <ul>
+                                    <assign name="cid" value="$nav['id']" />
+                                    <type name="type">
+                                        <li><a href="{$type['url']}">{$type['title']}</a></li>
+                                    </type>
+                                </ul>
+                            </div>
+                            <else/>
+                            <div class="k_movie-1b-c1">按地区</div>
+                            <div class="k_movie-1b-c2">
+                                <ul>
+                                    <area name="area">
+                                        <li><a href="{$area['url']}">{$area['title']}</a></li>
+                                    </area>
+                                </ul>
+                            </div>
+                            </eq>
+                            <div class="k_movie-1b-c1">按年代</div>
+                            <div class="k_movie-1b-c2">
+                                <ul>
+                                    <year name="year">
+                                        <li><a href="{$year['url']}">{$year['title']}</a></li>
+                                    </year>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </nav>
+            <!---->        
+
+            <!-- 广告位：A-06 -->        
+            <div class="ad-a3">
+                    
+            </div>  
+
+            <!-- k_link -->        
+            <div class="k_link">
+                <div class="k_link-1">
+                    <div class="k_link-1a">
+                        <ul>
+                            <li class="k_link-1a-a">
+                                <h3>友情链接</h3>
+                            </li>
+                            <li class="k_link-1a-b">
+                                <em>·  LINKS</em>
+                            </li>
+                            <li class="k_link-1a-c">（定期清理被降权重友情）</li>
+                        </ul>
+                    </div>
+                    <div class="k_link-1b">
+                        <ul>
+                            <weblink name="link">
+                            <li>
+                                <a href="{$link['url']}" target="_blank">{$link['title']}</a>
+                            </li>
+                            </weblink>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!----> 
+        </DIV>
+
+        <include file="{$tplpath}/footer.html" />
+        <script type="text/javascript" src="{$tplpath}/js/jquery1.7.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/swiper.jquery.min.js"></script>
+        <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+    </body>
+</html>

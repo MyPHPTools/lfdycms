@@ -1,0 +1,95 @@
+<!-- k_head -->
+<DIV class="k_head">
+    <DIV class="k_head-1">
+        <DIV class="k_head-1a">
+            <a href="{$webpath}" class="logo"><img src="{$webpath}{$weblogo}"></a>
+        </DIV>
+        <DIV class="k_head-1b">
+            <DIV class="k_head-1b-hot">
+                热门搜索：
+                <list name="list" order="hits desc" limit="5">
+                    <a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,10}</a>
+                </list>
+            </DIV>
+            <DIV class="k_head-1b-inp">
+                <form name="searchform" action="{$webdir}{:U('Search/index')}" method="post">
+                    <ul>
+                        <li class="head-1b-inp1">
+                            <input name="keyword" type="text" value="战狼2" onMouseOver="this.focus()" onBlur="if (this.value =='') this.value='战狼2'" onFocus="this.select()" onClick="if (this.value=='战狼2') this.value=''" class="head-1b-inp1-a">
+                        </li>
+                        <li class="head-1b-inp2">
+                            <input type="submit" value="" class="head-1b-inp2-a">
+                        </li>
+                    </ul>
+                </form>
+            </DIV>
+        </DIV>
+        <div class="k_head-1c" name="TopIcon">
+        	<div class="fBox">
+        		<a href="{:U('Home/Other/index/tpl/vip')}" target="_blank" class="tr_icons">
+                    <i class="iconfont icon-wxbbiaowang icon-vip"></i>
+                    <span>开通VIP</span>
+                </a>
+        	</div>
+        	<div class="fBox">
+        		<a href="/index.php?s=/Home/Other/index/tpl/vip.html" target="_blank" class="tr_icons">
+                    <i class="iconfont icon-iconfontyiqiyibiao icon-col"></i>
+                    <span>观看记录</span>
+                </a>
+                <div class="show-record">
+                    <em></em><i></i>
+                    <div id="hisStatu"></div>
+                </div>
+        	</div>
+        	<div class="fBox">
+        		<a href="/index.php?s=/Home/Other/index/tpl/vip.html" target="_blank" class="tr_icons">
+                    <i class="iconfont icon-iconfontxingxing icon-col"></i>
+                    <span>收藏</span>
+                </a>
+                <div class="show-record">
+                    <em></em><i></i>
+                    <div id="favorite"></div>
+                    <div class="record text-center">
+                        <div class="col col6 f12 text-right"><a href="{:U('/User/Favorites/index',array('type'=>1))}" class="a1">私密收藏夹</a></div>
+                    </div>
+                </div>
+        	</div>
+        	<div class="fBox">
+        		<a href="{:U('Home/Other/index/tpl/app_down')}" target="_blank" class="tr_icons">
+                    <i class="iconfont icon-iconfontshouji icon-col"></i>
+                    <span>下载app</span>
+                </a>
+        	</div>
+        	<div class="fBox">
+                <empty name="user['id']">
+	                <a href="{$user['userlogin']}" class="top_user tr_icons">
+	                    <i class="iconfont icon-account icon-col"></i>
+	                    <span>注册/登录</span>
+	                </a>
+                <else />
+	                <a href="{$user['userurl']}" class="top_user tr_icons">
+	                    <img src="{$user['path']}">
+	                    <span class="text-center">{$user['username']}</span>
+	                </a>
+                </empty>
+        	</div>
+        </div>
+    </DIV>
+
+    <DIV class="k_head-2">
+        <DIV class="k_head-2a">
+            <ul>
+                <li class="<if condition="($cid eq '') OR ($pid eq '')">head-2a-list-b<else/>head-2a-list</if>">
+                    <a href="{$webpath}">首页</a>
+                </li>
+                <nav name="nav">
+                <li class="<if condition="($nav['id'] eq $cid) OR ($nav['id'] eq $pid)">head-2a-list-b<else/>head-2a-list</if>">
+                    <a href="{$nav['url']}">{$nav['title']}</a>
+                </li>
+                </nav>
+            </ul>
+        </DIV>
+    </DIV>
+
+</DIV>
+<!---->

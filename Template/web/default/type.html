@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$list_webtitle}</title>
+<meta name="copyright" content="{$weburl}" />
+<meta name="keywords" content="{$list_keywords}">
+<meta name="description" content="{$list_description}">
+<meta name="ROBOTS" content="NOIMAGEINDEX">
+<link rel="alternate" href="{$rssurl}" type="application/rss+xml" title="rss" />
+<css href="{$tplpath}/style/style.css" />
+</head>
+<body>
+<include file="{$tplpath}/header.html" />
+<div class="wrapper" id="dexCol">
+	<div class="comwrap clearfix">
+		<div class="leftSide fl">
+            <dl class="inTitle">
+				<dt>新片推荐</dt>
+			</dl>
+            <ul class="sumgroup entire clearfix">
+                <list name="list" cid="$cid" order="update_time desc" limit="8" pos="1">
+                <li>
+                    <a href="{$list['url']}" title="{$list['title']}">
+                        <img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}">
+                        <cite>{$list['title']}</cite>
+                        <em></em>
+                    </a>
+                    <p>主演：{$list['actors']}</p>
+                </li>
+                </list>
+            </ul>
+		</div>
+		<div class="sideCont fr">
+            <dl class="cateTags">
+                <dt>按类型</dt>
+                <dd>
+                <nav name="menu" cid="$cid">
+                    <a href="{$menu['url']}" <eq name="cid" value="$menu['id']">class="current"</eq>>{$menu['title']}</a>
+                </nav>
+                </dd>
+            </dl>
+            <dl class="cateTags">
+                <dt>按年代</dt>
+                <dd>
+                    <year name="year">
+                    <a href="{$year['url']}" <if condition="($Think.get.year eq '') AND ($i eq 1) OR ($Think.get.year eq $year['title'])">class="current"</if>>{$year['title']}</a>
+                    </year>
+                </dd>
+            </dl>
+            <dl class="cateTags">
+                <dt>按地区</dt>
+                <dd>
+                    <area name="area">
+                    <a href="{$area['url']}" <if condition="($Think.get.area eq '') AND ($i eq 1) OR ($Think.get.area eq $area['title'])">class="current"</if>>{$area['title']}</a>
+                    </area>
+                </dd>
+            </dl>
+             <dl class="cateTags">
+                <dt>按语言</dt>
+                <dd>
+                    <language name="language">
+                    <a href="{$language['url']}" <if condition="($Think.get.language eq '') AND ($i eq 1) OR ($Think.get.language eq $language['title'])">class="current"</if>>{$language['title']}</a>
+                    </language>
+                </dd>
+            </dl>
+		</div>	
+	</div>
+	<nav name="nav" cid="$cid" type="1">
+	<div class="comwrap clearfix">
+		<div class="leftSide fl">
+			<dl class="inTitle">
+				<dt>最新{$nav['title']}</dt>
+			</dl>
+            <ul class="sumgroup entire clearfix">
+                <list name="list" cid="$nav['id']" order="update_time desc" limit="8">
+                <li>
+                    <a href="{$list['url']}" title="{$list['title']}">
+                        <img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}">
+                        <cite>{$list['title']}</cite>
+                        <em></em>
+                    </a>
+                    <p>主演：{$list['actors']}</p>
+                </li>
+                </list>
+            </ul>
+		</div>
+       <div class="sideCont fr ingrep">
+           <div class="inTitle">
+                <h6>{$nav["title"]}排行榜</h6>
+            </div>
+            <div class="ingrep-Cont" style="display:block;">
+                <ul class="foldlist">
+                    <list name="list" cid="$nav['id']" order="hits desc" limit="10">
+                    <li <eq name="i" value="1">class="hover"</eq>>
+                        <div class="hisus">
+                            <a href="{$list['url']}" class="img">
+                                <img src="{$tplpath}/images/loading.gif" data-original="{$list['pic']}" alt="{$list['title']}" style="display: inline;">
+                                <b>{$i}</b>
+                            </a>
+                            <div class="imr">
+                                <h4>{$list['title']}</h4>
+                                <p>类型：{$list['ctitle']}</p>
+                                <p>主演：{$list['actors']|substr='0,10'}</p>
+                                <a href="{$list['url']}" class="p">立即播放</a>
+                            </div>
+                        </div>
+                        <p><em>{$i}</em><a href="{$list['url']}">{$list['title']}</a><span>{$list['hits']}</span></p>
+                    </li>
+                    </list>
+                </ul>
+            </div>
+		</div>
+	</div>
+    </nav>
+
+    <div id="bde">
+	<!-- 广告位：首页横幅960*90 -->
+    </div>
+</div>
+<include file="{$tplpath}/footer.html" />
+<js href="{$tplpath}/js/jquery.min.js" />
+<js href="{$tplpath}/js/jquery.lazyload.min.js" />
+<js href="{$tplpath}/js/common.source.js" />
+</body>
+</html>

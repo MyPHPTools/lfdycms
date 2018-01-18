@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://tv.sohu.com/drama/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/global2014.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/nav_v1.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/channel.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/drama-album.css"></head>
+
+<body class="W_1380">
+    <include file="{$tplpath}/header.html" />
+    <div class="top_ad">
+        <div id="cp_207_1" class="crossPage">
+            广告
+        </div>
+    </div>
+    <div id="playerBar">
+        <div class="area">
+            <player />
+        </div>
+        <div class="left">
+            <!-- Start:videoBox -->        
+            <div id="playtoolbar" class="videoBox cfix">
+            <!-- 工具栏右侧推广 -->
+                <div class="vBox vBox-ding" {$digg['up_js']}>
+                    <a href="#" class="vbtn"> <em><i>{$digg['up']}</i></em> 
+                    </a>
+                </div>
+                <div class="vBox vBox-cai" {$digg['down_js']}>
+                    <a href="#" class="vbtn"> <em><i>{$digg['down']}</i></em> 
+                    </a>
+                </div>
+                <div class="vBox vBox-fav" {$favorites}>
+                    <a href="#" class="vbtn">
+                        <em>收藏</em>
+                    </a>
+                </div>
+                <div class="vBox vBox-play vBox-play-panel" pb-click="" data-pb-txid="pg_player_vv">
+                    <a href="#" class="vbtn vbtn-play">
+                        <em>
+                            <i><span class="arr"></span>{$hits}</i> 
+                        </em>
+                    </a>
+                </div>
+                <div id="shareBox" class="vBox vBox-fa">
+                    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                </div>
+            </div>
+        <!-- End:videoBox -->
+        </div>
+    </div>
+    <div id="content">
+        <div class="wrapDrama cf">
+            <div class="main">
+                <!-- 广告开始 -->
+                <!-- <div class="ad1120">
+                    <img src="{$tplpath}/images/1120x100.jpg">
+                </div> -->
+                <!-- 广告结束 -->
+                <div class="modB pianhua">
+                    <comment />
+                </div>
+            </div>
+            <div class="side">
+                <div class="modRB">
+                    <div class="tit">最新更新</div>
+                    <ul class="lisPT cf" id="likelist">
+                        <list name="list" order="update_time desc" limit="4">
+                        <li class="lisPi cf">
+                            <a href="{$list['url']}" target="_blank" class="sz110 load">
+                            <img src="{$list['pic']}" class="sz110" title="{$list['title']}">
+                            </a><div class="pic"><p class="fs14 pt"><a href="{$list['url']}" target="_blank" title="{$list['title']}">{$list['title']|msubstr=0,10}</a></p><p class="pi break">{$list['actors']|msubstr=0,11}</p></div>
+                        </li>
+                        </list>
+                    </ul>
+                </div>
+                <div class="mod_line"></div>
+                <div class="modRC">
+                    <div class="tit">电视剧排行榜</div>
+                    <div class="rankud cf" id="tvrank">
+                        <ul class="ranku cf">
+                        <list name="list" order="hits desc" limit="10">
+                            <li class="ranki rk{$i-1}">
+                            <a title="{$list['title']}" target="_blank" href="{$list['url']}" class="ranka">{$list['title']|msubstr=0,10}</a></li>
+                        </list>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="{$tplpath}/footer.html" />
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        });
+    </script>
+</body>
+</html>

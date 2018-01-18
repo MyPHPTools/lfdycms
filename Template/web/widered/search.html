@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://tv.sohu.com/drama/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/global2014.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/nav_v1.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/channel.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/drama.css"></head>
+
+<body class="W_1380">
+    <include file="{$tplpath}/header.html" />
+    <div id="content">
+        <div class="wrap">
+            <div class="sort-column area">
+                <div class="column-bd cfix">
+                    <ul class="st-list cfix">
+                        <search name="list" limit="32" order="update_time desc">  
+                        <li class="">
+                            <div class="st-pic">
+                                <a href="{$list['url']}" target="_blank"><img src="{$list['pic']}" alt=""> <span class="st-msk"></span> </a>
+                                <span class="maskTx">{$list['serialize']}</span>
+                                <a title="原画" class="origin">原画</a>
+                                <em class="rl-zzhi"></em>
+                            </div>
+                            <strong>
+                                <a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,10}</a>
+                            </strong>
+                            <p class="actor">
+                                主演：
+                                <volist name="list['actors_array']" id="actors" offset="1" length='2'>
+                                    <a href="{$actors['url']}" title="{$actors['actors']}">{$actors['actors']}</a>
+                                    <eq name="i" value="1"> / </eq>
+                                </volist>
+                            </p>
+                            <p class="num-bf">播放量：{$list['hits']}</p>
+                        </li>   
+                        </search>  
+                    </ul>
+                            
+                    <div class="ssPages area">
+                        <page listrow="32" />
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <include file="{$tplpath}/footer.html" />
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

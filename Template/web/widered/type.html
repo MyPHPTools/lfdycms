@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://tv.sohu.com/drama/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{$webtitle}</title>
+    <meta name="description" content="{$description}">
+    <meta name="keywords" content="{$keywords}">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/global2014.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/nav_v1.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/channel.css">
+    <link type="text/css" rel="stylesheet" href="{$tplpath}/css/drama.css"></head>
+
+<body class="W_1380">
+    <include file="{$tplpath}/header.html" />
+    <div id="content">
+        <div class="wrap">
+            <div id="modL" class="mod">
+                <div class="tit">
+                    <h3 class="tith">编辑推荐</h3>
+                </div>
+                <div class="con">
+                    <list name="list" pos="1" order="update_time desc" limit="1">
+                        <!-- Start:colL -->
+                        <div class="colL">
+                            <a href="{$list['url']}" target="_blank" class="load sz240">
+                                <img src="{$list['pic']}" width="240" style="display: inline;">
+                                <span class="lisBg"></span>
+                                <span class="lisTx">{$list['title']|msubstr=0,9}</span>
+                                <switch name="list.tj_tag">
+                                    <case value="1"><span title="更新" class="gengxin">更新</span></case>
+                                    <case value="2"><span title="热播" class="onlyp">热播</span></case>
+                                    <case value="3"><span title="抢先" class="qanxian">抢先</span></case>
+                                    <case value="4"><span title="会员" class="vip">会员</span></case>
+                                </switch>
+                            </a>
+                        </div>
+                        <!-- End:colL -->
+                    </list>
+                    <!-- Start:colR -->
+                    <div class="colR">
+                        <ul class="lis cf">
+                            <list name="list" pos="1" order="update_time desc" limit="7">
+                                <gt name="i" value="1">
+                                    <li class="lisiw">
+                                        <a href="{$list['url']}" target="_blank" class="load sz170">
+                                        <img src="{$list['pic']}" alt="{$list['title']}" style="display: inline;">
+                                        <span class="lisBg"></span><span class="lisTx">{$list['serialize']}</span>
+                                        <switch name="list.tj_tag">
+                                            <case value="1"><span title="更新" class="gengxin">更新</span></case>
+                                            <case value="2"><span title="热播" class="onlyp">热播</span></case>
+                                            <case value="3"><span title="抢先" class="qanxian">抢先</span></case>
+                                            <case value="4"><span title="会员" class="vip">会员</span></case>
+                                        </switch>
+                                        </a>
+                                        <p class="p_bt">
+                                            <a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,9}</a>
+                                        </p>
+                                        <p class="p_info">{$list['actors']|msubstr=0,11}</p>
+                                    </li>
+                                </gt>
+                            </list>
+                        </ul>
+                    </div>
+                    <!-- End:colR -->
+                </div>
+            </div>
+            <div class="sorbar">
+                <div class="wrap cf">
+                    <!-- Start:mbox -->
+                    <div class="sorbox sorbox1">
+                        <h6 class="sorh c-black">类型</h6>
+                        <ul class="soru cf">
+                            <type name="type">
+                                <li class="sori"><a href="{$type['url']}" target="_blank">{$type['title']}</a></li>
+                            </type>
+                        </ul>
+                    </div>
+                    <!-- End:mbox -->
+                    
+                    <!-- Start:mbox -->
+                    <div class="sorbox sorbox2">
+                        <h6 class="sorh c-black">地区</h6>
+                        <ul class="soru cf">
+                            <area name="area">
+                                <li class="sori"><a href="{$area['url']}" target="_blank">{$area['title']}</a></li>
+                            </area>
+                    </div>
+                    <!-- End:mbox -->
+                    
+                    <!-- Start:mbox -->
+                    <div class="sorbox sorbox3">
+                        <h6 class="sorh c-black">年代</h6>
+                        <ul class="soru cf">
+                            <year name="year">
+                                <li class="sori"><a href="{$year['url']}" target="_blank">{$year['title']}</a></li>
+                            </year>
+                        </ul>
+                    </div>
+                    <!-- End:mbox -->
+                    
+                    <!-- Start:mbox -->
+                    <div class="sorbox sorbox4">
+                        <h6 class="sorh c-black">语言</h6>
+                        <ul class="soru cf">
+                            <language name="language">
+                                <li class="sori"><a href="{$language['url']}" target="_blank">{$language['title']}</a></li>
+                            </language>
+                        </ul>
+                    </div>
+                    <!-- End:mbox -->
+                </div>
+            </div>
+            <!-- 广告开始 -->
+            <!-- <div class="ad1380">
+                <img src="{$tplpath}/images/1380x100.jpg">
+            </div> -->
+            <!-- 广告结束 -->
+            <nav name="nav" cid="$cid" type="1">
+            <div id="modD" class="mod">
+                <!-- Start:colL -->            
+                <div class="colL">
+                    <div class="tit">
+                        <h3 class="tith">最新{$nav['title']}</h3>
+                    </div>
+                    <div class="con">
+                        <ul class="lis cf">
+                            <list name="list" cid="$nav['id']" order="update_time desc" limit="7">
+                                <li class="lisi">
+                                    <a href="{$list['url']}" target="_blank" class="load sz2">
+                                        <img alt="{$list['title']}" class="sz2" lazysrc="{$list['pic']}" src="{$list['pic']}">           
+                                        <span class="lisBg"></span>
+                                        <span class="lisTx">{$list['serialize']}</span>
+                                        <switch name="list.tj_tag">
+                                            <case value="1"><span title="更新" class="gengxin">更新</span></case>
+                                            <case value="2"><span title="热播" class="onlyp">热播</span></case>
+                                            <case value="3"><span title="抢先" class="qanxian">抢先</span></case>
+                                            <case value="4"><span title="会员" class="vip">会员</span></case>
+                                        </switch>
+                                    </a>
+                                    <p class="p_bt">
+                                        <a href="{$list['url']}" title="{$list['title']}" target="_blank">{$list['title']|msubstr=0,10}</a>
+                                    </p>
+                                    <p class="p_info">
+                                        {$list['actors']|msubstr=0,11}
+                                    </p>
+                                </li>
+                            </list>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End:colL -->            
+                <!-- Start:colR -->            
+                <div class="colR">
+                    <div class="tit">
+                        <h3 class="tith">{$nav['title']}排行</h3>
+                    </div>
+                    <div class="con">
+                        <!-- Start:rank -->            
+                        <div class="rank cf">
+                            <ul class="ranku cf">
+                                <list name="list" cid="$nav['id']" order="hits desc" limit="10">
+                                    <li class="ranki">
+                                        <a href="{$list['url']}" target="_blank" title="{$list['title']}"> <i class="rki rki{$i-1}"></i> <em class="rke">{$list['title']|msubstr=0,10}</em>
+                                        </a>
+                                    </li>
+                                </list>
+                            </ul>
+                        </div>
+                        <!-- End:rank -->            
+                    </div>
+                </div>
+                <!-- End:colR --> 
+            </div>
+            <div class="mod_line"></div>
+            </nav>
+        </div>
+    </div>
+    <include file="{$tplpath}/footer.html" />
+    <script type="text/javascript" src="{$tplpath}/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/jquery.mouseDelay.min.js"></script>
+    <script type="text/javascript" src="{$tplpath}/js/global.js"></script>
+</body>
+</html>

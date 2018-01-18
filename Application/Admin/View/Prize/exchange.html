@@ -1,0 +1,84 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="panel admin-panel">
+    <form method="post" class="form-x">
+    	<div class="panel-head"><strong>兑奖管理</strong></div>
+        <div class="padding border-bottom">
+            <div class="button-group button-group-small">
+            <button type="button" class="button dropdown-toggle">按状态查询<span class="downward"></span></button>
+            <ul class="drop-menu">
+            	<li><a href="{:U('exchange')}">所有兑奖</a></li>
+                <li><a href="{:U('exchange?mode=0')}">未发货</a></li>
+                <li><a href="{:U('exchange?mode=1')}">已发货</a></li>
+                <li><a href="{:U('exchange?mode=1')}">取消交易</a></li>
+            </ul>
+            </div>
+            <div class="float-right">
+            	<input type="text" name="keyword" class="input input-auto input-small search-form" size="50" placeholder="搜索用户" /> <a class="button button-small" href="javascript:;" id="search" url="{:U('exchange?mode='.$_GET['mode'])}"><span class="icon-search"></span> 搜索</a>
+            </div>
+        </div>
+        <table class="table table-hover">
+        	<tr>
+                <th width="45">选择</th>
+                <th width="45">id</th>
+                <th>奖品名称</th>
+                <th width="150">兑奖用户</th>
+                <th width="180">兑奖时间</th>
+                <th width="80">状态</th>
+                <th width="120">操作</th>
+            </tr>
+           	<notempty name="exchange">
+            <volist name="exchange" id="vo">
+            <tr>
+                <td><input type="checkbox" name="id[]" value="{$vo.id}" /></td>
+                <td>{$vo['id']}</td>
+                <td>{$vo['pid']|get_prizetitle}</td>
+                <td>{$vo['usersname']}</td>
+                <td>{$vo['create_time']|time_format}</td>
+                <td>{$vo['mode']|show_mode_op}</td>
+                <td>
+                    <a url="{:U('operate?id='.$vo['id'])}" class="pointer">操作</a>
+                </td>
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="7"> aOh! 暂时还没有内容! </td>
+            </notempty>
+        </table>
+         <div class="panel-foot text-center">
+         	<div class="page">{$_page}</div>
+        </div>
+        </form>
+    </div>
+</block>
+
+<block name="script">
+<js href="__STATIC__/layer/layer.js" />
+<script type="text/javascript">
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+		var query = $(this).prev('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	$(".pointer").click(function(){
+		layer.open({
+			type: 2,
+			area: ['700px', '530px'],
+			fix: false, //不固定
+			maxmin: true,
+			content: $(this).attr('url')
+		});
+	});
+})
+</script>
+</block>

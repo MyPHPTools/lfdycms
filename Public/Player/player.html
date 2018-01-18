@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="__Player__/player/play_v1.css" rel="stylesheet" type="text/css" media="all">
+<title>播放器</title>
+</head>
+<body>
+<div class="player_contain player_contain_wide" id="player_container">
+    <div class="player player_baropen" id="_player" style="z-index: 3;">
+    {$player["player_code"]}
+    </div><!--player 播放器自身 END-->
+    <eq name="Think.const.MOBILE" value="web">
+    <div class="playerbar  playerbar_open" id="sideSub" style="right: -5px;">
+        <a href="javascript:;" class="playerbar_tigger" hidefocus="hidefocus" id="playerbar_tigger" title="收起播放列表" kkpv_filter="yes">收起播放列表</a>
+        <div class="playerbar_con">
+            <div class="tab_menu">
+                <ul>
+                    <li class="one on">
+                        <span>{$player["ptitle"]}</span><em></em>
+                    </li>
+                     <div class="cm-opt">
+                        <playlist name="play">
+                        <neq name="play['type']" value="1">
+                        <a id="#player_url_{$play['id']}" href="javascript:;">{$play["title"]}</a>
+                    	</neq>
+                        </playlist>
+                     </div>
+                </ul>
+                <div class="switch switch_mode" id="sub_mode_switch_c">
+                  <a title="列表模式" href="javascript:;" id="sub_mode_switch_list"><span class="switch_list">列表模式</span></a>
+                  <a class="on" title="文字模式" href="javascript:;" id="sub_mode_switch_txt"><span class="switch_txt">文字模式</span></a>
+                  <a class="on" title="倒序排列" href="javascript:;" id="sub_mode_switch_sort"><span class="switch_asc">倒序排列</span></a>
+                </div>					
+            </div>
+            <div class="playerbar_contain scroll-bar">
+                <playlist name="play">
+                <neq name="play['type']" value="1">
+                 <ul id="player_url_{$play['id']}" class="diversity diversity_zy">
+                     <volist name="play['movie_url']" id="url">
+                    <li <if condition="($Think.get.n eq $i) AND ($player['id'] eq $play['id']) "> class="on"</if> name="{$i}">
+                       <a href="{$url['url']}" title="{$url['title']}" target="_parent">{$i}</a>
+                    </li>
+                    </volist>
+                </ul>
+            	</neq>
+                </playlist>
+            </div>					
+        </div>
+	</div>
+	</eq>
+    <eq name='player["adon"]' value="1">
+    <div class="playad">
+        <p class="timer">广告倒计时<span id="playad_timer"></span>秒</p>
+        <div id="playad_container">{$player["player_ad"]|htmlspecialchars_decode}</div><!--.  END-->
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" style="position:absolute;top:0;left:0;width:100%;height:100%;filter:alpha(opacity=0);"></iframe>
+	</div><!--playad 5s END-->
+    </eq>
+</div>
+<script src="__Player__/player/jquery.js"></script>
+<script src="__Player__/player/jquery.cookie.js"></script>
+<script src="__Player__/player/history.js"></script>
+<script type="text/javascript">
+$(function(){
+	<eq name="Think.const.MOBILE" value="web">
+		$("#playerbar_tigger").click(function(){
+			if($("#playerbar_tigger").attr("kkpv_filter")=='yes'){
+				$("#sideSub").animate({right: '-305px'},250,function(){
+					$("#_player").removeClass("player_baropen");
+					$("#sideSub").removeClass("playerbar_open");
+					$("#playerbar_tigger").attr("title","展开播放列表");
+					$("#playerbar_tigger").attr("kkpv_filter","on");
+					$("#playerbar_tigger").text("展开播放列表");
+					$('.player').css('width',$(document).width()-20);
+				});
+			}else{
+				$("#sideSub").animate({right: '-5px'},250,function(){
+					$("#sideSub").addClass("playerbar_open");
+					$("#playerbar_tigger").attr("title","收起播放列表");
+					$("#playerbar_tigger").attr("kkpv_filter","yes");
+					$("#playerbar_tigger").text("收起播放列表");
+				});
+				$("#_player").addClass("player_baropen");
+				$('.player_baropen').css('width',$(document).width()-320);
+			}
+		});
+		
+		$('.tab_menu ul').hover(function(){
+			$(this).find('.cm-opt').fadeIn(300);
+		},function(){
+			$(this).find('.cm-opt').fadeOut(300);
+		});
+		
+		$(".cm-opt a").click(function(){
+			$('.tab_menu li span').text($(this).text());
+			$(this).parent().hide();
+			$('.playerbar_contain ul').hide();
+			$($(this).attr('id')).show();
+		});
+		
+		$('#sub_mode_switch_sort').click(function(){
+			var divTestJQ = $(".playerbar_contain ul:visible");
+			var divJQ = $(">li", divTestJQ);
+			var EntityList = [];
+			var lisort=true;
+			if($(this).find("span").attr("class")=="switch_dsc"){
+				$(this).find("span").removeClass("switch_dsc").addClass("switch_asc");
+				$(this).attr("title","倒序排列").find("span").text("倒序排列");
+				lisort=true;
+			}else{
+				$(this).find("span").removeClass("switch_asc").addClass("switch_dsc");
+				$(this).attr("title","正序排列").find("span").text("正序排列");
+				lisort=false;
+				
+			}
+			divJQ.each(function () {
+				var thisJQ = $(this);
+				EntityList.push({ Name: parseInt(thisJQ.attr("name"), 10), JQ: thisJQ });
+			});
+			EntityList.sort(function (a, b){
+				if(lisort){
+					return a.Name - b.Name;
+				}else{
+					return b.Name - a.Name;
+				}
+			});
+			for (var i = 0; i < EntityList.length; i++){
+				EntityList[i].JQ.appendTo(divTestJQ);
+			};
+		});
+		$('#sub_mode_switch_txt').click(function(){
+				mode_switch("txt",this);
+		});
+		$('#sub_mode_switch_list').click(function(){
+				mode_switch("list",this);
+		});
+		$('#player_url_{$player["id"]}').show();
+		mode_switch($.cookie('sub_mode_switch'),'#sub_mode_switch_'+$.cookie('sub_mode_switch'));
+		if($.cookie('sub_mode_switch')=='txt'){
+			var scrollHeight=({$Think.get.n}-1)*41/5;
+		}else{
+			var scrollHeight=({$Think.get.n}-1)*41;
+		}
+		$(".scroll-bar").animate({scrollTop:scrollHeight},300);
+		player_width();
+	</eq>
+	$('.player_contain').css('height',$('#playeriframe', parent.document).height());
+	<eq name='player["adon"]' value='1'>
+		timer(intDiff);
+	</eq>
+	<eq name='player_recom' value='1'>
+		player_time();
+	</eq>
+	<eq name="record_on" value="1">
+		history_add();
+	</eq>
+});
+
+<eq name="Think.const.MOBILE" value="web">
+function mode_switch(mode,xthis){
+	var divTestJQ = $(".playerbar_contain ul");
+	if(!$(xthis).hasClass("on")){
+		var divJQ = $(">li", divTestJQ);
+		divJQ.each(function () {
+			var thisJQ = $(this);
+			var thistitle = thisJQ.find("a").attr("title");
+			var thisname = thisJQ.find("a").text();
+			if(thisJQ.find("a").find("sup").is("sup")){
+				thistitle+=thisJQ.find("a").find("sup").prop('outerHTML');
+			}
+			thisJQ.find("a").html(thistitle).attr("title",thisname);
+		});
+	}
+	$(xthis).addClass("on");
+	if(mode=="txt"){
+		$(xthis).prev().removeClass("on");
+		divTestJQ.removeClass("diversity_zy").addClass("diversity_tv");
+	}else{
+		$(xthis).next().removeClass("on");
+		divTestJQ.removeClass("diversity_tv").addClass("diversity_zy");
+	}
+	if(mode!=$.cookie('sub_mode_switch')){
+		$.cookie('sub_mode_switch',mode ,{expires:365});
+	}
+}
+
+function player_width(){
+	$('.player_contain').css('width',$(document).width());
+	$('.player').css('width',$(document).width()-20);
+	$('.player_baropen').css('width',$(document).width()-320);
+}
+</eq>
+
+var intDiff = parseInt({$player['timer']});//倒计时总秒数量
+function timer(intDiff){
+    iCount = window.setInterval(function(){
+		if(intDiff > 0){
+			$('#playad_timer').text(intDiff);
+		}else{
+			clearInterval(iCount);
+			$('.playad').remove();
+		}
+		intDiff--;
+	}, 1000);
+}
+function player_recom(){
+	$.get('{:U("User/Recom/play")}');
+}
+
+function player_time(){
+	window.setInterval(function(){
+		player_recom();
+	}, 1000*60*{:C('USER_PLAY_TIME')});
+}
+
+function history_add(){
+	var host = window.parent.location.href,
+	date = new Date();
+	add_history({
+		'title'   : '{$movie["title"]}',
+		'id'      : '{$movie["id"]}',
+		'url'     : '{$movie["url"]}',
+		'purl'    : host,
+		'time'    : date.getTime()
+	});
+}
+</script>
+</body>
+</html>

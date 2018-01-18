@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>欢迎您登录影视系统</title>
+    <link rel="stylesheet" href="__CSS__/pintuer.css">
+    <link rel="stylesheet" href="__CSS__/admin.css">
+    <script src="__JS__/jquery.js"></script>
+    <script src="__JS__/pintuer.js"></script>
+    <script src="__JS__/respond.js"></script>
+    <script src="__JS__/admin.js"></script>
+    <block name="style"></block>
+</head>
+<body>
+<div class="lefter">
+    <div class="logo"><a href="#" target="_blank"><img src="__IMG__/logo.png" alt="后台管理系统" /></a></div>
+</div>
+<div class="righter nav-navicon" id="admin-nav">
+    <div class="mainer">
+        <div class="admin-navbar">
+            <span class="float-right">
+            	<a class="button button-little bg-main icon-home" href="/index.php" target="_blank">前台首页</a>
+                <a class="button button-little bg-red icon-trash-o" href="{:U('Index/cache')}">清除缓存</a>
+                <a class="button button-little bg-yellow icon-user" href="{:U('Public/logout')}">注销登录</a>
+            </span>
+            <ul class="nav nav-inline admin-nav">
+            	<notempty name="_extra_menu">
+                   {:extra_menu($_extra_menu,$__MENU__)}
+                </notempty>
+                <volist name="__MENU__.main" id="menu">
+                    <li class="{$menu.class|default=''}"><a href="{$menu.url|U}" class="{$menu.icon|default=''}"> {$menu.title}</a></li>
+                </volist>
+            </ul>
+                <ul class="nav nav-inline sub-nav">
+                    <volist name="__MENU__.child" id="sub_menu">
+                    	<notempty name="sub_menu">
+                        <notempty name="key"><h4><span class="icon-minus-square-o"></span>{$key}</h4></notempty>
+                        <volist name="sub_menu" id="menu">
+                            <li><a href="{$menu.url|U}">{$menu.title}</a></li>
+                        </volist>
+                        </notempty>
+                    </volist>
+                </ul>
+		</div>
+        <div class="admin-bread">
+            <span>您好{:session('user_auth.username')}，欢迎您的光临。</span>
+            <ul class="bread">
+                <li><a href="index.html" class="icon-home"> 开始</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="admin">
+    <div id="top-alert" class="alert fixed hidden alert-red"></div>
+	<block name="body"> </block>
+</div>
+ <script type="text/javascript">
++function(){
+	/* 左边菜单高亮 */
+	var $window = $(window), $subnav = $(".sub-nav"), url;
+	url = window.location.pathname + window.location.search;
+	url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+	var bread=$subnav.find("a[href='" + url + "']").parent().prop('outerHTML');
+	$('.bread').append(bread);
+	$subnav.find("a[href='" + url + "']").parent().addClass("active");
+	/* 左边菜单显示收起 */
+	$(".sub-nav").on("click", "h4", function(){
+		var $this = $(this);
+		$this.find("span").toggleClass("icon-minus-square-o");
+		$this.nextUntil("h4").slideToggle("fast").prev("h4").find("span").toggleClass("icon-plus-square-o");
+	});
+}();
+</script>			
+<block name="script"></block>
+</body>
+</html>
