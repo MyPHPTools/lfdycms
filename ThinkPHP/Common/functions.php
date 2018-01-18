@@ -960,19 +960,19 @@ function U($url='',$vars='',$suffix=true,$domain=false) {
 }
 
 
-function getRuleUrl($rule, &$vars = [])
+function getRuleUrl($rule, &$vars = array())
 {
     foreach ($rule as $item) {
         list($url, $pattern, $domain) = $item;
         if (empty($pattern)) {
-            return [$url, $domain];
+            return array($url, $domain);
         }
         print_r($rule);
         foreach ($pattern as $key => $val) {
             if (isset($vars[$key])) {
-                $url = str_replace(['[:' . $key . ']', ':' . $key . ''], $vars[$key], $url);
+                $url = str_replace(array('[:' . $key . ']', ':' . $key . ''), $vars[$key], $url);
                 unset($vars[$key]);
-                $result = [$url, $domain];
+                $result = array($url, $domain);
             }
         }
         if (isset($result)) {
