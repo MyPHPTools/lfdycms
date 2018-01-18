@@ -9,11 +9,19 @@ define('APP_DEBUG',true);
 
 // 定义应用目录
 define('APP_PATH','./Application/');
+define('ROOT_PATH', __DIR__);
 
 if(!is_file(APP_PATH . 'Common/Conf/config.php')){
 	header('Location: ./install.php');
 	exit;
 }
+
+spl_autoload_register(function($className){
+    $_file = ROOT_PATH . "/" . str_replace('\\', '/', $className) .".php";
+    if (file_exists($_file)) {
+        require $_file;
+    }
+});
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
