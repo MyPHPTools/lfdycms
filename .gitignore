@@ -51,5 +51,8 @@ phpunit.phar
 
 # env config
 Config.php
-将删除 rsa_private_key.pem
-将删除 rsa_public_key.pem
+#将删除 rsa_private_key.pem
+#将删除 rsa_public_key.pem
+
+# uploads
+#Uploads
